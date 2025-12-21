@@ -1,0 +1,167 @@
+{
+  "id" : "rule-150ee0cf-bed4-592f-9de8-1557b35bfe9d",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "folderId" : "fldr-03ca8111-5caf-555c-b2c6-0bb085d20cc4",
+  "template" : "validation",
+  "ruleType" : "Validation",
+  "name" : "Rule_Validation",
+  "state" : "Published",
+  "createdBy" : "roshan.n",
+  "updatedBy" : "roshan.n",
+  "createdTimestamp" : "12/21/2025 18:54:13 UTC",
+  "updatedTimestamp" : "12/21/2025 18:54:49 UTC",
+  "isActive" : true,
+  "isDeleted" : false,
+  "properties" : {
+    "criticality" : "Warning",
+    "engineType" : "HighThroughput",
+    "stopAtFailAndErrorCount" : 0,
+    "stopAtRowCount" : 0,
+    "stopAtTime" : 0,
+    "degreeOfParallelism" : 1,
+    "engineInfo" : { },
+    "languageType" : "groovy"
+  },
+  "objects" : [ {
+    "id" : "SourceDataset",
+    "type" : "source",
+    "name" : "sourceDataset",
+    "connectionType" : "Database",
+    "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+    "input" : "Table",
+    "configuration" : {
+      "schemaName" : "REGRESSION_DATABASE",
+      "tableName" : "CUSTOMER",
+      "appendOrderBy" : true,
+      "isDeferredSort" : false,
+      "columns" : [ {
+        "index" : 1,
+        "name" : "CUSTOMERID",
+        "datatype" : "NUMBER",
+        "icedqDatatype" : "NUMERIC"
+      }, {
+        "index" : 2,
+        "name" : "ACCTNUMBER",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 3,
+        "name" : "FIRSTNAME",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 4,
+        "name" : "LASTNAME",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 5,
+        "name" : "GENDER",
+        "datatype" : "CHAR",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 6,
+        "name" : "BIRTHDATE",
+        "datatype" : "DATE",
+        "icedqDatatype" : "DATE"
+      }, {
+        "index" : 7,
+        "name" : "DATEFIRSTPURCHASE",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 8,
+        "name" : "PHONENO",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 9,
+        "name" : "EMAIL",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 10,
+        "name" : "YEARLYINCOME",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 11,
+        "name" : "ADDRESSID",
+        "datatype" : "NUMBER",
+        "icedqDatatype" : "NUMERIC"
+      } ]
+    },
+    "useCached" : false
+  }, {
+    "id" : "RecordCheck",
+    "type" : "recordCheck",
+    "name" : "checks",
+    "configuration" : {
+      "checks" : [ {
+        "name" : "resulttype",
+        "index" : 1,
+        "isActive" : true,
+        "isVisible" : true,
+        "expression" : {
+          "caseInsensitive" : false,
+          "values" : [ "Xp" ]
+        },
+        "id" : "chck-e716003a-4722-52d3-875b-f177116afbbc",
+        "type" : "ResultType"
+      }, {
+        "name" : "Chk_0001",
+        "index" : 2,
+        "isActive" : true,
+        "isVisible" : true,
+        "expression" : {
+          "comment" : "CompletenessCheck(\"S.[FIRSTNAME]\")",
+          "column" : "S.[FIRSTNAME]",
+          "emptyStringAsNull" : true,
+          "whiteSpaceAsNull" : true,
+          "trimmingEnable" : true,
+          "caseInsensitive" : false
+        },
+        "id" : "chck-c41abb0b-7588-58c9-a8a4-44a9dde4a14a",
+        "type" : "Completeness"
+      } ]
+    }
+  }, {
+    "id" : "Report",
+    "type" : "report",
+    "name" : "exceptionReport",
+    "configuration" : {
+      "exportFileRowLimit" : "20000",
+      "createExportDownloadLink" : true,
+      "storeOnlyException" : true,
+      "storeOnlyExportedFile" : false,
+      "format" : [ "XLSX" ],
+      "loadExceptions" : false
+    }
+  }, {
+    "id" : "Summary",
+    "type" : "summary",
+    "name" : "summary",
+    "configuration" : {
+      "checks" : [ {
+        "name" : "exitcode",
+        "index" : 1,
+        "isActive" : true,
+        "isVisible" : true,
+        "expression" : {
+          "value" : "exitcode",
+          "caseInsensitive" : false
+        },
+        "isOverride" : false,
+        "id" : "chck-812ffef2-4767-50be-99ab-4ca484b7c721"
+      } ]
+    }
+  } ],
+  "isHidden" : false,
+  "version" : 2,
+  "isCheckedOut" : false,
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged"
+}
