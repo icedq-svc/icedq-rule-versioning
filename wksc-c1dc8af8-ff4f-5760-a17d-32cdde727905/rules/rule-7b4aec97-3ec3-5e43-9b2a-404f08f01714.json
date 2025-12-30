@@ -1,0 +1,137 @@
+{
+  "id" : "rule-7b4aec97-3ec3-5e43-9b2a-404f08f01714",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "folderId" : "fldr-03ca8111-5caf-555c-b2c6-0bb085d20cc4",
+  "template" : "Validation",
+  "ruleType" : "Validation",
+  "name" : "Validation_New132565brg ANTHEM_DATA_COL2",
+  "state" : "Published",
+  "code" : "CODE00_ANTHEM_DATA_COL2",
+  "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+  "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+  "createdBy" : "service-account-icedq.executor",
+  "updatedBy" : "roshan.n",
+  "createdTimestamp" : "12/30/2025 08:37:57 UTC",
+  "updatedTimestamp" : "12/30/2025 08:56:12 UTC",
+  "isActive" : true,
+  "isDeleted" : false,
+  "properties" : {
+    "criticality" : "Warning",
+    "engineType" : "HighThroughput",
+    "stopAtFailAndErrorCount" : 22000,
+    "stopAtRowCount" : 1000,
+    "stopAtTime" : 40,
+    "degreeOfParallelism" : 1,
+    "engineInfo" : { }
+  },
+  "objects" : [ {
+    "id" : "SourceDataset",
+    "type" : "source",
+    "name" : "sourceDataset",
+    "connectionType" : "Database",
+    "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+    "input" : "Sql",
+    "configuration" : {
+      "sql" : "select * from REGRESSION_DATABASE.ANTHEM_DATA_COL2",
+      "appendOrderBy" : true,
+      "isDeferredSort" : false,
+      "columns" : [ {
+        "index" : 1,
+        "name" : "COL1",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      }, {
+        "index" : 2,
+        "name" : "COL2",
+        "datatype" : "VARCHAR2",
+        "icedqDatatype" : "TEXT"
+      } ]
+    }
+  }, {
+    "id" : "RecordCheck",
+    "type" : "recordCheck",
+    "name" : "checks",
+    "configuration" : {
+      "checks" : [ {
+        "name" : "resulttype",
+        "index" : 1,
+        "isActive" : true,
+        "isVisible" : true,
+        "expression" : {
+          "caseInsensitive" : false,
+          "values" : [ "Xp" ]
+        },
+        "id" : "chck-91f1918f-c318-515a-97c0-6244d46039f3",
+        "type" : "ResultType"
+      }, {
+        "name" : "ch_COL2",
+        "index" : 2,
+        "isActive" : true,
+        "isVisible" : true,
+        "expression" : {
+          "value" : "S.[COL2] != null",
+          "caseInsensitive" : false
+        },
+        "id" : "chck-126bce56-c32c-5584-b8ba-3ac87e46d6ae",
+        "type" : "Custom"
+      }, {
+        "name" : "ch_COL1",
+        "index" : 3,
+        "isActive" : true,
+        "isVisible" : true,
+        "expression" : {
+          "value" : "S.[COL1] != null",
+          "caseInsensitive" : false
+        },
+        "id" : "chck-3a2e3344-622e-55bd-a26d-76479e958d7a",
+        "type" : "Custom"
+      } ]
+    }
+  }, {
+    "id" : "Report",
+    "type" : "report",
+    "name" : "exceptionReport",
+    "configuration" : {
+      "exportFileRowLimit" : "20000",
+      "createExportDownloadLink" : true,
+      "storeOnlyException" : true,
+      "storeOnlyExportedFile" : true,
+      "format" : [ "XLSX" ],
+      "loadExceptions" : false
+    }
+  }, {
+    "id" : "Summary",
+    "type" : "summary",
+    "name" : "summary",
+    "configuration" : {
+      "checks" : [ {
+        "name" : "exitcode",
+        "index" : 1,
+        "isActive" : true,
+        "isVisible" : true,
+        "expression" : {
+          "value" : "exitcode",
+          "caseInsensitive" : false
+        },
+        "isOverride" : false,
+        "id" : "chck-6f61cb16-f8e8-5714-9cdb-75583dad43c0"
+      } ]
+    }
+  } ],
+  "isHidden" : false,
+  "version" : 2,
+  "isCheckedOut" : false,
+  "commitMessage" : "Updated V2",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-7b4aec97-3ec3-5e43-9b2a-404f08f01714",
+      "commitMessage" : "Updated V2 | rule-7b4aec97-3ec3-5e43-9b2a-404f08f01714 | Approved"
+    }
+  }
+}
