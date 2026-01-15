@@ -1,0 +1,450 @@
+{
+  "versionId" : "ver-cd7faa6d-d72f-5ef1-bbdc-0854241d21fc",
+  "objectId" : "rule-0f8234f5-67ad-5cb9-85e5-69c1f3bcfb60",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Pushdown Rule - PostgreSQL contains XML data - Order by position",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Pushdown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-f741cc9d-a9d9-5312-8a11-efc634e96f09",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select id,info,\r\n         trim(unnest(xpath('//p:ID/text()', info::xml, ARRAY[ARRAY['p','DAF.Part']]))::text) AS part_id,\r\n         unnest(xpath('//p:Owner/text()', info::xml, ARRAY[ARRAY['p','DAF.Part']]))::text AS owner,\r\n         unnest(xpath('//p:Origin/text()', info::xml, ARRAY[ARRAY['p','DAF.Part']]))::text AS origin,\r\n         unnest(xpath('//p:Description/text()', info::xml, ARRAY[ARRAY['p','DAF.Part']]))::text AS description,\r\n         unnest(xpath('//*[local-name()=\"EmissionRelated\"]/text()', info::xml))::text AS EmissionRelated,\r\n         unnest(xpath('//*[local-name()=\"isSaleable\"]/text()', info::xml))::text AS isSaleable,\r\n         unnest(xpath('//*[local-name()=\"isAvailable\"]/text()', info::xml))::text AS isAvailable,\r\n         unnest(xpath('//*[local-name()=\"isEcoFriendly\"]/text()', info::xml))::text AS isEcoFriendly,\r\n         unnest(xpath('//*[local-name()=\"CatalogPageIndicator\"]/text()', info::xml))::text AS CatalogPageIndicator,\r\n         unnest(xpath('//*[local-name()=\"ProductMainGroup\"]/@ID', info::xml))::text AS ProductMainGroup,\r\n         unnest(xpath('//*[local-name()=\"ProductSubGroup\"]/@ID', info::xml))::text AS ProductSubGroup,\r\n         unnest(xpath('//vmrs:VMRSSystem/text()', info::xml, ARRAY[ARRAY['vmrs','DAF.AfterSales.VMRS']]))::text AS VMRSSystem,\r\n         unnest(xpath('//vmrs:VMRSAssembly/text()', info::xml, ARRAY[ARRAY['vmrs','DAF.AfterSales.VMRS']]))::text AS VMRSAssembly,\r\n         unnest(xpath('//vmrs:VMRSComponent/text()', info::xml, ARRAY[ARRAY['vmrs','DAF.AfterSales.VMRS']]))::text AS VMRSComponent,\r\n         unnest(xpath('//p:ID/text()', info::xml, ARRAY[ARRAY['p','DAF.Part']]))::text AS superseded_part_id,\r\n         unnest(xpath('//p:Owner/text()', info::xml, ARRAY[ARRAY['p','DAF.Part']]))::text AS superseded_owner,\r\n         unnest(xpath('//p:Origin/text()', info::xml, ARRAY[ARRAY['p','DAF.Part']]))::text AS superseded_origin,\r\n         unnest(xpath('//*[local-name()=\"Quantity\"]/text()', info::xml))::text AS superseded_quantity,\r\n         unnest(xpath('//*[local-name()=\"ChangeType\"]/text()', info::xml))::text AS ChangeType,\r\n         unnest(xpath('//*[local-name()=\"ChangeDateTime\"]/text()', info::xml))::text AS ChangeDateTime\r\n        FROM public.parts_changes_xml_data\r\n        order by 3",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "id",
+          "datatype" : "serial",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "info",
+          "datatype" : "xml",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "part_id",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "owner",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "origin",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "emissionrelated",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "issaleable",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "isavailable",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "isecofriendly",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "catalogpageindicator",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "productmaingroup",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "productsubgroup",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "vmrssystem",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "vmrsassembly",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "vmrscomponent",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "superseded_part_id",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "superseded_owner",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "superseded_origin",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "superseded_quantity",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "changetype",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "changedatetime",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-cad64605-5df4-5763-8f41-3a9635f11e9b",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s_id",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fc53f820-3689-5e3c-bbff-12e7dd265e53",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_info",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[info]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1be81fd7-a745-5033-b331-d83058ec134d",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_part_id",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[part_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-16d27092-d8fe-5476-aac9-82f168c8e3a7",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_owner",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[owner]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a11e5a52-e006-59a6-82d4-8af7b40da133",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_origin",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[origin]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d78d54e7-8ffd-5dec-9e5a-9c7bcf0e0a43",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_description",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[description]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2027662f-cb4c-53be-b51d-35fd207543ff",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_emissionrelated",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[emissionrelated]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-99fbe529-e160-59fc-8f7e-8543952d5fd7",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_issaleable",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[issaleable]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c5fd163e-f692-57cd-a36b-2b5dbcc1a9d3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_isavailable",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[isavailable]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6654ded3-78d9-5f13-b1e4-15e9afde04bd",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_isecofriendly",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[isecofriendly]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-555d4a6c-587f-5443-8ae4-4d646dfbbc69",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_catalogpageindicator",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[catalogpageindicator]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-def61d83-8b2e-58ad-9ee4-c2b618ebd9c3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_productmaingroup",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[productmaingroup]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bfd26440-4c22-514e-90df-d57518f64ffb",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_productsubgroup",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[productsubgroup]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d4869ba5-e613-5311-9bb4-eae3adbff70e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_vmrssystem",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[vmrssystem]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-64235bef-6aa5-58e2-9e94-293799d2f620",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_vmrsassembly",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[vmrsassembly]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-67f58676-43fd-5408-b69e-b8c2cbf20bb3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_vmrscomponent",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[vmrscomponent]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a8fb27d4-6d21-501c-8366-cbb663a333db",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_superseded_part_id",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[superseded_part_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2fc86195-3194-5609-8e1c-90aab9ae4ae2",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_superseded_owner",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[superseded_owner]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a5be8bb7-dc39-52e9-95f5-f521d23ff3b0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_superseded_origin",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[superseded_origin]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-20a4c056-ed83-5a31-b4a5-150cc3ceabcc",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_superseded_quantity",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[superseded_quantity]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-548c25bf-7ec6-5c02-91dd-df4f7d35e3c4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_changetype",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[changetype]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-974a7b6a-0b68-5e29-b2a1-e0ea1def8aca",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_changedatetime",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[changedatetime]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f3268d12-abaa-51f3-a8d3-033201bcfdd0",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-432cc02f-8a95-5650-939c-f561f46e8fb2"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-0f8234f5-67ad-5cb9-85e5-69c1f3bcfb60",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-0f8234f5-67ad-5cb9-85e5-69c1f3bcfb60 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:37.942814200Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
