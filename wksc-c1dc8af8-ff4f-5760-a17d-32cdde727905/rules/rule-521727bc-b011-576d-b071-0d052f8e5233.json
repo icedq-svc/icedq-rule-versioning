@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-fa8750ab-ca19-5054-b3ac-f86936ff3c44",
+  "versionId" : "ver-57630fe2-158b-5ac3-a071-c4abc2a14d7e",
   "objectId" : "rule-521727bc-b011-576d-b071-0d052f8e5233",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "API_Validation_DAT_14134",
-  "state" : "Published",
-  "version" : 1,
+  "state" : "Staged",
+  "version" : 2,
   "info" : {
     "ruleType" : "api-validation",
     "properties" : {
@@ -81,61 +81,66 @@
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 11,
-          "name" : "language",
+          "name" : "json:_id",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 12,
-          "name" : "mobile",
+          "name" : "language",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 13,
-          "name" : "name",
+          "name" : "mobile",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 14,
-          "name" : "other_companies",
+          "name" : "name",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 15,
-          "name" : "phone",
+          "name" : "other_companies",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 16,
-          "name" : "preferred_source",
+          "name" : "phone",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 17,
-          "name" : "time_zone",
+          "name" : "preferred_source",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 18,
-          "name" : "twitter_followers_count",
+          "name" : "time_zone",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 19,
-          "name" : "twitter_id",
+          "name" : "twitter_followers_count",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 20,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
           "name" : "twitter_profile_status",
           "datatype" : "BIT",
           "icedqDatatype" : "BOOLEAN"
         }, {
-          "index" : 21,
+          "index" : 22,
           "name" : "unique_external_id",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
-          "index" : 22,
+          "index" : 23,
           "name" : "updated_at",
           "datatype" : "TIMESTAMP",
           "icedqDatatype" : "TIMESTAMP"
@@ -143,7 +148,7 @@
         "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
         "requestMethod" : "GET",
         "endPoint" : "/contacts",
-        "dataModel" : "Document"
+        "dataModel" : "FlattenedDocuments"
       }
     }, {
       "id" : "RecordCheck",
@@ -176,6 +181,28 @@
           },
           "id" : "chck-c54a0ae6-e0ed-531e-9bec-3580e48c11a2",
           "type" : "Completeness"
+        }, {
+          "name" : "Fyi_s_active",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[active]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fe75808a-ea93-56d2-a3b2-e20af44300bb",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_address",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[address]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3bb41816-7e96-54df-82a2-568058dd7bfc",
+          "type" : "Column"
         } ]
       }
     }, {
@@ -204,23 +231,24 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-7d85bb35-88aa-5037-b3b3-2790a1018b43"
+          "id" : "chck-06819648-686f-5f5f-83bc-79dd1b839cbd"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
-  "commitStatus" : "Merged",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-521727bc-b011-576d-b071-0d052f8e5233",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-521727bc-b011-576d-b071-0d052f8e5233 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-521727bc-b011-576d-b071-0d052f8e5233 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:45.683396500Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:47.194397600Z[UTC]",
   "updatedBy" : "roshan.n"
 }
