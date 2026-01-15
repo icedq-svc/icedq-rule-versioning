@@ -1,36 +1,41 @@
 {
-  "versionId" : "ver-f969ceda-cdfd-51da-bfb5-ae79c8754ab5",
+  "versionId" : "ver-0e8d7696-a5b2-5753-8786-06f7f1d82d62",
   "objectId" : "rule-73f94044-a239-58c5-91ef-32bd5c13a11a",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "All keys56",
+  "name" : "All keys-updated",
   "state" : "Staged",
   "info" : {
     "ruleType" : "Duplicate",
+    "code" : "r2",
+    "description" : "duplicate",
+    "purpose" : "testing",
     "properties" : {
-      "criticality" : "Warning",
+      "criticality" : "Critical",
+      "parameterId" : "parm-be2454f3-64fe-5d01-bf06-baf1e2b8cd99",
       "engineType" : "HighThroughput",
-      "degreeOfParallelism" : 1,
-      "engineInfo" : { }
+      "stopAtTime" : 23,
+      "degreeOfParallelism" : 2,
+      "engineInfo" : { },
+      "parameterName" : "Parameter one"
     },
     "objects" : [ {
       "id" : "SourceDataset",
       "type" : "source",
       "name" : "sourceDataset",
-      "connectionType" : "CloudDB",
-      "connectionId" : "conn-7c345339-2a9f-58a7-9c4a-89589cb99d09",
+      "connectionType" : "Database",
+      "connectionId" : "conn-a930452a-b40d-5a95-a83e-1400368931c6",
       "input" : "Table",
       "configuration" : {
-        "databaseName" : "BI_TESTING",
-        "schemaName" : "PUBLIC",
+        "schemaName" : "BI_TESTING",
         "tableName" : "REVENUE_OPPORTUNITIES_FACT",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
           "name" : "estimatedclosedate",
-          "datatype" : "VARCHAR",
+          "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
@@ -60,12 +65,12 @@
         }, {
           "index" : 7,
           "name" : "productrevenue",
-          "datatype" : "VARCHAR",
+          "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 8,
           "name" : "factoredproductrevenue",
-          "datatype" : "VARCHAR",
+          "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 9,
@@ -90,12 +95,12 @@
         }, {
           "index" : 13,
           "name" : "month",
-          "datatype" : "VARCHAR",
+          "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 14,
           "name" : "date",
-          "datatype" : "VARCHAR",
+          "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         } ]
       },
@@ -111,18 +116,19 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "duplicateCheck(\"S.[sales stage id]\")",
-            "comment" : "duplicateCheck(\"S.[sales stage id]\")",
+            "value" : "duplicateCheck(\"S.[opportunity id]\")",
+            "comment" : "duplicateCheck(\"S.[opportunity id]\")",
             "trimmingEnable" : true,
             "caseInsensitive" : false,
             "columns" : [ {
               "index" : 1,
-              "name" : "S.[sales stage id]",
+              "name" : "S.[opportunity id]",
               "datatype" : "NUMBER"
             } ]
           },
           "id" : "chck-ef1326b5-4324-5fef-b755-0a360633032e",
-          "type" : "Duplicate"
+          "type" : "Duplicate",
+          "description" : "check description"
         }, {
           "name" : "noOfDuplicates",
           "index" : 2,
@@ -145,7 +151,7 @@
         "exportFileRowLimit" : "",
         "createExportDownloadLink" : true,
         "storeOnlyException" : true,
-        "storeOnlyExportedFile" : false,
+        "storeOnlyExportedFile" : true,
         "format" : [ "XLSX" ]
       }
     }, {
@@ -162,13 +168,23 @@
             "value" : "exitcode",
             "caseInsensitive" : false
           },
-          "isOverride" : false,
+          "isOverride" : true,
           "id" : "chck-a63c751f-1e69-513a-9313-91eec5ebeca6"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " rulecode ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-4aadd47e-9855-5d8b-a204-8e828c0e3eed"
         } ]
       }
     } ]
   },
-  "commitStatus" : "Discarded",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
@@ -179,6 +195,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:36:39.723127900Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:36:40.100130Z[UTC]",
   "updatedBy" : "roshan.n"
 }
