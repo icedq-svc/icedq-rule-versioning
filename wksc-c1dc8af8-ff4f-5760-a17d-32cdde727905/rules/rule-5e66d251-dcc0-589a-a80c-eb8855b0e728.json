@@ -1,0 +1,116 @@
+{
+  "versionId" : "ver-4c7735f5-b37e-5f86-b6a4-21564ad62bcb",
+  "objectId" : "rule-5e66d251-dcc0-589a-a80c-eb8855b0e728",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-13983-Validation",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "OLAP",
+      "connectionId" : "conn-9514c61e-4a0a-568c-962c-dcede3b2d66b",
+      "input" : "dax",
+      "configuration" : {
+        "dax" : "EVALUATE \r\nsummarizecolumns(\r\n    'customer', \"customer table count\", COUNTROWS('customer')\r\n)",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "[customer table count]",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-f0774f6d-88fc-5f39-9e3c-399da75f5608",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[[customer table count]]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-16fd9e2d-1270-5a01-88c9-288ac23f5cf5",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "CSV" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-76a4c736-adf9-5ef9-9b32-e68105b06845"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration-DAX",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-5e66d251-dcc0-589a-a80c-eb8855b0e728",
+      "commitMessage" : "Message: Updated rule configuration-DAX | RuleId: rule-5e66d251-dcc0-589a-a80c-eb8855b0e728 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:36:05.075063600Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
