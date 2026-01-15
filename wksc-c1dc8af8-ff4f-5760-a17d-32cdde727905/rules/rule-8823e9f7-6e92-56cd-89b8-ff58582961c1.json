@@ -1,18 +1,21 @@
 {
-  "versionId" : "ver-f0d31e9a-6bfd-5606-b9d9-cfcefdad5c12",
+  "versionId" : "ver-a1003203-46b8-55c4-8e7d-311004402d68",
   "objectId" : "rule-8823e9f7-6e92-56cd-89b8-ff58582961c1",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Recon Rule FF native Vs Netezza",
-  "state" : "Draft",
+  "state" : "Published",
+  "version" : 1,
   "info" : {
-    "ruleType" : "Recon",
-    "code" : "Recon Code",
+    "ruleType" : "recon",
     "description" : "Update rule",
     "properties" : {
       "criticality" : "Critical",
       "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
       "degreeOfParallelism" : 1,
       "engineInfo" : { },
       "languageType" : "groovy"
@@ -28,7 +31,6 @@
         "databaseName" : "",
         "schemaRemarks" : "",
         "tableRemarks" : "",
-        "sql" : "",
         "fileType" : "Delimited",
         "filePath" : "/AtTheRate_STAFF.txt",
         "columnDelimiter" : "@",
@@ -43,6 +45,7 @@
         "fixedString" : "true",
         "fixedStringValue" : "NaN",
         "filterCondition" : "",
+        "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
         "overrideLayout" : false,
@@ -475,33 +478,34 @@
       }
     } ],
     "customFields" : [ {
-      "field" : "importtoggle",
-      "values" : [ "false" ]
+      "field" : "exportlabel",
+      "values" : [ "ATest" ]
     }, {
-      "field" : "importsingleselectmap",
-      "values" : [ "ThreeTest" ]
+      "field" : "exportmultiselectdropdown",
+      "values" : [ "CTest" ]
     }, {
-      "field" : "importsingleselectdropdown",
-      "values" : [ "FourTest" ]
+      "field" : "exportsingleselectdropdown",
+      "values" : [ "GTest" ]
     }, {
-      "field" : "importmultiselectdropdown",
-      "values" : [ "TwoTest" ]
+      "field" : "exportsingleselectmap",
+      "values" : [ "ETset" ]
     }, {
-      "field" : "importlabel",
-      "values" : [ "OneTest" ]
+      "field" : "exporttoggle",
+      "values" : [ "true" ]
     } ]
   },
-  "commitStatus" : "Discarded",
+  "commitMessage" : "Created by import service",
+  "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-8823e9f7-6e92-56cd-89b8-ff58582961c1",
-      "commitMessage" : "Message: null | RuleId: rule-8823e9f7-6e92-56cd-89b8-ff58582961c1 |Status: Approved"
+      "commitMessage" : "Message: Created by import service | RuleId: rule-8823e9f7-6e92-56cd-89b8-ff58582961c1 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:04.411787200Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:24.262955500Z[UTC]",
   "updatedBy" : "roshan.n"
 }
