@@ -1,0 +1,419 @@
+{
+  "versionId" : "ver-40d045b2-a39d-5d82-a918-94e5da42b34a",
+  "objectId" : "rule-9458ab69-b9f6-50e9-9a90-bc6ebad1532f",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-13925-API-ReconDAT-139B25-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-Recon",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "api-recon",
+    "code" : "DAT-13925-API-ReconDAT-13925-ABPI-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-Recon",
+    "description" : "DAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-B13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-Recon",
+    "purpose" : "DAT-13925-API-ReconDAT-13B925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-ReconDAT-13925-API-Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 100,
+      "stopAtRowCount" : 100,
+      "stopAtTime" : 100,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "COTACTS",
+        "fileSchemaId" : "schm-30294540-2b3c-5195-aa20-ee8b5ebd1afe",
+        "sql" : "select * from COTACTS",
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "fixedString" : "false",
+        "appendOrderBy" : false,
+        "isDeferredSort" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-a930452a-b40d-5a95-a83e-1400368931c6",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "STAFF",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "STAFFID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "JOBCODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "COMPANY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "SALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "BONUS",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "COMM",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "TOTALSALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "BIRTHD",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 10,
+          "name" : "HIRED",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 11,
+          "name" : "LNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "FNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ADDRESS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "CITY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "STATE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "HPHONE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "SSN",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "active",
+          "targetKey" : "STAFFID"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-f8985f29-217a-5c68-9035-239d26f0055a",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0F001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_000F1Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1e949e64-597e-5034-b10f-2e9c62292e50",
+          "type" : "Custom",
+          "description" : "Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_00F01Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001Chk_0001"
+        }, {
+          "name" : "Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002CFhk_0002Chk_0002Chk_0002Chk_0002Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[address], T.[ADDRESS])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[address]",
+            "targetColumn" : "T.[ADDRESS]"
+          },
+          "id" : "chck-54cad7a5-ab76-5ac7-8b54-5b7262d3907d",
+          "type" : "SimpleCompare",
+          "description" : "Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_F0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002Chk_0002"
+        }, {
+          "name" : "Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003CFhk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[company_id], T.[JOBCODE])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[company_id]",
+            "targetColumn" : "T.[JOBCODE]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull"
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "S",
+              "target" : [ "S" ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource"
+            } ]
+          },
+          "id" : "chck-1a8a3e77-1014-5bb7-8db2-f04c7a228baa",
+          "type" : "ConditionalCompare",
+          "description" : "Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_00F03Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003Chk_0003"
+        }, {
+          "name" : "Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_000F4Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004CoFl_0004Col_0004",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5b981d22-e569-5bbe-8b0b-a4a83f92449d",
+          "type" : "Calculated",
+          "description" : "Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004CoFl_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004Col_0004"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-c059b576-430e-5d38-951b-fb42cdcff2c9"
+        }, {
+          "name" : "Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001FVar_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0F001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001Var_0001",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-dd9037f9-2fbd-54e8-ba60-1788f5951b4a"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-9458ab69-b9f6-50e9-9a90-bc6ebad1532f",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-9458ab69-b9f6-50e9-9a90-bc6ebad1532f |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:09.233490300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
