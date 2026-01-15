@@ -1,0 +1,198 @@
+{
+  "versionId" : "ver-2f46857f-5254-5c34-9043-8e10e8a4519f",
+  "objectId" : "rule-3ba98ec6-71ca-5599-8eb4-107b43669313",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DUP_1755843588658",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Duplicate",
+    "code" : "DUP",
+    "description" : "DUP",
+    "purpose" : "Workflow Testing",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-6bd21d0e-474f-5b56-807c-5ecd7ec74059",
+      "input" : "Table",
+      "configuration" : {
+        "databaseName" : "Regression_database",
+        "schemaName" : "dbo",
+        "tableName" : "Customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CustomerID",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "AcctNumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FirstName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "LastName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "BirthDate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "DateFirstPurchase",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PhoneNo",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "Email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "YearlyIncome",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "AddressID",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        } ],
+        "whereClause" : "Gender='M'"
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_0001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "duplicateCheck(\"S.[FirstName]\")",
+            "comment" : "duplicateCheck(\"S.[FirstName]\")",
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "columns" : [ {
+              "index" : 1,
+              "name" : "S.[FirstName]",
+              "datatype" : "VARCHAR"
+            } ]
+          },
+          "id" : "chck-1c8958bf-ae55-5a80-ac7b-557408dad992",
+          "type" : "Duplicate",
+          "customFields" : [ {
+            "field" : "release_testing_fields",
+            "values" : [ "A" ]
+          }, {
+            "field" : "togglefield",
+            "values" : [ "false" ]
+          } ]
+        }, {
+          "name" : "noOfDuplicates",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUPLICATE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5b166ea6-ddbd-52da-a137-84c3f08616b1",
+          "type" : "Column",
+          "description" : "Duplicate records count"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-ba0d17ff-a628-5525-a742-f8d3a6cf10a4"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "release_testing_fields",
+      "values" : [ "A" ]
+    }, {
+      "field" : "togglefield",
+      "values" : [ "false" ]
+    }, {
+      "field" : "labelfield",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectdropdown",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectmap",
+      "values" : [ "Password" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-3ba98ec6-71ca-5599-8eb4-107b43669313",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-3ba98ec6-71ca-5599-8eb4-107b43669313 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:37:02.301213300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
