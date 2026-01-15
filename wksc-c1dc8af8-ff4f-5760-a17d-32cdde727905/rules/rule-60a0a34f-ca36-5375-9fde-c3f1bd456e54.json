@@ -1,0 +1,125 @@
+{
+  "versionId" : "ver-acbd777e-8cc8-531f-b4c6-dc36ed8fb93d",
+  "objectId" : "rule-60a0a34f-ca36-5375-9fde-c3f1bd456e54",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-13983-TLSQL",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-6e4eb048-1f44-5048-af9a-41e9ae5fe596",
+      "input" : "Plsql",
+      "configuration" : {
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "customerid",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "firstname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "procedure" : "DECLARE @id INT, @name VARCHAR(100); \r\n  DECLARE @Results TABLE ( \r\n  customerid INT, \r\n  firstname VARCHAR(100) \r\n  ); \r\n  DECLARE emp_cursor CURSOR FOR \r\n  SELECT customerid, firstname FROM customer; \r\n  OPEN emp_cursor; \r\n  FETCH NEXT FROM emp_cursor INTO @id, @name; \r\n  WHILE @@FETCH_STATUS = 0 \r\n  BEGIN \r\n  INSERT INTO @Results (customerid, firstname) \r\n  VALUES (@id, @name); \r\nFETCH NEXT FROM emp_cursor INTO @id, @name; \r\n  END \r\n  CLOSE emp_cursor; \r\n  DEALLOCATE emp_cursor; \r\n  SELECT * FROM @Results;"
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-36e2283f-62da-53dd-89ae-a00a53ea4cb2",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[firstname]\")",
+            "column" : "S.[firstname]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4e68e312-455a-58d5-a9b8-83bf86393641",
+          "type" : "Completeness"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-3b4b6103-cbea-5ab0-8ca5-0fe36b21ad2a"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-60a0a34f-ca36-5375-9fde-c3f1bd456e54",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-60a0a34f-ca36-5375-9fde-c3f1bd456e54 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:35.832673700Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
