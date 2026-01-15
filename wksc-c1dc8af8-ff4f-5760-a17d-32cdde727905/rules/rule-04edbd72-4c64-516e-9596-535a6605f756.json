@@ -1,0 +1,121 @@
+{
+  "versionId" : "ver-b70c44fd-82cd-500a-b24c-698670403003",
+  "objectId" : "rule-04edbd72-4c64-516e-9596-535a6605f756",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "CS-026-Athena-All fields",
+  "state" : "Staged",
+  "version" : 3,
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "CS-026",
+    "description" : "Athena-All fields",
+    "purpose" : "testing",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "QueryEngine",
+      "connectionId" : "conn-7eba1faf-a4de-5394-99f7-7723fc9612d6",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as source_count from default.staff",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "source_count",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "QueryEngine",
+      "connectionId" : "conn-7eba1faf-a4de-5394-99f7-7723fc9612d6",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as target_count from default.staff",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "target_count",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[source_count] - T.[target_count] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e01e8d0d-dff4-5230-85f4-1d03d649984c",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-4a7b97e3-3de0-594e-9a48-68a9cfe96634"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " rulecode ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-89f46925-4d48-5a44-a796-a44a145d93c1"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-04edbd72-4c64-516e-9596-535a6605f756",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-04edbd72-4c64-516e-9596-535a6605f756 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:35.304775500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
