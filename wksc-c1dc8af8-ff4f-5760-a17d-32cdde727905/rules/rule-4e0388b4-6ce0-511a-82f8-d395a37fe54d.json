@@ -1,0 +1,350 @@
+{
+  "versionId" : "ver-3e0a5ad8-a6c7-52ae-a704-80166b262d54",
+  "objectId" : "rule-4e0388b4-6ce0-511a-82f8-d395a37fe54d",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "ValidationRule_FF_SQL",
+  "state" : "Draft",
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-9f936baf-0c0e-5acb-8eb8-6ef62501bfaa",
+      "input" : "Sql",
+      "configuration" : {
+        "schemaRemarks" : "",
+        "tableName" : "tblname_1755843816190",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-0851d483-3cdd-58d6-8b94-19ed9aef4a70",
+        "sql" : "select * from tblname_1755843816190",
+        "dax" : "",
+        "mdx" : "",
+        "fileType" : "Delimited",
+        "filePath" : "/samefiles/STAFF_2.csv",
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "",
+        "textQualifier" : "",
+        "skipRowTop" : "0",
+        "trimData" : "true",
+        "emptyString" : "true",
+        "fixedStringValue" : "NaN",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "detectDatatype" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "staffid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "sex",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "jobcode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "company",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "salary",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "bonus",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "comm",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "totalsalary",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "birthd",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "hired",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "lname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "fname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "city",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "state",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "hphone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "ssn",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "_ResourceURI",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-73585e3a-a62e-501e-ace7-9ec5798330fa",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[staffid] == 'SID1515'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c7f05c74-dac8-5cba-8cc2-87cceb6109f1",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[jobcode]\")",
+            "column" : "S.[jobcode]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8fb57ee9-11f2-57e7-a705-1fa5286af34d",
+          "type" : "Completeness"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[sex]\", length == 1)",
+            "column" : "S.[sex]",
+            "operator" : "equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 1 ]
+          },
+          "id" : "chck-9f9ff909-8745-5460-b90a-a500650f6187",
+          "type" : "Length"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[ssn]\", pattern = SSN)",
+            "column" : "S.[ssn]",
+            "pattern" : "SSN",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-cd5d8839-8751-540d-90b2-d0ad652b0203",
+          "type" : "Pattern"
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[sex]\", array[F])",
+            "column" : "S.[sex]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "F" ]
+          },
+          "id" : "chck-a2a6ba13-c438-5db0-940c-2add99e7b336",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[hphone]\", dataType = Integer)",
+            "column" : "S.[hphone]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7080b8cd-9a69-5ae1-ada3-7cb040ba7fad",
+          "type" : "Datatype"
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DateCheck(\"S.[birthd]\", date = YYYY-MM-DD)",
+            "column" : "S.[birthd]",
+            "regex" : "YYYY-MM-DD",
+            "format" : "Custom",
+            "ignoreNull" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a2b718d3-6972-5dde-a3ce-6efa012c2700",
+          "type" : "Date"
+        }, {
+          "name" : "Fyi_s_sex",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[sex]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5076ca8a-4881-5037-b21a-e1213306cf23",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_staffid",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[staffid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5f0d71f1-b1dc-54bd-a9a7-cac8cfe61784",
+          "type" : "Column"
+        }, {
+          "name" : "Col_0010",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[fname] + S.[lname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0d67164d-b6a8-546f-812f-4f1b43daf1c0",
+          "type" : "Calculated"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-473c6c7d-0ac2-5cc9-bcd0-b841d9fd56db"
+        } ]
+      }
+    } ]
+  },
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-4e0388b4-6ce0-511a-82f8-d395a37fe54d",
+      "commitMessage" : "Message: null | RuleId: rule-4e0388b4-6ce0-511a-82f8-d395a37fe54d |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:32.837815600Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
