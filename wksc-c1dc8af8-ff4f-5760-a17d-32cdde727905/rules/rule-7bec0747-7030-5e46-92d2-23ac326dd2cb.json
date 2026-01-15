@@ -1,0 +1,341 @@
+{
+  "versionId" : "ver-aeb95138-72c7-54f0-ba06-e40def448bcb",
+  "objectId" : "rule-7bec0747-7030-5e46-92d2-23ac326dd2cb",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Push-Cloud_1758891015306",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "PushDown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-211e406f-5671-5288-b816-9db424a4143f",
+      "input" : "Table",
+      "configuration" : {
+        "databaseName" : "DEMO_DB",
+        "schemaName" : "INSURANCE",
+        "tableName" : "POLICY_STG",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "POLICYID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "POLICYNUMBER",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "STARTDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "ENDDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "PREMIUMAMOUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "EFFECTIVEDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "EXPIRATIONDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PAYMENTSTATUS",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "RENEWALDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "CLAIMHISTORY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "AGENTID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "POLICYSTATUS",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "CANCELLATIONDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "RENEWALFREQUENCY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "POLICYTYPE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-aee02ee3-0e5a-5134-8ee9-0228b45ad8b6",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s_policyid",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[POLICYID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c73a11a5-3b02-57ac-9a79-8c13d2940d77",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_policynumber",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[POLICYNUMBER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fa490c8d-727c-5eb7-b1bd-1fda009931cc",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_startdate",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[STARTDATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ac36d7a1-9e8a-50a5-bf20-44aabc92d170",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_enddate",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ENDDATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e6ea6125-8e51-52ff-a1dd-f846318d8def",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_premiumamount",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PREMIUMAMOUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-334f473e-dc65-5e9e-adb2-97a3de47d2c1",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_effectivedate",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EFFECTIVEDATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-02e876ee-5604-55ca-a177-52e54502cd16",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_expirationdate",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EXPIRATIONDATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1f5965f3-1893-5f95-bdc1-38b8fd8449ed",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_paymentstatus",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PAYMENTSTATUS]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0395d888-27f3-554b-b955-72eaac714986",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_renewaldate",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RENEWALDATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-30a78045-68a5-5838-a40a-b1f064ce17b0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_claimhistory",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CLAIMHISTORY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4cff9f23-4e7c-52ef-8675-7bedbf413a1e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_agentid",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[AGENTID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f5d5e375-283a-5e52-b4e6-19bb4ff959c6",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_policystatus",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[POLICYSTATUS]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fb1ad87a-5a69-5585-bcf0-13450481170e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_cancellationdate",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CANCELLATIONDATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1d9c9e22-c527-5fff-a645-26353d3b8fb1",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_renewalfrequency",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RENEWALFREQUENCY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-08f4de86-0de4-588d-b4a7-6df01b596e0c",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_policytype",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[POLICYTYPE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a2de6555-71c6-56b1-a934-1252234666a5",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-a2470a50-ba45-5c0a-9dce-67ea590f57ab"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-7bec0747-7030-5e46-92d2-23ac326dd2cb",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-7bec0747-7030-5e46-92d2-23ac326dd2cb |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:28.029781600Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
