@@ -1,18 +1,18 @@
 {
-  "versionId" : "ver-17687382-d2ff-5b35-a7e9-471040e46c0f",
+  "versionId" : "ver-b1f2d76a-b3d6-5968-b003-f701a6cfda70",
   "objectId" : "rule-296cde60-b43f-5337-b624-f97c63fb16d5",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Checksum rule DAT-13950",
   "state" : "Published",
-  "version" : 8,
+  "version" : 4,
   "info" : {
     "ruleType" : "Checksum",
     "code" : "1",
-    "description" : "test",
     "properties" : {
       "criticality" : "Warning",
+      "parameterId" : "parm-ef6f9acb-aebd-5d45-ae55-019a58c862a6",
       "engineType" : "HighThroughput",
       "engineInfo" : { },
       "languageType" : "groovy"
@@ -25,8 +25,7 @@
       "connectionId" : "conn-b48e1dab-162f-5fe9-86d3-5f8d60dd8257",
       "input" : "Sql",
       "configuration" : {
-        "sql" : "select count(*) as source_count from regression_database.customer",
-        "appendOrderBy" : true,
+        "sql" : "select count(*) as source_count from regression_database.#customer1#",
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -43,7 +42,7 @@
       "connectionId" : "conn-b48e1dab-162f-5fe9-86d3-5f8d60dd8257",
       "input" : "Sql",
       "configuration" : {
-        "sql" : "select count(*) as source_count from regression_database.customer",
+        "sql" : "select count(*) as source_count from regression_database.#customer1#",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
@@ -64,7 +63,7 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[source_count] - T.[source_count] == 0",
+            "value" : "S.[source_count] - T.[source_count] == #Equal#",
             "caseInsensitive" : false
           },
           "id" : "chck-e7cc7681-2e1f-57fb-8bdf-c2ada0519467",
@@ -93,16 +92,16 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : " sourcecount ==  0",
+            "value" : " sourcecount ==  #customerid# ",
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-d642b354-2695-5ec1-873e-47a0ab37e061"
+          "id" : "chck-8bc23d85-92ac-5b99-adc7-128a39bf4be4"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration",
+  "commitMessage" : "Updated rule configuration1",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
@@ -111,10 +110,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-296cde60-b43f-5337-b624-f97c63fb16d5",
-      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-296cde60-b43f-5337-b624-f97c63fb16d5 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration1 | RuleId: rule-296cde60-b43f-5337-b624-f97c63fb16d5 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:44:47.557528200Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:44:49.287730500Z[UTC]",
   "updatedBy" : "roshan.n"
 }
