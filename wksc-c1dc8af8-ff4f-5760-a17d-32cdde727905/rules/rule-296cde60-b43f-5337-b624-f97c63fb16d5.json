@@ -1,18 +1,17 @@
 {
-  "versionId" : "ver-b1f2d76a-b3d6-5968-b003-f701a6cfda70",
+  "versionId" : "ver-831727e1-09d6-50cc-a416-c08de0497f46",
   "objectId" : "rule-296cde60-b43f-5337-b624-f97c63fb16d5",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Checksum rule DAT-13950",
   "state" : "Published",
-  "version" : 4,
+  "version" : 5,
   "info" : {
     "ruleType" : "Checksum",
     "code" : "1",
     "properties" : {
       "criticality" : "Warning",
-      "parameterId" : "parm-ef6f9acb-aebd-5d45-ae55-019a58c862a6",
       "engineType" : "HighThroughput",
       "engineInfo" : { },
       "languageType" : "groovy"
@@ -25,7 +24,8 @@
       "connectionId" : "conn-b48e1dab-162f-5fe9-86d3-5f8d60dd8257",
       "input" : "Sql",
       "configuration" : {
-        "sql" : "select count(*) as source_count from regression_database.#customer1#",
+        "sql" : "select count(*) as source_count from regression_database.customer",
+        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -42,7 +42,7 @@
       "connectionId" : "conn-b48e1dab-162f-5fe9-86d3-5f8d60dd8257",
       "input" : "Sql",
       "configuration" : {
-        "sql" : "select count(*) as source_count from regression_database.#customer1#",
+        "sql" : "select count(*) as source_count from regression_database.customer",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
@@ -63,7 +63,7 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[source_count] - T.[source_count] == #Equal#",
+            "value" : "S.[source_count] - T.[source_count] == 0",
             "caseInsensitive" : false
           },
           "id" : "chck-e7cc7681-2e1f-57fb-8bdf-c2ada0519467",
@@ -92,11 +92,11 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : " sourcecount ==  #customerid# ",
+            "value" : " sourcecount ==  0",
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-8bc23d85-92ac-5b99-adc7-128a39bf4be4"
+          "id" : "chck-d642b354-2695-5ec1-873e-47a0ab37e061"
         } ]
       }
     } ]
@@ -114,6 +114,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:44:49.287730500Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:44:52.314986700Z[UTC]",
   "updatedBy" : "roshan.n"
 }
