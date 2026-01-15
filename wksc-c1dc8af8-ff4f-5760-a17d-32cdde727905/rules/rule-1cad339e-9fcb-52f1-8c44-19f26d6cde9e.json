@@ -1,0 +1,125 @@
+{
+  "versionId" : "ver-903d5f14-4757-5f05-990e-89d7b31a3d09",
+  "objectId" : "rule-1cad339e-9fcb-52f1-8c44-19f26d6cde9e",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Validation for PLSQL",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "Validation for PLSQL",
+    "description" : "Validation for PLSQL",
+    "purpose" : "Validation for PLSQL",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-f829041d-59e9-5fc4-bff5-6e2956a80b62",
+      "input" : "Plsql",
+      "configuration" : {
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "DEPARTMENT_ID",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "DEPARTMENT_NAME",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "procedure" : "DECLARE \r\n    TYPE Dpt_rec IS RECORD ( \r\n        DNO   NUMBER(4,0), \r\n        DNAME VARCHAR2(30) \r\n    ); \r\n    TYPE Dpt_TAB IS TABLE OF Dpt_rec; \r\n    dpt_ouput Dpt_TAB := Dpt_TAB(); \r\nBEGIN \r\n    SELECT DEPARTMENT_ID, DEPARTMENT_NAME \r\n    BULK COLLECT INTO dpt_ouput \r\n    FROM HR.DEPARTMENTS; \r\nDBMS_OUTPUT.PUT_LINE('DEPARTMENT_ID, DEPARTMENT_NAME'); \r\n    FOR i IN 1 .. dpt_ouput.COUNT LOOP \r\n        DBMS_OUTPUT.PUT_LINE(dpt_ouput(i).DNO || ',' || dpt_ouput(i).DNAME); \r\n    END LOOP; \r\nEND; ",
+        "outputDelimiter" : ","
+      },
+      "useCached" : true
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-ca4528ae-f4fe-5ed8-8448-be153b728bfa",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DEPARTMENT_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1f6fe38b-69d3-5ab2-b6d7-41e118268478",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-fa8f647e-536a-5d6d-ade9-558cbdc2c4e4"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-1cad339e-9fcb-52f1-8c44-19f26d6cde9e",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-1cad339e-9fcb-52f1-8c44-19f26d6cde9e |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:37.852778500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
