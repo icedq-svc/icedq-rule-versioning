@@ -1,0 +1,702 @@
+{
+  "versionId" : "ver-876dfa23-bd1c-5428-85d9-815b9acfb62a",
+  "objectId" : "rule-3455ff1d-d4e5-54d2-81df-330149422963",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_CST-143 - SQL Server VS My Sql Server_ 50 MILLION_",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "description" : "Rule_CST-143 - SQL Server VS My Sql Server -- LIMIT AND TOP",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-f5d97c5b-3a29-550e-8aff-c2ca7fb7f063",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select TOP 50000000 * from regression_database.dbo.hundred_million_records",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EMPNO",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 2,
+          "name" : "EMPCODE",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "EMPNAME",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "DEPARTMENT",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "HIREDATE",
+          "datatype" : "datetime",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "EMAIL",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "EMPADDR",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONE",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "SALARY",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 10,
+          "name" : "COMM",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "CALCULATED_SALARY",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 12,
+          "name" : "DEPTNO",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 13,
+          "name" : "GENDER",
+          "datatype" : "char",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "BIRTHDATE",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 15,
+          "name" : "CITY",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "COUNTRY",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "YEARLYINCOME",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 18,
+          "name" : "COUNTRYCODE",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "TEMPERATURE",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 20,
+          "name" : "MOBILE",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 21,
+          "name" : "NEGATIVE_DECIMAL",
+          "datatype" : "decimal",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 22,
+          "name" : "BIG_NUMBER",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 23,
+          "name" : "TIME_VALUE",
+          "datatype" : "time",
+          "icedqDatatype" : "TIME"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-f558e2bd-afed-502e-afa0-4a5eda44edd2",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedq.hundred_million_records LIMIT 50000000",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EMPNO",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 2,
+          "name" : "EMPCODE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "EMPNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "DEPARTMENT",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "HIREDATE",
+          "datatype" : "DATETIME",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "EMPADDR",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "SALARY",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 10,
+          "name" : "COMM",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "CALCULATED_SALARY",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 12,
+          "name" : "DEPTNO",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 13,
+          "name" : "GENDER",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "BIRTHDATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 15,
+          "name" : "CITY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "COUNTRY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "YEARLYINCOME",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 18,
+          "name" : "COUNTRYCODE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "TEMPERATURE",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 20,
+          "name" : "MOBILE",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 21,
+          "name" : "NEGATIVE_DECIMAL",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 22,
+          "name" : "BIG_NUMBER",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 23,
+          "name" : "TIME_VALUE",
+          "datatype" : "TIME",
+          "icedqDatatype" : "TIME"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "EMPCODE",
+          "targetKey" : "EMPCODE"
+        }, {
+          "index" : 2,
+          "sourceKey" : "EMPNAME",
+          "targetKey" : "EMPNAME"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-c964d55b-d06e-5d46-af1c-2403a744556b",
+          "type" : "ResultType"
+        }, {
+          "name" : "Empno",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPNO] == T.[EMPNO]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cdbb715a-3e77-540d-ac39-1bd4beeef3bb",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Empcode",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPCODE] == T.[EMPCODE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b55ecfdb-ab48-5434-bb80-53240a9e74cd",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Empname",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPNAME] == T.[EMPNAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-91deedd2-a96f-5451-bf85-1fc99af5ca25",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Department",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DEPARTMENT] == T.[DEPARTMENT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0c27a5d3-4321-5100-88ba-0587c3be8314",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Hiredate",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HIREDATE].toString().substring(0,9) ==T.[HIREDATE].toString().substring(0,9)",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-304f94e2-925c-57a4-ad85-0677957a1ecd",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Email",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMAIL] == T.[EMAIL]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f69cbebb-bc4b-558f-974c-74c87ce11993",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Empaddr",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPADDR] == T.[EMPADDR]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9247870d-17d9-51da-a99f-ba1988055593",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Phone",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PHONE] == T.[PHONE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-34842e65-78de-5008-9752-dce3a002fcea",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Salary",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SALARY] == T.[SALARY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cb123a69-626e-5d56-94ca-da7867358fd5",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Comm",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COMM] == T.[COMM]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-df6c9957-4e01-5f70-b4a3-7b22760cba43",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Calculated_salary",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CALCULATED_SALARY] == T.[CALCULATED_SALARY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-03db4d5b-d8f6-55e4-b302-aaef411fd659",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Deptno",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DEPTNO] == T.[DEPTNO]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ad55cabf-8b83-51c9-8cef-fb6079dea8f1",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Gender",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[GENDER] == T.[GENDER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4d3cf561-ed5c-5183-acd9-d9c393de37ca",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Birthdate",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BIRTHDATE]== true ? T.[BIRTHDATE] \n.toString() =='1':S.[BIRTHDATE] == false ? T.[BIRTHDATE] .toString() == '0' : false",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7530d93e-685e-506c-ac0f-99096af62c8a",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "City",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CITY] == T.[CITY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c9dcd3b9-5fd7-520e-be28-3ff0b31934a7",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Country",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COUNTRY] == T.[COUNTRY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5c32b963-9c7f-5119-a88b-334428adf53d",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Yearlyincome",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[YEARLYINCOME] == T.[YEARLYINCOME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ad2130a2-7903-51fa-a0b3-f1510c97b3c1",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Countrycode",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COUNTRYCODE] == T.[COUNTRYCODE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8751448a-faf8-53f0-9c9e-f9406729e924",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Temperature",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TEMPERATURE] == T.[TEMPERATURE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-82cff62b-2f29-5e71-afe3-9b951d6bec1f",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Mobile",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MOBILE] == T.[MOBILE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f0d108cb-47cf-5abd-a496-ae11c85ac7bf",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Negative_decimal",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NEGATIVE_DECIMAL] == T.[NEGATIVE_DECIMAL]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-eaac7445-e079-5a84-95db-738bff100550",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Big_number",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BIG_NUMBER] == T.[BIG_NUMBER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c21c2ac3-ff1c-53de-89f6-bace4c22b399",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Time_value",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TIME_VALUE] == T.[TIME_VALUE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7da690f2-46e8-58fa-bfcb-ed300049b2a2",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Accuracy" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-010c9353-2a05-5870-86a1-f5995aa99aff"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-3455ff1d-d4e5-54d2-81df-330149422963",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-3455ff1d-d4e5-54d2-81df-330149422963 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:03.484500400Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
