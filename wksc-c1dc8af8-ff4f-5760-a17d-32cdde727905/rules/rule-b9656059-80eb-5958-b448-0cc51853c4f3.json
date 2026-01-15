@@ -1,0 +1,417 @@
+{
+  "versionId" : "ver-1b9c297c-ea86-55f5-ad28-1428e01b18c6",
+  "objectId" : "rule-b9656059-80eb-5958-b448-0cc51853c4f3",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "UnderObs",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-fc096671-d96a-5a27-8ff5-590dc5f3180d",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-151c5c3a-184d-5679-b2f6-c8181e8a2f99",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "STAFF",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "STAFFID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "JOBCODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "COMPANY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "SALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "BONUS",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "COMM",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "TOTALSALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "BIRTHD",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 10,
+          "name" : "HIRED",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 11,
+          "name" : "LNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "FNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ADDRESS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "CITY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "STATE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "HPHONE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "SSN",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : true
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-b7c5d41a-a8bb-591b-9170-0c966f953698",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #Query24#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6b32f8c6-4ff1-529c-aa73-9da6327e554c",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #Query1#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-09473213-ea0c-5b39-badf-61bb392a75f3",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #Query2#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f7a24d91-53ef-5903-a953-747aa3c15682",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #Query3#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bebd7159-89bc-5719-a553-4811f4469b4d",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #Query4#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b4ba1d37-c4d3-5a81-a3df-df35466084e3",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #Query5#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2e45fc6d-6e06-5f0b-a5f4-c53d895b3278",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #Query#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-89760258-16fd-5567-8cf1-3f9e9b1f5729",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0008",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #JobCode2#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3a2c9b86-58dc-58e3-afe5-60019a8b7434",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0009",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #JobCode1#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7b798885-ee70-501c-8279-b036681ff778",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0010",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == #JobCode#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c46e1b5b-c27d-5eb6-a140-bf765d022c56",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0012",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] >= #Query247#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8eb2b0f1-f31f-596b-81b1-770801e49cb7",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0013",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COMPANY] == #Query247#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3e7cdb5f-88cd-5ff1-a426-69205009288c",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0014",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HPHONE] == #JobCode1#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-370715df-9bd3-5d13-b158-8e85660f8471",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0015",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[STATE] == #Query247#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8b43f1f4-989e-5558-96c9-a1734de08d0b",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0016",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CITY] == #Query24#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-39f4be29-1a14-5ff1-92a6-e8b4dee157a3",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0017",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COMPANY] != #Query247#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4dd9523d-e04d-53a6-b4ed-9701d7d426eb",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0018",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEX] && && && S.[JOBCODE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b5bec2b7-8b80-5c82-b9b1-91d0250f556f",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0019",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] && #Query247#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1f998fe5-6cb4-5915-8641-718cc9c8626e",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0020",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HPHONE] >= #JobCode1#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e67263ec-2775-5493-8b5a-dd8566e3e851",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0021",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LNAME] <= #Query24#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-08dc6397-df7c-5364-8669-d2ae669e7d56",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0022",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CITY] && #Query247#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c538f0af-b1fe-5214-a213-3de43c443d32",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e364c587-fd1f-57af-b6a2-f7c79253c58f"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-b9656059-80eb-5958-b448-0cc51853c4f3",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-b9656059-80eb-5958-b448-0cc51853c4f3 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:33:57.290268400Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
