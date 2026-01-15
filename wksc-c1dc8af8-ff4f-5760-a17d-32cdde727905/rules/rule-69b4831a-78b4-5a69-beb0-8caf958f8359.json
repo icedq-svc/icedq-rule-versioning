@@ -1,0 +1,680 @@
+{
+  "versionId" : "ver-48cf9f2d-ad8b-59df-8a26-4d78fac49094",
+  "objectId" : "rule-69b4831a-78b4-5a69-beb0-8caf958f8359",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "API-Recon-Approve-Check_1755773548345",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Api-recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "contacts",
+        "fileSchemaId" : "schm-d3925010-f85f-5d26-8a96-d9ff071b67d1",
+        "sql" : "select * from contacts",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "contacts",
+        "fileSchemaId" : "schm-b9dfdc54-e97d-512a-bf1c-d2ed85b9520e",
+        "sql" : "select * from contacts",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "granularity" : "Summary",
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "active",
+          "targetKey" : "active"
+        }, {
+          "index" : 2,
+          "sourceKey" : "address",
+          "targetKey" : "address"
+        }, {
+          "index" : 3,
+          "sourceKey" : "company_id",
+          "targetKey" : "company_id"
+        }, {
+          "index" : 4,
+          "sourceKey" : "created_at",
+          "targetKey" : "created_at"
+        }, {
+          "index" : 5,
+          "sourceKey" : "csat_rating",
+          "targetKey" : "csat_rating"
+        }, {
+          "index" : 6,
+          "sourceKey" : "description",
+          "targetKey" : "description"
+        }, {
+          "index" : 7,
+          "sourceKey" : "email",
+          "targetKey" : "email"
+        }, {
+          "index" : 8,
+          "sourceKey" : "facebook_id",
+          "targetKey" : "facebook_id"
+        }, {
+          "index" : 9,
+          "sourceKey" : "id",
+          "targetKey" : "id"
+        }, {
+          "index" : 10,
+          "sourceKey" : "job_title",
+          "targetKey" : "job_title"
+        }, {
+          "index" : 11,
+          "sourceKey" : "language",
+          "targetKey" : "language"
+        }, {
+          "index" : 12,
+          "sourceKey" : "mobile",
+          "targetKey" : "mobile"
+        }, {
+          "index" : 13,
+          "sourceKey" : "name",
+          "targetKey" : "name"
+        }, {
+          "index" : 14,
+          "sourceKey" : "other_companies",
+          "targetKey" : "other_companies"
+        }, {
+          "index" : 15,
+          "sourceKey" : "phone",
+          "targetKey" : "phone"
+        }, {
+          "index" : 16,
+          "sourceKey" : "preferred_source",
+          "targetKey" : "preferred_source"
+        }, {
+          "index" : 17,
+          "sourceKey" : "time_zone",
+          "targetKey" : "time_zone"
+        }, {
+          "index" : 18,
+          "sourceKey" : "twitter_followers_count",
+          "targetKey" : "twitter_followers_count"
+        }, {
+          "index" : 19,
+          "sourceKey" : "twitter_id",
+          "targetKey" : "twitter_id"
+        }, {
+          "index" : 20,
+          "sourceKey" : "twitter_profile_status",
+          "targetKey" : "twitter_profile_status"
+        }, {
+          "index" : 21,
+          "sourceKey" : "unique_external_id",
+          "targetKey" : "unique_external_id"
+        }, {
+          "index" : 22,
+          "sourceKey" : "updated_at",
+          "targetKey" : "updated_at"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-62f3932a-822b-5206-97ea-4822842be623",
+          "type" : "ResultType"
+        }, {
+          "name" : "Active",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[active] == T.[active]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-303a2110-eee3-523b-87c7-3f29f40034a4",
+          "type" : "Custom"
+        }, {
+          "name" : "Address",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[address] == T.[address]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ad24cd46-edd1-5aa3-8f8f-673ce0be6287",
+          "type" : "Custom"
+        }, {
+          "name" : "Company_id",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[company_id] == T.[company_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4ce5543b-b6be-5284-9bf7-86416eb74221",
+          "type" : "Custom"
+        }, {
+          "name" : "Created_at",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[created_at] == T.[created_at]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-44f89255-c0bc-5e2e-bda2-b15055867182",
+          "type" : "Custom"
+        }, {
+          "name" : "Csat_rating",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[csat_rating] == T.[csat_rating]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f0aaa944-0264-52bb-8d35-e7c97c0056a8",
+          "type" : "Custom"
+        }, {
+          "name" : "Description",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[description] == T.[description]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-573d0db9-b3b4-5369-af4d-d08595403e67",
+          "type" : "Custom"
+        }, {
+          "name" : "Email",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[email] == T.[email]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8b15bc3f-ac17-508e-a8ef-34a451c5d886",
+          "type" : "Custom"
+        }, {
+          "name" : "Facebook_id",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[facebook_id] == T.[facebook_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5e889faa-84bf-57a0-8f8a-f5fa08655740",
+          "type" : "Custom"
+        }, {
+          "name" : "Id",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[id] == T.[id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e51a3645-fd5e-5941-9894-2597e0995457",
+          "type" : "Custom"
+        }, {
+          "name" : "Job_title",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[job_title] == T.[job_title]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9653d075-1fbb-513c-ae5b-6fe3466c421a",
+          "type" : "Custom"
+        }, {
+          "name" : "Language",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[language] == T.[language]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-70497fa6-b042-58c3-ad52-f7d8641a9b10",
+          "type" : "Custom"
+        }, {
+          "name" : "Mobile",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[mobile] == T.[mobile]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b3c85c6a-ee4e-59e8-8f9b-4d853d76d65a",
+          "type" : "Custom"
+        }, {
+          "name" : "Name",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[name] == T.[name]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d5fc0755-0656-5c9f-af82-1d85b40b5672",
+          "type" : "Custom"
+        }, {
+          "name" : "Other_companies",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[other_companies] == T.[other_companies]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6a17d366-be0f-593e-b318-08941e9acee2",
+          "type" : "Custom"
+        }, {
+          "name" : "Phone",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[phone] == T.[phone]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4046d402-d7ec-5480-b9e9-66f2e17b5c59",
+          "type" : "Custom"
+        }, {
+          "name" : "Preferred_source",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[preferred_source] == T.[preferred_source]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8ec1e240-9e95-5685-acf3-f2c9d09cc707",
+          "type" : "Custom"
+        }, {
+          "name" : "Time_zone",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[time_zone] == T.[time_zone]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b1dfc9ad-b30d-5aa6-b088-63410a83bbba",
+          "type" : "Custom"
+        }, {
+          "name" : "Twitter_followers_count",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[twitter_followers_count] == T.[twitter_followers_count]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c1bf964e-1115-5cb9-9ec0-80d26ff9fd47",
+          "type" : "Custom"
+        }, {
+          "name" : "Twitter_id",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[twitter_id] == T.[twitter_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-70d4d9aa-3edf-515a-b580-86235e670852",
+          "type" : "Custom"
+        }, {
+          "name" : "Twitter_profile_status",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[twitter_profile_status] == T.[twitter_profile_status]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-61181119-ddc9-5ae9-bdec-e29aa5ca10cb",
+          "type" : "Custom"
+        }, {
+          "name" : "Unique_external_id",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[unique_external_id] == T.[unique_external_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8fb04e9d-56b3-5e5c-909d-3b05818ba3f9",
+          "type" : "Custom"
+        }, {
+          "name" : "Updated_at",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[updated_at] == T.[updated_at]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1a31c22b-dcd5-5633-8855-75b996cd4d11",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-215101af-f8f5-5427-b2d8-ce6b4005f1b3"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-69b4831a-78b4-5a69-beb0-8caf958f8359",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-69b4831a-78b4-5a69-beb0-8caf958f8359 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:38.372313300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
