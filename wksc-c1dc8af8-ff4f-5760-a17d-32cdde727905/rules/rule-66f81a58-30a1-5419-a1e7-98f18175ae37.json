@@ -1,0 +1,176 @@
+{
+  "versionId" : "ver-0365374c-f8a7-5788-bafe-01f160cc61fe",
+  "objectId" : "rule-66f81a58-30a1-5419-a1e7-98f18175ae37",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1756187138",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-b3abcfeb-6ba2-5395-81cc-16ad3e79e1de",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "icedq",
+        "tableName" : "customer",
+        "fileSchemaId" : "schm-e3963971-b2b0-57a4-b4e1-0b319cd003dd",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "customerid",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "acctnumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "fir@stname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "last-name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "gen&der",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "birthdate",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 8,
+          "name" : "datefirstpurchase",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "phoneno",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "yearlyincome",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "addressid",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-665c6b2b-6a8a-5e72-bcc4-63b9cc9e3c21",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[gen&der] == 'M'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-26adce3e-7f68-5ea1-892e-870c591501a6",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-97b9dbb2-84fa-5cf2-a472-7e0e1ef5fe02"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-66f81a58-30a1-5419-a1e7-98f18175ae37",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-66f81a58-30a1-5419-a1e7-98f18175ae37 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:18.706955Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
