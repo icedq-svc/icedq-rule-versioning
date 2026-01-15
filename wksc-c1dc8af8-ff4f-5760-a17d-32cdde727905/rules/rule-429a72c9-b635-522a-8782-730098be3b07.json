@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-9fc035d0-cc97-5176-b287-f5b496f4f6ad",
+  "versionId" : "ver-55aa067b-79ab-51ad-a009-b3be04747520",
   "objectId" : "rule-429a72c9-b635-522a-8782-730098be3b07",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "DAT-14028-ValidationRule",
-  "state" : "Published",
-  "version" : 1,
+  "state" : "Staged",
+  "version" : 3,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -27,16 +27,23 @@
       "connectionId" : "conn-23a95b4c-f2b3-541d-b1e3-a959be1e5983",
       "input" : "Sql",
       "configuration" : {
+        "databaseName" : "",
         "schemaRemarks" : "",
         "tableName" : "tblname_1756106625763",
         "tableRemarks" : "",
         "fileSchemaId" : "schm-a4997bcf-af91-56ea-84d9-f1716652f721",
         "sql" : "select * from customer",
+        "dax" : "",
+        "mdx" : "",
+        "container" : "eai_qa_bucket/NextGen_QA/parquet",
         "filePath" : "/Customer.parquet",
         "skipRowTop" : "0",
+        "emptyString" : "false",
+        "fixedStringValue" : "NaN",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -269,6 +276,69 @@
           },
           "id" : "chck-bc37e06d-6cc7-5b87-b53f-620f94e2de4c",
           "type" : "Column"
+        }, {
+          "name" : "Chk_0014",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[S_PHONENO]\")",
+            "column" : "S.[S_PHONENO]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-78f9ab4f-f776-5264-a42c-93401c910ba6",
+          "type" : "Completeness"
+        }, {
+          "name" : "Chk_0015",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[S_FIRSTNAME]\", length == 5)",
+            "column" : "S.[S_FIRSTNAME]",
+            "operator" : "equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 5 ]
+          },
+          "id" : "chck-495e5841-8006-5ac0-9afe-d68de6391845",
+          "type" : "Length"
+        }, {
+          "name" : "Chk_0016",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[S_EMAIL]\", pattern = Email)",
+            "column" : "S.[S_EMAIL]",
+            "pattern" : "Email",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-a718686d-df41-5469-bae6-24b57ab28330",
+          "type" : "Pattern"
+        }, {
+          "name" : "Chk_0017",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[S_GENDER]\", array[F])",
+            "column" : "S.[S_GENDER]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "F" ]
+          },
+          "id" : "chck-c20937b8-bd00-5f9e-aab3-73534a83af47",
+          "type" : "Contains"
         } ]
       }
     }, {
@@ -297,23 +367,46 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-f63bf377-6f91-5979-bd99-79a7380fefe2"
+          "id" : "chck-0e9f2cb7-01c9-5d6c-8626-b29810892931"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " sourcecount +  exitcode ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-9cbc3deb-01c4-5f07-af7e-4bbce1ebab9e"
+        }, {
+          "name" : "Var_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " rulename ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-55baa75a-c2f5-556e-b99e-ce91d93db0d8"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
-  "commitStatus" : "Merged",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-429a72c9-b635-522a-8782-730098be3b07",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-429a72c9-b635-522a-8782-730098be3b07 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-429a72c9-b635-522a-8782-730098be3b07 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:40:00.403467200Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:40:02.765468300Z[UTC]",
   "updatedBy" : "roshan.n"
 }
