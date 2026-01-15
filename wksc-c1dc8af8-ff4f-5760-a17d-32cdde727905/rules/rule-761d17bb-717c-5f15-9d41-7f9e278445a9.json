@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-00cd39b8-5f82-580f-87c7-2373ae971727",
+  "versionId" : "ver-7ae78e92-5c36-5ceb-a56e-4c743d57f348",
   "objectId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Validation-with-Default",
   "state" : "Published",
-  "version" : 12,
+  "version" : 13,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -125,13 +125,13 @@
         }, {
           "name" : "Contains Male gender",
           "index" : 3,
-          "isActive" : false,
-          "isVisible" : false,
+          "isActive" : true,
+          "isVisible" : true,
           "expression" : {
             "comment" : "Contains(\"S.[GENDER]\", array[M])",
             "column" : "S.[GENDER]",
             "datatype" : "TEXT",
-            "ignoreNull" : true,
+            "ignoreNull" : false,
             "trimmingEnable" : true,
             "caseInsensitive" : false,
             "inputValue" : [ "M" ]
@@ -155,13 +155,13 @@
           "name" : "Length of Phone Number",
           "index" : 5,
           "isActive" : true,
-          "isVisible" : false,
+          "isVisible" : true,
           "expression" : {
             "comment" : "LengthCheck(\"S.[PHONENO]\", length == 10)",
             "column" : "S.[PHONENO]",
             "operator" : "equal to",
             "datatype" : "TEXT",
-            "ignoreNull" : true,
+            "ignoreNull" : false,
             "trimmingEnable" : true,
             "caseInsensitive" : false,
             "inputValue" : [ 10 ]
@@ -173,12 +173,12 @@
           "name" : "Check email pattern",
           "index" : 6,
           "isActive" : true,
-          "isVisible" : false,
+          "isVisible" : true,
           "expression" : {
             "comment" : "PatternMatch(\"S.[EMAIL]\", pattern = Email)",
             "column" : "S.[EMAIL]",
             "pattern" : "Email",
-            "ignoreNull" : true,
+            "ignoreNull" : false,
             "trimmingEnable" : true,
             "caseInsensitive" : true
           },
@@ -188,13 +188,13 @@
         }, {
           "name" : "Check the datatype of column",
           "index" : 7,
-          "isActive" : false,
-          "isVisible" : false,
+          "isActive" : true,
+          "isVisible" : true,
           "expression" : {
             "comment" : "DatatypeCheck(\"S.[FIRSTNAME]\", dataType = Integer)",
             "column" : "S.[FIRSTNAME]",
             "datatype" : "Integer",
-            "ignoreNull" : true,
+            "ignoreNull" : false,
             "trimmingEnable" : true,
             "caseInsensitive" : false
           },
@@ -221,12 +221,12 @@
           "name" : "Check the date value present in phone number column",
           "index" : 9,
           "isActive" : true,
-          "isVisible" : false,
+          "isVisible" : true,
           "expression" : {
             "comment" : "DateCheck(\"S.[PHONENO]\", date = dd-MM-yyyy)",
             "column" : "S.[PHONENO]",
             "format" : "dd-MM-yyyy",
-            "ignoreNull" : true,
+            "ignoreNull" : false,
             "caseInsensitive" : false
           },
           "id" : "chck-492f7cc3-13df-5021-b08d-b8a953bda0ba",
@@ -332,7 +332,7 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration add new custom check",
+  "commitMessage" : "Updated rule configuration and unchecked all the Ignore Null flags from Length, Pattern, Contain, Datatype, and Range checks",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
@@ -341,10 +341,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
-      "commitMessage" : "Message: Updated rule configuration add new custom check | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration and unchecked all the Ignore Null flags from Length, Pattern, Contain, Datatype, and Range checks | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:19.683957700Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:44.161396400Z[UTC]",
   "updatedBy" : "roshan.n"
 }
