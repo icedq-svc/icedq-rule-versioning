@@ -1,0 +1,165 @@
+{
+  "versionId" : "ver-872b1678-5ab9-55b4-946c-7b3b59cdc260",
+  "objectId" : "rule-d9532fb5-c7a7-5caa-8541-88fdba3552ab",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1763380897362_1763709841000",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "description" : "Test test Description",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-6af7932a-6ed4-5cee-91d9-f8be643c67b7",
+      "input" : "Snapshot",
+      "configuration" : {
+        "appendOrderBy" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "DATEFIRSTPURCHASE",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "ACCTNUMBER",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Sum of PHONENO",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "bisnp-7ea233b1-1abb-5e8e-aea2-8cda55473dc6",
+        "visualId" : "ee0bea3ba90bcbfba96c",
+        "granularity" : "Summary"
+      },
+      "reportScanId" : "birpt-b8260c6e-15f1-502f-be27-d77e299de642"
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-0eb9a3c6-8dec-53a2-b646-bce28758eba9",
+      "input" : "Snapshot",
+      "configuration" : {
+        "appendOrderBy" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "acctnumber",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 2,
+          "name" : "Max(yearlyincome)",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        } ],
+        "snapshotId" : "bisnp-0349da84-c402-5181-88ef-81bef81b740d",
+        "visualId" : "eGkUN",
+        "granularity" : "Summary"
+      },
+      "reportScanId" : "birpt-86e5da0b-1b68-5196-b47a-a1e539a75f63"
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "ACCTNUMBER",
+          "targetKey" : "acctnumber"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-29d8d933-ef32-5bed-bc63-d54ae34750f2",
+          "type" : "ResultType",
+          "isDeferredSort" : false
+        }, {
+          "name" : "Acctnumber",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCTNUMBER] == 'AW00011085'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-22e51e87-11d5-59f5-942f-1c2b071203f8",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-b4a4a3d3-5bdc-5ae3-83f0-4354c65d8204"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-d9532fb5-c7a7-5caa-8541-88fdba3552ab",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-d9532fb5-c7a7-5caa-8541-88fdba3552ab |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:59.507330200Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
