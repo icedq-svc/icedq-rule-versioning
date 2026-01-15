@@ -1,0 +1,73 @@
+{
+  "versionId" : "ver-8ae3a6dc-b72b-5249-885e-d42601f9edf6",
+  "objectId" : "rule-39f4a8d8-c07b-57e1-9eec-b006dece2725",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-14061-SrciptRule_17",
+  "state" : "Staged",
+  "version" : 3,
+  "info" : {
+    "ruleType" : "Script",
+    "code" : "0012",
+    "properties" : {
+      "criticality" : "Critical",
+      "engineType" : "HighThroughput"
+    },
+    "objects" : [ {
+      "id" : "Variable",
+      "type" : "variable",
+      "name" : "set Variables",
+      "configuration" : {
+        "variables" : [ {
+          "name" : "connVar1",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-53d3cd06-e05d-5dfd-8f5d-92501902a57d"
+          }
+        } ]
+      }
+    }, {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "return 0"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-4fa6aa54-a4ab-5b07-88d9-ac019bed02d0"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-39f4a8d8-c07b-57e1-9eec-b006dece2725",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-39f4a8d8-c07b-57e1-9eec-b006dece2725 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:20.381958400Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
