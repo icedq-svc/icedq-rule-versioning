@@ -1,0 +1,76 @@
+{
+  "versionId" : "ver-04890395-cd15-5495-ba16-29ef363b0876",
+  "objectId" : "rule-3fab70fc-5f08-5c1e-8409-f78c37568a68",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "SCRIPT",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Script",
+    "code" : "SCRIPT",
+    "description" : "SCRIPT",
+    "purpose" : "Workflow_Testing",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput"
+    },
+    "objects" : [ {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "return 0;"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-ad5e9863-152f-5e43-a552-ca556b7e962b"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "release_testing_fields",
+      "values" : [ "A" ]
+    }, {
+      "field" : "togglefield",
+      "values" : [ "false" ]
+    }, {
+      "field" : "labelfield",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectdropdown",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectmap",
+      "values" : [ "Password" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-3fab70fc-5f08-5c1e-8409-f78c37568a68",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-3fab70fc-5f08-5c1e-8409-f78c37568a68 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:01.710500100Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
