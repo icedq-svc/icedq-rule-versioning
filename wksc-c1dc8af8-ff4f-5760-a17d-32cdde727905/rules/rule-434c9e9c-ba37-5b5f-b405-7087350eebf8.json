@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-11dd930b-2c94-5dae-996c-b6806c3d4b77",
+  "versionId" : "ver-9d233df8-fa52-5b51-94fa-b67e7651c644",
   "objectId" : "rule-434c9e9c-ba37-5b5f-b405-7087350eebf8",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Approve-Reject-View-Issue",
-  "state" : "Published",
-  "version" : 1,
+  "state" : "Staged",
+  "version" : 3,
   "info" : {
     "ruleType" : "api-recon",
     "properties" : {
@@ -271,6 +271,7 @@
           "datatype" : "TIMESTAMP",
           "icedqDatatype" : "TIMESTAMP"
         } ],
+        "granularity" : "Summary",
         "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
         "requestMethod" : "GET",
         "endPoint" : "contacts",
@@ -285,6 +286,14 @@
           "index" : 1,
           "sourceKey" : "active",
           "targetKey" : "active"
+        }, {
+          "index" : 2,
+          "sourceKey" : "address",
+          "targetKey" : "address"
+        }, {
+          "index" : 3,
+          "sourceKey" : "company_id",
+          "targetKey" : "company_id"
         } ]
       }
     }, {
@@ -331,23 +340,24 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-2faf54c6-3072-5d12-a272-746cc4556a1d"
+          "id" : "chck-08a1af4f-5df1-5a83-8838-95445b8955e4"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
-  "commitStatus" : "Merged",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Rejected",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-434c9e9c-ba37-5b5f-b405-7087350eebf8",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-434c9e9c-ba37-5b5f-b405-7087350eebf8 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-434c9e9c-ba37-5b5f-b405-7087350eebf8 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:39:12.413494900Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:39:18.512493500Z[UTC]",
   "updatedBy" : "roshan.n"
 }
