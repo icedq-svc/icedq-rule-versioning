@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-8870b80e-9c54-5a56-b532-ee0e78fe1eaa",
+  "versionId" : "ver-b8789012-2758-56b0-a1b7-0f02b7325afd",
   "objectId" : "rule-70b8c555-d798-52e6-9cee-3afe8defe4cf",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "DAT-13947-CosmoDB",
   "state" : "Published",
-  "version" : 1,
+  "version" : 3,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -25,11 +25,11 @@
       "name" : "sourceDataset",
       "connectionType" : "NoSQLDB",
       "connectionId" : "conn-2e802690-a4fe-5842-9284-054fffb71fb2",
-      "input" : "Table",
+      "input" : "Sql",
       "configuration" : {
-        "schemaName" : "SampleDB",
-        "tableName" : "customer",
         "fileSchemaId" : "schm-9205ce5e-7684-5a46-899f-c3161027b20c",
+        "sql" : "select * from SampleDB.address",
+        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -38,87 +38,81 @@
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
-          "name" : "AcctNumber",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 3,
-          "name" : "AddressID",
-          "datatype" : "INT",
-          "icedqDatatype" : "NUMERIC"
-        }, {
-          "index" : 4,
-          "name" : "BirthDate",
-          "datatype" : "DATE",
-          "icedqDatatype" : "DATE"
-        }, {
-          "index" : 5,
-          "name" : "CustomerID",
-          "datatype" : "INT",
-          "icedqDatatype" : "NUMERIC"
-        }, {
-          "index" : 6,
-          "name" : "DateFirstPurchase",
-          "datatype" : "DATE",
-          "icedqDatatype" : "DATE"
-        }, {
-          "index" : 7,
-          "name" : "Email",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 8,
-          "name" : "FirstName",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 9,
-          "name" : "Gender",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 10,
-          "name" : "LastName",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 11,
-          "name" : "PhoneNo",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 12,
-          "name" : "YearlyIncome",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 13,
           "name" : "_attachments",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
-          "index" : 14,
+          "index" : 3,
           "name" : "_etag",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
-          "index" : 15,
+          "index" : 4,
+          "name" : "_id.$oid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
           "name" : "_rid",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
-          "index" : 16,
+          "index" : 6,
           "name" : "_self",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
-          "index" : 17,
+          "index" : 7,
           "name" : "_ts",
           "datatype" : "INT",
           "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "addressid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "addressline1",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "addressline2",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "city",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "modifieddate",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "postalcode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "rowguid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "spatiallocation",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "stateprovinceid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         } ]
-      },
-      "useCached" : false
+      }
     }, {
       "id" : "RecordCheck",
       "type" : "recordCheck",
@@ -141,13 +135,13 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "comment" : "Contains(\"S.[FirstName]\", array[David])",
-            "column" : "S.[FirstName]",
+            "comment" : "Contains(\"S.[city]\", array[Kassel])",
+            "column" : "S.[city]",
             "datatype" : "TEXT",
             "ignoreNull" : true,
             "trimmingEnable" : true,
             "caseInsensitive" : false,
-            "inputValue" : [ "David" ]
+            "inputValue" : [ "Kassel" ]
           },
           "id" : "chck-2a2643f1-29b3-5d13-9a7a-d04df816d4f9",
           "type" : "Contains"
@@ -179,12 +173,13 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-f0ef8333-0d69-5ce8-9bac-8a3198b497c4"
+          "id" : "chck-297e04ca-2b0f-5422-8cc1-92197c60c45d"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
@@ -192,10 +187,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-70b8c555-d798-52e6-9cee-3afe8defe4cf",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-70b8c555-d798-52e6-9cee-3afe8defe4cf |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-70b8c555-d798-52e6-9cee-3afe8defe4cf |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:35:38.141081400Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:35.540317Z[UTC]",
   "updatedBy" : "roshan.n"
 }
