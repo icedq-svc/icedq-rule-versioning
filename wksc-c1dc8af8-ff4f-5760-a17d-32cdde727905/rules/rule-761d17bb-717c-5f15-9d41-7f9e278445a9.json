@@ -1,23 +1,25 @@
 {
-  "versionId" : "ver-20cbeef8-e675-5918-8060-d2530932a741",
+  "versionId" : "ver-fc5189cd-2eaa-5a21-8aa6-f2970fd9e592",
   "objectId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Validation-with-Default",
   "state" : "Published",
-  "version" : 16,
+  "version" : 17,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
       "criticality" : "Warning",
+      "parameterId" : "parm-917b91bd-3f00-5ae4-8b2e-f20570ac4bab",
       "engineType" : "HighThroughput",
       "stopAtFailAndErrorCount" : 0,
       "stopAtRowCount" : 0,
       "stopAtTime" : 0,
-      "degreeOfParallelism" : 5,
+      "degreeOfParallelism" : 1,
       "engineInfo" : { },
-      "languageType" : "groovy"
+      "languageType" : "groovy",
+      "parameterName" : "Parameter_1756127451"
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -295,44 +297,11 @@
           },
           "isOverride" : true,
           "id" : "chck-f105ee28-3557-58b4-8dd4-2d0a3a108727"
-        }, {
-          "name" : "Var_0001",
-          "index" : 2,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : " sourcecount != 0",
-            "caseInsensitive" : false
-          },
-          "isOverride" : false,
-          "id" : "chck-692bce98-e318-54f0-8f10-b238d39f328b"
-        }, {
-          "name" : "TotalRowCountisEqualTo98",
-          "index" : 3,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : " totalRowCount == 100",
-            "caseInsensitive" : false
-          },
-          "isOverride" : false,
-          "id" : "chck-56294719-8d86-5d42-8b25-cf15b1000fa3"
-        }, {
-          "name" : "Var_0003",
-          "index" : 4,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "fn_main ([Ljava.lang.String;) ",
-            "caseInsensitive" : false
-          },
-          "isOverride" : false,
-          "id" : "chck-11882d2e-25b0-5da7-8c93-809e06b107b4"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Updated rule exception Report where all check is false and file format is Excel.",
+  "commitMessage" : "Updated rule configuration removed all summary variable and added parameter",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
@@ -341,10 +310,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
-      "commitMessage" : "Message: Updated rule exception Report where all check is false and file format is Excel. | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration removed all summary variable and added parameter | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:45.885401400Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:52.462400600Z[UTC]",
   "updatedBy" : "roshan.n"
 }
