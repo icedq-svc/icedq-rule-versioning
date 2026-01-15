@@ -1,0 +1,76 @@
+{
+  "versionId" : "ver-e7af40ec-f168-5c05-90b3-dfd3072c55b5",
+  "objectId" : "rule-b1960b6f-ba3d-5e53-8f6d-425768f79afe",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "SCRIPT_1755843600893",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Script",
+    "code" : "SCRIPT",
+    "description" : "SCRIPT",
+    "purpose" : "Workflow_Testing",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput"
+    },
+    "objects" : [ {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "return 0;"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-77deb0c7-5ffd-5242-a7ad-716a1727ff7f"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "release_testing_fields",
+      "values" : [ "A" ]
+    }, {
+      "field" : "togglefield",
+      "values" : [ "false" ]
+    }, {
+      "field" : "labelfield",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectdropdown",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectmap",
+      "values" : [ "Password" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-b1960b6f-ba3d-5e53-8f6d-425768f79afe",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-b1960b6f-ba3d-5e53-8f6d-425768f79afe |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:35:58.450960900Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
