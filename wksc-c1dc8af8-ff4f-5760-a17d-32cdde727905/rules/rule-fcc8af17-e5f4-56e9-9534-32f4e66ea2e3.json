@@ -1,0 +1,325 @@
+{
+  "versionId" : "ver-4bd55f12-5faa-5448-a826-6a46b92c4d56",
+  "objectId" : "rule-fcc8af17-e5f4-56e9-9534-32f4e66ea2e3",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "API vs SSAS",
+  "state" : "Published",
+  "version" : 3,
+  "info" : {
+    "ruleType" : "api-recon",
+    "code" : "Rule Code check",
+    "description" : "Description check\nUpdate the source connection into another auth\nUpdate the MDX to SQL\nadd summary variable",
+    "purpose" : "Purpose check",
+    "properties" : {
+      "criticality" : "Critical",
+      "parameterId" : "parm-f6d77882-a850-59eb-928a-f153a6ef1085",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 500,
+      "stopAtRowCount" : 500,
+      "stopAtTime" : 500,
+      "degreeOfParallelism" : 2,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-f2ab6141-97a0-5678-85fd-c89076bc94a2",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "head",
+        "fileSchemaId" : "schm-24dcc31e-82d2-57f7-b50a-df9d62ce5697",
+        "sql" : "select * from head",
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "articles",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "totalResults",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "baseUrl" : "https://newsapi.org/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "top-headlines",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "OLAP",
+      "connectionId" : "conn-4524b5af-9a26-52e3-ad1b-861491d3b408",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT * FROM AdventureWorksDW2014.\"Adventure Works\".Employee",
+        "columnDelimiter" : "",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "appendOrderBy" : false,
+        "isDeferredSort" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Base Rate",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Department",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Employee",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Employee Level 02",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Employee Level 03",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "Employee Level 04",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Employee Level 05",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "Employee Level 06",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "End Date",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Hire Date",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Hire Year",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Marital Status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Pay Frequency",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "Salaried Flag",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "Sales Person Flag",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "Sick Leave Hours",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "Start Date",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "Status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "Title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "Vacation Hours",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "MeasuresId",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "status",
+          "targetKey" : "Employee Level 06"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-55753b10-c585-5ae2-a237-1ada925bd4bf",
+          "type" : "ResultType"
+        }, {
+          "name" : "Cases.total.calculated.change_from_prior_day",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cases.total.calculated.change_from_prior_day] == T.[[Date].[Calendar].[Calendar Year].[MEMBER_CAPTION]]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-622442d2-70d7-5b0c-a6fa-cf30398e8b45",
+          "type" : "Custom"
+        }, {
+          "name" : "Cases.total.calculated.population_percent",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cases.total.calculated.population_percent] == T.[[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-97f7ed44-df30-5bd5-9612-6c2921d2766c",
+          "type" : "Custom"
+        }, {
+          "name" : "Cases.total.calculated.seven_day_change_percent",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cases.total.calculated.seven_day_change_percent] == T.[[Date].[Calendar].[Calendar Quarter].[MEMBER_CAPTION]]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0a202ce7-3c7d-5303-b47a-dbceddc119d2",
+          "type" : "Custom"
+        }, {
+          "name" : "Cases.total.value",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cases.total.value] == T.[[Measures].[Reseller Order Count]]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8e90f019-9b7d-5388-81e4-33e1203aefd1",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-43a96ffc-4c52-5dfd-b2ec-4a843b77e599"
+        }, {
+          "name" : "Variable_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " sourcecount ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-f88204f8-2137-5688-b331-8c991aa7da80"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-fcc8af17-e5f4-56e9-9534-32f4e66ea2e3",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-fcc8af17-e5f4-56e9-9534-32f4e66ea2e3 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:43:36.084587Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
