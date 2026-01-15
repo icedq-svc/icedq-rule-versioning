@@ -1,0 +1,177 @@
+{
+  "versionId" : "ver-43188a54-73e7-57f0-bc0a-47467162e4d6",
+  "objectId" : "rule-fa403a1b-2f7a-58c2-9eaf-8dc25711567c",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "TSQL vs PLSQL_1756195413230",
+  "state" : "Draft",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-3c7a9bdf-265b-5422-a34f-3066b175eda7",
+      "input" : "Plsql",
+      "configuration" : {
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "appendOrderBy" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "customerid",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "firstname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "procedure" : "DECLARE @id INT, @name VARCHAR(100); \r\n\r\n  DECLARE @Results TABLE ( \r\n\r\n  customerid INT, \r\n\r\n  firstname VARCHAR(100) \r\n\r\n  ); \r\n\r\n  DECLARE emp_cursor CURSOR FOR \r\n\r\n  SELECT customerid, firstname FROM customer; \r\n\r\n  OPEN emp_cursor; \r\n\r\n  FETCH NEXT FROM emp_cursor INTO @id, @name; \r\n\r\n  WHILE @@FETCH_STATUS = 0 \r\n\r\n  BEGIN \r\n\r\n  INSERT INTO @Results (customerid, firstname) \r\n\r\n  VALUES (@id, @name); \r\n\r\nFETCH NEXT FROM emp_cursor INTO @id, @name; \r\n\r\n  END \r\n\r\n  CLOSE emp_cursor; \r\n\r\n  DEALLOCATE emp_cursor; \r\n\r\n  SELECT * FROM @Results; "
+      },
+      "useCached" : true
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-d1b6bbe7-91f8-56fb-bc81-1156dc0d74e5",
+      "input" : "Plsql",
+      "configuration" : {
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "appendOrderBy" : false,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "DEPARTMENT_ID",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "DEPARTMENT_NAME",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "procedure" : "DECLARE \r\n\r\n    TYPE Dpt_rec IS RECORD ( \r\n\r\n        DNO   NUMBER(4,0), \r\n\r\n        DNAME VARCHAR2(30) \r\n\r\n    ); \r\n\r\n    TYPE Dpt_TAB IS TABLE OF Dpt_rec; \r\n\r\n    dpt_ouput Dpt_TAB := Dpt_TAB(); \r\n\r\nBEGIN \r\n\r\n    SELECT DEPARTMENT_ID, DEPARTMENT_NAME \r\n\r\n    BULK COLLECT INTO dpt_ouput \r\n\r\n    FROM HR.DEPARTMENTS; \r\n\r\nDBMS_OUTPUT.PUT_LINE('DEPARTMENT_ID, DEPARTMENT_NAME'); \r\n\r\n    FOR i IN 1 .. dpt_ouput.COUNT LOOP \r\n\r\n        DBMS_OUTPUT.PUT_LINE(dpt_ouput(i).DNO || ',' || dpt_ouput(i).DNAME); \r\n\r\n    END LOOP; \r\n\r\nEND; ",
+        "outputDelimiter" : ","
+      },
+      "useCached" : true
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "customerid",
+          "targetKey" : "DEPARTMENT_ID"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "anb" ]
+          },
+          "id" : "chck-f50cea5d-9a03-5eef-a503-ddcbe08c5e32",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[customerid] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5e6f466b-d79b-512d-a054-651de4e4af00",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[customerid] == T.[DEPARTMENT_ID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-59a78b59-2a7b-56d5-a7d3-ea7d3203e32c",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-f7091443-ab2c-5e17-a2dc-4666af2dd4d0"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-fa403a1b-2f7a-58c2-9eaf-8dc25711567c",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-fa403a1b-2f7a-58c2-9eaf-8dc25711567c |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:36:11.324068500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
