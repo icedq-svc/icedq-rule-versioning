@@ -1,14 +1,14 @@
 {
-  "versionId" : "ver-31fab6c9-9df0-5e3f-86a7-01c9e8c0bd05",
+  "versionId" : "ver-5a2ee407-3f58-5255-b518-7fabf5a6104c",
   "objectId" : "rule-f6238c7c-2fbc-5078-89d2-d6395e0d97a2",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "DAT-13983-PLSQL-DB_TO_Cursor",
-  "state" : "Published",
-  "version" : 3,
+  "name" : "DAT-13983-PLSQL-DB",
+  "state" : "Staged",
   "info" : {
     "ruleType" : "Validation",
+    "code" : "0012",
     "properties" : {
       "criticality" : "Warning",
       "engineType" : "HighThroughput",
@@ -25,32 +25,24 @@
       "name" : "sourceDataset",
       "connectionType" : "Database",
       "connectionId" : "conn-a930452a-b40d-5a95-a83e-1400368931c6",
-      "input" : "Cursor",
+      "input" : "Plsql",
       "configuration" : {
         "appendOrderBy" : false,
         "isDeferredSort" : false,
+        "includeRowHeaders" : true,
         "columns" : [ {
           "index" : 1,
           "name" : "DEPARTMENT_ID",
-          "datatype" : "NUMBER",
-          "icedqDatatype" : "NUMERIC"
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
           "name" : "DEPARTMENT_NAME",
-          "datatype" : "VARCHAR2",
+          "datatype" : "TEXT",
           "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 3,
-          "name" : "MANAGER_ID",
-          "datatype" : "NUMBER",
-          "icedqDatatype" : "NUMERIC"
-        }, {
-          "index" : 4,
-          "name" : "LOCATION_ID",
-          "datatype" : "NUMBER",
-          "icedqDatatype" : "NUMERIC"
         } ],
-        "procedure" : "DECLARE   \r\n    TYPE dept_cursor IS REF CURSOR;   \r\n    dept_cur dept_cursor;   \r\nBEGIN   \r\n    OPEN dept_cur FOR   \r\n        SELECT DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID  \r\n        FROM HR.DEPARTMENTS;   \r\n    ? := dept_cur;   \r\nEND; \r\n"
+        "procedure" : "DECLARE \r\n    TYPE Dpt_rec IS RECORD ( \r\n        DNO   NUMBER(4,0), \r\n        DNAME VARCHAR2(30) \r\n    ); \r\n    TYPE Dpt_TAB IS TABLE OF Dpt_rec; \r\n    dpt_ouput Dpt_TAB := Dpt_TAB(); \r\nBEGIN \r\n    SELECT DEPARTMENT_ID, DEPARTMENT_NAME \r\n    BULK COLLECT INTO dpt_ouput \r\n    FROM HR.DEPARTMENTS; \r\nDBMS_OUTPUT.PUT_LINE('DEPARTMENT_ID, DEPARTMENT_NAME'); \r\n    FOR i IN 1 .. dpt_ouput.COUNT LOOP \r\n        DBMS_OUTPUT.PUT_LINE(dpt_ouput(i).DNO || ',' || dpt_ouput(i).DNAME); \r\n    END LOOP; \r\nEND; ",
+        "outputDelimiter" : ","
       },
       "useCached" : true
     }, {
@@ -117,19 +109,16 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration",
-  "commitTag" : "sample",
-  "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-f6238c7c-2fbc-5078-89d2-d6395e0d97a2",
-      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-f6238c7c-2fbc-5078-89d2-d6395e0d97a2 |Status: Approved"
+      "commitMessage" : "Message: null | RuleId: rule-f6238c7c-2fbc-5078-89d2-d6395e0d97a2 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:41:32.233842800Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:41:34.691841900Z[UTC]",
   "updatedBy" : "roshan.n"
 }
