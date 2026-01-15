@@ -1,0 +1,297 @@
+{
+  "versionId" : "ver-72a828a2-ec66-504d-9d78-7b487de375e9",
+  "objectId" : "rule-3ece05c8-e403-5c8d-b1a3-e490b8ea8207",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Unselect all options of Hash- SSAS",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "description" : "MDX and DAX",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 2000000,
+      "stopAtRowCount" : 2000000,
+      "stopAtTime" : 2000000,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "OLAP",
+      "connectionId" : "conn-3bd0227a-e3be-5541-9750-3a2849db582c",
+      "input" : "mdx",
+      "configuration" : {
+        "schemaName" : "",
+        "mdx" : "SELECT [Measures].[Internet Sales Amount] ON 0,\r\n   FILTER(\r\n   [Date].[Date].[Date].MEMBERS\r\n   , [Measures].[Internet Sales Amount]>20909.78)\r\n   ON 1\r\n   FROM\r\n   [Adventure Works]",
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "appendOrderBy" : false,
+        "isDeferredSort" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "[Date].[Date].[Date].[MEMBER_CAPTION]",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "[Measures].[Internet Sales Amount]",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "OLAP",
+      "connectionId" : "conn-eaa814b9-63c0-5616-ba33-28007f35524a",
+      "input" : "olaptable",
+      "configuration" : {
+        "fileSchemaId" : "schm-b0b6a478-a210-58f6-932c-3c627f1fb8f9",
+        "dax" : "EVALUATE 'REG_EMPLOYEE'",
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "appendOrderBy" : false,
+        "isDeferredSort" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "REG_EMPLOYEE[EMPNO]",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 2,
+          "name" : "REG_EMPLOYEE[EMPCODE]",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "REG_EMPLOYEE[EMPNAME]",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "REG_EMPLOYEE[JOB]",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "REG_EMPLOYEE[HIREDATE]",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "REG_EMPLOYEE[EMPADDR1]",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "REG_EMPLOYEE[EMPADDR2]",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "REG_EMPLOYEE[PHONE]",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "REG_EMPLOYEE[SALARY]",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "REG_EMPLOYEE[COMM]",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "REG_EMPLOYEE[CALCULATED_SALARY]",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 12,
+          "name" : "REG_EMPLOYEE[DEPTNO]",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        } ],
+        "semanticModel" : "icedq_db_REG_EMPLOYEE",
+        "dataset" : "REG_EMPLOYEE"
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "[Measures].[Internet Sales Amount]",
+          "targetKey" : "REG_EMPLOYEE[EMPNO]"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-ea5844bf-070d-55b6-a234-0a3c0011deb3",
+          "type" : "ResultType",
+          "isDeferredSort" : true,
+          "deferredSort" : {
+            "format" : "hash",
+            "trimmingEnable" : false,
+            "emptyStringAsNull" : false,
+            "whiteSpaceAsNull" : false,
+            "caseInsensitive" : false,
+            "ignoreSpecialCharacter" : false
+          }
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[REG_EMPLOYEE[EMPNO]] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-eb4163c6-8acb-591c-bed0-5f677337a68e",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[[Date].[Date].[Date].[MEMBER_CAPTION]], T.[REG_EMPLOYEE[HIREDATE]])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[[Date].[Date].[Date].[MEMBER_CAPTION]]",
+            "targetColumn" : "T.[REG_EMPLOYEE[HIREDATE]]"
+          },
+          "id" : "chck-754d617e-790f-55f1-a030-35c6cf14d6a7",
+          "type" : "SimpleCompare",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[[Measures].[Internet Sales Amount]], T.[REG_EMPLOYEE[CALCULATED_SALARY]])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[[Measures].[Internet Sales Amount]]",
+            "targetColumn" : "T.[REG_EMPLOYEE[CALCULATED_SALARY]]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull"
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "3456",
+              "target" : [ "456789" ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource"
+            } ]
+          },
+          "id" : "chck-a669858d-ca8e-5e32-95ad-3f9e1315be74",
+          "type" : "ConditionalCompare",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "2000000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-03a0e85c-99f7-501d-a459-339af13e5031"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "sync_to_azure",
+      "values" : [ "false" ]
+    }, {
+      "field" : "product_ratings",
+      "values" : [ "High" ]
+    }, {
+      "field" : "environment",
+      "values" : [ ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-3ece05c8-e403-5c8d-b1a3-e490b8ea8207",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-3ece05c8-e403-5c8d-b1a3-e490b8ea8207 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:44:40.111942900Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
