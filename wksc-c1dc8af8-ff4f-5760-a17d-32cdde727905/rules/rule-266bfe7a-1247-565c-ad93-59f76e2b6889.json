@@ -1,0 +1,112 @@
+{
+  "versionId" : "ver-d860eb8b-5642-5d33-b247-ba578128fe74",
+  "objectId" : "rule-266bfe7a-1247-565c-ad93-59f76e2b6889",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_Checksum_CO_Parameter-Email",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "description" : "using 100 parameter",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-b7b3e49f-4cca-53b9-8516-55cccf0ade86",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy",
+      "parameterName" : "parameter-email_MAIL"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-c36de0e0-3f4a-587f-a03e-b744d5179717",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as source_count from public.employee_info",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "source_count",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-c36de0e0-3f4a-587f-a03e-b744d5179717",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as target_count from public.employee_info",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "target_count",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[source_count] - T.[target_count] == 0#email# #Contacts# #LASTNAME# #CITY# #gender#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bb5d024d-1f6e-5af2-9494-937d4420798c",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-41683e71-7958-506a-b700-b9a54c297fd8"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-266bfe7a-1247-565c-ad93-59f76e2b6889",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-266bfe7a-1247-565c-ad93-59f76e2b6889 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:14.419905900Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
