@@ -1,0 +1,74 @@
+{
+  "versionId" : "ver-7724063c-c808-53cf-906a-c8ae77eb32e2",
+  "objectId" : "rule-42d9815e-e98e-5b08-9890-5e10fc5bc404",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "last_refresh_date",
+  "state" : "Draft",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Script",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-302fdd8a-a84a-5df9-951b-94dc9017b34d",
+      "engineType" : "HighThroughput",
+      "languageType" : "groovy",
+      "parameterName" : "refresh_date_parameter"
+    },
+    "objects" : [ {
+      "id" : "Variable",
+      "type" : "variable",
+      "name" : "set Variables",
+      "configuration" : {
+        "variables" : [ {
+          "name" : "connVar1",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-46b5f7f0-c29c-5e28-b04d-19fa87be90e1"
+          }
+        } ]
+      }
+    }, {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "import java.time.LocalDate\r\nimport java.time.ZoneId\r\nimport java.time.ZonedDateTime\r\nimport java.time.format.DateTimeFormatter\r\nimport javax.net.ssl.*\r\nimport groovy.json.JsonSlurper\r\nimport groovy.json.JsonOutput\r\nimport java.security.cert.X509Certificate\r\nimport java.net.URLEncoder\r\n\r\ninstanceLog.info(\"Assigning Variables for the Script\")\r\n\r\n// --- Declare variables globally ---\r\ndef parameterID = \"parm-302fdd8a-a84a-5df9-951b-94dc9017b34d\"\r\n\r\n\r\n\r\n\r\n// Groovy code to extract\r\ninstanceLog.info(\"Querying the Database to get the HSI\")\r\n\r\n\r\ndef last_refresh_date_Query = '''SELECT LAST_REFRESH_DATE\r\n\r\n        FROM DEMO_DB.DBO.CONTROL_TABLE'''\r\n\r\n\r\ndef outPut = sqlConn.firstRow(last_refresh_date_Query)\r\n\r\n\r\n\r\n////instanceLog.info('The query value is: '+outPut.toString().substring(outPut.toString().indexOf('-'),outPut.toString().length()-1))\r\n\r\n////outPut=outPut.toString().substring(outPut.toString().indexOf('-'),outPut.toString().length()-1)\r\n\r\n///outPut=outPut.toString().substring(outPut.toString(),outPut.toString().length()-1)\r\n\r\noutPut = outPut.toString().substring(19, 29)\r\n\r\n\r\ninstanceLog.info(\"New Output of the Query After Filtering out the condition : ${outPut}\")\r\n\r\n\r\ndef UpdateParam = '''{\r\n  \"parameters\": [\r\n    \r\n    {\r\n        \"key\": \"PARAM1\",\r\n        \"value\": \"''' +\"${#lastRefreshDate#}\"+ '''\",\r\n        \"type\":\"system\"\r\n    }\r\n  ]\r\n}'''\r\n\r\n\r\ndef result = parameter.patch(parameterID, UpdateParam)\r\n \r\ninstanceLog.info(\"Status Code: \"+ result.getStatusCode())\r\n \r\nif (result.getStatusCode().value() == 200)\r\n{\r\ninstanceLog.info(\"Parameter File is Updated Successfully.\")\r\nreturn 0;\r\n}\r\nelse\r\n{\r\ninstanceLog.info(\"There was an issue in Updating the Parameter File.\")\r\n  return 1;\r\n}"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-03306ee4-b602-5786-a682-ce93a4552204"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-42d9815e-e98e-5b08-9890-5e10fc5bc404",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-42d9815e-e98e-5b08-9890-5e10fc5bc404 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:35.994776500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
