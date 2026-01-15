@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-1bdb79cb-7ecf-5e70-b55f-8f6e54a7dce5",
+  "versionId" : "ver-f3defee5-14d3-5491-a8dc-76a3f79157e7",
   "objectId" : "rule-8effbc8d-3176-51aa-be44-fc36a83fce25",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Rule_Recon-File-Check",
-  "state" : "Staged",
-  "version" : 3,
+  "state" : "Published",
+  "version" : 2,
   "info" : {
     "ruleType" : "Recon",
     "properties" : {
@@ -24,120 +24,88 @@
       "type" : "source",
       "name" : "sourceDataset",
       "connectionType" : "File",
-      "connectionId" : "conn-f38e0ca0-f2f8-5cf4-85b5-3395568d2a62",
-      "input" : "FileStatic",
+      "connectionId" : "conn-74dc117b-9f4a-5c3c-8856-698af3efa5d9",
+      "input" : "Sql",
       "configuration" : {
         "databaseName" : "",
         "schemaRemarks" : "",
+        "tableName" : "tblname_1755782267389",
         "tableRemarks" : "",
+        "fileSchemaId" : "schm-84aefcc3-3614-52e1-893d-0a5b0fd09697",
+        "sql" : "select * from tblname_1755782267389",
         "dax" : "",
         "mdx" : "",
-        "fileType" : "Delimited",
-        "container" : "/app/local-files/DelimitedFiles",
-        "filePath" : "/AtTheRate_STAFF.txt",
-        "columnDelimiter" : "@",
-        "rowDelimiter" : "\\n",
-        "textQualifier" : "\"",
-        "skipRowTop" : "1",
-        "skipRowBottom" : "0",
-        "headerRow" : "1",
-        "trimData" : "true",
+        "container" : "eai_qa_bucket/NextGen_QA/XMLFiles",
+        "filePath" : "/Customer.xml",
         "emptyString" : "true",
-        "whiteSpace" : "true",
-        "fixedString" : "true",
         "fixedStringValue" : "NaN",
-        "filterCondition" : "",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
         "columns" : [ {
           "index" : 1,
-          "name" : "STAFFID",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "AcctNumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
-          "name" : "SEX",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "AddressID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 3,
-          "name" : "JOBCODE",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "BirthDate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
         }, {
           "index" : 4,
-          "name" : "COMPANY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "CustomerID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 5,
-          "name" : "SALARY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "DateFirstPurchase",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
         }, {
           "index" : 6,
-          "name" : "BONUS",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "Email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 7,
-          "name" : "COMM",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "FirstName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 8,
-          "name" : "TOTALSALARY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 9,
-          "name" : "BIRTHD",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "LastName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 10,
-          "name" : "HIRED",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "PhoneNo",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
         }, {
           "index" : 11,
-          "name" : "LNAME",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "YearlyIncome",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 12,
-          "name" : "FNAME",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 13,
-          "name" : "ADDRESS",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 14,
-          "name" : "CITY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 15,
-          "name" : "STATE",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 16,
-          "name" : "HPHONE",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 17,
-          "name" : "SSN",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "row:_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         } ],
         "snapshotId" : "",
         "visualId" : "",
@@ -152,25 +120,19 @@
       "type" : "target",
       "name" : "targetDataset",
       "connectionType" : "File",
-      "connectionId" : "conn-98078199-1127-55ab-9741-b4443d10be39",
+      "connectionId" : "conn-c18b5977-cf61-5bca-acb0-5a78481cd55e",
       "input" : "Sql",
       "configuration" : {
         "databaseName" : "",
         "schemaRemarks" : "",
-        "tableName" : "tblname_1755782912448",
+        "tableName" : "tblname_1755782313587",
         "tableRemarks" : "",
         "fileSchemaId" : "schm-029aaeff-0d17-5bed-942e-8e9829f92131",
         "sql" : "select * from tblname_1755782313587",
         "dax" : "",
         "mdx" : "",
-        "fileType" : "Delimited",
-        "container" : "/",
-        "filePath" : "/CUSTOMER.csv",
-        "columnDelimiter" : "",
-        "rowDelimiter" : "",
-        "textQualifier" : "",
-        "skipRowTop" : "0",
-        "trimData" : "true",
+        "container" : "eai_qa_bucket/NextGen_QA/Json_Files",
+        "filePath" : "/Customer.json",
         "emptyString" : "true",
         "fixedStringValue" : "NaN",
         "appendOrderBy" : true,
@@ -196,8 +158,7 @@
           "index" : 3,
           "name" : "BirthDate",
           "datatype" : "TIMESTAMP",
-          "icedqDatatype" : "TIMESTAMP",
-          "format" : "dd-MM-yy HH:mm:ss"
+          "icedqDatatype" : "TIMESTAMP"
         }, {
           "index" : 4,
           "name" : "CustomerID",
@@ -207,8 +168,7 @@
           "index" : 5,
           "name" : "DateFirstPurchase",
           "datatype" : "DATE",
-          "icedqDatatype" : "DATE",
-          "format" : "dd-MM-yy"
+          "icedqDatatype" : "DATE"
         }, {
           "index" : 6,
           "name" : "Email",
@@ -260,7 +220,7 @@
       "configuration" : {
         "joins" : [ {
           "index" : 1,
-          "sourceKey" : "STAFFID",
+          "sourceKey" : "AcctNumber",
           "targetKey" : "AcctNumber"
         } ]
       }
@@ -337,7 +297,7 @@
   },
   "commitMessage" : "Updated rule configuration",
   "commitTag" : "sample",
-  "commitStatus" : "Pending",
+  "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
@@ -348,6 +308,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:35:36.337079600Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:36:28.439079600Z[UTC]",
   "updatedBy" : "roshan.n"
 }
