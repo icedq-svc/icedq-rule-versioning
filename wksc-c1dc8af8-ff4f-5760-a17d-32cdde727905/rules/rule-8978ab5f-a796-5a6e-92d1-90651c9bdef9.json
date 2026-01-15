@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-90386ea7-6dea-566b-a905-3f70b18baa5b",
+  "versionId" : "ver-f564813b-fa9a-58cc-9723-b0106d466cb7",
   "objectId" : "rule-8978ab5f-a796-5a6e-92d1-90651c9bdef9",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "API vs Parquet_Updated parquet to SSAS",
-  "state" : "Staged",
-  "version" : 2,
+  "name" : "API vs Parquet_1756216662194",
+  "state" : "Published",
+  "version" : 1,
   "info" : {
     "ruleType" : "Api-recon",
     "properties" : {
@@ -153,39 +153,95 @@
       "id" : "TargetDataset",
       "type" : "target",
       "name" : "targetDataset",
-      "connectionType" : "OLAP",
-      "connectionId" : "conn-45305762-48f1-589b-b4ab-3d091f5ea6eb",
-      "input" : "mdx",
+      "connectionType" : "File",
+      "connectionId" : "conn-29da57c1-2d17-53ac-8dab-12ca26b6fbd3",
+      "input" : "Sql",
       "configuration" : {
-        "mdx" : "SELECT\r\n   Measures.[Reseller Order Count] ON COLUMNS,\r\n   Order(\r\n   [Date].[Calendar].[Calendar Quarter].MEMBERS\r\n   ,Measures.[Reseller Order Count]\r\n   ,DESC\r\n   ) ON ROWS\r\n   FROM [Adventure Works]",
+        "schemaRemarks" : "",
+        "tableName" : "tblname_1756214236261",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-23c836a2-87fa-511b-b60c-7bb5c54fc6cf",
+        "sql" : "select * from [customer 1]",
+        "dax" : "",
+        "mdx" : "",
+        "filePath" : "Customer 1.parquet",
         "columnDelimiter" : ",",
         "rowDelimiter" : "\\n",
         "textQualifier" : "\"",
+        "skipRowTop" : "0",
         "appendOrderBy" : false,
+        "isSingleFile" : true,
+        "isDynamicPath" : true,
+        "isSorted" : true,
         "isDeferredSort" : true,
+        "isSortCaseSensitive" : true,
+        "includeRowHeaders" : true,
         "columns" : [ {
           "index" : 1,
-          "name" : "[Date].[Calendar].[Calendar Year].[MEMBER_CAPTION]",
+          "name" : "S_CUSTOMERID",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
-          "name" : "[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]",
+          "name" : "S_ACCTNUMBER",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 3,
-          "name" : "[Date].[Calendar].[Calendar Quarter].[MEMBER_CAPTION]",
+          "name" : "S_FIRSTNAME",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 4,
-          "name" : "[Measures].[Reseller Order Count]",
-          "datatype" : "INT",
-          "icedqDatatype" : "NUMERIC"
-        } ]
-      },
-      "useCached" : false
+          "name" : "S_LASTNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "S_GENDER",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "S_BIRTHDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "S_DATEFIRSTPURCHASE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "S_PHONENO",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "S_EMAIL",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "S_YEARLYINCOME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "S_ADDRESSID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "errrow",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
     }, {
       "id" : "DiffJoin",
       "type" : "diffJoin",
@@ -193,8 +249,8 @@
       "configuration" : {
         "joins" : [ {
           "index" : 1,
-          "sourceKey" : "active",
-          "targetKey" : "[Date].[Calendar].[Calendar Year].[MEMBER_CAPTION]"
+          "sourceKey" : "created_at",
+          "targetKey" : "S_BIRTHDATE"
         } ]
       }
     }, {
@@ -311,19 +367,18 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration",
-  "commitTag" : "sample",
-  "commitStatus" : "Pending",
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-8978ab5f-a796-5a6e-92d1-90651c9bdef9",
-      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-8978ab5f-a796-5a6e-92d1-90651c9bdef9 |Status: Approved"
+      "commitMessage" : "Message: Initial setup | RuleId: rule-8978ab5f-a796-5a6e-92d1-90651c9bdef9 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:40:12.952990100Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:40:30.675783700Z[UTC]",
   "updatedBy" : "roshan.n"
 }
