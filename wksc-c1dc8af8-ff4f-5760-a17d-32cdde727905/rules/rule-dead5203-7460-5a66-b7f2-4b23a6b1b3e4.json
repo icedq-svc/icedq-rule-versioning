@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-e5ec2992-f274-5701-8a81-3f3cd2e2c5c5",
+  "versionId" : "ver-35c1c477-7a40-55f7-8800-b97031a987a1",
   "objectId" : "rule-dead5203-7460-5a66-b7f2-4b23a6b1b3e4",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "DAT-13947-CosmoDB",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -30,7 +30,6 @@
         "schemaName" : "SampleDB",
         "tableName" : "customer",
         "fileSchemaId" : "schm-3f07ce1a-327f-586d-bede-7d7a885ea0aa",
-        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -147,6 +146,23 @@
           },
           "id" : "chck-1a2d4f6a-1a34-525a-9138-6b92aee30f34",
           "type" : "Custom"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[id]\", length == 5)",
+            "column" : "S.[id]",
+            "operator" : "equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 5 ]
+          },
+          "id" : "chck-396aa5ed-913a-53e8-bee6-a8442801ea86",
+          "type" : "Length"
         } ]
       }
     }, {
@@ -175,12 +191,13 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-2d74d73d-8756-5105-a829-aa2bfb7e80e9"
+          "id" : "chck-3927b177-c43b-56c2-96f4-45eb3bb904fc"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
@@ -188,10 +205,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-dead5203-7460-5a66-b7f2-4b23a6b1b3e4",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-dead5203-7460-5a66-b7f2-4b23a6b1b3e4 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-dead5203-7460-5a66-b7f2-4b23a6b1b3e4 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:39:06.281500500Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:39:10.488490400Z[UTC]",
   "updatedBy" : "roshan.n"
 }
