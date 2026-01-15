@@ -1,0 +1,124 @@
+{
+  "versionId" : "ver-035105d6-90c2-5930-a3fd-9d503b27c6c1",
+  "objectId" : "rule-9f04386d-e767-5497-8471-e68a22d9be07",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1756194489",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-4836d1fe-90ed-572b-ba28-d4c064180013",
+      "input" : "Snapshot",
+      "configuration" : {
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Region",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Count([Fact.ProductRevenue])",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "bisnp-6bcecd96-0c96-5c09-86c1-36d23038ebf6",
+        "visualId" : "WsNrpqH",
+        "granularity" : "Summary"
+      },
+      "reportScanId" : "birpt-80fa79d3-19ec-539d-bf8c-20ac753c853d"
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-dff99f17-7fb7-573b-aee3-d78af9b4043f",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[Count([Fact.ProductRevenue])]\")",
+            "column" : "S.[Count([Fact.ProductRevenue])]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-eb4cbd16-bca0-55b7-91d2-cf030aa6d1c2",
+          "type" : "Completeness"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-27fa9039-f283-5fb5-8b9c-a5f86248f778"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-9f04386d-e767-5497-8471-e68a22d9be07",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-9f04386d-e767-5497-8471-e68a22d9be07 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:05.659497300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
