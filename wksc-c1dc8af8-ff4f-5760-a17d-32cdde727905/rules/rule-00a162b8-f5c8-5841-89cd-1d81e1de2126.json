@@ -1,0 +1,180 @@
+{
+  "versionId" : "ver-6bcf0b1c-314f-5998-a811-9297a7d237de",
+  "objectId" : "rule-00a162b8-f5c8-5841-89cd-1d81e1de2126",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1764338124565",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-0c4c9341-e577-54ac-8ecc-8499a5571d38",
+      "input" : "Snapshot",
+      "configuration" : {
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Issue Type",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Issue id",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Issue key",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Custom field (Task Type)",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Assignee",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "Assignee Id",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Reporter",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "Reporter Id",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "Priority",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "Summary",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Status",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Resolution",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Custom field (Fixed in Build)",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "bisnp-f486fa4e-a83e-55bd-9cee-0d9f29e57f0f",
+        "visualId" : "2ee5dbdad5f84a8dc993",
+        "granularity" : "Detail"
+      },
+      "reportScanId" : "birpt-55205bce-8b37-5f6b-bcde-bce9335252d8"
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-8b796e1f-1449-5c21-b921-f64c32429762",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[Issue Type]\")",
+            "column" : "S.[Issue Type]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c868661c-3960-5303-b83e-4380408f42a4",
+          "type" : "Completeness"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-72b46057-130a-5228-b9a1-579455fbfa79"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-00a162b8-f5c8-5841-89cd-1d81e1de2126",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-00a162b8-f5c8-5841-89cd-1d81e1de2126 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:51.436396700Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
