@@ -1,0 +1,520 @@
+{
+  "versionId" : "ver-b8a3e752-475d-52be-bf59-c50b4c533f44",
+  "objectId" : "rule-bcb6e515-3fc2-5e68-bca2-a9beddee8d34",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Pushdown rule Salesforce",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Pushdown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Application",
+      "connectionId" : "conn-076a4c54-b453-59a5-8af2-668bae5a9b17",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "Salesforce",
+        "tableName" : "staff__c",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "OwnerId",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "IsDeleted",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 4,
+          "name" : "Name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "CreatedDate",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "CreatedById",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "LastModifiedDate",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 8,
+          "name" : "LastModifiedById",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "SystemModstamp",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 10,
+          "name" : "staffid__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "sex__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "jobcode__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "company__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "salary__c",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 15,
+          "name" : "bonus__c",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 16,
+          "name" : "comm__c",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 17,
+          "name" : "totalsalary__c",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 18,
+          "name" : "birthd__c",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 19,
+          "name" : "hired__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "lname__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "fname__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "address__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "city__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "state__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "hphone__c",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "ssn__c",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-08ffa548-b5ea-50c0-8071-9a3df783eabf",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s_id",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3253e665-5e6c-5b6c-ac4a-6e36fafda9be",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_ownerid",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OwnerId]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cf9ad47b-9fa3-560e-a2ab-b23c2e0e8496",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_isdeleted",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[IsDeleted]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7b281c74-7fdd-5582-abeb-f339c432c02e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_name",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Name]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-015b95b0-bde8-5f4c-9637-d91203a9bbb6",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_createddate",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CreatedDate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a28f0e61-0f3f-594f-977e-f9decee950bc",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_createdbyid",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CreatedById]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-80d3c1a1-3cd4-5910-afa5-057d8e9a45aa",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_lastmodifieddate",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LastModifiedDate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a6265d18-2afc-59ee-90a2-0bbb7abce79a",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_lastmodifiedbyid",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LastModifiedById]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6eb9b6a3-d550-5c15-b592-749b7be1ce6b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_systemmodstamp",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SystemModstamp]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7ea65c1e-4410-58b1-8c7e-492c39f33547",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_staffid__c",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[staffid__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c1e186cb-6ab9-582d-9601-d2d696545e21",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_sex__c",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[sex__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-da15d203-9c15-5ddf-97ea-296af8fefac9",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_jobcode__c",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[jobcode__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-02ef3f7b-1998-57d4-83cf-2cf791e3438d",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_company__c",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[company__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d5bae5ba-561b-5fd6-8871-46ca9ad9794b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_salary__c",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[salary__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3a733093-775e-5ec4-8b26-05a18f6ab3e8",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_bonus__c",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[bonus__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-11f94239-1917-53d9-9312-843c353f3a59",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_comm__c",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[comm__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ca45e04c-999f-51c0-93a4-04f9d88913b3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_totalsalary__c",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[totalsalary__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-61b62c74-9068-5fcd-95a4-705ee5d69a6b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_birthd__c",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[birthd__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-709a6da0-24fc-5fe3-9260-c1acd07750f8",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_hired__c",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[hired__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2d7dd6d8-8d28-5075-a08e-78611f8927ef",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_lname__c",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[lname__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b0512ae0-bee9-5ebb-abdd-d26af9b5902d",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_fname__c",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[fname__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cfdf072a-f348-5a6a-aecf-86e94d27d78f",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_address__c",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[address__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-affb05aa-51a7-5fa9-bc90-1843d8dbe2b4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_city__c",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[city__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a4ab4414-b2e3-519c-9e84-8be64ebf53bc",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_state__c",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[state__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-66be45e4-8efc-598c-adf8-e4b1ac6d37be",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_hphone__c",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[hphone__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c38ac08b-9feb-5e21-8c66-ec545a501f8f",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_ssn__c",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ssn__c]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-993431b3-4bdb-5553-a31b-5d72c6ba97a2",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-c81ecfa9-d359-5576-97b7-9c020587b4e3"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "exportsingleselectdropdown",
+      "values" : [ "GTest" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-bcb6e515-3fc2-5e68-bca2-a9beddee8d34",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-bcb6e515-3fc2-5e68-bca2-a9beddee8d34 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:43:36.375585700Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
