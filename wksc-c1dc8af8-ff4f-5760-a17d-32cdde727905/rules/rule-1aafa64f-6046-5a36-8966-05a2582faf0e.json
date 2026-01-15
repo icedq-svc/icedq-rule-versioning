@@ -1,12 +1,11 @@
 {
-  "versionId" : "ver-43c6dd87-d6c5-577a-8cb9-8d3123882d29",
+  "versionId" : "ver-45fe79e0-09d3-56ec-863c-4b83760aa7b0",
   "objectId" : "rule-1aafa64f-6046-5a36-8966-05a2582faf0e",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Rule_1756117917",
-  "state" : "Published",
-  "version" : 3,
+  "state" : "Staged",
   "info" : {
     "ruleType" : "api-recon",
     "properties" : {
@@ -154,116 +153,98 @@
       "type" : "target",
       "name" : "targetDataset",
       "connectionType" : "File",
-      "connectionId" : "conn-f38e0ca0-f2f8-5cf4-85b5-3395568d2a62",
-      "input" : "FileStatic",
+      "connectionId" : "conn-1936d400-85c4-5dd6-af9d-918923f9e205",
+      "input" : "Sql",
       "configuration" : {
+        "databaseName" : "",
         "schemaRemarks" : "",
+        "tableName" : "tblname_1756200349040",
         "tableRemarks" : "",
+        "fileSchemaId" : "schm-73cba693-5567-56e8-a603-022611eb4e78",
+        "sql" : "select * from tblname_1756200349040",
         "fileType" : "Delimited",
-        "filePath" : "/AtTheRate_STAFF.txt",
-        "columnDelimiter" : "@",
-        "rowDelimiter" : "\\n",
-        "textQualifier" : "\"",
-        "skipRowTop" : "1",
-        "skipRowBottom" : "0",
-        "headerRow" : "1",
-        "trimData" : "true",
+        "container" : "torana-files/QATestingFile/JsonFiles/",
+        "filePath" : "Customer.json",
+        "skipRowTop" : "0",
+        "trimData" : "false",
         "emptyString" : "true",
-        "whiteSpace" : "true",
-        "fixedString" : "true",
+        "whiteSpace" : "false",
+        "fixedString" : "false",
         "fixedStringValue" : "NaN",
         "filterCondition" : "",
+        "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
+        "detectDatatype" : true,
+        "includeRowHeaders" : true,
         "columns" : [ {
           "index" : 1,
-          "name" : "STAFFID",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "AcctNumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
-          "name" : "SEX",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "AddressID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 3,
-          "name" : "JOBCODE",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "BirthDate",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
         }, {
           "index" : 4,
-          "name" : "COMPANY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "CustomerID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 5,
-          "name" : "SALARY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "DateFirstPurchase",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
         }, {
           "index" : 6,
-          "name" : "BONUS",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "Email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 7,
-          "name" : "COMM",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "FirstName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 8,
-          "name" : "TOTALSALARY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 9,
-          "name" : "BIRTHD",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "LastName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 10,
-          "name" : "HIRED",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "PhoneNo",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 11,
-          "name" : "LNAME",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "YearlyIncome",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 12,
-          "name" : "FNAME",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 13,
-          "name" : "ADDRESS",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 14,
-          "name" : "CITY",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 15,
-          "name" : "STATE",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 16,
-          "name" : "HPHONE",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
-        }, {
-          "index" : 17,
-          "name" : "SSN",
-          "datatype" : "Text",
-          "icedqDatatype" : "Text"
+          "name" : "json:_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
         "baseUrl" : "",
         "requestMethod" : "GET",
         "endPoint" : "",
@@ -276,8 +257,8 @@
       "configuration" : {
         "joins" : [ {
           "index" : 1,
-          "sourceKey" : "created_at",
-          "targetKey" : "HIRED"
+          "sourceKey" : "id",
+          "targetKey" : "Email"
         } ]
       }
     }, {
@@ -329,19 +310,16 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration",
-  "commitTag" : "sample",
-  "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-1aafa64f-6046-5a36-8966-05a2582faf0e",
-      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-1aafa64f-6046-5a36-8966-05a2582faf0e |Status: Approved"
+      "commitMessage" : "Message: null | RuleId: rule-1aafa64f-6046-5a36-8966-05a2582faf0e |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:39:56.106801500Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:39:59.974493600Z[UTC]",
   "updatedBy" : "roshan.n"
 }
