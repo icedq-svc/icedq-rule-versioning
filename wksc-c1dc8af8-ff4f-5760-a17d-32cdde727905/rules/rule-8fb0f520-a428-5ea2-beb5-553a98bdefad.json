@@ -1,0 +1,111 @@
+{
+  "versionId" : "ver-927277fd-3762-5195-99ce-88c55b87bd37",
+  "objectId" : "rule-8fb0f520-a428-5ea2-beb5-553a98bdefad",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "WithParameter",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-b0732a92-acb1-57f1-bf49-b1a0bf2b2dab",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy",
+      "parameterName" : "Parameter-HBase"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-2ed2fe12-4a09-58c9-bb63-ee89bde21306",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as source_count from ApacheHBase.#table#",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "source_count",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-07243ff8-f7cc-54a1-85c0-0a8b7e848928",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "#Q3#",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "target_count",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[source_count] - T.[target_count] == 9",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7a3d0666-f6aa-5130-837a-f3e0d396b237",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-0bf5c9f0-9746-51e1-b7e0-26feb68e1651"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-8fb0f520-a428-5ea2-beb5-553a98bdefad",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-8fb0f520-a428-5ea2-beb5-553a98bdefad |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:31.198815100Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
