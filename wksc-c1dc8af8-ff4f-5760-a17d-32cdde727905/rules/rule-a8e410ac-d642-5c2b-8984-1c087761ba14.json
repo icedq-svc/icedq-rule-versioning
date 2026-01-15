@@ -1,0 +1,327 @@
+{
+  "versionId" : "ver-c37ef164-0dc3-5616-bd0a-7b996602502a",
+  "objectId" : "rule-a8e410ac-d642-5c2b-8984-1c087761ba14",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "API-Recon-Plain-All Values removed_1764855950056",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Api-recon",
+    "description" : "API vs Query Engine - Databricks",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-7cc81f3c-55f4-541d-8e4e-c89402adc506",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "contacts",
+        "fileSchemaId" : "schm-5d6299ae-d7d5-5560-a0b0-65df2caffdb0",
+        "sql" : "select * from contacts",
+        "fixedString" : "false",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "QueryEngine",
+      "connectionId" : "conn-4dd6e07a-b610-58ce-b683-9dcba43a27cc",
+      "input" : "Table",
+      "configuration" : {
+        "databaseName" : "samples",
+        "schemaName" : "bakehouse",
+        "tableName" : "sales_customers",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "customerID",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 2,
+          "name" : "first_name",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "last_name",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "email_address",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "phone_number",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "address",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "city",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "state",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "country",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "continent",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "postal_zip_code",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 12,
+          "name" : "gender",
+          "datatype" : "STRING",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "id",
+          "targetKey" : "postal_zip_code"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-f841404a-ba59-5738-ad9c-082b9e42d07c",
+          "type" : "ResultType",
+          "isDeferredSort" : true,
+          "deferredSort" : {
+            "format" : "plain"
+          }
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[email], T.[email_address])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[email]",
+            "targetColumn" : "T.[email_address]"
+          },
+          "id" : "chck-605faaa1-cd13-5a3f-bba5-c4a2fef59e99",
+          "type" : "SimpleCompare",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-f6d56d5e-97d5-5db2-9927-928b6b564798"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-a8e410ac-d642-5c2b-8984-1c087761ba14",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-a8e410ac-d642-5c2b-8984-1c087761ba14 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:43:43.074588200Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
