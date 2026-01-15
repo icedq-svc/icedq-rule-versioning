@@ -1,28 +1,28 @@
 {
-  "versionId" : "ver-c78e0142-cc4d-5e3e-bce3-7dedecf119b1",
+  "versionId" : "ver-f256bc05-775c-5e2a-a34a-7d09f3c9fe7e",
   "objectId" : "rule-90f8cb2d-6394-525b-bbf7-29acac8ffa9b",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "API-Recon-Connection-Change",
+  "name" : "API-Recon-Rule-Update",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "api-recon",
-    "code" : "abcd",
-    "description" : "API-Recon-Connection-Change check",
-    "purpose" : "API-Recon-Connection-Change",
+    "code" : "abcd4",
+    "description" : "API-Recon-Connection-Change check4",
+    "purpose" : "API-Recon-Connection-Change4",
     "properties" : {
       "criticality" : "Critical",
-      "parameterId" : "parm-3c4f2719-2716-5174-8ef7-77d69f4f2231",
+      "parameterId" : "parm-be2454f3-64fe-5d01-bf06-baf1e2b8cd99",
       "engineType" : "HighThroughput",
-      "stopAtFailAndErrorCount" : 500,
-      "stopAtRowCount" : 500,
-      "stopAtTime" : 8,
-      "degreeOfParallelism" : 1,
+      "stopAtFailAndErrorCount" : 5003,
+      "stopAtRowCount" : 5003,
+      "stopAtTime" : 83,
+      "degreeOfParallelism" : 2,
       "engineInfo" : { },
       "languageType" : "groovy",
-      "parameterName" : "Parameter_API-Recon"
+      "parameterName" : "Parameter one"
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -32,9 +32,9 @@
       "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
       "input" : "Sql",
       "configuration" : {
-        "tableName" : "contacts",
+        "tableName" : "contacts3",
         "fileSchemaId" : "schm-fce89c60-8e7b-5f64-9e43-05b6832f9658",
-        "sql" : "select * from contacts",
+        "sql" : "select * from contacts3",
         "fixedString" : "false",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
@@ -293,90 +293,6 @@
           "index" : 1,
           "sourceKey" : "active",
           "targetKey" : "active"
-        }, {
-          "index" : 2,
-          "sourceKey" : "address",
-          "targetKey" : "address"
-        }, {
-          "index" : 3,
-          "sourceKey" : "company_id",
-          "targetKey" : "company_id"
-        }, {
-          "index" : 4,
-          "sourceKey" : "created_at",
-          "targetKey" : "created_at"
-        }, {
-          "index" : 5,
-          "sourceKey" : "csat_rating",
-          "targetKey" : "csat_rating"
-        }, {
-          "index" : 6,
-          "sourceKey" : "description",
-          "targetKey" : "description"
-        }, {
-          "index" : 7,
-          "sourceKey" : "email",
-          "targetKey" : "email"
-        }, {
-          "index" : 8,
-          "sourceKey" : "facebook_id",
-          "targetKey" : "facebook_id"
-        }, {
-          "index" : 9,
-          "sourceKey" : "id",
-          "targetKey" : "id"
-        }, {
-          "index" : 10,
-          "sourceKey" : "job_title",
-          "targetKey" : "job_title"
-        }, {
-          "index" : 11,
-          "sourceKey" : "language",
-          "targetKey" : "language"
-        }, {
-          "index" : 12,
-          "sourceKey" : "mobile",
-          "targetKey" : "mobile"
-        }, {
-          "index" : 13,
-          "sourceKey" : "name",
-          "targetKey" : "name"
-        }, {
-          "index" : 14,
-          "sourceKey" : "other_companies",
-          "targetKey" : "other_companies"
-        }, {
-          "index" : 15,
-          "sourceKey" : "phone",
-          "targetKey" : "phone"
-        }, {
-          "index" : 16,
-          "sourceKey" : "preferred_source",
-          "targetKey" : "preferred_source"
-        }, {
-          "index" : 17,
-          "sourceKey" : "time_zone",
-          "targetKey" : "time_zone"
-        }, {
-          "index" : 18,
-          "sourceKey" : "twitter_followers_count",
-          "targetKey" : "twitter_followers_count"
-        }, {
-          "index" : 19,
-          "sourceKey" : "twitter_id",
-          "targetKey" : "twitter_id"
-        }, {
-          "index" : 20,
-          "sourceKey" : "twitter_profile_status",
-          "targetKey" : "twitter_profile_status"
-        }, {
-          "index" : 21,
-          "sourceKey" : "unique_external_id",
-          "targetKey" : "unique_external_id"
-        }, {
-          "index" : 22,
-          "sourceKey" : "updated_at",
-          "targetKey" : "updated_at"
         } ]
       }
     }, {
@@ -487,7 +403,7 @@
           "name" : "Id",
           "index" : 10,
           "isActive" : true,
-          "isVisible" : true,
+          "isVisible" : false,
           "expression" : {
             "value" : "S.[id] == T.[id]",
             "caseInsensitive" : false
@@ -530,8 +446,8 @@
         }, {
           "name" : "Name",
           "index" : 14,
-          "isActive" : true,
-          "isVisible" : true,
+          "isActive" : false,
+          "isVisible" : false,
           "expression" : {
             "value" : "S.[name] == T.[name]",
             "caseInsensitive" : false
@@ -552,8 +468,8 @@
         }, {
           "name" : "Phone",
           "index" : 16,
-          "isActive" : true,
-          "isVisible" : true,
+          "isActive" : false,
+          "isVisible" : false,
           "expression" : {
             "value" : "S.[phone] == T.[phone]",
             "caseInsensitive" : false
@@ -564,7 +480,7 @@
           "name" : "Preferred_source",
           "index" : 17,
           "isActive" : true,
-          "isVisible" : true,
+          "isVisible" : false,
           "expression" : {
             "value" : "S.[preferred_source] == T.[preferred_source]",
             "caseInsensitive" : false
@@ -835,7 +751,7 @@
           "name" : "Fyi_s_preferred_source",
           "index" : 41,
           "isActive" : true,
-          "isVisible" : true,
+          "isVisible" : false,
           "expression" : {
             "value" : "S.[preferred_source]",
             "caseInsensitive" : false
@@ -1139,17 +1055,6 @@
           },
           "id" : "chck-26bbef90-87c9-5881-af9f-d82ccaf1111a",
           "type" : "Column"
-        }, {
-          "name" : "Fyi_t_updated_at",
-          "index" : 69,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "T.[updated_at]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-2c199b3b-821c-51cf-9207-a32618dc34df",
-          "type" : "Column"
         } ]
       }
     }, {
@@ -1161,7 +1066,7 @@
         "createExportDownloadLink" : true,
         "storeOnlyException" : false,
         "storeOnlyExportedFile" : false,
-        "format" : [ "XLSX" ]
+        "format" : [ "CSV" ]
       }
     }, {
       "id" : "Summary",
@@ -1178,12 +1083,13 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-28c6dc4b-249d-5dc7-bb76-107f06194960"
+          "id" : "chck-1dab1f21-ff77-5ef5-b68a-d28ea5769f1c"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
@@ -1191,10 +1097,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-90f8cb2d-6394-525b-bbf7-29acac8ffa9b",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-90f8cb2d-6394-525b-bbf7-29acac8ffa9b |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-90f8cb2d-6394-525b-bbf7-29acac8ffa9b |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:35:32.121565Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:36:38.209132300Z[UTC]",
   "updatedBy" : "roshan.n"
 }
