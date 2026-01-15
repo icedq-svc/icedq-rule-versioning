@@ -1,0 +1,214 @@
+{
+  "versionId" : "ver-816239c2-0e66-537f-bee7-ebd2997edbd0",
+  "objectId" : "rule-3cd78368-5321-51ce-91d4-d6e08ba9d19c",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Excel-File_Version",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-9a050ef2-7862-59b4-a87e-99e2a3adbbf2",
+      "input" : "Sql",
+      "configuration" : {
+        "schemaRemarks" : "",
+        "tableName" : "tblname_1756129982598",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-ca37c87d-9a9b-588a-a190-18383a96bac3",
+        "sql" : "select * from report1",
+        "dax" : "",
+        "mdx" : "",
+        "filePath" : "/Customer.xlsx",
+        "skipRowTop" : "0",
+        "emptyString" : "true",
+        "fixedStringValue" : "NaN",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "RowId",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "customerid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "acctnumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "firstname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "lastname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "birthdate",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "datefirstpurchase",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "phoneno",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "yearlyincome",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "addressid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-68087016-eab5-583b-9aaa-d885591a010f",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RowId] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-085292b0-e8bd-5581-8fd2-5183adb370f8",
+          "type" : "Custom"
+        }, {
+          "name" : "Fyi_s_rowid",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RowId]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-52e9bd51-329f-5357-9d27-498085c546a0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_customerid",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[customerid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-89230695-71b3-5fcd-91d6-f8ca146bc0be",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e01ee99c-e974-5aa8-ba6d-71335cdc65e6"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-3cd78368-5321-51ce-91d4-d6e08ba9d19c",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-3cd78368-5321-51ce-91d4-d6e08ba9d19c |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:37:05.269213500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
