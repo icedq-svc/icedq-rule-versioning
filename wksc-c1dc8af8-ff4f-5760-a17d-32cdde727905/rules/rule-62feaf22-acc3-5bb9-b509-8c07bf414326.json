@@ -1,0 +1,612 @@
+{
+  "versionId" : "ver-fa3091f1-a905-5054-b1bb-0c5937fec4ce",
+  "objectId" : "rule-62feaf22-acc3-5bb9-b509-8c07bf414326",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_Validation_sub",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-e56a5096-2276-5b20-a375-3de3a1f0989e",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "public",
+        "tableName" : "all_datatypes",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "col_uuid",
+          "datatype" : "uuid",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "col_int",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 3,
+          "name" : "col_int2",
+          "datatype" : "int2",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "col_int4",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 5,
+          "name" : "col_int8",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 6,
+          "name" : "col_decimal",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "col_float4",
+          "datatype" : "float4",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 8,
+          "name" : "col_float8",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 9,
+          "name" : "col_real",
+          "datatype" : "float4",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 10,
+          "name" : "col_double_precision",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "col_bool",
+          "datatype" : "bool",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "col_char",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "col_varchar",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "col_text",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "col_string",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "col_date",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 17,
+          "name" : "col_time",
+          "datatype" : "time",
+          "icedqDatatype" : "TIME"
+        }, {
+          "index" : 18,
+          "name" : "col_timestamp",
+          "datatype" : "timestamp",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 19,
+          "name" : "col_timestamptz",
+          "datatype" : "timestamptz",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "col_interval",
+          "datatype" : "interval",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "col_bytes",
+          "datatype" : "bytea",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "col_json",
+          "datatype" : "jsonb",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "col_serial",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 24,
+          "name" : "col_inet",
+          "datatype" : "inet",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "col_int_array",
+          "datatype" : "_int8",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "col_string_array",
+          "datatype" : "_text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "col_bool_array",
+          "datatype" : "_bool",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "col_float_array",
+          "datatype" : "_float8",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "col_uuid_array",
+          "datatype" : "_uuid",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "col_date_array",
+          "datatype" : "_date",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "col_bytes_array",
+          "datatype" : "_bytea",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "col_bit",
+          "datatype" : "bit",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 33,
+          "name" : "col_collate",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "col_enum",
+          "datatype" : "mood",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "col_null",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "col_oid",
+          "datatype" : "oid",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 37,
+          "name" : "col_timetz",
+          "datatype" : "timetz",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "col_tsquery",
+          "datatype" : "tsquery",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "col_tsvector",
+          "datatype" : "tsvector",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 40,
+          "name" : "col_vector",
+          "datatype" : "vector",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-866aa48f-01d2-55b7-bad5-1eb490438550",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_uuid] == 789daefa-58e4-4575-b1c5-5b480fa8b999",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1acc4f1e-8aff-5cc9-a579-9bd609c1f5ec",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_int] == S.[col_int2]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a4506530-e9ae-50c4-aadc-c8ac02fd120b",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[col_int4]\", array[40,4,4000,400,66,6666])",
+            "column" : "S.[col_int4]",
+            "datatype" : "INT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "40", "4", "4000", "400", "66", "6666" ]
+          },
+          "id" : "chck-1a8fb300-1c03-55fe-b99f-d6029ac30289",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_int8] == 6666 || 'Pankaj'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-66518a8c-cf9d-5aec-87c6-3c779dcb6a0d",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[col_int8]\", range between 40 and 4000)",
+            "column" : "S.[col_int8]",
+            "operator" : "between",
+            "datatype" : "INT",
+            "caseInsensitive" : false,
+            "inputValue" : [ "40", "4000" ]
+          },
+          "id" : "chck-bff8ddb9-d836-5fc0-8363-e4f101db19a1",
+          "type" : "Range"
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_decimal] == 200.5 && 400 && 300.75",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-227664f3-e32c-569e-9010-8a26947c53a7",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[col_float4]\", array[1.1,13.2,13.3,8.8])",
+            "column" : "S.[col_float4]",
+            "datatype" : "DOUBLE",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "1.1", "13.2", "13.3", "8.8" ]
+          },
+          "id" : "chck-b118bf77-dee2-58c2-ad9f-399f6b0bb5b2",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0008",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[col_float8]\", array[2.2,14.3,8.8,2.2])",
+            "column" : "S.[col_float8]",
+            "datatype" : "DOUBLE",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "2.2", "14.3", "8.8", "2.2" ]
+          },
+          "id" : "chck-acb8fb5c-6ada-54d9-90e7-445155ca448a",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0009",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_real] == 12.1 && S.[col_real] == 15.4",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cd28c522-3c4a-5879-b343-e03d67a6eb39",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0010",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[col_double_precision]\", range  >= 7)",
+            "column" : "S.[col_double_precision]",
+            "operator" : "greater than equal to",
+            "datatype" : "DOUBLE",
+            "caseInsensitive" : false,
+            "inputValue" : [ "7" ]
+          },
+          "id" : "chck-f5505e3d-fdb2-511a-9cf5-d0f90c1fd880",
+          "type" : "Range"
+        }, {
+          "name" : "Chk_0011",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_bool] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6b11e76a-db45-560c-b9fd-8f5c02bbf3ad",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0012",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[col_char]\", array[A,B,C,D,E,F,G,H])",
+            "column" : "S.[col_char]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "A", "B", "C", "D", "E", "F", "G", "H" ]
+          },
+          "id" : "chck-05c4a60e-f501-5d8a-a9f3-99c8ba26fd2c",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0013",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[col_char]\", array[1,2,3,4,5,6])",
+            "column" : "S.[col_char]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "1", "2", "3", "4", "5", "6" ]
+          },
+          "id" : "chck-60512755-9384-514b-8637-9a5696e8dbad",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0014",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[col_char]\", dataType = Integer)",
+            "column" : "S.[col_char]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8a9028a3-76ed-59fb-89cd-d160545c3206",
+          "type" : "Datatype"
+        }, {
+          "name" : "Chk_0015",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_varchar] == 'Welcome to CockroachDB'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8897f2a0-8bf4-59b3-843b-726e9cdf1625",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0016",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_varchar].length() >= 20",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-36ba4ec1-1685-516c-8ace-b3d339b75386",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0017",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_text].find('This is a sample text column.')",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0ed1d79c-fd10-5bd1-8407-0416de190ce3",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0018",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_string].startsWith('SQL'&&'Data')",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c5234e7c-a641-50dd-b5e0-78cb156012de",
+          "type" : "Custom"
+        }, {
+          "name" : "Col_0019",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_string].toUpperCase()",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-73a07ed0-3be6-56d8-b952-cdedcce149ed",
+          "type" : "Calculated"
+        }, {
+          "name" : "Col_0020",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "def S=new Date().parse(\"2023-02-02\",S.[col_date]);\nreturn S.next()",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cc5b0781-3fa0-52fb-905a-b6ac331050d4",
+          "type" : "Calculated"
+        }, {
+          "name" : "Chk_0021",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "def S = new Date().parse(\"2023-03-03\", S.[col_timestamp]);\nreturn S.clearTime();",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5d14557e-2e1b-5931-9252-dc345e3a03d7",
+          "type" : "Custom"
+        }, {
+          "name" : "Col_0022",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "def S = new Date().parse(\"2023-03-03\", S.[col_timestamp]);\nreturn S.clearTime();",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cd5bdaa9-099c-5e22-a15b-4619d76d4127",
+          "type" : "Calculated"
+        }, {
+          "name" : "Chk_0023",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "def S = new Date().parse(\"yyyy-MM-dd\", S.[col_date] );\ndef  S1 = new Date().parse(\"yyyy-MM-dd\",S.[col_timestamptz] );\nreturn S.compareTo(S1);",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cccad28b-c16c-5665-abea-788356bbf4b9",
+          "type" : "Custom"
+        }, {
+          "name" : "Col_0024",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "def S = new Date().parse(\"yyyy-MM-dd\", S.[col_date] );\ndef  S1 = new Date().parse(\"yyyy-MM-dd\",S.[col_timestamptz] );\nreturn S.compareTo(S1);",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-93e845be-8cd8-5f20-b918-a2dec3b6096b",
+          "type" : "Calculated"
+        }, {
+          "name" : "Chk_0025",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_interval] >= 02:00:00",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-539b6ae5-b951-5370-bf17-094f01c404c1",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-ed28a277-09ed-50e8-8446-fa80b1b56215"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-62feaf22-acc3-5bb9-b509-8c07bf414326",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-62feaf22-acc3-5bb9-b509-8c07bf414326 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:30.309815800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
