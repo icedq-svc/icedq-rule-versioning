@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-9322627c-b0fb-5e74-801d-3b1f7751855a",
+  "versionId" : "ver-3534ec9c-a266-59c2-8705-b7b37dda2af1",
   "objectId" : "rule-80987087-5f64-5e72-9da3-7d087c9872d8",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "API-Recon-Append and Defferd sort fields check",
-  "state" : "Published",
-  "version" : 4,
+  "state" : "Staged",
+  "version" : 5,
   "info" : {
     "ruleType" : "api-recon",
     "description" : "1. Append\n2. Deferred\n3. Append",
@@ -28,12 +28,12 @@
         "tableName" : "contacts",
         "fileSchemaId" : "schm-966efa96-1c6e-5cff-93c1-2d7592cea2b0",
         "sql" : "select * from contacts",
-        "columnDelimiter" : "#",
-        "rowDelimiter" : "%",
-        "textQualifier" : "&",
+        "columnDelimiter" : ",",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
         "fixedString" : "false",
-        "appendOrderBy" : false,
-        "isDeferredSort" : true,
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
           "name" : "active",
@@ -588,7 +588,7 @@
   },
   "commitMessage" : "Updated rule configuration",
   "commitTag" : "sample",
-  "commitStatus" : "Merged",
+  "commitStatus" : "Pending",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
@@ -599,6 +599,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:48.027398600Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:49.305400900Z[UTC]",
   "updatedBy" : "roshan.n"
 }
