@@ -1,0 +1,373 @@
+{
+  "versionId" : "ver-69af249e-662a-51ab-88a1-5f1239379854",
+  "objectId" : "rule-47240836-4c6c-5e99-a155-7e4e51f4dd5c",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "SQL SERVER",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "code",
+    "description" : "description",
+    "purpose" : "purpose",
+    "properties" : {
+      "criticality" : "Critical",
+      "parameterId" : "parm-be2454f3-64fe-5d01-bf06-baf1e2b8cd99",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 30,
+      "stopAtRowCount" : 20,
+      "stopAtTime" : 15,
+      "degreeOfParallelism" : 6,
+      "engineInfo" : { },
+      "languageType" : "groovy",
+      "parameterName" : "Parameter one"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-6e4eb048-1f44-5048-af9a-41e9ae5fe596",
+      "input" : "Plsql",
+      "configuration" : {
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "STAFFID",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "char",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "JOBCODE",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "SALARY",
+          "datatype" : "real",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 5,
+          "name" : "BONUS",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 6,
+          "name" : "BIRTHD",
+          "datatype" : "datetime",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "procedure" : "DECLARE @id NVARCHAR(2000), @sex CHAR(1), @Jobc NVARCHAR(2000), @sal FLOAT(8), @bon INT, @birt DATETIME;  \r\n  DECLARE @Results TABLE (  \r\n  STAFFID NVARCHAR(2000),  \r\n  SEX CHAR(1), \r\n  JOBCODE  NVARCHAR(2000), \r\n  SALARY FLOAT(8), \r\n  BONUS INT, \r\n  BIRTHD DATETIME \r\n  );  \r\n  DECLARE emp_cursor CURSOR FOR  \r\n  SELECT STAFFID, SEX, JOBCODE, SALARY, BONUS, BIRTHD FROM staff;  \r\n  OPEN emp_cursor;  \r\n  FETCH NEXT FROM emp_cursor INTO @id, @sex, @Jobc, @sal, @bon, @birt;  \r\n  WHILE @@FETCH_STATUS = 0  \r\n  BEGIN  \r\n  INSERT INTO @Results (STAFFID, SEX, JOBCODE, SALARY, BONUS, BIRTHD)  \r\n  VALUES (@id, @sex, @Jobc, @sal, @bon, @birt);  \r\nFETCH NEXT FROM emp_cursor INTO @id, @sex, @Jobc, @sal, @bon, @birt;  \r\n  END  \r\n  CLOSE emp_cursor;  \r\n  DEALLOCATE emp_cursor;  \r\n  SELECT * FROM @Results; "
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-8d9b4df8-a17b-5d2e-b17e-410679af42f5",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[STAFFID] == null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d79ae830-47a2-56a8-b252-ebce2e386919",
+          "type" : "Custom",
+          "description" : "description"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[SEX]\")",
+            "column" : "S.[SEX]",
+            "fixedStringAsNull" : "null",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8f883daa-3c17-540a-9527-2d7240fc95af",
+          "type" : "Completeness",
+          "description" : "description"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[STAFFID]\", length == 2)",
+            "column" : "S.[STAFFID]",
+            "operator" : "equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 2 ]
+          },
+          "id" : "chck-bf1ce41c-0f5c-54e4-ab0f-ccce272e690b",
+          "type" : "Length",
+          "description" : "fef"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[STAFFID]\", pattern = Date)",
+            "column" : "S.[STAFFID]",
+            "pattern" : "Date",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-227d5ba9-44b0-54d3-b090-58a1c091a087",
+          "type" : "Pattern",
+          "description" : "efef"
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[STAFFID]\", array[efef])",
+            "column" : "S.[STAFFID]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "efef" ]
+          },
+          "id" : "chck-cf44358e-e60e-55e0-aa76-35e519832b26",
+          "type" : "Contains",
+          "description" : "efef"
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[STAFFID]\", dataType = Integer)",
+            "column" : "S.[STAFFID]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-727db323-35bc-5fc7-a2a9-c093c3f9be02",
+          "type" : "Datatype",
+          "description" : "efef"
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[SALARY]\", range  > 5353)",
+            "column" : "S.[SALARY]",
+            "operator" : "greater than",
+            "datatype" : "DOUBLE",
+            "caseInsensitive" : false,
+            "inputValue" : [ "5353" ]
+          },
+          "id" : "chck-61d5584e-080a-56b5-9599-ee660cf15dfe",
+          "type" : "Range",
+          "description" : "feefe"
+        }, {
+          "name" : "Chk_0008",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DateCheck(\"S.[JOBCODE]\", date = dd-MM-yyyy)",
+            "column" : "S.[JOBCODE]",
+            "format" : "dd-MM-yyyy",
+            "ignoreNull" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-73363bff-dd48-51ed-a3af-cfd5df30e458",
+          "type" : "Date",
+          "description" : "dfrfr"
+        }, {
+          "name" : "Fyi_s_staffid",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[STAFFID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-07d19fb7-fbfc-5303-b275-1dc171f62dd2",
+          "type" : "Column"
+        }, {
+          "name" : "Col_0010",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] * 2",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cdc5e0a3-0d7c-5954-90b7-a27173fc04a2",
+          "type" : "Calculated",
+          "description" : "frfg"
+        }, {
+          "name" : "Chk_0011with parameter",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "#filename#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d4a8e576-a051-5a65-a424-1e17ce943c27",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0012 with function",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "fn_addition (java.lang.Object,java.lang.Object)",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a25c883b-861c-5ad2-a329-4c9aef5b3119",
+          "type" : "Custom"
+        }, {
+          "name" : "Col_0013 with parameter",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "#filename#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2a52e7de-1716-56e4-82dd-2c075b59e748",
+          "type" : "Calculated"
+        }, {
+          "name" : "Col_0014 with function",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "fn_addition (java.lang.Object,java.lang.Object)",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c1e022d3-3176-5ee4-aa07-1f8439403c95",
+          "type" : "Calculated"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "CSV" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-8fbf369c-3aa3-52bc-b1ee-ae63ad062f94"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " sourcecount ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-cc2ef6e6-2267-5dc4-a3c2-dc4a1945f2ce"
+        }, {
+          "name" : "Var_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " rulename ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-6891d2d1-d1a2-54a7-8926-e0a06b851630"
+        }, {
+          "name" : "Var_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " #filename# ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-53915412-26e4-5365-8a26-ab6d8220dab5"
+        }, {
+          "name" : "Var_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "fn_addition (java.lang.Object,java.lang.Object) ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-da96cb0e-065b-5cf9-b6f3-bbbf5cf217dd"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-47240836-4c6c-5e99-a155-7e4e51f4dd5c",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-47240836-4c6c-5e99-a155-7e4e51f4dd5c |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:02.086468800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
