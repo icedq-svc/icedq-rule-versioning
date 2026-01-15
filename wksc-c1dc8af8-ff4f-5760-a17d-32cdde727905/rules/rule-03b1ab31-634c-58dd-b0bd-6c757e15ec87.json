@@ -1,0 +1,266 @@
+{
+  "versionId" : "ver-664575b9-4ce3-5d9d-a943-88c729f3bd88",
+  "objectId" : "rule-03b1ab31-634c-58dd-b0bd-6c757e15ec87",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_Test-Custom-field",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-4371d6da-f0d9-589a-814f-149c4eead2dc",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "public",
+        "tableName" : "customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "customerid",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "acctnumber",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "firstname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "lastname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "gender",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "birthdate",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "datefirstpurchase",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "phoneno",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 9,
+          "name" : "email",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "yearlyincome",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 11,
+          "name" : "addressid",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-9e6917b8-4b3d-5725-bac6-79b759e63df2",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[customerid] != 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-77de657c-bb6a-52a1-8fab-14542fdccde3",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "test_label",
+            "values" : [ "Test3" ]
+          }, {
+            "field" : "single_select_dropdown",
+            "values" : [ "Test-3" ]
+          }, {
+            "field" : "single_select_map",
+            "values" : [ "Test1" ]
+          }, {
+            "field" : "multi_select_dropdown",
+            "values" : [ "Test-4" ]
+          }, {
+            "field" : "text_field",
+            "values" : [ "Test 2 " ]
+          }, {
+            "field" : "test_fieldname",
+            "values" : [ "2025-09-17T18:30:00.000Z" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[acctnumber]\")",
+            "column" : "S.[acctnumber]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6af1af69-358b-50d9-9189-3a1d6c966db7",
+          "type" : "Completeness",
+          "customFields" : [ {
+            "field" : "test_label",
+            "values" : [ "Test3" ]
+          }, {
+            "field" : "single_select_dropdown",
+            "values" : [ "Test-3" ]
+          }, {
+            "field" : "single_select_map",
+            "values" : [ "Test1" ]
+          }, {
+            "field" : "multi_select_dropdown",
+            "values" : [ "Test-4" ]
+          }, {
+            "field" : "text_field",
+            "values" : [ "Test4" ]
+          }, {
+            "field" : "test_fieldname",
+            "values" : [ "2025-09-17T18:30:00.000Z" ]
+          } ]
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[email]\", pattern = Email)",
+            "column" : "S.[email]",
+            "pattern" : "Email",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-2bc47cd2-821f-5fb8-9743-0c3dd0866a5a",
+          "type" : "Pattern",
+          "customFields" : [ {
+            "field" : "test_label",
+            "values" : [ "Test3" ]
+          }, {
+            "field" : "single_select_dropdown",
+            "values" : [ "Test-3" ]
+          }, {
+            "field" : "single_select_map",
+            "values" : [ "Test1" ]
+          }, {
+            "field" : "multi_select_dropdown",
+            "values" : [ "Test-4" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-b40027cb-e0bb-5ef2-8e3a-9c708b8a3642"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "single_select_map",
+      "values" : [ "Test1" ]
+    }, {
+      "field" : "test_label",
+      "values" : [ "Test3" ]
+    }, {
+      "field" : "multi_select_dropdown",
+      "values" : [ "Test-4" ]
+    }, {
+      "field" : "single_select_dropdown",
+      "values" : [ "Test-3" ]
+    }, {
+      "field" : "test_fieldname",
+      "values" : [ "2025-09-17T18:30:00.000Z" ]
+    }, {
+      "field" : "text_field",
+      "values" : [ "Test-1" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-03b1ab31-634c-58dd-b0bd-6c757e15ec87",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-03b1ab31-634c-58dd-b0bd-6c757e15ec87 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:44:03.456983600Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
