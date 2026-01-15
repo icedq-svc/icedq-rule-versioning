@@ -1,17 +1,18 @@
 {
-  "versionId" : "ver-cf7b292c-1e47-5aa3-a006-9c98f2187a6b",
+  "versionId" : "ver-f4f2bf5b-866b-5e50-8154-71f42449322f",
   "objectId" : "rule-246c098a-4f77-596d-b82d-12f837300073",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Validation Version rule with version check issue",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
-    "ruleType" : "validation",
+    "ruleType" : "Validation",
     "code" : "Version check issue",
+    "description" : "Version check",
     "properties" : {
-      "criticality" : "Critical",
+      "criticality" : "Warning",
       "engineType" : "HighThroughput",
       "stopAtFailAndErrorCount" : 0,
       "stopAtRowCount" : 0,
@@ -28,6 +29,7 @@
       "connectionId" : "conn-c631222d-03d7-5487-a81a-4b321f847b47",
       "input" : "Table",
       "configuration" : {
+        "databaseName" : "",
         "schemaName" : "sasdatasets",
         "schemaRemarks" : "",
         "tableName" : "staff",
@@ -35,11 +37,22 @@
         "fileSchemaId" : "schm-40806794-80dc-5a68-9784-f59ab6fb1845",
         "sql" : "select * from staff",
         "filePath" : "/",
+        "skipRowTop" : "0",
+        "trimData" : "false",
+        "emptyString" : "false",
+        "whiteSpace" : "false",
+        "fixedString" : "false",
+        "fixedStringValue" : "NaN",
+        "filterCondition" : "",
+        "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
+        "detectDatatype" : true,
+        "includeRowHeaders" : true,
         "columns" : [ {
           "index" : 1,
           "name" : "STAFFID",
@@ -225,9 +238,14 @@
           "id" : "chck-9eaeec3e-6d28-592c-ba81-bec905748fec"
         } ]
       }
+    } ],
+    "customFields" : [ {
+      "field" : "importsingleselectdropdown",
+      "values" : [ "FourTest" ]
     } ]
   },
-  "commitMessage" : "Created by import service",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
@@ -235,10 +253,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-246c098a-4f77-596d-b82d-12f837300073",
-      "commitMessage" : "Message: Created by import service | RuleId: rule-246c098a-4f77-596d-b82d-12f837300073 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-246c098a-4f77-596d-b82d-12f837300073 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:13.308903900Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:25.386958700Z[UTC]",
   "updatedBy" : "roshan.n"
 }
