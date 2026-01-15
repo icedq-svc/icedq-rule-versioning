@@ -1,0 +1,306 @@
+{
+  "versionId" : "ver-05d83c7a-5ef7-500d-97c4-819fef98ab65",
+  "objectId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Validation-with-Default",
+  "state" : "Published",
+  "version" : 4,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-f829041d-59e9-5fc4-bff5-6e2956a80b62",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "CUSTOMER",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CUSTOMERID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "ACCTNUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FIRSTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "LASTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "GENDER",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "BIRTHDATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "DATEFIRSTPURCHASE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONENO",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "YEARLYINCOME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ADDRESSID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : true
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-088a1136-f271-5f37-a273-ea6a9eb9b600",
+          "type" : "ResultType"
+        }, {
+          "name" : "Custom Check to fetch value where Gender is not equal to female",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[GENDER] != 'F'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0046bba5-1fff-5bdd-bafa-6c71763148fd",
+          "type" : "Custom",
+          "description" : "Custom Check to fetch value where Gender is not equal to female"
+        }, {
+          "name" : "Completeness check to check null value in Last Name Field",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[LASTNAME]\")",
+            "column" : "S.[LASTNAME]",
+            "fixedStringAsNull" : "null",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b99bcef5-1c0e-5614-9901-4e7f88732e79",
+          "type" : "Completeness",
+          "description" : "Completeness check to check null value in Last Name Field"
+        }, {
+          "name" : "Length of Phone Number",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[PHONENO]\", length == 10)",
+            "column" : "S.[PHONENO]",
+            "operator" : "equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 10 ]
+          },
+          "id" : "chck-373506da-ad02-5444-8a90-07bab2b4bca7",
+          "type" : "Length",
+          "description" : "Length of Phone Number which is equal to 10"
+        }, {
+          "name" : "Check email pattern",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[EMAIL]\", pattern = Email)",
+            "column" : "S.[EMAIL]",
+            "pattern" : "Email",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-243cc11a-6f00-5aec-9540-b7c024e43abb",
+          "type" : "Pattern",
+          "description" : "Check email pattern"
+        }, {
+          "name" : "Contains Male gender",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[GENDER]\", array[M])",
+            "column" : "S.[GENDER]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "M" ]
+          },
+          "id" : "chck-2cf8dde9-0b07-58aa-a52e-13fc316eaded",
+          "type" : "Contains",
+          "description" : "Contains Male gender"
+        }, {
+          "name" : "Check the datatype of column",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[FIRSTNAME]\", dataType = Integer)",
+            "column" : "S.[FIRSTNAME]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1519ec2b-da0d-5cbe-a771-61b38949b46b",
+          "type" : "Datatype",
+          "description" : "Check the datatype of first name to check if number is present in data or not."
+        }, {
+          "name" : "check the range of customer lie between 100 to 1000",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[CUSTOMERID]\", range between 100 and 1000)",
+            "column" : "S.[CUSTOMERID]",
+            "operator" : "between",
+            "datatype" : "NUMERIC",
+            "caseInsensitive" : false,
+            "inputValue" : [ "100", "1000" ]
+          },
+          "id" : "chck-0c878c89-53d9-56e4-8da2-6b9c9fc77995",
+          "type" : "Range",
+          "description" : "check the range of customer lie between 100 to 1000"
+        }, {
+          "name" : "Check the date value present in phone number column",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DateCheck(\"S.[PHONENO]\", date = dd-MM-yyyy)",
+            "column" : "S.[PHONENO]",
+            "format" : "dd-MM-yyyy",
+            "ignoreNull" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-492f7cc3-13df-5021-b08d-b8a953bda0ba",
+          "type" : "Date",
+          "description" : "Check the date value present in phone number column"
+        }, {
+          "name" : "Fyi_s_customerid",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CUSTOMERID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4fbd1a12-60be-5885-b924-293537a553fe",
+          "type" : "Column"
+        }, {
+          "name" : "check for yearly income greater than 10000",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[YEARLYINCOME] >= 10000",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-892d64b8-114d-5b06-abc6-a518e2efa1a5",
+          "type" : "Calculated",
+          "description" : "yearly income greater than 10000"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-f105ee28-3557-58b4-8dd4-2d0a3a108727"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration and added all type of checks",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
+      "commitMessage" : "Message: Updated rule configuration and added all type of checks | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:56.443321600Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
