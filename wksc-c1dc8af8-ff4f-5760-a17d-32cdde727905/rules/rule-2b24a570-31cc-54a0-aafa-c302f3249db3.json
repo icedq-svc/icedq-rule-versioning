@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-c8156ddc-34f3-5888-b054-99e72423ec28",
+  "versionId" : "ver-d2ffbaf6-46f1-54a1-a7b2-3893d8eb7d1a",
   "objectId" : "rule-2b24a570-31cc-54a0-aafa-c302f3249db3",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "snowflake sql",
+  "name" : "All field update_1756105241132",
   "state" : "Published",
-  "version" : 2,
+  "version" : 1,
   "info" : {
     "ruleType" : "Duplicate",
     "code" : "fe",
@@ -26,9 +26,11 @@
       "name" : "sourceDataset",
       "connectionType" : "CloudDB",
       "connectionId" : "conn-3f0c8db5-36b5-53c0-80fe-f4ccdba03e32",
-      "input" : "Sql",
+      "input" : "Table",
       "configuration" : {
-        "sql" : "select * from ICEDQ_DB.PUBLIC.STAFF where SEX='F'",
+        "databaseName" : "ICEDQ_DB",
+        "schemaName" : "PUBLIC",
+        "tableName" : "STAFF",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
@@ -121,8 +123,10 @@
           "name" : "NEW_NUMBER",
           "datatype" : "NUMBER",
           "icedqDatatype" : "NUMERIC"
-        } ]
-      }
+        } ],
+        "whereClause" : "SEX='F'"
+      },
+      "useCached" : false
     }, {
       "id" : "RecordCheck",
       "type" : "recordCheck",
@@ -203,8 +207,7 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration",
-  "commitTag" : "sample",
+  "commitMessage" : "Initial setup",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
@@ -212,10 +215,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-2b24a570-31cc-54a0-aafa-c302f3249db3",
-      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-2b24a570-31cc-54a0-aafa-c302f3249db3 |Status: Approved"
+      "commitMessage" : "Message: Initial setup | RuleId: rule-2b24a570-31cc-54a0-aafa-c302f3249db3 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:50.824395600Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:39:16.634491800Z[UTC]",
   "updatedBy" : "roshan.n"
 }
