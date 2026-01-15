@@ -1,0 +1,596 @@
+{
+  "versionId" : "ver-020b7da7-2e24-5b1b-808b-ee224c1cd744",
+  "objectId" : "rule-80987087-5f64-5e72-9da3-7d087c9872d8",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "API-Recon-Append and Defferd sort fields check",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "api-recon",
+    "description" : "1. Append",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "contacts",
+        "fileSchemaId" : "schm-966efa96-1c6e-5cff-93c1-2d7592cea2b0",
+        "sql" : "select * from contacts",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "contacts",
+        "fileSchemaId" : "schm-cd3d2fe9-a6b9-5131-878f-e6de8b5070f6",
+        "sql" : "select * from contacts",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "active",
+          "targetKey" : "active"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-e21185e1-13be-59ac-b979-b2e9ccb8adf0",
+          "type" : "ResultType"
+        }, {
+          "name" : "Active",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[active] == T.[active]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e0f70b59-38da-5e94-9625-5c1cb599c771",
+          "type" : "Custom"
+        }, {
+          "name" : "Address",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[address] == T.[address]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-22b9df24-5aa0-52fa-8d10-c340fc21c4f4",
+          "type" : "Custom"
+        }, {
+          "name" : "Company_id",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[company_id] == T.[company_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8c167059-d643-5337-b150-b6a808044d06",
+          "type" : "Custom"
+        }, {
+          "name" : "Created_at",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[created_at] == T.[created_at]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-db6f9fde-00c5-5974-9a5a-5f159e2bdfc2",
+          "type" : "Custom"
+        }, {
+          "name" : "Csat_rating",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[csat_rating] == T.[csat_rating]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c0674d27-32e2-51a1-9166-40d503107c00",
+          "type" : "Custom"
+        }, {
+          "name" : "Description",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[description] == T.[description]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ce9f87c7-ba1d-5588-8950-7b0c09d75a81",
+          "type" : "Custom"
+        }, {
+          "name" : "Email",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[email] == T.[email]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b913899d-f6aa-52f8-92a7-167e843b2cc9",
+          "type" : "Custom"
+        }, {
+          "name" : "Facebook_id",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[facebook_id] == T.[facebook_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-92fa6e36-307d-5d05-801e-974f32d5d1a0",
+          "type" : "Custom"
+        }, {
+          "name" : "Id",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[id] == T.[id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f17ced62-bc9f-530a-acfe-96d473e8677e",
+          "type" : "Custom"
+        }, {
+          "name" : "Job_title",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[job_title] == T.[job_title]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-89ff2f4e-5477-5da6-9571-66a55cdf97e6",
+          "type" : "Custom"
+        }, {
+          "name" : "Language",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[language] == T.[language]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-313769dd-6c77-5b84-abd6-60ecc6336d80",
+          "type" : "Custom"
+        }, {
+          "name" : "Mobile",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[mobile] == T.[mobile]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2725f761-4f5e-57bf-9a1b-17ea080f565b",
+          "type" : "Custom"
+        }, {
+          "name" : "Name",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[name] == T.[name]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f5165f98-dcbd-5329-901c-87101b9c8323",
+          "type" : "Custom"
+        }, {
+          "name" : "Other_companies",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[other_companies] == T.[other_companies]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-add255a2-a375-5d72-b64b-107f9504b7d3",
+          "type" : "Custom"
+        }, {
+          "name" : "Phone",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[phone] == T.[phone]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e6d0ae97-7e6b-556b-8a56-63c4eb74ac76",
+          "type" : "Custom"
+        }, {
+          "name" : "Preferred_source",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[preferred_source] == T.[preferred_source]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8d3c704a-6197-5d49-ae32-d58ddffb105e",
+          "type" : "Custom"
+        }, {
+          "name" : "Time_zone",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[time_zone] == T.[time_zone]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f9652c44-c670-581c-8bc8-ee34bf89d0ba",
+          "type" : "Custom"
+        }, {
+          "name" : "Twitter_followers_count",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[twitter_followers_count] == T.[twitter_followers_count]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-60959f55-2e34-52ff-bd1f-9649617c42c3",
+          "type" : "Custom"
+        }, {
+          "name" : "Twitter_id",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[twitter_id] == T.[twitter_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f31430d2-c176-54c0-b9a8-d980eb7cc18a",
+          "type" : "Custom"
+        }, {
+          "name" : "Twitter_profile_status",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[twitter_profile_status] == T.[twitter_profile_status]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9541f72d-6197-51f7-b867-cf09f527c434",
+          "type" : "Custom"
+        }, {
+          "name" : "Unique_external_id",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[unique_external_id] == T.[unique_external_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0bdfe96b-b40b-5a56-9e7e-15170a810965",
+          "type" : "Custom"
+        }, {
+          "name" : "Updated_at",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[updated_at] == T.[updated_at]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-58e0811a-f079-559c-bb66-d8a73fe38cec",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-88570d61-65a9-5975-a160-24459a8ec0ea"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-80987087-5f64-5e72-9da3-7d087c9872d8",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-80987087-5f64-5e72-9da3-7d087c9872d8 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:00.393793Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
