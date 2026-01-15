@@ -1,0 +1,628 @@
+{
+  "versionId" : "ver-e19124f6-eff7-5b76-8079-9e1a81286dca",
+  "objectId" : "rule-aae9b166-b9f4-5b01-b747-69355223c7f2",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "All-Values Added_1756105797316",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Api-recon",
+    "code" : "ss",
+    "description" : "ss",
+    "purpose" : "ss",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-be2454f3-64fe-5d01-bf06-baf1e2b8cd99",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 500,
+      "stopAtRowCount" : 500,
+      "stopAtTime" : 500,
+      "degreeOfParallelism" : 2,
+      "engineInfo" : { },
+      "languageType" : "groovy",
+      "parameterName" : "Parameter one"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-f2ab6141-97a0-5678-85fd-c89076bc94a2",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "top",
+        "fileSchemaId" : "schm-c35c04e1-c03d-5240-8b2d-82cf2e58b540",
+        "sql" : "select * from top",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "author",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "content",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "publishedAt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "source.id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "source.name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "url",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "urlToImage",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "baseUrl" : "https://newsapi.org/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "top-headlines",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-2848085f-07b8-5434-b1b9-41b944cd03c1",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "gggg",
+        "fileSchemaId" : "schm-17499804-ce7c-57ca-b159-36a9bc8527d7",
+        "sql" : "select * from gggg",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "adGroup.baseAdGroup",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "adGroup.id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "adGroup.name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "adGroup.resourceName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "adGroup.status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "adGroupAd.ad.addedByGoogleAds",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 7,
+          "name" : "adGroupAd.ad.expandedTextAd.description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "adGroupAd.ad.expandedTextAd.description2",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "adGroupAd.ad.expandedTextAd.headlinePart1",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "adGroupAd.ad.expandedTextAd.headlinePart2",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "adGroupAd.ad.expandedTextAd.headlinePart3",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "adGroupAd.ad.expandedTextAd.path1",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "adGroupAd.ad.finalUrls",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "adGroupAd.ad.id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "adGroupAd.ad.resourceName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "adGroupAd.ad.type",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "adGroupAd.adGroup",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "adGroupAd.policySummary.approvalStatus",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "adGroupAd.policySummary.reviewStatus",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "adGroupAd.primaryStatus",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "adGroupAd.primaryStatusReasons",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "adGroupAd.resourceName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "adGroupAd.status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "campaign.baseCampaign",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "campaign.id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "campaign.name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "campaign.resourceName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "campaign.status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "customer.currencyCode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "customer.descriptiveName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "customer.id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "customer.resourceName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "customer.timeZone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "metrics.absoluteTopImpressionPercentage",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 35,
+          "name" : "metrics.activeViewImpressions",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "metrics.activeViewMeasurability",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 37,
+          "name" : "metrics.activeViewMeasurableCostMicros",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "metrics.activeViewMeasurableImpressions",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "metrics.allConversions",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 40,
+          "name" : "metrics.allConversionsByConversionDate",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 41,
+          "name" : "metrics.allConversionsFromInteractionsRate",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 42,
+          "name" : "metrics.allConversionsValue",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 43,
+          "name" : "metrics.allConversionsValueByConversionDate",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 44,
+          "name" : "metrics.averageCost",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 45,
+          "name" : "metrics.averageCpc",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 46,
+          "name" : "metrics.averageCpm",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 47,
+          "name" : "metrics.clicks",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 48,
+          "name" : "metrics.conversions",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 49,
+          "name" : "metrics.conversionsByConversionDate",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 50,
+          "name" : "metrics.conversionsFromInteractionsRate",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 51,
+          "name" : "metrics.conversionsValue",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 52,
+          "name" : "metrics.conversionsValueByConversionDate",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 53,
+          "name" : "metrics.costMicros",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 54,
+          "name" : "metrics.costPerAllConversions",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 55,
+          "name" : "metrics.costPerConversion",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 56,
+          "name" : "metrics.costPerCurrentModelAttributedConversion",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 57,
+          "name" : "metrics.crossDeviceConversions",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 58,
+          "name" : "metrics.ctr",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 59,
+          "name" : "metrics.currentModelAttributedConversions",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 60,
+          "name" : "metrics.currentModelAttributedConversionsValue",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 61,
+          "name" : "metrics.engagements",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 62,
+          "name" : "metrics.gmailForwards",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 63,
+          "name" : "metrics.gmailSaves",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 64,
+          "name" : "metrics.gmailSecondaryClicks",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 65,
+          "name" : "metrics.impressions",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 66,
+          "name" : "metrics.interactionEventTypes",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 67,
+          "name" : "metrics.interactionRate",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 68,
+          "name" : "metrics.interactions",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 69,
+          "name" : "metrics.topImpressionPercentage",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 70,
+          "name" : "metrics.valuePerAllConversions",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 71,
+          "name" : "metrics.valuePerAllConversionsByConversionDate",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 72,
+          "name" : "metrics.valuePerConversion",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 73,
+          "name" : "metrics.valuePerConversionsByConversionDate",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 74,
+          "name" : "metrics.valuePerCurrentModelAttributedConversion",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 75,
+          "name" : "metrics.videoViews",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 76,
+          "name" : "metrics.viewThroughConversions",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 77,
+          "name" : "segments.adNetworkType",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 78,
+          "name" : "segments.date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 79,
+          "name" : "segments.device",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "baseUrl" : "https://googleads.googleapis.com/v18",
+        "requestMethod" : "POST",
+        "endPoint" : "/customers/2395363118/googleAds:searchStream",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "author",
+          "targetKey" : "adGroup.baseAdGroup"
+        }, {
+          "index" : 2,
+          "sourceKey" : "source.name",
+          "targetKey" : "adGroupAd.ad.addedByGoogleAds"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-f2d88a02-6e11-50b5-8ad1-36368b03e376",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[author] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8ecacc81-ceb5-5f9c-b672-f45e87b88fee",
+          "type" : "Custom",
+          "description" : "S.[author] != null"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[content], T.[adGroup.baseAdGroup])",
+            "fixedStringAsNull" : "ssss",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : true,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[content]",
+            "targetColumn" : "T.[adGroup.baseAdGroup]"
+          },
+          "id" : "chck-93111d17-e407-573f-ba6a-f27a125d6c9d",
+          "type" : "SimpleCompare",
+          "description" : "asasAD"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-ffcc619e-cc86-53d8-87cc-80d17fe78840"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " targetcount ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-321453e0-e12c-56af-8bc3-05a973f46330"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-aae9b166-b9f4-5b01-b747-69355223c7f2",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-aae9b166-b9f4-5b01-b747-69355223c7f2 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:58.383948500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
