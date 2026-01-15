@@ -1,0 +1,390 @@
+{
+  "versionId" : "ver-450002db-c25b-5017-9a97-5c26f114caaa",
+  "objectId" : "rule-61fad457-9db3-53da-8c17-f66aeff803ad",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Excel",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "0012",
+    "description" : "checkdesc",
+    "purpose" : "test",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-be2454f3-64fe-5d01-bf06-baf1e2b8cd99",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 10,
+      "stopAtRowCount" : 50,
+      "stopAtTime" : 5,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy",
+      "parameterName" : "Parameter one"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-3e05e5f5-ae5f-547b-ab65-f68135013a36",
+      "input" : "Sql",
+      "configuration" : {
+        "schemaRemarks" : "",
+        "tableName" : "tblname_1756375456488",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-0bcd073b-19b4-5869-91ee-6623f268ad1c",
+        "sql" : "select * from sheet1",
+        "dax" : "",
+        "mdx" : "",
+        "filePath" : "/customers.xlsx",
+        "skipRowTop" : "0",
+        "emptyString" : "true",
+        "fixedStringValue" : "NaN",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "RowId",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "city",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "state",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "street",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "zip",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "first_name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "last_name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-671d4f64-e39a-53d6-8cda-bd22cad6b53d",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[state] == 'LA'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-55cf1c24-f29e-5b5e-bb87-278383a9fce4",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[street]\")",
+            "column" : "S.[street]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3b5ce162-83b2-5913-a430-4fb1e2a1b469",
+          "type" : "Completeness",
+          "description" : "Description"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[state]\", length == 2)",
+            "column" : "S.[state]",
+            "operator" : "equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 2 ]
+          },
+          "id" : "chck-5e15ffee-9fee-5162-be0f-b5e5fdec3e45",
+          "type" : "Length"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[zip]\", pattern = Zip Code)",
+            "column" : "S.[zip]",
+            "pattern" : "Zip Code",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-37614c7e-cd3a-5073-9b55-d25fa03ffffa",
+          "type" : "Pattern"
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[state]\", array[LA])",
+            "column" : "S.[state]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "LA" ]
+          },
+          "id" : "chck-78935784-cb73-5a17-a1ea-e723487351cb",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[zip]\", dataType = Integer)",
+            "column" : "S.[zip]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4e86c1f-00b0-5d12-9d44-b3df0df13f1b",
+          "type" : "Datatype"
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[RowId]\", range  > 5)",
+            "column" : "S.[RowId]",
+            "operator" : "greater than",
+            "datatype" : "NUMERIC",
+            "caseInsensitive" : false,
+            "inputValue" : [ "5" ]
+          },
+          "id" : "chck-2e363cfd-b71d-5d74-97f0-fbf11d276eed",
+          "type" : "Range"
+        }, {
+          "name" : "Chk_0008",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DateCheck(\"S.[last_name]\", date = dd-MM-yy)",
+            "column" : "S.[last_name]",
+            "format" : "dd-MM-yy",
+            "ignoreNull" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b5525c5c-0762-53b2-8598-8e445bf6a0ca",
+          "type" : "Date"
+        }, {
+          "name" : "Fyi_s_rowid",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RowId]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e24f4430-a62e-5d8d-9240-bb888a3eee62",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_city",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[city]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ffd01356-0b75-5370-93f1-6f5b3dee6a7b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_state",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[state]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-affc3fbe-2b10-5dc1-b4ff-939ebe1714e1",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_street",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[street]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d84580bf-a3c3-514f-81f7-29b90a9178ff",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_zip",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[zip]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-83135cf7-84f1-5309-a3d7-233efdacdcbd",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_first_name",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[first_name]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7a0364cd-3361-5adc-a10f-e158d8b61107",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_last_name",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[last_name]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-96e29e82-c2c5-5ce5-bae1-ce8c242bf97c",
+          "type" : "Column"
+        }, {
+          "name" : "Col_0016",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[first_name] + S.[last_name]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8bacca2d-ead0-5c47-9604-424aa994e89c",
+          "type" : "Calculated"
+        }, {
+          "name" : "Chk_0017",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[state] == #15#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2efa6016-32ac-5c47-9582-3eddb39da824",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-d4b98a1d-a9d6-5936-9a40-e03f229538d0"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " rulename ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-f59adb41-482c-53d7-80b7-30d5b44cabe4"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-61fad457-9db3-53da-8c17-f66aeff803ad",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-61fad457-9db3-53da-8c17-f66aeff803ad |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:33:52.146244300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
