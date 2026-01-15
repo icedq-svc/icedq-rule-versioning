@@ -1,19 +1,36 @@
 {
-  "versionId" : "ver-ba970c83-bf65-5aa5-ab6f-a6171ed71f5f",
+  "versionId" : "ver-85000fff-b279-59f9-972b-09516182a466",
   "objectId" : "rule-201e3d14-9fb5-5f6c-8dae-a791d0091c3a",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "R001_V1",
-  "state" : "Draft",
+  "name" : "R001_V6",
+  "state" : "Published",
+  "version" : 5,
   "info" : {
     "ruleType" : "Script",
+    "code" : "0012",
+    "description" : "restore",
     "properties" : {
       "criticality" : "Warning",
       "engineType" : "HighThroughput",
       "languageType" : "groovy"
     },
     "objects" : [ {
+      "id" : "Variable",
+      "type" : "variable",
+      "name" : "set Variables",
+      "configuration" : {
+        "variables" : [ {
+          "name" : "connVar1",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-efcb63e4-c2f5-5800-a629-72138d896701"
+          }
+        } ]
+      }
+    }, {
       "id" : "Script",
       "type" : "script",
       "name" : "script Task",
@@ -35,22 +52,24 @@
             "caseInsensitive" : false
           },
           "isOverride" : true,
-          "id" : "chck-463060d5-c3ac-56b7-b434-a3384bc7ea37"
+          "id" : "chck-ca447cba-80e1-5ede-ba17-ade3cd1a303e"
         } ]
       }
     } ]
   },
-  "commitStatus" : "Discarded",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-201e3d14-9fb5-5f6c-8dae-a791d0091c3a",
-      "commitMessage" : "Message: null | RuleId: rule-201e3d14-9fb5-5f6c-8dae-a791d0091c3a |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-201e3d14-9fb5-5f6c-8dae-a791d0091c3a |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:43:34.851584700Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:44:50.936489200Z[UTC]",
   "updatedBy" : "roshan.n"
 }
