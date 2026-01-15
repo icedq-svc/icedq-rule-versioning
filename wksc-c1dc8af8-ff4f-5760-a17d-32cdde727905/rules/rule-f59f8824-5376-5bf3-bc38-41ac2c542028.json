@@ -1,0 +1,199 @@
+{
+  "versionId" : "ver-a01882ae-0771-561a-9efc-6576c74cc61c",
+  "objectId" : "rule-f59f8824-5376-5bf3-bc38-41ac2c542028",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1762953712_1765438789583_1765438798438_1765439172069",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Duplicate",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtTime" : 200,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-b6fe46a3-2970-5699-a288-7820a7ff82e7",
+      "input" : "Table",
+      "configuration" : {
+        "databaseName" : "StudentManagementDB",
+        "schemaName" : "academics",
+        "tableName" : "Student",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "StudentID",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "FirstName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "LastName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "DOB",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 6,
+          "name" : "Email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "Address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "City",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "State",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "PostalCode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "EnrollmentDate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        } ]
+      },
+      "useCached" : true
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_0001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "duplicateCheck(\"S.[FirstName]\")",
+            "comment" : "duplicateCheck(\"S.[FirstName]\")",
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "columns" : [ {
+              "index" : 1,
+              "name" : "S.[FirstName]",
+              "datatype" : "VARCHAR"
+            } ]
+          },
+          "id" : "chck-2f0e45df-bf3a-5fd2-b319-553b9898cba3",
+          "type" : "Duplicate",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "noOfDuplicates",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUPLICATE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8fdfb123-ed87-5d7d-9aa2-324bf91456f6",
+          "type" : "Column",
+          "description" : "Duplicate records count"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-47962ce5-0728-519d-83c5-7287398080d7"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "import_checks_field_single_select_map",
+      "values" : [ "map1" ]
+    }, {
+      "field" : "import_checks_field_lable",
+      "values" : [ "lable1" ]
+    }, {
+      "field" : "import_checks_field_multiselectdropdown",
+      "values" : [ ]
+    }, {
+      "field" : "import_checks_field_single_select_dropdown",
+      "values" : [ "true" ]
+    }, {
+      "field" : "import_checks_field_toggle",
+      "values" : [ "false" ]
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Rejected",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-f59f8824-5376-5bf3-bc38-41ac2c542028",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-f59f8824-5376-5bf3-bc38-41ac2c542028 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:37:44.679541800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
