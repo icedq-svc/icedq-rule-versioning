@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-cdfed729-cd96-52ee-82de-54f4417decdc",
+  "versionId" : "ver-00cd39b8-5f82-580f-87c7-2373ae971727",
   "objectId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Validation-with-Default",
   "state" : "Published",
-  "version" : 11,
+  "version" : 12,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -29,6 +29,7 @@
       "configuration" : {
         "schemaName" : "REGRESSION_DATABASE",
         "tableName" : "CUSTOMER",
+        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -254,6 +255,17 @@
           "id" : "chck-892d64b8-114d-5b06-abc6-a518e2efa1a5",
           "type" : "Calculated",
           "description" : "yearly income greater than 10000"
+        }, {
+          "name" : "S@CUSTOMERID@null",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CUSTOMERID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2f2b026d-6f67-5427-ba49-441defc7b8ef",
+          "type" : "Custom"
         } ]
       }
     }, {
@@ -320,7 +332,7 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule summary variable",
+  "commitMessage" : "Updated rule configuration add new custom check",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
@@ -329,10 +341,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
-      "commitMessage" : "Message: Updated rule summary variable | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration add new custom check | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:02.676790400Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:19.683957700Z[UTC]",
   "updatedBy" : "roshan.n"
 }
