@@ -1,0 +1,57 @@
+{
+  "versionId" : "ver-2fa0f686-5898-5966-9364-abecf8e65a3b",
+  "objectId" : "rule-f72653a9-435d-5db8-b1f2-515c8dd68449",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_Script_CO_Workflow_Scriptrule",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Script",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput"
+    },
+    "objects" : [ {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "def objectId='wkfl-dffb3dc8-a606-5e5a-b9aa-f7e603889b89'\r\ndef result= workflow.execute(objectId)\r\ninstanceLog.info('Workflow executed successfully')\r\nreturn result.exitCode"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-b7bed74a-d617-5480-bdaf-c99e4bce52a9"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-f72653a9-435d-5db8-b1f2-515c8dd68449",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-f72653a9-435d-5db8-b1f2-515c8dd68449 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:22.556137200Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
