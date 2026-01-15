@@ -1,0 +1,163 @@
+{
+  "versionId" : "ver-b2ddaa3b-e27f-51b1-b169-bea0030ff55f",
+  "objectId" : "rule-9a3b9bc7-0728-5e94-a0cc-cdc5264afe34",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-15445-publish_1764762290171",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 200,
+      "stopAtRowCount" : 200,
+      "stopAtTime" : 200,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-b6fe46a3-2970-5699-a288-7820a7ff82e7",
+      "input" : "Table",
+      "configuration" : {
+        "databaseName" : "StudentManagementDB",
+        "schemaName" : "academics",
+        "tableName" : "Grade",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "GradeID",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "EnrollmentID",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 3,
+          "name" : "Grade",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Remarks",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "GradedDate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        } ]
+      },
+      "useCached" : true
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-3e7f88cb-331d-59ed-9c24-164cb7836f8f",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[Grade]\")",
+            "column" : "S.[Grade]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4cdd61a7-aa94-5c4e-8306-7b3b9c8d5a96",
+          "type" : "Completeness",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "500",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-52896712-8e86-5f47-86b1-5c6d653d0dd2"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "import_checks_field_single_select_map",
+      "values" : [ "map1" ]
+    }, {
+      "field" : "import_checks_field_lable",
+      "values" : [ "lable1" ]
+    }, {
+      "field" : "import_checks_field_multiselectdropdown",
+      "values" : [ ]
+    }, {
+      "field" : "import_checks_field_single_select_dropdown",
+      "values" : [ "true" ]
+    }, {
+      "field" : "import_checks_field_toggle",
+      "values" : [ "false" ]
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "commitTag" : "sample",
+  "commitStatus" : "Rejected",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-9a3b9bc7-0728-5e94-a0cc-cdc5264afe34",
+      "commitMessage" : "Message: Updated rule configuration\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n | RuleId: rule-9a3b9bc7-0728-5e94-a0cc-cdc5264afe34 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:41.372782400Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
