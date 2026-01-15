@@ -1,0 +1,1960 @@
+{
+  "versionId" : "ver-65170a8d-d9a4-500f-a408-73c4dc38889c",
+  "objectId" : "rule-5193f2ea-3512-5112-ae69-fa13c5ae7ee9",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_100_Columns",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-31a69540-9ad2-53fb-8ae9-ae8d2f063d53",
+      "input" : "Snapshot",
+      "configuration" : {
+        "appendOrderBy" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Product Category",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Product",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Revenue Won",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Qualified Pipeline",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Forecast %",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "Purchase Process",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Decision Maker Identified",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "Status",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "Sales Stage",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "Weeks Open",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "DaysToClose",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Discount",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Probability",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Rating",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Days Remaining In Pipeline",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "Blank",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "Opportunity Created On",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "CloseDate",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "Days Remaining In Pipeline (bins)",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "Forecast",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "Opportunity Count In Pipeline",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "Opportunity Count",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "Count of Won",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "Count of Lost",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "Close %",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "Revenue Open",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "Revenue Won Average Deal Size",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "Forecast by Win/Loss Ratio",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "bisnp-d8a4aca7-ec7b-5999-91f5-1c1954695d43",
+        "visualId" : "9f70be51c71a0fb66724",
+        "granularity" : "Detail"
+      },
+      "reportScanId" : "birpt-84fcd239-2f78-518f-bed9-ab3b3ded0e74"
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-31a69540-9ad2-53fb-8ae9-ae8d2f063d53",
+      "input" : "Snapshot",
+      "configuration" : {
+        "appendOrderBy" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Product Category",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Product",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Revenue Won",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Qualified Pipeline",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Forecast %",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "Purchase Process",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Decision Maker Identified",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "Status",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "Sales Stage",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "Weeks Open",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "DaysToClose",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Discount",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Probability",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Rating",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Days Remaining In Pipeline",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "Blank",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "Opportunity Created On",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "CloseDate",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "Days Remaining In Pipeline (bins)",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "Forecast",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "Opportunity Count In Pipeline",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "Opportunity Count",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "Count of Won",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "Count of Lost",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "Close %",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "Revenue Open",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "Revenue Won Average Deal Size",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "Forecast by Win/Loss Ratio",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "bisnp-d8a4aca7-ec7b-5999-91f5-1c1954695d43",
+        "visualId" : "9f70be51c71a0fb66724",
+        "granularity" : "Detail"
+      },
+      "reportScanId" : "birpt-84fcd239-2f78-518f-bed9-ab3b3ded0e74"
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "Product",
+          "targetKey" : "Product"
+        }, {
+          "index" : 2,
+          "sourceKey" : "Revenue Won",
+          "targetKey" : "Revenue Won"
+        }, {
+          "index" : 3,
+          "sourceKey" : "Qualified Pipeline",
+          "targetKey" : "Qualified Pipeline"
+        }, {
+          "index" : 4,
+          "sourceKey" : "Forecast %",
+          "targetKey" : "Forecast %"
+        }, {
+          "index" : 5,
+          "sourceKey" : "Purchase Process",
+          "targetKey" : "Purchase Process"
+        }, {
+          "index" : 6,
+          "sourceKey" : "Decision Maker Identified",
+          "targetKey" : "Decision Maker Identified"
+        }, {
+          "index" : 7,
+          "sourceKey" : "Status",
+          "targetKey" : "Status"
+        }, {
+          "index" : 8,
+          "sourceKey" : "Sales Stage",
+          "targetKey" : "Sales Stage"
+        }, {
+          "index" : 9,
+          "sourceKey" : "Weeks Open",
+          "targetKey" : "Weeks Open"
+        }, {
+          "index" : 10,
+          "sourceKey" : "DaysToClose",
+          "targetKey" : "DaysToClose"
+        }, {
+          "index" : 11,
+          "sourceKey" : "Discount",
+          "targetKey" : "Discount"
+        }, {
+          "index" : 12,
+          "sourceKey" : "Probability",
+          "targetKey" : "Probability"
+        }, {
+          "index" : 13,
+          "sourceKey" : "Rating",
+          "targetKey" : "Rating"
+        }, {
+          "index" : 14,
+          "sourceKey" : "Days Remaining In Pipeline",
+          "targetKey" : "Days Remaining In Pipeline"
+        }, {
+          "index" : 15,
+          "sourceKey" : "Blank",
+          "targetKey" : "Blank"
+        }, {
+          "index" : 16,
+          "sourceKey" : "Opportunity Created On",
+          "targetKey" : "Opportunity Created On"
+        }, {
+          "index" : 17,
+          "sourceKey" : "CloseDate",
+          "targetKey" : "CloseDate"
+        }, {
+          "index" : 18,
+          "sourceKey" : "Days Remaining In Pipeline (bins)",
+          "targetKey" : "Days Remaining In Pipeline (bins)"
+        }, {
+          "index" : 19,
+          "sourceKey" : "Forecast",
+          "targetKey" : "Forecast"
+        }, {
+          "index" : 20,
+          "sourceKey" : "Opportunity Count In Pipeline",
+          "targetKey" : "Opportunity Count In Pipeline"
+        }, {
+          "index" : 21,
+          "sourceKey" : "Opportunity Count",
+          "targetKey" : "Opportunity Count"
+        }, {
+          "index" : 22,
+          "sourceKey" : "Count of Won",
+          "targetKey" : "Count of Won"
+        }, {
+          "index" : 23,
+          "sourceKey" : "Count of Lost",
+          "targetKey" : "Count of Lost"
+        }, {
+          "index" : 24,
+          "sourceKey" : "Close %",
+          "targetKey" : "Close %"
+        }, {
+          "index" : 25,
+          "sourceKey" : "Revenue Open",
+          "targetKey" : "Revenue Open"
+        }, {
+          "index" : 26,
+          "sourceKey" : "Revenue Won Average Deal Size",
+          "targetKey" : "Revenue Won Average Deal Size"
+        }, {
+          "index" : 27,
+          "sourceKey" : "Forecast by Win/Loss Ratio",
+          "targetKey" : "Forecast by Win/Loss Ratio"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-106aad77-626c-5d6f-abbf-966f40478072",
+          "type" : "ResultType"
+        }, {
+          "name" : "Product",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Product] == T.[Product]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2dcf2006-ba64-5341-906c-317e232386d0",
+          "type" : "Custom"
+        }, {
+          "name" : "Revenue won",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Revenue Won] == T.[Revenue Won]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e557db4a-1363-54bc-b814-9a88c0e94785",
+          "type" : "Custom"
+        }, {
+          "name" : "Qualified pipeline",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Qualified Pipeline] == T.[Qualified Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-59770fdb-491f-5d2b-9e75-a4a6f86268d8",
+          "type" : "Custom"
+        }, {
+          "name" : "Forecast %",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Forecast %] == T.[Forecast %]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2b2be478-2746-570b-90e9-73793b4deae8",
+          "type" : "Custom"
+        }, {
+          "name" : "Purchase process",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Purchase Process] == T.[Purchase Process]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f13b54b2-0cfb-5536-8c3f-52c6c143d94f",
+          "type" : "Custom"
+        }, {
+          "name" : "Decision maker identified",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Decision Maker Identified] == T.[Decision Maker Identified]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0a60d38a-2087-5879-849d-d2c5ee527761",
+          "type" : "Custom"
+        }, {
+          "name" : "Status",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Status] == T.[Status]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a28dc1d3-01ce-502c-9a58-bc8cc6662043",
+          "type" : "Custom"
+        }, {
+          "name" : "Sales stage",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Sales Stage] == T.[Sales Stage]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6f92f011-de5c-5154-83a6-602399f12806",
+          "type" : "Custom"
+        }, {
+          "name" : "Weeks open",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Weeks Open] == T.[Weeks Open]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ccd6f60c-916e-54ac-9f3f-399a37fa309e",
+          "type" : "Custom"
+        }, {
+          "name" : "Daystoclose",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DaysToClose] == T.[DaysToClose]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6028f60f-4426-59e6-99a1-fe2bb923cd01",
+          "type" : "Custom"
+        }, {
+          "name" : "Discount",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Discount] == T.[Discount]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c2c8c5c0-a3df-5ad3-8ff1-d23c237981a4",
+          "type" : "Custom"
+        }, {
+          "name" : "Probability",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Probability] == T.[Probability]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-db8492a0-aa3d-5efc-8fd6-40e8ec113fcf",
+          "type" : "Custom"
+        }, {
+          "name" : "Rating",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Rating] == T.[Rating]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d6cffd19-700b-5ad1-9865-e16fea483c40",
+          "type" : "Custom"
+        }, {
+          "name" : "Days remaining in pipeline",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Days Remaining In Pipeline] == T.[Days Remaining In Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c62335c4-4779-5979-822a-f747907ec007",
+          "type" : "Custom"
+        }, {
+          "name" : "Blank",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Blank] == T.[Blank]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c2d939da-d648-538a-835f-1bfcd5dad2ca",
+          "type" : "Custom"
+        }, {
+          "name" : "Opportunity created on",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Opportunity Created On] == T.[Opportunity Created On]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d2183d0a-ba1c-5648-bce9-0a2e3081d9ea",
+          "type" : "Custom"
+        }, {
+          "name" : "Closedate",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CloseDate] == T.[CloseDate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-13c963d4-4124-5c87-8835-50db3faf09a6",
+          "type" : "Custom"
+        }, {
+          "name" : "Days remaining in pipeline (bins)",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Days Remaining In Pipeline (bins)] == T.[Days Remaining In Pipeline (bins)]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-95615df9-6886-5ca8-bcdf-88de738bc534",
+          "type" : "Custom"
+        }, {
+          "name" : "Forecast",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Forecast] == T.[Forecast]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6ddd71df-2c78-5af9-9268-53851e475881",
+          "type" : "Custom"
+        }, {
+          "name" : "Opportunity count in pipeline",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Opportunity Count In Pipeline] == T.[Opportunity Count In Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-960b87b8-7120-50fa-81a7-db8f1f13c362",
+          "type" : "Custom"
+        }, {
+          "name" : "Opportunity count",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Opportunity Count] == T.[Opportunity Count]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4d5080bd-f28f-553a-baeb-c7d624b55a0e",
+          "type" : "Custom"
+        }, {
+          "name" : "Count of won",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Count of Won] == T.[Count of Won]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e5159200-cee6-5153-9b4b-915bb0e5e104",
+          "type" : "Custom"
+        }, {
+          "name" : "Count of lost",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Count of Lost] == T.[Count of Lost]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-078c2c52-e8df-53d1-83c7-ccedc7373939",
+          "type" : "Custom"
+        }, {
+          "name" : "Close %",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Close %] == T.[Close %]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-78b8bd22-8851-5e1c-af6e-6fdf4ec7e480",
+          "type" : "Custom"
+        }, {
+          "name" : "Revenue open",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Revenue Open] == T.[Revenue Open]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-07749db6-174a-5c3a-bf0f-6dc725a3bedf",
+          "type" : "Custom"
+        }, {
+          "name" : "Revenue won average deal size",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Revenue Won Average Deal Size] == T.[Revenue Won Average Deal Size]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-be738d04-f85f-576f-a34b-47e14b11f06d",
+          "type" : "Custom"
+        }, {
+          "name" : "Forecast by win/loss ratio",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Forecast by Win/Loss Ratio] == T.[Forecast by Win/Loss Ratio]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ff6cc4b6-c10d-57ae-8e49-70658b76bdc5",
+          "type" : "Custom"
+        }, {
+          "name" : "Fyi_t_product category",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Product Category]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6e694e39-9a3c-50f2-a5d1-1457ebb5ed3d",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_product",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Product]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ebce74c0-a389-5275-a29a-6e3a7a73b16f",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_revenue won",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Revenue Won]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b57a6c6b-be4b-5b61-9d1b-4cd8c7d5aa2b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_qualified pipeline",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Qualified Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e05b04c3-ddf2-5753-b6a3-c3f43bd2ca5c",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_forecast %",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Forecast %]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dfca32e0-e880-5411-bad8-085429b2e82b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_purchase process",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Purchase Process]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-20eb9b5c-ab15-573f-9b95-46c7b1125a73",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_decision maker identified",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Decision Maker Identified]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-35fd563e-1156-5278-b2a8-621c070303fe",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_status",
+          "index" : 36,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Status]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4b2f3aba-1a74-56ce-bb85-37c02f866786",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_sales stage",
+          "index" : 37,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Sales Stage]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d1bdfccf-5f77-5f1f-85bc-01e203c4a311",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_weeks open",
+          "index" : 38,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Weeks Open]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6fb30094-c512-53dc-9af6-344a5ca1fd11",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_daystoclose",
+          "index" : 39,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[DaysToClose]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8af47cd5-f71c-5732-84be-e4db166ff5c8",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_discount",
+          "index" : 40,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Discount]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-74c50946-21a1-5cd9-b499-4c405d0d3787",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_probability",
+          "index" : 41,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Probability]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a03ab55a-d716-55b1-b415-319e3fee2cac",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_rating",
+          "index" : 42,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Rating]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5ccd28bd-79b0-5f12-86fe-8d4f09911ada",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_days remaining in pipeline",
+          "index" : 43,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Days Remaining In Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c0bf9567-2650-5e4e-b147-1e249417b8f1",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_blank",
+          "index" : 44,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Blank]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e4cc76d0-b262-5508-8605-2ed8ed72edeb",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_opportunity created on",
+          "index" : 45,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Opportunity Created On]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e48c0a30-608c-5eb1-963e-cbb2c62ed7d7",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_closedate",
+          "index" : 46,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[CloseDate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-67535f1b-b4cd-5fda-9743-5059a6df76a4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_days remaining in pipeline (bins)",
+          "index" : 47,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Days Remaining In Pipeline (bins)]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6dada5e5-9da8-53e7-8153-678642898378",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_forecast",
+          "index" : 48,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Forecast]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4802dcf6-d87b-5e0c-84ec-9c9c36b760ea",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_opportunity count in pipeline",
+          "index" : 49,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Opportunity Count In Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-298f68cf-5150-55d5-aec6-311594ae6205",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_opportunity count",
+          "index" : 50,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Opportunity Count]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7ff8890e-8b44-5588-bf4a-b5942261f92a",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_count of won",
+          "index" : 51,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Count of Won]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-df15c21f-7250-5051-9c68-2c51a5cc335f",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_count of lost",
+          "index" : 52,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Count of Lost]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-644109b7-8216-566b-8f32-d9cd83681771",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_close %",
+          "index" : 53,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Close %]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6c8f8e61-91ac-5508-9c29-9990ce466909",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_revenue open",
+          "index" : 54,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Revenue Open]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8319d7ec-d946-5693-8c7a-bf159fb36465",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_revenue won average deal size",
+          "index" : 55,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Revenue Won Average Deal Size]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-38455f18-4988-5090-a957-972bf828dc81",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_t_forecast by win/loss ratio",
+          "index" : 56,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Forecast by Win/Loss Ratio]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f36964ca-bc9f-53e1-ae86-d2b84686435a",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_product category",
+          "index" : 57,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Product Category]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fbdb179e-4812-5b80-8728-0076246d9395",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_product",
+          "index" : 58,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Product]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1698de6e-0aba-5f37-af25-609ab049c615",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_revenue won",
+          "index" : 59,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Revenue Won]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3f9a88ea-16e0-5622-8d5b-2afcddcf2112",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_qualified pipeline",
+          "index" : 60,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Qualified Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a49b09e9-dbf3-5062-b098-ae06596d1188",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_forecast %",
+          "index" : 61,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Forecast %]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-61edce0b-b143-50f3-b2ca-9e33209fa5d0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_purchase process",
+          "index" : 62,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Purchase Process]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2be35bc9-c74a-5a9c-b4cf-af91ce4703e4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_decision maker identified",
+          "index" : 63,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Decision Maker Identified]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ffe5e59d-16f8-5977-9e1d-a67c30a50cf4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_status",
+          "index" : 64,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Status]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-65b09658-7507-59c6-a43e-e8a085b47bef",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_sales stage",
+          "index" : 65,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Sales Stage]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c5403e26-d3bf-5412-8e9b-1f02c1890450",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_weeks open",
+          "index" : 66,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Weeks Open]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2d01ec26-607f-57f9-9dd1-b8e43e68aea9",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_daystoclose",
+          "index" : 67,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DaysToClose]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-65fbff84-8bc6-5802-9624-ea92fca4fe59",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_discount",
+          "index" : 68,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Discount]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4445f951-0292-56aa-8a91-1e8347be46a5",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_probability",
+          "index" : 69,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Probability]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2bb05a23-79d4-5f97-92d3-fea808a246c7",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_rating",
+          "index" : 70,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Rating]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0c9d3193-13a8-5275-b34e-c9e3f79ed406",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_days remaining in pipeline",
+          "index" : 71,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Days Remaining In Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3eabdfc6-669f-51d4-82a0-5bf69d2b98b5",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_blank",
+          "index" : 72,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Blank]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-77483b29-d2be-5d6e-b346-4820c9462ceb",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_opportunity created on",
+          "index" : 73,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Opportunity Created On]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4ccadeba-1918-5707-a31f-44d725d1b298",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_closedate",
+          "index" : 74,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CloseDate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-96706908-da94-53b1-9d0d-fdade15d6f9f",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_days remaining in pipeline (bins)",
+          "index" : 75,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Days Remaining In Pipeline (bins)]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cf73aa87-95f5-516f-874b-dfe0799828d6",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_forecast",
+          "index" : 76,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Forecast]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3716e8ec-a8c0-5416-9d55-d06f2597fd0e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_opportunity count in pipeline",
+          "index" : 77,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Opportunity Count In Pipeline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2edf3b5d-29c1-5d0c-89da-90efc010bf12",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_opportunity count",
+          "index" : 78,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Opportunity Count]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-54550e44-7ec0-5dad-a872-0bf29d4aadc4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_count of won",
+          "index" : 79,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Count of Won]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-776f18dc-02e1-5e37-a3f4-56582ad937a6",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_count of lost",
+          "index" : 80,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Count of Lost]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4bba3ca8-770d-58f2-847a-96bf2d2b72c5",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_close %",
+          "index" : 81,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Close %]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ee06e05c-6649-587d-8666-c7838cec913f",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_revenue open",
+          "index" : 82,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Revenue Open]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2401d4d1-fce7-5013-b7ed-2e0aeaa8de3a",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_revenue won average deal size",
+          "index" : 83,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Revenue Won Average Deal Size]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5b63101d-53b8-5788-a34c-fb7e42fd4b7d",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_forecast by win/loss ratio",
+          "index" : 84,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Forecast by Win/Loss Ratio]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-82b2b23e-ffd9-5a90-a07c-5a89875c7705",
+          "type" : "Column"
+        }, {
+          "name" : "Chk_0084",
+          "index" : 85,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Product Category], T.[Product Category])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Product Category]",
+            "targetColumn" : "T.[Product Category]"
+          },
+          "id" : "chck-65734dbc-4f58-562c-b55e-ee26164b5f7a",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0085",
+          "index" : 86,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Product], T.[Product])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Product]",
+            "targetColumn" : "T.[Product]"
+          },
+          "id" : "chck-f1a09e95-f269-5ac5-be04-a56142e655ac",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0086",
+          "index" : 87,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Revenue Won], T.[Revenue Won])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Revenue Won]",
+            "targetColumn" : "T.[Revenue Won]"
+          },
+          "id" : "chck-e5ef1495-d38a-5330-832a-ad60feace2ef",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0087",
+          "index" : 88,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Qualified Pipeline], T.[Qualified Pipeline])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Qualified Pipeline]",
+            "targetColumn" : "T.[Qualified Pipeline]"
+          },
+          "id" : "chck-4476e624-2301-50dd-a086-f41660e3a498",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0088",
+          "index" : 89,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Forecast %], T.[Forecast %])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Forecast %]",
+            "targetColumn" : "T.[Forecast %]"
+          },
+          "id" : "chck-481ede12-c207-5dfb-ad99-19756448e360",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0089",
+          "index" : 90,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Purchase Process], T.[Purchase Process])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Purchase Process]",
+            "targetColumn" : "T.[Purchase Process]"
+          },
+          "id" : "chck-554acecc-d741-5ef8-a5ce-e2d20e85743b",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0090",
+          "index" : 91,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Decision Maker Identified], T.[Decision Maker Identified])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Decision Maker Identified]",
+            "targetColumn" : "T.[Decision Maker Identified]"
+          },
+          "id" : "chck-69613059-7eab-5cc3-97bc-7d8b4cde5e50",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0091",
+          "index" : 92,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Status], T.[Status])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Status]",
+            "targetColumn" : "T.[Status]"
+          },
+          "id" : "chck-9161d94b-749b-5083-852a-cb1cff3baaa8",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0092",
+          "index" : 93,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Sales Stage], T.[Sales Stage])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Sales Stage]",
+            "targetColumn" : "T.[Sales Stage]"
+          },
+          "id" : "chck-addf3036-afa9-5681-bddb-ccdbca8ba101",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0093",
+          "index" : 94,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Weeks Open], T.[Weeks Open])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Weeks Open]",
+            "targetColumn" : "T.[Weeks Open]"
+          },
+          "id" : "chck-2b4b4944-8331-5f0d-897f-ca41028161d7",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0094",
+          "index" : 95,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[DaysToClose], T.[DaysToClose])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[DaysToClose]",
+            "targetColumn" : "T.[DaysToClose]"
+          },
+          "id" : "chck-e147b466-5a55-518d-b8cd-1ba1972eaea0",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0095",
+          "index" : 96,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Discount], T.[Discount])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Discount]",
+            "targetColumn" : "T.[Discount]"
+          },
+          "id" : "chck-08d37e8b-0857-523d-8a8c-7f5f3161e6ed",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0096",
+          "index" : 97,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Probability], T.[Probability])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Probability]",
+            "targetColumn" : "T.[Probability]"
+          },
+          "id" : "chck-89f0f64a-8a69-5e41-bfae-825ee0d8fe3b",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0097",
+          "index" : 98,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Rating], T.[Rating])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Rating]",
+            "targetColumn" : "T.[Rating]"
+          },
+          "id" : "chck-1bf66ea2-6712-58c0-bc08-0c30ad94ba9a",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0098",
+          "index" : 99,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Days Remaining In Pipeline], T.[Days Remaining In Pipeline])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Days Remaining In Pipeline]",
+            "targetColumn" : "T.[Days Remaining In Pipeline]"
+          },
+          "id" : "chck-6f5fc64a-a0e0-5ebf-82ee-b2dac6673e33",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0099",
+          "index" : 100,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Blank], T.[Blank])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Blank]",
+            "targetColumn" : "T.[Blank]"
+          },
+          "id" : "chck-afe36633-c92c-5fe8-bd9d-d119ac976821",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0101",
+          "index" : 101,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Opportunity Created On], T.[Opportunity Created On])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Opportunity Created On]",
+            "targetColumn" : "T.[Opportunity Created On]"
+          },
+          "id" : "chck-2e0dfc68-5dbe-5f65-b7b1-06af0e166033",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0102",
+          "index" : 102,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[CloseDate], T.[CloseDate])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[CloseDate]",
+            "targetColumn" : "T.[CloseDate]"
+          },
+          "id" : "chck-2d97904d-22b6-5748-bf2e-75328894704a",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0103",
+          "index" : 103,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Days Remaining In Pipeline (bins)], T.[Days Remaining In Pipeline (bins)])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Days Remaining In Pipeline (bins)]",
+            "targetColumn" : "T.[Days Remaining In Pipeline (bins)]"
+          },
+          "id" : "chck-e906c7b3-c6e3-5317-8239-9280d6503002",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0104",
+          "index" : 104,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Forecast], T.[Forecast])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Forecast]",
+            "targetColumn" : "T.[Forecast]"
+          },
+          "id" : "chck-d3b49ef1-b37b-5496-aeee-7d9560f9ec20",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0105",
+          "index" : 105,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Opportunity Count In Pipeline], T.[Opportunity Count In Pipeline])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Opportunity Count In Pipeline]",
+            "targetColumn" : "T.[Opportunity Count In Pipeline]"
+          },
+          "id" : "chck-29296a27-51de-582f-97bd-ff3e9c4ec323",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0106",
+          "index" : 106,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Opportunity Count], T.[Opportunity Count])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Opportunity Count]",
+            "targetColumn" : "T.[Opportunity Count]"
+          },
+          "id" : "chck-dcb163ff-4b91-5936-9112-59966f0722cc",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0107",
+          "index" : 107,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Count of Won], T.[Count of Won])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Count of Won]",
+            "targetColumn" : "T.[Count of Won]"
+          },
+          "id" : "chck-3323c989-778b-5183-a0ab-0df2b1922f4e",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0108",
+          "index" : 108,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Count of Lost], T.[Count of Lost])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Count of Lost]",
+            "targetColumn" : "T.[Count of Lost]"
+          },
+          "id" : "chck-d5c4d0da-1427-5c98-91f2-1a6643812d18",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0109",
+          "index" : 109,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Close %], T.[Close %])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Close %]",
+            "targetColumn" : "T.[Close %]"
+          },
+          "id" : "chck-7867659a-9ee4-5e33-a614-b404456b1e7c",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0110",
+          "index" : 110,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Revenue Open], T.[Revenue Open])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Revenue Open]",
+            "targetColumn" : "T.[Revenue Open]"
+          },
+          "id" : "chck-fca8fb55-bbba-5d7b-9559-a4e8087ee472",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0111",
+          "index" : 111,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Revenue Won Average Deal Size], T.[Revenue Won Average Deal Size])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Revenue Won Average Deal Size]",
+            "targetColumn" : "T.[Revenue Won Average Deal Size]"
+          },
+          "id" : "chck-18656873-6b7f-50b0-93f4-ed3b6a746aee",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0112",
+          "index" : 112,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Forecast by Win/Loss Ratio], T.[Forecast by Win/Loss Ratio])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Forecast by Win/Loss Ratio]",
+            "targetColumn" : "T.[Forecast by Win/Loss Ratio]"
+          },
+          "id" : "chck-16b3ab2d-4988-5632-a5b3-e9c09507c306",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Col_0112",
+          "index" : 113,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Product] == T.[Product]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-32b9fba0-c477-5b01-82ab-c6774433c5f5",
+          "type" : "Calculated"
+        }, {
+          "name" : "Chk_0113",
+          "index" : 114,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Qualified Pipeline] ==  T.[Revenue Won]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-67f40698-d644-5e0b-b772-68223baff1cb",
+          "type" : "Custom"
+        }, {
+          "name" : "Col_0114",
+          "index" : 115,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Discount] * 2",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-af54ac09-d92d-56df-933c-5798594e25b2",
+          "type" : "Calculated"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-3e916a34-8626-5087-8ed7-4a5e5ae53df3"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-5193f2ea-3512-5112-ae69-fa13c5ae7ee9",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-5193f2ea-3512-5112-ae69-fa13c5ae7ee9 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:23.824244200Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
