@@ -1,0 +1,257 @@
+{
+  "versionId" : "ver-57275220-82f8-5b41-8934-0168f7a3b6c7",
+  "objectId" : "rule-ec00b40a-0aed-5aa5-a94a-27bf91705146",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RangeCheck",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-2d5a1e44-6a8c-55d1-85cb-317c21684a21",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "ApacheHBase",
+        "tableName" : "all_datatypes",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "RowKey",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "cf:col_bigint",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 3,
+          "name" : "cf:col_binary",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "cf:col_bit",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "cf:col_char",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "cf:col_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "cf:col_datetime",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 8,
+          "name" : "cf:col_decimal",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 9,
+          "name" : "cf:col_double",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 10,
+          "name" : "cf:col_float",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "cf:col_int",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "cf:col_numeric",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 13,
+          "name" : "cf:col_smallint",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 14,
+          "name" : "cf:col_time",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 15,
+          "name" : "cf:col_tinyint",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 16,
+          "name" : "cf:col_varchar",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-717b77e5-e18e-5343-88c9-5089e1126df8",
+          "type" : "ResultType"
+        }, {
+          "name" : "bigint",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[cf:col_bigint]\", range  > 7493373822)",
+            "column" : "S.[cf:col_bigint]",
+            "operator" : "greater than",
+            "datatype" : "LONG",
+            "caseInsensitive" : false,
+            "inputValue" : [ "7493373822" ]
+          },
+          "id" : "chck-85c28be3-99c7-5c2c-a19f-90603e9075f4",
+          "type" : "Range",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "int",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[cf:col_int]\", range  >= 40136)",
+            "column" : "S.[cf:col_int]",
+            "operator" : "greater than equal to",
+            "datatype" : "NUMERIC",
+            "caseInsensitive" : false,
+            "inputValue" : [ "40136" ]
+          },
+          "id" : "chck-8f0a9589-4018-5f02-8a45-c2d46ea010d1",
+          "type" : "Range",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "float",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[cf:col_float]\", range  < 494.78)",
+            "column" : "S.[cf:col_float]",
+            "operator" : "less than",
+            "datatype" : "DOUBLE",
+            "caseInsensitive" : false,
+            "inputValue" : [ "494.78" ]
+          },
+          "id" : "chck-5a0b4fb9-4159-5c7f-9844-0feff7fab2d7",
+          "type" : "Range",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[cf:col_date]\", range  <= Date.parse('yyyy-MM-dd','2025-07-13'))",
+            "column" : "S.[cf:col_date]",
+            "operator" : "less than equal to",
+            "datatype" : "DATE",
+            "ignoreNull" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "Date.parse('yyyy-MM-dd','2025-07-13')" ]
+          },
+          "id" : "chck-bdb5f02c-7c01-511b-9030-5f57092745a5",
+          "type" : "Range",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e679ee29-ca48-598f-9468-a1efbafe67d2"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-ec00b40a-0aed-5aa5-a94a-27bf91705146",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-ec00b40a-0aed-5aa5-a94a-27bf91705146 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:37.147671900Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
