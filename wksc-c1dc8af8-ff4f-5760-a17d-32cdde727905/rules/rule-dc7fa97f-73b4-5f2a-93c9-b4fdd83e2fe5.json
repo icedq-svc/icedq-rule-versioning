@@ -1,0 +1,596 @@
+{
+  "versionId" : "ver-e78b89dc-aeaf-571b-8d92-dd37c0de78ae",
+  "objectId" : "rule-dc7fa97f-73b4-5f2a-93c9-b4fdd83e2fe5",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rl001_Excel  Recon  10",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00",
+    "description" : "This template creates recon rule where users have to provide the source and target sql. The first column in the SQL will be used for diff and equal to expressions will be created for rest of the columns with same column position.",
+    "purpose" : "Join and Expression are based on column position.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-a619668b-e2b2-5de0-a738-02dc42c24064",
+      "input" : "Sql",
+      "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
+        "tableName" : "report1",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-671f24c3-8f64-5f7b-b702-6a80f81aaddb",
+        "sql" : "select * from Report1",
+        "container" : "torana-files/QATestingFile/ExcelFiles/",
+        "filePath" : "Customer.xlsx",
+        "skipRowTop" : "0",
+        "emptyString" : "true",
+        "fixedStringValue" : "NaN",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "overrideLayout" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "RowId",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "customerid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "acctnumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "firstname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "lastname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "birthdate",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "datefirstpurchase",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "phoneno",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "yearlyincome",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "addressid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document",
+        "outputDelimiter" : ","
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-a619668b-e2b2-5de0-a738-02dc42c24064",
+      "input" : "Sql",
+      "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
+        "tableName" : "report1",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-6780dcb5-f720-5bbc-9f00-5ea8439a22f3",
+        "sql" : "select * from Report1",
+        "fileType" : "Delimited",
+        "container" : "torana-files/QATestingFile/ExcelFiles/",
+        "filePath" : "Customer.xlsx",
+        "skipRowTop" : "0",
+        "emptyString" : "true",
+        "fixedStringValue" : "NaN",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "overrideLayout" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "detectDatatype" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "RowId",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "customerid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "acctnumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "firstname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "lastname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "birthdate",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "datefirstpurchase",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "phoneno",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "yearlyincome",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "addressid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document",
+        "outputDelimiter" : ","
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "RowId",
+          "targetKey" : "RowId"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-14ad43c8-368c-5538-988e-fd3e0bf8adaf",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_firstname",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[firstname] == T.[firstname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-166cf297-eb62-5261-b3d9-f8a816533f5f",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_birthdate",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[birthdate] == T.[birthdate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-744ab99e-4a19-53ce-847a-b2155dd5f9df",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_gender",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[gender] == T.[gender]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3297e1e9-69d2-507e-aad2-76b4c0da6790",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_acctnumber",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acctnumber] == T.[acctnumber]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b27d7885-33d0-5ee1-8745-c0a4f4b3bdef",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_customerid",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[customerid] == T.[customerid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5dbb2da2-fc1e-5d30-928e-bb794417fed2",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_yearlyincome",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[yearlyincome] == T.[yearlyincome]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8e3a8830-54e4-5056-aae3-59527d3d60b6",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_datefirstpurchase",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[datefirstpurchase] == T.[datefirstpurchase]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-87c30dbb-8f84-5172-82b6-b34d6224f2c2",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_phoneno",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[phoneno] == T.[phoneno]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5fe21fca-b88a-54d1-83f1-f0f5e52134ef",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_email",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[email] == T.[email]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c5433acf-b7fc-5a8e-bb98-ea9d1d9cbdd0",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_RowId",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RowId] == T.[RowId]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d51fa512-a9b9-5c4b-b5d7-4b1a6c328be3",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_lastname",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[lastname] == T.[lastname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-75cb0bc9-9049-58ae-b9c7-79b69e6da24f",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "ch_addressid",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[addressid] == T.[addressid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-85a3b099-387a-5d36-97e7-fc21dec755b3",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : false,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-c6234fff-aeda-5a7b-a80f-1a24cc43df24"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "apitest_import",
+      "values" : [ "false" ]
+    }, {
+      "field" : "automation_multiselectdropdown",
+      "values" : [ "low" ]
+    }, {
+      "field" : "automation_singleselectdropdown",
+      "values" : [ "major" ]
+    }, {
+      "field" : "automation_label",
+      "values" : [ "label2" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-dc7fa97f-73b4-5f2a-93c9-b4fdd83e2fe5",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-dc7fa97f-73b4-5f2a-93c9-b4fdd83e2fe5 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:44:40.904456800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
