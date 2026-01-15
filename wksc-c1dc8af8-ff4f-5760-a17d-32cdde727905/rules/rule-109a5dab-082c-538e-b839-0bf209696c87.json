@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-ec350c53-9c9f-558f-bbb9-711483cd6214",
+  "versionId" : "ver-e25f3377-5fe3-59f3-88b6-969d75034974",
   "objectId" : "rule-109a5dab-082c-538e-b839-0bf209696c87",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "Rule_1755763477",
-  "state" : "Published",
-  "version" : 3,
+  "name" : "DAT-14072-Duplicate-Subscription-Check",
+  "state" : "Staged",
+  "version" : 5,
   "info" : {
     "ruleType" : "Duplicate",
     "properties" : {
@@ -14,8 +14,7 @@
       "parameterId" : "parm-b8e64529-1308-5016-b76d-a0cecf151971",
       "engineType" : "HighThroughput",
       "degreeOfParallelism" : 1,
-      "engineInfo" : { },
-      "parameterName" : "Parameter_1755769186"
+      "engineInfo" : { }
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -134,8 +133,8 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "duplicateCheck(\"S.[JOBCODE],S.[COMPANY]\")",
-            "comment" : "duplicateCheck(\"S.[JOBCODE],S.[COMPANY]\")",
+            "value" : "duplicateCheck(\"S.[JOBCODE],S.[SEX]\")",
+            "comment" : "duplicateCheck(\"S.[JOBCODE],S.[SEX]\")",
             "trimmingEnable" : true,
             "caseInsensitive" : false,
             "columns" : [ {
@@ -144,7 +143,7 @@
               "datatype" : "VARCHAR"
             }, {
               "index" : 2,
-              "name" : "S.[COMPANY]",
+              "name" : "S.[SEX]",
               "datatype" : "VARCHAR"
             } ]
           },
@@ -197,7 +196,7 @@
   },
   "commitMessage" : "Updated rule configuration",
   "commitTag" : "sample",
-  "commitStatus" : "Merged",
+  "commitStatus" : "Pending",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
@@ -208,6 +207,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:34:04.030501Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:35:23.610772700Z[UTC]",
   "updatedBy" : "roshan.n"
 }
