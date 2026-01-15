@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-f6938fda-c600-591e-b077-b0756e478c48",
+  "versionId" : "ver-cf75ca93-e1e0-52fc-a4b5-e84d6cd67118",
   "objectId" : "rule-702e17b7-1236-5b73-88fa-d129e441faa0",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Pushdown rule DAT-14042",
   "state" : "Published",
-  "version" : 3,
+  "version" : 4,
   "info" : {
     "ruleType" : "Pushdown",
     "code" : "test",
@@ -19,74 +19,37 @@
       "stopAtTime" : 0,
       "degreeOfParallelism" : 1,
       "engineInfo" : { },
-      "languageType" : "groovy",
-      "parameterName" : "Parameter_two"
+      "languageType" : "groovy"
     },
     "objects" : [ {
       "id" : "SourceDataset",
       "type" : "source",
       "name" : "sourceDataset",
-      "connectionType" : "Database",
-      "connectionId" : "conn-c3c7892b-2a6c-5092-903d-3d4ea9ba5b95",
-      "input" : "Table",
+      "connectionType" : "OLAP",
+      "connectionId" : "conn-a86b6863-2b9b-5d2e-9ddb-1e30ffd3da53",
+      "input" : "mdx",
       "configuration" : {
-        "schemaName" : "regression_database",
-        "tableName" : "customer",
-        "appendOrderBy" : true,
+        "mdx" : "SELECT\r\n   Measures.[Reseller Order Count] ON COLUMNS,\r\n   Order(\r\n   [Date].[Calendar].[Calendar Quarter].MEMBERS\r\n   ,Measures.[Reseller Order Count]\r\n   ,DESC\r\n   ) ON ROWS\r\n   FROM [Adventure Works]",
+        "appendOrderBy" : false,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
-          "name" : "customerid",
-          "datatype" : "STRING",
+          "name" : "[Date].[Calendar].[Calendar Year].[MEMBER_CAPTION]",
+          "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
-          "name" : "acctnumber",
-          "datatype" : "STRING",
+          "name" : "[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]",
+          "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 3,
-          "name" : "firstname",
-          "datatype" : "STRING",
+          "name" : "[Date].[Calendar].[Calendar Quarter].[MEMBER_CAPTION]",
+          "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 4,
-          "name" : "lastname",
-          "datatype" : "STRING",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 5,
-          "name" : "gender",
-          "datatype" : "STRING",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 6,
-          "name" : "birthdate",
-          "datatype" : "TIMESTAMP",
-          "icedqDatatype" : "TIMESTAMP"
-        }, {
-          "index" : 7,
-          "name" : "datefirstpurchase",
-          "datatype" : "STRING",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 8,
-          "name" : "phoneno",
-          "datatype" : "BIGINT",
-          "icedqDatatype" : "LONG"
-        }, {
-          "index" : 9,
-          "name" : "email",
-          "datatype" : "STRING",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 10,
-          "name" : "yearlyincome",
-          "datatype" : "INT",
-          "icedqDatatype" : "NUMERIC"
-        }, {
-          "index" : 11,
-          "name" : "addressid",
+          "name" : "[Measures].[Reseller Order Count]",
           "datatype" : "INT",
           "icedqDatatype" : "NUMERIC"
         } ]
@@ -106,128 +69,51 @@
             "caseInsensitive" : false,
             "values" : [ "RowCount" ]
           },
-          "id" : "chck-b841dd11-5f42-5749-a9d7-8054aa217910",
+          "id" : "chck-30c2c37c-c721-5269-83d4-3780c537f4ce",
           "type" : "ResultType"
         }, {
-          "name" : "Fyi_s_customerid",
+          "name" : "Fyi_s_[date].[calendar].[calendar year].[member_caption]",
           "index" : 2,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[customerid]",
+            "value" : "S.[[Date].[Calendar].[Calendar Year].[MEMBER_CAPTION]]",
             "caseInsensitive" : false
           },
-          "id" : "chck-796d2c56-b927-5893-bc2f-388a44344b18",
+          "id" : "chck-4fd88990-99bd-5763-89b2-35361cf9d66b",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_acctnumber",
+          "name" : "Fyi_s_[date].[calendar].[calendar semester].[member_caption]",
           "index" : 3,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[acctnumber]",
+            "value" : "S.[[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]]",
             "caseInsensitive" : false
           },
-          "id" : "chck-be7d2211-b85c-56f0-a04e-9abf6f26b938",
+          "id" : "chck-4e6c5895-6642-5072-98a9-315c423960a6",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_firstname",
+          "name" : "Fyi_s_[date].[calendar].[calendar quarter].[member_caption]",
           "index" : 4,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[firstname]",
+            "value" : "S.[[Date].[Calendar].[Calendar Quarter].[MEMBER_CAPTION]]",
             "caseInsensitive" : false
           },
-          "id" : "chck-660dbc13-10eb-57ef-b9ec-3144a7c6146c",
+          "id" : "chck-a1c3b3c0-ca63-51f4-aea4-5867c8a016ec",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_lastname",
+          "name" : "Fyi_s_[measures].[reseller order count]",
           "index" : 5,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[lastname]",
+            "value" : "S.[[Measures].[Reseller Order Count]]",
             "caseInsensitive" : false
           },
-          "id" : "chck-fbd71186-11af-5c8d-b632-fd9d0414a0e2",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_gender",
-          "index" : 6,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[gender]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-bb28de1c-1eb8-510b-958b-ce62a9ab6c30",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_birthdate",
-          "index" : 7,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[birthdate]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-04248483-fa01-59da-84ad-ad7f402863d7",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_datefirstpurchase",
-          "index" : 8,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[datefirstpurchase]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-87b9654e-6073-5a45-bcb4-d7d56cc97bf0",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_phoneno",
-          "index" : 9,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[phoneno]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-3c1b6e02-8956-502b-a797-efd5af5a5e65",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_email",
-          "index" : 10,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[email]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-a8fec6f8-3f01-5984-b89a-1053f0429791",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_yearlyincome",
-          "index" : 11,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[yearlyincome]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-a7c6fb91-0750-518e-8b4d-0b17c4f92576",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_addressid",
-          "index" : 12,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[addressid]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-c03ccf61-b1e5-5d77-8332-6bb72f505e29",
+          "id" : "chck-22a170f7-d449-5741-8ebd-e05b4c445f70",
           "type" : "Column"
         } ]
       }
@@ -275,6 +161,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:39:57.533943500Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:40:13.662590300Z[UTC]",
   "updatedBy" : "roshan.n"
 }
