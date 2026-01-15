@@ -1,0 +1,148 @@
+{
+  "versionId" : "ver-fb36b916-1a5a-5630-b707-a75f11f6dc76",
+  "objectId" : "rule-eec0eb99-c46e-565c-85e6-55c4558c6446",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1755090642",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Duplicate",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-b8f96f0e-c23b-5608-8f64-6e2d50041c41",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT \n    c.CustomerID, \n    a.AddressLine1, \n    a.AddressLine2, \n    a.City, \n    sp.Name AS StateProvince, \n    a.PostalCode, \n    cr.Name AS CountryRegion\nFROM \n    AdventureWorks.Sales.Customer c\nJOIN \n    AdventureWorks.Person.BusinessEntityAddress bea ON c.PersonID = bea.BusinessEntityID\nJOIN \n    AdventureWorks.Person.Address a ON bea.AddressID = a.AddressID\nJOIN \n    AdventureWorks.Person.AddressType at ON bea.AddressTypeID = at.AddressTypeID\nJOIN \n    AdventureWorks.Person.StateProvince sp ON a.StateProvinceID = sp.StateProvinceID\nJOIN \n    AdventureWorks.Person.CountryRegion cr ON sp.CountryRegionCode = cr.CountryRegionCode\nWHERE \n    at.Name = 'Home'",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CustomerID",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "AddressLine1",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "AddressLine2",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "City",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "StateProvince",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "PostalCode",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "CountryRegion",
+          "datatype" : "nvarchar",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_0001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "duplicateCheck(\"S.[CustomerID]\")",
+            "comment" : "duplicateCheck(\"S.[CustomerID]\")",
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "columns" : [ {
+              "index" : 1,
+              "name" : "S.[CustomerID]",
+              "datatype" : "int"
+            } ]
+          },
+          "id" : "chck-67b15d68-02a9-5f49-b11d-39da43dfd524",
+          "type" : "Duplicate"
+        }, {
+          "name" : "noOfDuplicates",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUPLICATE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a9188f3d-bf44-55e5-9a2c-53fd8cb6c525",
+          "type" : "Column",
+          "description" : "Duplicate records count"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-2bc1172c-3fba-5502-bb4b-ea553433408a"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-eec0eb99-c46e-565c-85e6-55c4558c6446",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-eec0eb99-c46e-565c-85e6-55c4558c6446 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:25.526816900Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
