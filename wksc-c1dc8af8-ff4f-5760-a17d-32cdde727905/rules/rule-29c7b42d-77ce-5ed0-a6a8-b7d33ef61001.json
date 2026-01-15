@@ -1,0 +1,106 @@
+{
+  "versionId" : "ver-29092ae9-0f14-53eb-a765-e22b43bb9125",
+  "objectId" : "rule-29c7b42d-77ce-5ed0-a6a8-b7d33ef61001",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "R001 Customer Count Check - Netezza-without-jdbc-without-prop-system-wkfl vs AmazonAuroraPostgresql-without-jdbc-without-prop-system-wkfl - 140525-v1 - kgirdr",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "R001",
+    "description" : "Rule for - Netezza-without-jdbc-without-prop-system-wkfl vs AmazonAuroraPostgresql-without-jdbc-without-prop-system-wkfl",
+    "purpose" : "Rule for - Netezza-without-jdbc-without-prop-system-wkfl vs AmazonAuroraPostgresql-without-jdbc-without-prop-system-wkfl",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-ff3b5567-7054-5850-b90c-bb0c572e94b7",
+      "engineType" : "Standard",
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-de1c6d10-949e-563d-9ffe-2e6245a1aaae",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as src from regression_database.customer where gender ='F'",
+        "columns" : [ {
+          "index" : 1,
+          "name" : "src",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-92556740-d1ce-5d32-a3a4-92b128cafe1a",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as trg from regression_database.customer",
+        "appendOrderBy" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "trg",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[src] - T.[trg] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2f788863-a283-5de9-9ca0-d3f6674aee38",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-d2a372fd-b63d-5e59-b3b7-a60281bd2a4d"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Created by import service",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-29c7b42d-77ce-5ed0-a6a8-b7d33ef61001",
+      "commitMessage" : "Message: Created by import service | RuleId: rule-29c7b42d-77ce-5ed0-a6a8-b7d33ef61001 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:43:37.243592100Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
