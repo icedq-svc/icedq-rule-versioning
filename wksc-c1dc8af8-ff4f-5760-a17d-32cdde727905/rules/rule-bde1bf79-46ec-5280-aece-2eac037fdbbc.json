@@ -1,0 +1,493 @@
+{
+  "versionId" : "ver-02837b84-3b74-5289-8bb8-c50cc172b454",
+  "objectId" : "rule-bde1bf79-46ec-5280-aece-2eac037fdbbc",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Recon rule reimport",
+  "state" : "Published",
+  "version" : 4,
+  "info" : {
+    "ruleType" : "recon",
+    "description" : "{\n    \"orgId\": \"org-icedq.qa\",\n    \"accountId\": \"acct-6f3fdf4c-9c27-5420-a6d5-476d2549dff6\",\n    \"workspaceId\": \"wksc-bd3c25fd-59be-5a90-b507-6de7eae65664\",\n    \"rule\": {\n        \"id\": \"rule-f08fa9d4-a221-5724-bd13-7e707424254b\",\n        \"folderId\": \"fldr-99be886f-ea0f-5f76-a1dc-7143cad6dfe9\",\n        \"sourceConnectionId\": \"conn-cc106a4f-e261-55e7-acf4-f34d944e7669\",\n        \"targetConnectionId\": \"conn-92ff4a05-1c4e-5666-a44f-c7175db9b83b\"\n    }\n}",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-3cc8c6bd-58e0-5626-b123-57d61786ac63",
+      "input" : "FileStatic",
+      "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
+        "tableRemarks" : "",
+        "fileType" : "Delimited",
+        "container" : "torana-files/QATestingFile",
+        "filePath" : "/AtTheRate_STAFF.txt",
+        "columnDelimiter" : "@",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "skipRowTop" : "1",
+        "skipRowBottom" : "0",
+        "headerRow" : "1",
+        "trimData" : "true",
+        "emptyString" : "true",
+        "whiteSpace" : "true",
+        "fixedString" : "true",
+        "fixedStringValue" : "NaN",
+        "filterCondition" : "",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "isSorted" : false,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "STAFFID",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 3,
+          "name" : "JOBCODE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 4,
+          "name" : "COMPANY",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 5,
+          "name" : "SALARY",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 6,
+          "name" : "BONUS",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 7,
+          "name" : "COMM",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 8,
+          "name" : "TOTALSALARY",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 9,
+          "name" : "BIRTHD",
+          "datatype" : "Date",
+          "icedqDatatype" : "Date",
+          "format" : "dd-MM-yy"
+        }, {
+          "index" : 10,
+          "name" : "HIRED",
+          "datatype" : "Timestamp",
+          "icedqDatatype" : "Timestamp",
+          "format" : "dd-MM-yy HH:mm:ss"
+        }, {
+          "index" : 11,
+          "name" : "LNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 12,
+          "name" : "FNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 13,
+          "name" : "ADDRESS",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 14,
+          "name" : "CITY",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 15,
+          "name" : "STATE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 16,
+          "name" : "HPHONE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 17,
+          "name" : "SSN",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-3cc8c6bd-58e0-5626-b123-57d61786ac63",
+      "input" : "FileStatic",
+      "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
+        "tableRemarks" : "",
+        "sql" : "",
+        "fileType" : "Delimited",
+        "filePath" : "/Colon_STAFF.txt",
+        "columnDelimiter" : ":",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "skipRowTop" : "1",
+        "skipRowBottom" : "0",
+        "headerRow" : "1",
+        "trimData" : "true",
+        "emptyString" : "true",
+        "whiteSpace" : "true",
+        "fixedString" : "true",
+        "fixedStringValue" : "NaN",
+        "filterCondition" : "",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "overrideLayout" : false,
+        "isSorted" : false,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "detectDatatype" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "STAFFID",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 3,
+          "name" : "JOBCODE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 4,
+          "name" : "COMPANY",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 5,
+          "name" : "SALARY",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 6,
+          "name" : "BONUS",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 7,
+          "name" : "COMM",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 8,
+          "name" : "TOTALSALARY",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 9,
+          "name" : "BIRTHD",
+          "datatype" : "Date",
+          "icedqDatatype" : "Date",
+          "format" : "dd-MM-yy"
+        }, {
+          "index" : 10,
+          "name" : "HIRED",
+          "datatype" : "Timestamp",
+          "icedqDatatype" : "Timestamp",
+          "format" : "dd-MM-yy HH:mm:ss"
+        }, {
+          "index" : 11,
+          "name" : "LNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 12,
+          "name" : "FNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 13,
+          "name" : "ADDRESS",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 14,
+          "name" : "CITY",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 15,
+          "name" : "STATE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 16,
+          "name" : "HPHONE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 17,
+          "name" : "SSN",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "BIRTHD",
+          "targetKey" : "BIRTHD"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-345a66a0-206e-5397-84ee-132864ca1cd0",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == 'ME2'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-089e4331-bcac-5429-9bf5-4fa22f50a94f",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "importlabel",
+            "values" : [ "ATest", "OneTest" ]
+          }, {
+            "field" : "importmultiselectdropdown",
+            "values" : [ "CTest", "TwoTest" ]
+          }, {
+            "field" : "importsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "importsingleselectmap",
+            "values" : [ "ThreeTest" ]
+          }, {
+            "field" : "importtoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[CITY] == 'BRIDGEPORT'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5d08c1b0-7a8c-5534-aead-6069e7f6f6b3",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "importlabel",
+            "values" : [ "ATest", "OneTest" ]
+          }, {
+            "field" : "importmultiselectdropdown",
+            "values" : [ "CTest", "TwoTest" ]
+          }, {
+            "field" : "importsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "importsingleselectmap",
+            "values" : [ "ThreeTest" ]
+          }, {
+            "field" : "importtoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[LNAME], T.[LNAME])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[LNAME]",
+            "targetColumn" : "T.[LNAME]"
+          },
+          "id" : "chck-e5cc1aba-96c4-5872-9749-63011ae6435f",
+          "type" : "SimpleCompare",
+          "customFields" : [ {
+            "field" : "importlabel",
+            "values" : [ "ATest", "OneTest" ]
+          }, {
+            "field" : "importmultiselectdropdown",
+            "values" : [ "CTest", "TwoTest" ]
+          }, {
+            "field" : "importsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "importsingleselectmap",
+            "values" : [ "ThreeTest" ]
+          }, {
+            "field" : "importtoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "Fyi_s_jobcode",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0fffa1d8-2c08-5a09-8964-0c56f4007092",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_lname",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LNAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5da76d4b-49f0-5628-bb92-5d22d38fb45b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_city",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CITY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-df63a79b-4d19-550a-bb3a-ad1dc7806349",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-0bb37b3e-d282-5ddc-b4bb-3ec8fff30080"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "importlabel",
+      "values" : [ "ATest", "OneTest" ]
+    }, {
+      "field" : "importmultiselectdropdown",
+      "values" : [ "CTest", "TwoTest" ]
+    }, {
+      "field" : "importsingleselectdropdown",
+      "values" : [ "GTest" ]
+    }, {
+      "field" : "importsingleselectmap",
+      "values" : [ "ThreeTest" ]
+    }, {
+      "field" : "importtoggle",
+      "values" : [ "true" ]
+    } ]
+  },
+  "commitMessage" : "Created by import service",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-bde1bf79-46ec-5280-aece-2eac037fdbbc",
+      "commitMessage" : "Message: Created by import service | RuleId: rule-bde1bf79-46ec-5280-aece-2eac037fdbbc |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:09.680490Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
