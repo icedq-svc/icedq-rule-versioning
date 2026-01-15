@@ -1,0 +1,213 @@
+{
+  "versionId" : "ver-022a310d-4d11-5b81-bd47-1f898778ac69",
+  "objectId" : "rule-888d5c46-174d-5c4e-a9fc-8b97f50a56de",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-13953-ValidationRule_Cloud",
+  "state" : "Published",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-7c345339-2a9f-58a7-9c4a-89589cb99d09",
+      "input" : "Table",
+      "configuration" : {
+        "databaseName" : "ICEDQ_DB",
+        "schemaName" : "PUBLIC",
+        "tableName" : "ACCOUNTS",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "USER_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "USERNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "PASSWORD1",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "CREATED_ON",
+          "datatype" : "TIMESTAMPNTZ",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "LAST_LOGIN",
+          "datatype" : "TIMESTAMPNTZ",
+          "icedqDatatype" : "TIMESTAMP"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-a07b44dc-904f-5c09-9797-a12544c206f3",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[PASSWORD1]\")",
+            "column" : "S.[PASSWORD1]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fde70709-9123-5552-a0cc-6b559781a2c3",
+          "type" : "Completeness"
+        }, {
+          "name" : "Fyi_s_user_id",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[USER_ID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e1954ee8-de80-5223-baa1-a6ed88306e59",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_username",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[USERNAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9d950059-eaef-5a48-b07b-5c7e22e9240b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_password1",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PASSWORD1]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c521c27a-64d5-5777-a695-6dac71854a2c",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_email",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMAIL]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0db74872-ea1e-58c5-a99b-9e071d02f836",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_created_on",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CREATED_ON]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4f7bb11d-d933-5412-857d-b1b13c8c3e66",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_last_login",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LAST_LOGIN]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-db34ad62-3ada-5568-88fe-c2739eb60224",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-7e513a43-d4d2-5934-95bc-6ff0879939de"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-888d5c46-174d-5c4e-a9fc-8b97f50a56de",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-888d5c46-174d-5c4e-a9fc-8b97f50a56de |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:07.840489800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
