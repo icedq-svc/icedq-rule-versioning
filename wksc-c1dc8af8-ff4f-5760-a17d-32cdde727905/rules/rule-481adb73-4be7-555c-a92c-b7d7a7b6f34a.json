@@ -1,24 +1,26 @@
 {
-  "versionId" : "ver-afd5428b-2278-50c1-af9e-e5ab501ade74",
+  "versionId" : "ver-b992ff60-a8e6-5173-8b97-eaf041ad5368",
   "objectId" : "rule-481adb73-4be7-555c-a92c-b7d7a7b6f34a",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Pushdown XML",
-  "state" : "Published",
-  "version" : 2,
+  "state" : "Staged",
+  "version" : 3,
   "info" : {
     "ruleType" : "Pushdown",
     "code" : "1",
     "properties" : {
       "criticality" : "Warning",
+      "parameterId" : "parm-be2454f3-64fe-5d01-bf06-baf1e2b8cd99",
       "engineType" : "HighThroughput",
       "stopAtFailAndErrorCount" : 0,
       "stopAtRowCount" : 0,
       "stopAtTime" : 0,
       "degreeOfParallelism" : 1,
       "engineInfo" : { },
-      "languageType" : "groovy"
+      "languageType" : "groovy",
+      "parameterName" : "Parameter one"
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -28,6 +30,7 @@
       "connectionId" : "conn-74dc117b-9f4a-5c3c-8856-698af3efa5d9",
       "input" : "Sql",
       "configuration" : {
+        "databaseName" : "",
         "schemaRemarks" : "",
         "tableName" : "tblname_1756130080462",
         "tableRemarks" : "",
@@ -35,10 +38,14 @@
         "sql" : "select * from tblname_1756130080462",
         "dax" : "",
         "mdx" : "",
+        "container" : "eai_qa_bucket/NextGen_QA/XMLFiles",
         "filePath" : "/Customer.xml",
+        "emptyString" : "false",
+        "fixedStringValue" : "NaN",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -288,23 +295,67 @@
           },
           "isOverride" : false,
           "id" : "chck-6ef05cf9-36ae-548f-b7a4-cba3ef15d924"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " sourcecount == 0",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-8b89fba6-77ef-579e-b646-b67fd3a26e7d"
+        }, {
+          "name" : "Var_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " rulename == 'test'",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-74a7ac53-d02b-510a-9203-760422798cd6"
+        }, {
+          "name" : "Var_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " #Key# ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-1d8030c1-7afb-52ea-8159-332fb2eece6e"
+        }, {
+          "name" : "Var_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "fn_addition (java.lang.Object,java.lang.Object) ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-50230b56-75c8-54fc-ad0f-f717bacf10f5"
         } ]
       }
     } ]
   },
-  "commitMessage" : "xml",
+  "commitMessage" : "Updated rule configuration1",
   "commitTag" : "sample",
-  "commitStatus" : "Merged",
+  "commitStatus" : "Pending",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-481adb73-4be7-555c-a92c-b7d7a7b6f34a",
-      "commitMessage" : "Message: xml | RuleId: rule-481adb73-4be7-555c-a92c-b7d7a7b6f34a |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration1 | RuleId: rule-481adb73-4be7-555c-a92c-b7d7a7b6f34a |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:37:07.395216500Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:37:39.118538300Z[UTC]",
   "updatedBy" : "roshan.n"
 }
