@@ -1,0 +1,255 @@
+{
+  "versionId" : "ver-8bac0692-135e-5dc5-a950-0ed1eb7eb3bc",
+  "objectId" : "rule-d6ee4247-ab02-5bc0-994a-fc3dda3711eb",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1756367777",
+  "state" : "Draft",
+  "info" : {
+    "ruleType" : "Pushdown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-b8d9907a-62ce-52d0-b6e2-5790d53931c8",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "icedq",
+        "tableName" : "address",
+        "fileSchemaId" : "schm-bcb47a7b-96a3-5bb4-a84f-52d663ad7c91",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "addressid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "addressline1",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "addressline2",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "city",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "stateprovinceid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "postalcode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "spatiallocation",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "rowguid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "modifieddate",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-489632fc-f610-5971-b177-41dbe42fe412",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s__id",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5d0c9e35-873c-5ae1-8a12-735f42dd273c",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_addressid",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[addressid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4be52d1d-2e55-5408-ad1d-3e2a9a09c472",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_addressline1",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[addressline1]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2e5f201e-0701-5595-931c-eac1f4cf7c97",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_addressline2",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[addressline2]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-038caef4-8381-5836-ba20-355910fa3876",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_city",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[city]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-09553179-b782-5025-a66d-a6fb37072520",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_stateprovinceid",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[stateprovinceid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1f2555e1-fc41-5f07-a68a-1a5056fb85ca",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_postalcode",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[postalcode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f0468cff-7248-55b7-9f45-3d92798ebb4b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_spatiallocation",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[spatiallocation]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8f675daa-6f2e-5e41-b7ea-20a7fc06e3e8",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_rowguid",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[rowguid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-799d2f83-61f4-5b89-a6f1-00cc1818d8ac",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_modifieddate",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[modifieddate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-93f28861-09c0-5a4b-bee0-ea53df03648a",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-f95f5266-33d8-5928-913c-d7ff411c03cb"
+        } ]
+      }
+    } ]
+  },
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-d6ee4247-ab02-5bc0-994a-fc3dda3711eb",
+      "commitMessage" : "Message: null | RuleId: rule-d6ee4247-ab02-5bc0-994a-fc3dda3711eb |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:15.956493300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
