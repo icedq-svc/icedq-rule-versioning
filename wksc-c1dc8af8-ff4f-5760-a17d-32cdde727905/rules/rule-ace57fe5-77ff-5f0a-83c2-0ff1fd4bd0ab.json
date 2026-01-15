@@ -1,0 +1,103 @@
+{
+  "versionId" : "ver-5745deae-31c3-515f-ab4b-def5833af091",
+  "objectId" : "rule-ace57fe5-77ff-5f0a-83c2-0ff1fd4bd0ab",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Checkout-Discard",
+  "state" : "Draft",
+  "info" : {
+    "ruleType" : "Checksum",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-a8c6db88-aa1a-5bf3-a6d5-86a49301909f",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as cnt from staff",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-a8c6db88-aa1a-5bf3-a6d5-86a49301909f",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as cnt from staff",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CNT] - T.[CNT] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-671ad1ee-ace7-5f8e-96ff-a32dd5d56c76",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-999baece-9be4-5640-9011-33f1b88f4ee6"
+        } ]
+      }
+    } ]
+  },
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-ace57fe5-77ff-5f0a-83c2-0ff1fd4bd0ab",
+      "commitMessage" : "Message: null | RuleId: rule-ace57fe5-77ff-5f0a-83c2-0ff1fd4bd0ab |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:35:11.099701400Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
