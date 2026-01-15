@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-277ea4bb-ff74-556f-85c7-cc165fe73db9",
+  "versionId" : "ver-3cdc0cdb-a0fb-5277-a39c-caf1ae41eb8a",
   "objectId" : "rule-1000dd10-7737-5656-9394-da6e696dfd44",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Rule Name",
   "state" : "Published",
-  "version" : 2,
+  "version" : 3,
   "info" : {
     "ruleType" : "Duplicate",
     "code" : "Rule Code",
@@ -18,8 +18,7 @@
       "engineType" : "HighThroughput",
       "stopAtTime" : 23,
       "degreeOfParallelism" : 3,
-      "engineInfo" : { },
-      "parameterName" : "Parameter_two"
+      "engineInfo" : { }
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -27,11 +26,10 @@
       "name" : "sourceDataset",
       "connectionType" : "CloudDB",
       "connectionId" : "conn-813232a8-832a-526c-907a-c3eb72ddbf8b",
-      "input" : "Table",
+      "input" : "Sql",
       "configuration" : {
-        "databaseName" : "BI_TESTING",
-        "schemaName" : "PUBLIC",
-        "tableName" : "REVENUE_OPPORTUNITIES_FACT",
+        "sql" : "select * from BI_TESTING.PUBLIC.REVENUE_OPPORTUNITIES_FACT where account id=1",
+        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -103,10 +101,8 @@
           "name" : "date",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
-        } ],
-        "whereClause" : "account id=1"
-      },
-      "useCached" : false
+        } ]
+      }
     }, {
       "id" : "RecordCheck",
       "type" : "recordCheck",
@@ -204,6 +200,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:44:05.153988300Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:44:06.083986200Z[UTC]",
   "updatedBy" : "roshan.n"
 }
