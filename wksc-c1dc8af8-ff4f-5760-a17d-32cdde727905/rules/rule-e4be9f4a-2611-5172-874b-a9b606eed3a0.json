@@ -1,0 +1,213 @@
+{
+  "versionId" : "ver-0cdb7646-84da-59d3-80bf-bd8011d166f0",
+  "objectId" : "rule-e4be9f4a-2611-5172-874b-a9b606eed3a0",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-15062-Double quotes issue",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 100,
+      "stopAtRowCount" : 100,
+      "stopAtTime" : 100,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-18b74eda-aeb1-5e76-8495-ba09a88d2638",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "Select emp_id, first_name, last_name, department, email\r\n \t\t\tfrom(VALUES\r\n \t\t\t\t(1, ' John', 'Doe', ' HR ', 'john.doe@example.com'),\r\n \t\t\t\t(2, 'Jane ', ' Smith ', 'Finance', ' jane.smith@example.com '),\r\n \t\t\t\t(3, '   Mike', 'O''Neil', '   IT', 'mike.oneil@example.com'),\r\n \t\t\t\t(4, 'Alice', '   Johnson', 'Sales   ', 'alice.johnson@example.com'),\r\n \t\t\t\t(5, '', 'Brown', 'Marketing', 'brown@example.com'),\r\n \t\t\t\t(6, 'Chris', '', 'Operations', 'chris@example.com'),\r\n \t\t\t\t(7, 'Robert', 'White', '', 'robert.white@example.com'),\r\n \t\t\t\t(8, 'Emily', 'Davis', '   HR   ', ''),\r\n \t\t\t\t(9, '   Tom   ', '   Lee', 'Finance', '   tom.lee@example.com'),\r\n \t\t\t\t(10, 'Sara', '    Adams', ' R&D ', 'sara.adams@example.com ')\r\n \t\t\t) AS d(emp_id, first_name, last_name, department, email)",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "emp_id",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 2,
+          "name" : "first_name",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "last_name",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "department",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "email",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-18b74eda-aeb1-5e76-8495-ba09a88d2638",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "Select staff_id, full_name, position, location, contact_number\r\n \t\t\tfrom (VALUES\r\n \t\t\t\t(1, '  Linda Carter', 'Manager ', ' New York ', '123-456-7890'),\r\n \t\t\t\t(2, 'Michael   Scott', ' Regional Manager', 'Scranton', ' 987-654-3210 '),\r\n \t\t\t\t(3, 'Dwight Schrute', ' Assistant  to the  Regional Manager ', '  ', '555-000-1111'),\r\n \t\t\t\t(4, ' Jim Halpert ', 'Sales', 'Scranton', ''),\r\n \t\t\t\t(5, '', 'Receptionist', 'Stamford', '321-321-4321'),\r\n \t\t\t\t(6, 'Pam Beesly', '', '  ', '222-333-4444'),\r\n \t\t\t\t(7, 'Stanley Hudson', ' Sales ', '', '666-777-8888'),\r\n \t\t\t\t(8, '   Kevin Malone  ', 'Accountant', 'Scranton   ', '   '),\r\n \t\t\t\t(9, 'Angela   Martin', '  Accountant ', '  Scranton', '999-999-9999'),\r\n \t\t\t\t(10, ' Oscar Martinez', 'Accountant', '', '')\r\n \t\t\t) AS e(staff_id, full_name, position, location, contact_number)",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "staff_id",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 2,
+          "name" : "full_name",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "position",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "location",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "contact_number",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "emp_id",
+          "targetKey" : "staff_id"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-7585c817-20e5-5c4a-8a38-39b103687e03",
+          "type" : "ResultType",
+          "isDeferredSort" : false
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[emp_id], T.[full_name])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[emp_id]",
+            "targetColumn" : "T.[full_name]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull",
+              "source" : "null",
+              "target" : [ "null" ]
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "33",
+              "target" : [ "  " ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource",
+              "source" : " ",
+              "target" : [ "S.[emp_id]" ]
+            } ]
+          },
+          "id" : "chck-7fd27d77-c835-59db-b22a-c3adbd5629a2",
+          "type" : "ConditionalCompare",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "50",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-29654f89-0898-5f3a-99d9-ee3443ba4d21"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-e4be9f4a-2611-5172-874b-a9b606eed3a0",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-e4be9f4a-2611-5172-874b-a9b606eed3a0 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:36:04.494065200Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
