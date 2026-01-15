@@ -1,0 +1,296 @@
+{
+  "versionId" : "ver-fa96d549-1841-5ad8-8896-fd4c76fc2fbc",
+  "objectId" : "rule-fff8fc05-e363-5e91-9732-b776840c3671",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Push Rule with Kerberos",
+  "state" : "Published",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Pushdown",
+    "code" : "Push Rule with Kerberos-Version2 Update",
+    "description" : "Push Rule with Kerberos-Version2 Update",
+    "purpose" : "Push Rule with Kerberos-Version2 Update",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-5fe66c16-777b-5349-b957-9b297b0e0046",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "ICEDQDB",
+        "tableName" : "CUSTOMER",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CUSTOMERID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "ACCTNUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FIRSTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "LASTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "GENDER",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "BIRTHDATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "DATEFIRSTPURCHASE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONENO",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "YEARLYINCOME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ADDRESSID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : true
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-3f74e93b-53d5-5d24-92df-950e9e6e673c",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s_customerid",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CUSTOMERID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-35aad3b9-f7b1-5772-94c4-32fc12ecc548",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_acctnumber",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCTNUMBER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-462fa018-f067-5023-bb2b-4f6c5427bacf",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_firstname",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FIRSTNAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8f877862-441a-5744-926b-7bb4fe0e7d5e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_lastname",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LASTNAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2d634909-03fe-5b95-a99d-63f2cd247386",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_gender",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[GENDER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0677f90b-dfd6-5681-82c3-90e36ae070dc",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_birthdate",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BIRTHDATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-680d065f-37c6-5e1f-9fb3-c1badd15e157",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_datefirstpurchase",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DATEFIRSTPURCHASE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cfcfcf25-83d5-5ce6-bdce-45abee314b19",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_phoneno",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PHONENO]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2893da9a-6008-5e3a-94e8-48b3d3325822",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_email",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMAIL]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1831ce81-07b7-536b-967e-334342320d22",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_yearlyincome",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[YEARLYINCOME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-059dd2f4-768b-5373-b3e7-6bd2810a5664",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_addressid",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ADDRESSID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-35cdb57e-b71b-5a16-abcb-06ba49b4b020",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-9126f021-83a0-5905-ba08-dee086bc3efe"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "release_testing_fields",
+      "values" : [ "A" ]
+    }, {
+      "field" : "togglefield",
+      "values" : [ "false" ]
+    }, {
+      "field" : "labelfield",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectdropdown",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectmap",
+      "values" : [ "Password" ]
+    } ]
+  },
+  "commitMessage" : "Updated the rule from Push Rule with Kerberos to Push Rule with Kerberos-Version2 Update",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-fff8fc05-e363-5e91-9732-b776840c3671",
+      "commitMessage" : "Message: Updated the rule from Push Rule with Kerberos to Push Rule with Kerberos-Version2 Update | RuleId: rule-fff8fc05-e363-5e91-9732-b776840c3671 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:47.179301300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
