@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-2c574ffd-fa29-5a83-8ee7-92a752e63a6b",
+  "versionId" : "ver-44be1a69-8aec-5cec-8467-8041e9bd64b1",
   "objectId" : "rule-df601c98-6148-5cad-8ac1-3a4cd6db180f",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Recon-basic-Check",
-  "state" : "Published",
-  "version" : 2,
+  "state" : "Staged",
+  "version" : 3,
   "info" : {
     "ruleType" : "Recon",
     "properties" : {
@@ -27,7 +27,7 @@
       "connectionId" : "conn-813232a8-832a-526c-907a-c3eb72ddbf8b",
       "input" : "Sql",
       "configuration" : {
-        "sql" : "select * from staff",
+        "sql" : "select * from staff where jobcode ='TA1'",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
@@ -130,7 +130,7 @@
       "connectionId" : "conn-7c345339-2a9f-58a7-9c4a-89589cb99d09",
       "input" : "Sql",
       "configuration" : {
-        "sql" : "select * from staff",
+        "sql" : "select * from staff where jobcode ='TA1'",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
@@ -248,7 +248,7 @@
           "isVisible" : true,
           "expression" : {
             "caseInsensitive" : false,
-            "values" : [ "a-b", "b-a", "Xp" ]
+            "values" : [ "a-b", "xp" ]
           },
           "id" : "chck-cfcb9787-a006-54b5-9bd3-87412c2e995f",
           "type" : "ResultType"
@@ -323,7 +323,7 @@
   },
   "commitMessage" : "Updated rule configuration",
   "commitTag" : "sample",
-  "commitStatus" : "Merged",
+  "commitStatus" : "Rejected",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
@@ -334,6 +334,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:37.991313Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:40.313398400Z[UTC]",
   "updatedBy" : "roshan.n"
 }
