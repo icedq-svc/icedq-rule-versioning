@@ -1,18 +1,16 @@
 {
-  "versionId" : "ver-a6742ab8-3f2c-57c0-aef4-3ccbc645b1f2",
+  "versionId" : "ver-8e59f6d8-7430-5983-866f-7fe2ee8875ff",
   "objectId" : "rule-26642496-f73b-56fb-a6d7-7e1c325ebe11",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "API-validation",
   "state" : "Staged",
-  "version" : 3,
   "info" : {
     "ruleType" : "api-validation",
-    "code" : "R002",
-    "description" : "version3-Updateby Ruchika -perform reject scanrios",
+    "code" : "R001",
     "properties" : {
-      "criticality" : "Blocker",
+      "criticality" : "Critical",
       "engineType" : "HighThroughput",
       "degreeOfParallelism" : 1,
       "engineInfo" : { },
@@ -227,9 +225,9 @@
           "expression" : {
             "comment" : "CompletenessCheck(\"S.[date]\")",
             "column" : "S.[date]",
-            "emptyStringAsNull" : false,
-            "whiteSpaceAsNull" : false,
-            "trimmingEnable" : false,
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
             "caseInsensitive" : false
           },
           "id" : "chck-6c8349f2-4e19-5b32-8deb-47d64dae9011",
@@ -267,19 +265,17 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration",
-  "commitTag" : "sample",
-  "commitStatus" : "Rejected",
+  "commitStatus" : "Discarded",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-26642496-f73b-56fb-a6d7-7e1c325ebe11",
-      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-26642496-f73b-56fb-a6d7-7e1c325ebe11 |Status: Approved"
+      "commitMessage" : "Message: null | RuleId: rule-26642496-f73b-56fb-a6d7-7e1c325ebe11 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:35:50.012036100Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:37:43.554541900Z[UTC]",
   "updatedBy" : "roshan.n"
 }
