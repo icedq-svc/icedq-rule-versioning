@@ -1,0 +1,227 @@
+{
+  "versionId" : "ver-daea967b-3558-5a4b-86f1-4c2af84410ef",
+  "objectId" : "rule-5aa444ce-b50c-5af9-8a75-f3fd915f465b",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "FFNative-Advanced-Update_1756125108923",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-f38e0ca0-f2f8-5cf4-85b5-3395568d2a62",
+      "input" : "FileStatic",
+      "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
+        "tableRemarks" : "",
+        "fileType" : "Delimited",
+        "container" : "/app/local-files/DelimitedFiles",
+        "filePath" : "/AtTheRate_STAFF.txt",
+        "columnDelimiter" : "@",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "skipRowTop" : "1",
+        "skipRowBottom" : "0",
+        "headerRow" : "1",
+        "trimData" : "true",
+        "emptyString" : "true",
+        "whiteSpace" : "true",
+        "fixedString" : "true",
+        "fixedStringValue" : "NaN",
+        "filterCondition" : "",
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "STAFFID",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 3,
+          "name" : "JOBCODE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 4,
+          "name" : "COMPANY",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 5,
+          "name" : "SALARY",
+          "datatype" : "Numeric",
+          "icedqDatatype" : "Numeric"
+        }, {
+          "index" : 6,
+          "name" : "BONUS",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 7,
+          "name" : "COMM",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 8,
+          "name" : "TOTALSALARY",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 9,
+          "name" : "BIRTHDATE",
+          "datatype" : "Date",
+          "icedqDatatype" : "Date",
+          "format" : "dd-MM-yy"
+        }, {
+          "index" : 10,
+          "name" : "HIRED",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 11,
+          "name" : "LNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 12,
+          "name" : "FNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 13,
+          "name" : "ADDRESS",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 14,
+          "name" : "CITY",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 15,
+          "name" : "STATE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 16,
+          "name" : "HPHONE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 17,
+          "name" : "SSN",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-f1482257-6833-5eb6-b2ca-cf494e673051",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[COMPANY]\")",
+            "column" : "S.[COMPANY]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-de2a4fb4-b8e8-5b96-965c-140c5229d738",
+          "type" : "Completeness"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-dc736141-c85d-5031-92f5-052fd3baecb1"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-5aa444ce-b50c-5af9-8a75-f3fd915f465b",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-5aa444ce-b50c-5af9-8a75-f3fd915f465b |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:13.827492400Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
