@@ -1,11 +1,12 @@
 {
-  "versionId" : "ver-72d2468f-9d24-55d3-83e5-017b8a36fe67",
+  "versionId" : "ver-939f746c-c5aa-54a2-85a2-9ab9e3a8d1c4",
   "objectId" : "rule-4e0388b4-6ce0-511a-82f8-d395a37fe54d",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "ValidationRule_FF_SQL",
-  "state" : "Draft",
+  "state" : "Staged",
+  "version" : 3,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -26,6 +27,7 @@
       "connectionId" : "conn-9f936baf-0c0e-5acb-8eb8-6ef62501bfaa",
       "input" : "Sql",
       "configuration" : {
+        "databaseName" : "",
         "schemaRemarks" : "",
         "tableName" : "tblname_1755843816190",
         "tableRemarks" : "",
@@ -34,6 +36,7 @@
         "dax" : "",
         "mdx" : "",
         "fileType" : "Delimited",
+        "container" : "/",
         "filePath" : "/samefiles/STAFF_2.csv",
         "columnDelimiter" : ",",
         "rowDelimiter" : "",
@@ -45,6 +48,7 @@
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -168,8 +172,8 @@
         }, {
           "name" : "Chk_0001",
           "index" : 2,
-          "isActive" : true,
-          "isVisible" : true,
+          "isActive" : false,
+          "isVisible" : false,
           "expression" : {
             "value" : "S.[staffid] == 'SID1515'",
             "caseInsensitive" : false
@@ -335,17 +339,19 @@
       }
     } ]
   },
-  "commitStatus" : "Discarded",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Rejected",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-4e0388b4-6ce0-511a-82f8-d395a37fe54d",
-      "commitMessage" : "Message: null | RuleId: rule-4e0388b4-6ce0-511a-82f8-d395a37fe54d |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-4e0388b4-6ce0-511a-82f8-d395a37fe54d |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:37:01.942213500Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:37:04.218213800Z[UTC]",
   "updatedBy" : "roshan.n"
 }
