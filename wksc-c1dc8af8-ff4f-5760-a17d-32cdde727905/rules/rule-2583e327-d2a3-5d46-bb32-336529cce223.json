@@ -1,0 +1,412 @@
+{
+  "versionId" : "ver-d76be5a3-cb7c-5244-802e-24c8ebbed62e",
+  "objectId" : "rule-2583e327-d2a3-5d46-bb32-336529cce223",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "MongoDB-Issue-Recreation",
+  "state" : "Published",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Pushdown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-4c97c6a0-f024-528e-86dc-b4eb7dd753a3",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "icedq",
+        "tableName" : "all_datatypes",
+        "fileSchemaId" : "schm-81bd1e85-5a74-52b9-90d5-cfd0a074f1ca",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "COL_DOUBLE",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 3,
+          "name" : "COL_STRING",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "COL_OBJECT",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "COL_OBJECT_key",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "COL_ARRAY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "COL_BIN_DATA",
+          "datatype" : "VARBINARY",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "COL_OBJECT_ID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "COL_BOOLEAN",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 10,
+          "name" : "COL_DATE",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 11,
+          "name" : "COL_NULL",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "COL_REGEX",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "COL_JAVASCRIPT",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "COL_INT",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 15,
+          "name" : "COL_TIMESTAMP",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 16,
+          "name" : "COL_LONG",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 17,
+          "name" : "COL_DECIMAL",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 18,
+          "name" : "COL_MIN_KEY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "COL_MAX_KEY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-53a968cf-e9e5-5d23-ab08-001cd0765cd9",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s__id",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b171c0e2-651a-5b37-9df8-1821ff9da0b1",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_double",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_DOUBLE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a15a952c-bad7-5fe2-861f-649ea2ecac61",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_string",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_STRING]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4a1480d8-c3eb-5df9-9547-01db8a2453cf",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_object",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_OBJECT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9ca74d57-4784-58e0-b3c7-33383f46fe3a",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_object_key",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_OBJECT_key]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3ab281c0-0245-527f-ab1b-e9148da6d50b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_array",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_ARRAY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fb63a038-dac2-598d-9e16-4c61ba77e888",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_bin_data",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BIN_DATA]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8e9faaf5-314d-5fe8-8c84-a5bf52ef04f2",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_object_id",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_OBJECT_ID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dacf360b-0159-52eb-b04d-7bf9c46cf3d3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_boolean",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BOOLEAN]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7a3b85c0-c975-565a-a3e1-758fee0afeca",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_date",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_DATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cf94e877-779a-53d4-9321-4b481aa1ce2a",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_null",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_NULL]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-313852ad-74e5-5ef3-a156-824b02322254",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_regex",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_REGEX]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9a76b96d-6ccf-5d03-867e-0e465a34fb71",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_javascript",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_JAVASCRIPT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9409aeae-b3d9-5939-8cb7-bcd56a0c66c1",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_int",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_INT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5720ecaf-8e26-5df2-adf1-c07bd7c60576",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_timestamp",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_TIMESTAMP]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-aaf1fa7f-147a-5974-99f5-a1054a0c470b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_long",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_LONG]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f285828e-ac17-5a88-afec-33cc68b1b22b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_decimal",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_DECIMAL]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-affa09d9-990d-51be-a959-a13406ed2a8b",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_min_key",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_MIN_KEY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-32c25a2d-cada-5744-80c8-1e1ad47c6cff",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_col_max_key",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_MAX_KEY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-991626e4-65ce-58e6-b18c-9ca36aff5647",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-52d04a1c-617f-55d9-a9bc-4e60e1d497b0"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "exporttext",
+      "values" : [ "gdfg" ]
+    }, {
+      "field" : "importtext",
+      "values" : [ "dsgs" ]
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-2583e327-d2a3-5d46-bb32-336529cce223",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-2583e327-d2a3-5d46-bb32-336529cce223 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:35:04.267321500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
