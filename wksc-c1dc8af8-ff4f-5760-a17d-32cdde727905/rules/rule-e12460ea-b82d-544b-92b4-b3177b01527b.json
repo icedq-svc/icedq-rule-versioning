@@ -1,0 +1,418 @@
+{
+  "versionId" : "ver-ba0d896c-f461-581e-ae6d-9dcab09404a8",
+  "objectId" : "rule-e12460ea-b82d-544b-92b4-b3177b01527b",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "R002_Snowflake_CheckLevel",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "description" : "generate a SQL query for ICEDQ_DEMO table using ICEDQ_DB schema where all columns should shown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-81daede9-6f21-540c-bdc6-a66fd24a3a53",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT \n    HISTORYID, \n    ORDERID, \n    CUSTOMERID, \n    CUSTOMERNAME, \n    EMAIL, \n    PHONE, \n    ORDERSTATUS, \n    ORDERDATE, \n    PRODUCTID, \n    PRODUCTTYPE, \n    PRODUCTNAME, \n    PAYMENTSTATUS, \n    CHANGETYPE, \n    CHANGETIMESTAMP, \n    QUANTITY, \n    TOTALDUE, \n    UNITPRICE, \n    TRANSACTIONID, \n    PROCESSEDTIMESTAMP, \n    PAYMENTTYPE\nFROM ICEDQ_DB.ICEDQ_DEMO.OPS_SALES_ORDER_HISTORY",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "HISTORYID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "ORDERID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "CUSTOMERID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "CUSTOMERNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "PHONE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "ORDERSTATUS",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "ORDERDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "PRODUCTID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "PRODUCTTYPE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "PRODUCTNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "PAYMENTSTATUS",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "CHANGETYPE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "CHANGETIMESTAMP",
+          "datatype" : "TIMESTAMPNTZ",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 15,
+          "name" : "QUANTITY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 16,
+          "name" : "TOTALDUE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 17,
+          "name" : "UNITPRICE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 18,
+          "name" : "TRANSACTIONID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "PROCESSEDTIMESTAMP",
+          "datatype" : "TIMESTAMPNTZ",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "PAYMENTTYPE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-81daede9-6f21-540c-bdc6-a66fd24a3a53",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT HISTORYID, ORDERID, CUSTOMERID, CUSTOMERNAME, EMAIL, PHONE, ORDERSTATUS, ORDERDATE, PRODUCTID, PRODUCTTYPE, PRODUCTNAME, PAYMENTSTATUS, CHANGETYPE, CHANGETIMESTAMP, QUANTITY, TOTALDUE, UNITPRICE, TRANSACTIONID, PROCESSEDTIMESTAMP, PAYMENTTYPE\nFROM ICEDQ_DB.ICEDQ_DEMO.OPS_SALES_ORDER_HISTORY",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "HISTORYID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "ORDERID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "CUSTOMERID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "CUSTOMERNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "PHONE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "ORDERSTATUS",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "ORDERDATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "PRODUCTID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "PRODUCTTYPE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "PRODUCTNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "PAYMENTSTATUS",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "CHANGETYPE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "CHANGETIMESTAMP",
+          "datatype" : "TIMESTAMPNTZ",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 15,
+          "name" : "QUANTITY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 16,
+          "name" : "TOTALDUE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 17,
+          "name" : "UNITPRICE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 18,
+          "name" : "TRANSACTIONID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "PROCESSEDTIMESTAMP",
+          "datatype" : "TIMESTAMPNTZ",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "PAYMENTTYPE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "HISTORYID",
+          "targetKey" : "HISTORYID"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-6663b0b9-72e8-5481-9995-10d3dca651d9",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HISTORYID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c4efb2d2-48db-52bc-95ae-210470353502",
+          "type" : "Custom",
+          "description" : "Ensure History ID is not null.\n"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PRODUCTID] != null && S.[PRODUCTID].trim()",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-acea8f20-b718-56df-8ef1-88a7e04e3a0d",
+          "type" : "Custom",
+          "description" : "Product ID must be available.\n"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PAYMENTSTATUS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-486272c1-68c6-588b-9996-04bb481f0399",
+          "type" : "Custom",
+          "description" : "Payment Status should not be null.\n"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMAIL] != null && S.[EMAIL].contains('@')",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-36895760-3ba0-5f99-b5d6-bf6a72d54803",
+          "type" : "Custom",
+          "description" : "Validate Email contains @.\n\n"
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ORDERDATE] != null && new java.text.SimpleDateFormat(\"yyyy-MM-dd\").parse(S.[ORDERDATE]).compareTo(new Date()) <= 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5a20364f-c144-5fd1-bb16-ae73fde54efc",
+          "type" : "Custom",
+          "description" : "Order Date should not be in the future.\n"
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PAYMENTTYPE] in ['Credit Card', 'PayPal', 'Bank Transfer']",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-88180182-c748-511e-ada4-54a372c72db9",
+          "type" : "Custom",
+          "description" : "Payment Type should be one of: Credit Card, PayPal, Bank Transfer.\n"
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TOTALDUE] > 0 && S.[TOTALDUE] == T.[TOTALDUE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a4468785-3fab-5ca6-9657-e7031b67ec56",
+          "type" : "Custom",
+          "description" : "For Delivered orders, Total Due must be > 0 and match calculation.\n"
+        }, {
+          "name" : "Chk_0009",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PRODUCTTYPE] == \"Type A\" ? S.[UNITPRICE] > 50 : true",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5da06947-162b-5e29-8bb2-1af596da1180",
+          "type" : "Custom",
+          "description" : "If Product Type is \"Type A\", Unit Price must be > 50.\n"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-62d2821b-473c-584a-926b-ff248bfe7cab"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-e12460ea-b82d-544b-92b4-b3177b01527b",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-e12460ea-b82d-544b-92b4-b3177b01527b |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:37:16.418212500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
