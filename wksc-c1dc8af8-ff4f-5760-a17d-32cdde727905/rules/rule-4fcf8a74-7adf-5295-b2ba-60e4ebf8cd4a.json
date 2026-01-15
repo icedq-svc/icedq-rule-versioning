@@ -1,12 +1,11 @@
 {
-  "versionId" : "ver-0f4dafc7-1427-5a57-8b1c-cd301dc9cd90",
+  "versionId" : "ver-ef18c934-a1c4-5557-afc5-4e7b2e07333e",
   "objectId" : "rule-4fcf8a74-7adf-5295-b2ba-60e4ebf8cd4a",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Rule_1755839878",
-  "state" : "Staged",
-  "version" : 2,
+  "state" : "Draft",
   "info" : {
     "ruleType" : "api-recon",
     "properties" : {
@@ -219,35 +218,6 @@
           },
           "id" : "chck-aaf71cdb-2b53-5cd3-bb5c-50aebd644f56",
           "type" : "ResultType"
-        }, {
-          "name" : "Chk_0001",
-          "index" : 2,
-          "isActive" : true,
-          "isVisible" : false,
-          "expression" : {
-            "comment" : "SimpleCompareCheck(S.[data], T.[S_STAFFID])",
-            "emptyStringAsNull" : true,
-            "whiteSpaceAsNull" : true,
-            "trimmingEnable" : true,
-            "ignoreDataType" : true,
-            "ignoreSpecialCharacter" : false,
-            "caseInsensitive" : true,
-            "sourceColumn" : "S.[data]",
-            "targetColumn" : "T.[S_STAFFID]"
-          },
-          "id" : "chck-df4a33a9-465a-57b3-9cdf-a12fd8b19353",
-          "type" : "SimpleCompare"
-        }, {
-          "name" : "Chk_0002",
-          "index" : 3,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "T.[S_JOBCODE] != 'TA1'",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-36b3f7e6-8451-5afb-b15d-03ad20cc344c",
-          "type" : "Custom"
         } ]
       }
     }, {
@@ -257,9 +227,9 @@
       "configuration" : {
         "exportFileRowLimit" : "20000",
         "createExportDownloadLink" : true,
-        "storeOnlyException" : false,
+        "storeOnlyException" : true,
         "storeOnlyExportedFile" : false,
-        "format" : [ "CSV" ]
+        "format" : [ "XLSX" ]
       }
     }, {
       "id" : "Summary",
@@ -276,24 +246,22 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-a3ddf84c-22df-572b-9cfd-635faed074a7"
+          "id" : "chck-cd4dbc13-e538-5372-b909-af57c611cbfa"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration",
-  "commitTag" : "sample",
-  "commitStatus" : "Pending",
+  "commitStatus" : "Discarded",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-4fcf8a74-7adf-5295-b2ba-60e4ebf8cd4a",
-      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-4fcf8a74-7adf-5295-b2ba-60e4ebf8cd4a |Status: Approved"
+      "commitMessage" : "Message: null | RuleId: rule-4fcf8a74-7adf-5295-b2ba-60e4ebf8cd4a |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:33:54.578244200Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:22.213958400Z[UTC]",
   "updatedBy" : "roshan.n"
 }
