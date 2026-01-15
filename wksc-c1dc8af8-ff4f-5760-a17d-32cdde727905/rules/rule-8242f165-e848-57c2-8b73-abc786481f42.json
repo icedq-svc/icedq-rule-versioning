@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-71c864c3-98bc-5289-a29a-f5314d93ce54",
+  "versionId" : "ver-4d081d79-55ec-5656-8816-abc22474295f",
   "objectId" : "rule-8242f165-e848-57c2-8b73-abc786481f42",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "Pushdown DAT-13991",
-  "state" : "Published",
-  "version" : 1,
+  "name" : "Pushdown XML",
+  "state" : "Staged",
+  "version" : 2,
   "info" : {
     "ruleType" : "PushDown",
     "properties" : {
@@ -24,25 +24,20 @@
       "type" : "source",
       "name" : "sourceDataset",
       "connectionType" : "File",
-      "connectionId" : "conn-833279e2-e8bf-5185-9bd7-cca29093eed7",
-      "input" : "Table",
+      "connectionId" : "conn-74dc117b-9f4a-5c3c-8856-698af3efa5d9",
+      "input" : "Sql",
       "configuration" : {
         "databaseName" : "",
-        "schemaName" : "sasdatasets",
         "schemaRemarks" : "",
-        "tableName" : "customer",
+        "tableName" : "tblname_1756129402571",
         "tableRemarks" : "",
         "fileSchemaId" : "schm-fbe8b101-db9e-5bc2-a781-82a3d6ec0722",
-        "sql" : "select * from customer",
+        "sql" : "select * from tblname_1756129402571",
         "mdx" : "tset",
-        "filePath" : "/",
-        "skipRowTop" : "0",
-        "trimData" : "true",
+        "container" : "eai_qa_bucket/NextGen_QA/XMLFiles",
+        "filePath" : "/Customer.xml",
         "emptyString" : "true",
-        "whiteSpace" : "true",
-        "fixedString" : "false",
         "fixedStringValue" : "NaN",
-        "filterCondition" : "",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
@@ -50,63 +45,66 @@
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
-        "detectDatatype" : true,
-        "includeRowHeaders" : true,
         "columns" : [ {
           "index" : 1,
-          "name" : "customerid",
-          "datatype" : "FLOAT",
-          "icedqDatatype" : "DOUBLE"
+          "name" : "AcctNumber",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
-          "name" : "acctnumber",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
+          "name" : "AddressID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 3,
-          "name" : "firstname",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
+          "name" : "BirthDate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
         }, {
           "index" : 4,
-          "name" : "lastname",
-          "datatype" : "VARCHAR",
-          "icedqDatatype" : "TEXT"
+          "name" : "CustomerID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 5,
-          "name" : "gender",
+          "name" : "DateFirstPurchase",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 6,
+          "name" : "Email",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
-          "index" : 6,
-          "name" : "birthdate",
-          "datatype" : "DATE",
-          "icedqDatatype" : "DATE"
-        }, {
           "index" : 7,
-          "name" : "datefirstpurchase",
-          "datatype" : "DATE",
-          "icedqDatatype" : "DATE"
+          "name" : "FirstName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 8,
-          "name" : "phoneno",
-          "datatype" : "FLOAT",
-          "icedqDatatype" : "DOUBLE"
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         }, {
           "index" : 9,
-          "name" : "email",
+          "name" : "LastName",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 10,
-          "name" : "yearlyincome",
-          "datatype" : "FLOAT",
-          "icedqDatatype" : "DOUBLE"
+          "name" : "PhoneNo",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
         }, {
           "index" : 11,
-          "name" : "addressid",
-          "datatype" : "FLOAT",
-          "icedqDatatype" : "DOUBLE"
+          "name" : "YearlyIncome",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "row:_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         } ],
         "snapshotId" : "",
         "visualId" : "",
@@ -130,128 +128,139 @@
             "caseInsensitive" : false,
             "values" : [ "RowCount" ]
           },
-          "id" : "chck-f21cd898-dbcb-5c43-82f9-be47ebe0f2ec",
+          "id" : "chck-67fc6a2c-9498-51b1-b1e2-0ed9be5c9f3b",
           "type" : "ResultType"
         }, {
-          "name" : "Fyi_s_customerid",
+          "name" : "Fyi_s_acctnumber",
           "index" : 2,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[customerid]",
+            "value" : "S.[AcctNumber]",
             "caseInsensitive" : false
           },
-          "id" : "chck-18d30869-7f4e-5040-8aa5-389eba59c99b",
+          "id" : "chck-d96df92c-56e5-5373-8c3f-f0896a5ad74b",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_acctnumber",
+          "name" : "Fyi_s_addressid",
           "index" : 3,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[acctnumber]",
+            "value" : "S.[AddressID]",
             "caseInsensitive" : false
           },
-          "id" : "chck-d2028c56-312a-5753-a3a9-32744aac8d91",
+          "id" : "chck-af0ad722-6cfe-59c8-ab18-cd9742e0026c",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_firstname",
+          "name" : "Fyi_s_birthdate",
           "index" : 4,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[firstname]",
+            "value" : "S.[BirthDate]",
             "caseInsensitive" : false
           },
-          "id" : "chck-7a136c84-70d5-5b11-af5c-de78bfef6070",
+          "id" : "chck-dcf223b2-8ec3-5866-b3c0-07244b9e9627",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_lastname",
+          "name" : "Fyi_s_customerid",
           "index" : 5,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[lastname]",
+            "value" : "S.[CustomerID]",
             "caseInsensitive" : false
           },
-          "id" : "chck-8dbe75dc-c704-5327-98af-cfebf14fb7b3",
+          "id" : "chck-5fb39a4b-4e38-51a4-b259-6ff833ea00ff",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_gender",
+          "name" : "Fyi_s_datefirstpurchase",
           "index" : 6,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[gender]",
+            "value" : "S.[DateFirstPurchase]",
             "caseInsensitive" : false
           },
-          "id" : "chck-a0d744ce-4957-53f1-9c81-aa44df575753",
+          "id" : "chck-eb0fcf36-1969-59bc-af98-937fba14f657",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_birthdate",
+          "name" : "Fyi_s_email",
           "index" : 7,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[birthdate]",
+            "value" : "S.[Email]",
             "caseInsensitive" : false
           },
-          "id" : "chck-8c10938f-33e8-5647-8284-a316d1e7f8c1",
+          "id" : "chck-2bff3dd1-38fd-5379-8170-dbf402d0f31d",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_datefirstpurchase",
+          "name" : "Fyi_s_firstname",
           "index" : 8,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[datefirstpurchase]",
+            "value" : "S.[FirstName]",
             "caseInsensitive" : false
           },
-          "id" : "chck-54f465e6-9af8-5a63-8440-2d538c934d36",
+          "id" : "chck-9fc44404-08e5-5301-a52f-c6555f5a1da4",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_phoneno",
+          "name" : "Fyi_s_gender",
           "index" : 9,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[phoneno]",
+            "value" : "S.[Gender]",
             "caseInsensitive" : false
           },
-          "id" : "chck-8fb3cade-fc35-54e4-94f9-42f1b1141f17",
+          "id" : "chck-bd226163-d8bb-572b-84f2-30b747ce57ff",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_email",
+          "name" : "Fyi_s_lastname",
           "index" : 10,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[email]",
+            "value" : "S.[LastName]",
             "caseInsensitive" : false
           },
-          "id" : "chck-2d8dcb5c-12c7-5c72-9c4f-9c169d2799ca",
+          "id" : "chck-c51b5ae4-2829-5b14-8957-eb82d1479915",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_yearlyincome",
+          "name" : "Fyi_s_phoneno",
           "index" : 11,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[yearlyincome]",
+            "value" : "S.[PhoneNo]",
             "caseInsensitive" : false
           },
-          "id" : "chck-3a7607cc-9509-5df0-87ae-e478fe30e089",
+          "id" : "chck-d4d2d97a-c094-50b4-8d43-3a1a5acf9e39",
           "type" : "Column"
         }, {
-          "name" : "Fyi_s_addressid",
+          "name" : "Fyi_s_yearlyincome",
           "index" : 12,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[addressid]",
+            "value" : "S.[YearlyIncome]",
             "caseInsensitive" : false
           },
-          "id" : "chck-df8acaf5-743e-562a-be00-73a17d43aad5",
+          "id" : "chck-48c8561a-defe-52ea-a503-ead5c382c7c4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_row:_id",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[row:_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a8a59fe5-3edb-5386-a6a7-5080fb05018a",
           "type" : "Column"
         } ]
       }
@@ -286,18 +295,19 @@
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
-  "commitStatus" : "Merged",
+  "commitMessage" : "XML",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-8242f165-e848-57c2-8b73-abc786481f42",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-8242f165-e848-57c2-8b73-abc786481f42 |Status: Approved"
+      "commitMessage" : "Message: XML | RuleId: rule-8242f165-e848-57c2-8b73-abc786481f42 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:34:55.095322100Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:36:05.581064600Z[UTC]",
   "updatedBy" : "roshan.n"
 }
