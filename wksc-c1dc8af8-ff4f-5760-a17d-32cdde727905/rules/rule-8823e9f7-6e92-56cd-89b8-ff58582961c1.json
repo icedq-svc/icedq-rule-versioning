@@ -1,14 +1,14 @@
 {
-  "versionId" : "ver-5f791292-26b7-5e15-8a1e-8878997a96c5",
+  "versionId" : "ver-e0a6c49d-2831-59fb-bb5b-f5c39d2fb6ec",
   "objectId" : "rule-8823e9f7-6e92-56cd-89b8-ff58582961c1",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Recon Rule FF native Vs Netezza",
-  "state" : "Published",
-  "version" : 2,
+  "state" : "Staged",
   "info" : {
-    "ruleType" : "recon",
+    "ruleType" : "Recon",
+    "code" : "Recon Rule",
     "description" : "Update rule",
     "properties" : {
       "criticality" : "Critical",
@@ -31,6 +31,7 @@
         "databaseName" : "",
         "schemaRemarks" : "",
         "tableRemarks" : "",
+        "sql" : "",
         "fileType" : "Delimited",
         "filePath" : "/AtTheRate_STAFF.txt",
         "columnDelimiter" : "@",
@@ -285,7 +286,23 @@
             "caseInsensitive" : false
           },
           "id" : "chck-63213fd9-fee8-5443-9a22-2a84faa7bd39",
-          "type" : "Custom"
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "importlabel",
+            "values" : [ "OneTest" ]
+          }, {
+            "field" : "importmultiselectdropdown",
+            "values" : [ "TwoTest" ]
+          }, {
+            "field" : "importsingleselectdropdown",
+            "values" : [ "FourTest" ]
+          }, {
+            "field" : "importsingleselectmap",
+            "values" : [ "ThreeTest" ]
+          }, {
+            "field" : "importtoggle",
+            "values" : [ "false" ]
+          } ]
         }, {
           "name" : "Chk_0002",
           "index" : 3,
@@ -412,20 +429,34 @@
           "id" : "chck-10df8324-ef98-50a4-80c4-c25530a03feb"
         } ]
       }
+    } ],
+    "customFields" : [ {
+      "field" : "importtoggle",
+      "values" : [ "false" ]
+    }, {
+      "field" : "importsingleselectmap",
+      "values" : [ "ThreeTest" ]
+    }, {
+      "field" : "importsingleselectdropdown",
+      "values" : [ "FourTest" ]
+    }, {
+      "field" : "importmultiselectdropdown",
+      "values" : [ "TwoTest" ]
+    }, {
+      "field" : "importlabel",
+      "values" : [ "OneTest" ]
     } ]
   },
-  "commitMessage" : "Created by import service",
-  "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-8823e9f7-6e92-56cd-89b8-ff58582961c1",
-      "commitMessage" : "Message: Created by import service | RuleId: rule-8823e9f7-6e92-56cd-89b8-ff58582961c1 |Status: Approved"
+      "commitMessage" : "Message: null | RuleId: rule-8823e9f7-6e92-56cd-89b8-ff58582961c1 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:37:38.765538100Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:37:41.928540100Z[UTC]",
   "updatedBy" : "roshan.n"
 }
