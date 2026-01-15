@@ -1,5 +1,5 @@
 {
-  "versionId" : "ver-0ab735f3-a606-5c13-9481-fd33011565ff",
+  "versionId" : "ver-2f9f500c-508d-5183-872c-0ab5c3ca5101",
   "objectId" : "rule-d52c0e5d-467d-5b3c-9267-5431e1ec624e",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
@@ -11,9 +11,6 @@
     "properties" : {
       "criticality" : "Warning",
       "engineType" : "HighThroughput",
-      "stopAtFailAndErrorCount" : 0,
-      "stopAtRowCount" : 0,
-      "stopAtTime" : 0,
       "degreeOfParallelism" : 1,
       "engineInfo" : { },
       "languageType" : "groovy"
@@ -31,12 +28,13 @@
         "tableRemarks" : "",
         "fileSchemaId" : "schm-45054a11-b132-5ee9-95d3-17b21b0616e9",
         "sql" : "select * from staff",
+        "dax" : "",
+        "mdx" : "",
         "filePath" : "/STAFF.xlsx",
         "skipRowTop" : "0",
         "emptyString" : "true",
         "fixedStringValue" : "NaN",
         "appendOrderBy" : true,
-        "isSingleFile" : true,
         "isDynamicPath" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
@@ -172,6 +170,22 @@
           },
           "id" : "chck-8fd4942a-8d55-51f8-8b40-5a74771b63a2",
           "type" : "Completeness"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[JOBCODE]\", array[BCK])",
+            "column" : "S.[JOBCODE]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "BCK" ]
+          },
+          "id" : "chck-a168ea60-d650-5c1b-881b-a540198f1388",
+          "type" : "Contains"
         } ]
       }
     }, {
@@ -205,7 +219,6 @@
       }
     } ]
   },
-  "commitStatus" : "Discarded",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
@@ -216,6 +229,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:35:53.879848600Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:36:09.394066400Z[UTC]",
   "updatedBy" : "roshan.n"
 }
