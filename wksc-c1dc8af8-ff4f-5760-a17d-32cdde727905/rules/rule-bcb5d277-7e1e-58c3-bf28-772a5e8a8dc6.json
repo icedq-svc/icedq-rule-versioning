@@ -1,0 +1,226 @@
+{
+  "versionId" : "ver-31bb03ec-d7da-54d9-82fc-75a53c1ecea2",
+  "objectId" : "rule-bcb5d277-7e1e-58c3-bf28-772a5e8a8dc6",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "API Recon-05-Cond comp trim",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "api-recon",
+    "description" : "Postgresql-with-jdbc-without-prop-system-wkfl-6893 and Rest-API-Basic-UP-Sys-Simple-Conn",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-cc8df64d-5bf9-5d3c-bd8f-8e96feac3852",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "tset123",
+        "fileSchemaId" : "schm-175b6b4f-337f-59c6-a9a9-b024c2cd0957",
+        "sql" : "SELECT EmpID, DeptID, Team, Location \r\n                 FROM (VALUES \r\n                 (1,  101, ' Sales ',    'New York'), \r\n                 (2,  102, ' Sales ',     'Chicago'), \r\n                 (3,  103, 'Sales',     'Austin'), \r\n                 (4,  104, 'Development', 'Seattle'), \r\n                 (5,  105, 'Admin',       'Boston'), \r\n                 (6,  106, 'sales',    'Miami'), \r\n                 (7,  107, 'Marketing',   'Los Angeles'), \r\n                 (8,  103, 'QA',          'Austin'), \r\n                 (9,  102, 'Sales',       'New York'),  \r\n                 (10, 104, 'Development', 'Seattle'), \r\n                 (11, 101, 'CSM',         'San Francisco'),       -- Emp 11 shares hiredate with Emp 5 but location differs \r\n                 (12, 107, 'Marketing',   'Los Angeles') \r\n                 ) AS d(EmpID, DeptID, Team, Location)",
+        "fixedString" : "false",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EmpID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "DeptID",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "Team",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Location",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2",
+        "requestMethod" : "GET",
+        "endPoint" : "/contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-341f9aba-e6ae-59c3-9cf5-65ebf2c59f9f",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT EmpID, DeptID, Team, Location \r\n                 FROM (VALUES \r\n                 (1,  101, 'Sales',    'New york'), \r\n                 (2,  102, 'Sales',       '  Chicago  '), \r\n                 (3,  103, 'Sales',          '   Austin  '), \r\n                 (4,  104, 'Development', 'Seattle'), \r\n                 (5,  105, 'Admin',       '  '), \r\n                 (6,  106, 'PRESALES',    'Miami'), \r\n                 (7,  107, 'Marketing',   'Los Angeles'), \r\n                 (8,  103, 'QA',          'Austin'), \r\n                 (9,  102, 'Sales',       'New York'),    -- Emp 9 shares hiredate with Emp 2 but location differs \r\n                 (10, 104, 'Development', 'Seattle'), \r\n                 (11, 101, 'CSM',         'San Francisco'),       -- Emp 11 shares hiredate with Emp 5 but location differs \r\n                 (12, 107, 'Marketing',   'Los Angeles') \r\n                 ) AS d(EmpID, DeptID, Team, Location)",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "empid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 2,
+          "name" : "deptid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 3,
+          "name" : "team",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "location",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "EmpID",
+          "targetKey" : "empid"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-e0718423-f76e-520f-8dd4-c3783fc165df",
+          "type" : "ResultType",
+          "isDeferredSort" : false
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[Team], T.[location])",
+            "emptyStringAsNull" : false,
+            "whiteSpaceAsNull" : false,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[Team]",
+            "targetColumn" : "T.[location]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull"
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "Sales",
+              "target" : [ "New York", "Chicago", "Austin" ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource"
+            } ]
+          },
+          "id" : "chck-0f4d2db7-ff48-5e82-ab9c-949f94c34c8f",
+          "type" : "ConditionalCompare",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-bbaf4010-ecea-5ca8-8e1d-a8f2e0fefe68"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "single_select_map",
+      "values" : [ "Test1" ]
+    }, {
+      "field" : "test_label",
+      "values" : [ "Test2" ]
+    }, {
+      "field" : "multi_select_dropdown",
+      "values" : [ "Test-4" ]
+    }, {
+      "field" : "single_select_dropdown",
+      "values" : [ "Test-3" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-bcb5d277-7e1e-58c3-bf28-772a5e8a8dc6",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-bcb5d277-7e1e-58c3-bf28-772a5e8a8dc6 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:36:06.647063700Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
