@@ -1,0 +1,130 @@
+{
+  "versionId" : "ver-50081f17-436b-51e7-9c11-945a91836c45",
+  "objectId" : "rule-0ecc5ede-b244-510a-990b-f134bc0fa984",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "CHECK_1755843902248",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "CHECK",
+    "description" : "CHECK",
+    "purpose" : "CHECK",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-f829041d-59e9-5fc4-bff5-6e2956a80b62",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "CUSTOMER",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "SOURCE_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-32edff90-edc0-55a7-8380-45e978e586f8",
+      "input" : "Table",
+      "configuration" : {
+        "databaseName" : "REG_DB_HV",
+        "schemaName" : "regression_database",
+        "tableName" : "customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "target_count",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE_COUNT] - T.[target_count] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3453ce68-b5e0-5606-8d17-9fb05fc36a12",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-cb75acf4-5de0-5217-b7d3-0447a7635ee2"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "release_testing_fields",
+      "values" : [ "A" ]
+    }, {
+      "field" : "togglefield",
+      "values" : [ "false" ]
+    }, {
+      "field" : "labelfield",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectdropdown",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectmap",
+      "values" : [ "Password" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-0ecc5ede-b244-510a-990b-f134bc0fa984",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-0ecc5ede-b244-510a-990b-f134bc0fa984 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:37:08.220212300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
