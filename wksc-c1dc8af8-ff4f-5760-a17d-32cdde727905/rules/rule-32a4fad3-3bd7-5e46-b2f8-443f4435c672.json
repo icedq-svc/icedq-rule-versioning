@@ -1,0 +1,168 @@
+{
+  "versionId" : "ver-14e31bc1-b887-5cbc-a3bb-469127676fb7",
+  "objectId" : "rule-32a4fad3-3bd7-5e46-b2f8-443f4435c672",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1756193380356",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-2fae3f70-9274-57af-8075-26d729139cf5",
+      "input" : "Snapshot",
+      "configuration" : {
+        "appendOrderBy" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Count of Issue id",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Issue Type",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "bisnp-8e2843d7-181a-5d2f-ae59-40ffb187c4c8",
+        "visualId" : "2ee5dbdad5f84a8dc993",
+        "granularity" : "Summary"
+      },
+      "reportScanId" : "birpt-112cd310-8f0f-5254-b266-e0490201cd64"
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "BIReport",
+      "connectionId" : "conn-2fae3f70-9274-57af-8075-26d729139cf5",
+      "input" : "Snapshot",
+      "configuration" : {
+        "appendOrderBy" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Count of Issue id",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Issue Type",
+          "datatype" : "TEXT",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "snapshotId" : "bisnp-8e2843d7-181a-5d2f-ae59-40ffb187c4c8",
+        "visualId" : "2ee5dbdad5f84a8dc993",
+        "granularity" : "Summary"
+      },
+      "reportScanId" : "birpt-112cd310-8f0f-5254-b266-e0490201cd64"
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "Count of Issue id",
+          "targetKey" : "Count of Issue id"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-39344ac5-5a42-5351-9aa8-29a6c06a8979",
+          "type" : "ResultType"
+        }, {
+          "name" : "Count of issue id",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Count of Issue id] == T.[Count of Issue id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-feccd6a4-bcca-59f8-ab81-39a5debfa6ba",
+          "type" : "Custom"
+        }, {
+          "name" : "Issue type",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Issue Type] == T.[Issue Type]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-daf69a6d-9802-5291-ac86-c9c9658e6fc0",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-3c59d02f-de16-5fdc-8d33-e2fa1859b364"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-32a4fad3-3bd7-5e46-b2f8-443f4435c672",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-32a4fad3-3bd7-5e46-b2f8-443f4435c672 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:04.626491200Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
