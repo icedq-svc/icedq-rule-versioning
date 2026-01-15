@@ -1,0 +1,357 @@
+{
+  "versionId" : "ver-d44a2bda-22e7-5f3c-9378-ca48b1ed9908",
+  "objectId" : "rule-736c1491-bac3-5ae8-9c6f-77449ae20547",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Validation rule with version used",
+  "state" : "Published",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "validation",
+    "description" : "{\n    \"orgId\": \"org-icedq.qa\",\n    \"accountId\": \"acct-6f3fdf4c-9c27-5420-a6d5-476d2549dff6\",\n    \"workspaceId\": \"wksc-bd3c25fd-59be-5a90-b507-6de7eae65664\",\n    \"rule\": {\n        \"id\": \"rule-3b6c1d57-f451-5984-b1d7-9f1ef746e65b\",\n        \"folderId\": \"fldr-135537e5-6d65-55bb-a894-908a99b39b59\",\n        \"sourceConnectionId\": \"conn-df8c41af-d205-58ac-92c9-f1dcdac6ef88\"\n    }\n}",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-677981bc-d9f2-5a39-8852-260f43eeffc5",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "ADMIN",
+        "tableName" : "STAFF",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "STAFFID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "JOBCODE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "COMPANY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "SALARY",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "BONUS",
+          "datatype" : "NUMERIC",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "COMM",
+          "datatype" : "NUMERIC",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "TOTALSALARY",
+          "datatype" : "NUMERIC",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "BIRTHD",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 10,
+          "name" : "HIRED",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 11,
+          "name" : "LNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "FNAME",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ADDRESS",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "CITY",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "STATE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "HPHONE",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "SSN",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-410c56ce-accf-56e6-a653-00c24d4970c6",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE] == 'ME2'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-37a1449a-efd3-56e4-a0a7-f74bb55147d6",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exportsingleselectmap",
+            "values" : [ "ETset" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[LNAME]\", length <= 8)",
+            "column" : "S.[LNAME]",
+            "operator" : "less than equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 8 ]
+          },
+          "id" : "chck-1dd28fba-e6b9-55cd-a50a-035bbcd75ffb",
+          "type" : "Length",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exportsingleselectmap",
+            "values" : [ "ETset" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[STATE]\", array[CT])",
+            "column" : "S.[STATE]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "CT" ]
+          },
+          "id" : "chck-aa4dba33-ba77-55d9-a79a-660c4ee56630",
+          "type" : "Contains",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exportsingleselectmap",
+            "values" : [ "ETset" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DateCheck(\"S.[ADDRESS]\", date = dd-MM-yyyy)",
+            "column" : "S.[ADDRESS]",
+            "format" : "dd-MM-yyyy",
+            "ignoreNull" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-16f10879-d6a9-5a4b-abce-141feba8df22",
+          "type" : "Date",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exportsingleselectmap",
+            "values" : [ "ETset" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        }, {
+          "name" : "Fyi_s_sex",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEX]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8165bdff-fd64-5421-94d0-505cc2f5fbf8",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_jobcode",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOBCODE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ab8bfffe-5a66-509f-abee-65d0a489a81e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_company",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COMPANY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-18d0928c-c286-579e-9a8b-f04ecdbef795",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-dba42618-cd58-5d22-b462-8bd64cd7d677"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "exportlabel",
+      "values" : [ "ATest" ]
+    }, {
+      "field" : "exportmultiselectdropdown",
+      "values" : [ "CTest" ]
+    }, {
+      "field" : "exportsingleselectdropdown",
+      "values" : [ "GTest" ]
+    }, {
+      "field" : "exportsingleselectmap",
+      "values" : [ "ETset" ]
+    }, {
+      "field" : "exporttoggle",
+      "values" : [ "true" ]
+    } ]
+  },
+  "commitMessage" : "Created by import service",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-736c1491-bac3-5ae8-9c6f-77449ae20547",
+      "commitMessage" : "Message: Created by import service | RuleId: rule-736c1491-bac3-5ae8-9c6f-77449ae20547 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:25.176299300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
