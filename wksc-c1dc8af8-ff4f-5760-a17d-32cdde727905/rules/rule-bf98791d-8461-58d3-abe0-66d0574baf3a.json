@@ -1,0 +1,525 @@
+{
+  "versionId" : "ver-d3d7f2df-4260-5945-aba5-2c3e9a511254",
+  "objectId" : "rule-bf98791d-8461-58d3-abe0-66d0574baf3a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "rule-validation-tsquery-CO.checks",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-c36de0e0-3f4a-587f-a03e-b744d5179717",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "public",
+        "tableName" : "all_datatypes",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "col_uuid",
+          "datatype" : "uuid",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "col_int",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 3,
+          "name" : "col_int2",
+          "datatype" : "int2",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "col_int4",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 5,
+          "name" : "col_int8",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 6,
+          "name" : "col_decimal",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "col_float4",
+          "datatype" : "float4",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 8,
+          "name" : "col_float8",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 9,
+          "name" : "col_real",
+          "datatype" : "float4",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 10,
+          "name" : "col_double_precision",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "col_bool",
+          "datatype" : "bool",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "col_char",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "col_varchar",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "col_text",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "col_string",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "col_date",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 17,
+          "name" : "col_time",
+          "datatype" : "time",
+          "icedqDatatype" : "TIME"
+        }, {
+          "index" : 18,
+          "name" : "col_timestamp",
+          "datatype" : "timestamp",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 19,
+          "name" : "col_timestamptz",
+          "datatype" : "timestamptz",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "col_interval",
+          "datatype" : "interval",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "col_bytes",
+          "datatype" : "bytea",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "col_json",
+          "datatype" : "jsonb",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "col_serial",
+          "datatype" : "int8",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 24,
+          "name" : "col_inet",
+          "datatype" : "inet",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "col_int_array",
+          "datatype" : "_int8",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "col_string_array",
+          "datatype" : "_text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "col_bool_array",
+          "datatype" : "_bool",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "col_float_array",
+          "datatype" : "_float8",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "col_uuid_array",
+          "datatype" : "_uuid",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "col_date_array",
+          "datatype" : "_date",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "col_bytes_array",
+          "datatype" : "_bytea",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "col_bit",
+          "datatype" : "bit",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 33,
+          "name" : "col_collate",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "col_enum",
+          "datatype" : "mood",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "col_null",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "col_oid",
+          "datatype" : "oid",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 37,
+          "name" : "col_timetz",
+          "datatype" : "timetz",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "col_tsquery",
+          "datatype" : "tsquery",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "col_tsvector",
+          "datatype" : "tsvector",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 40,
+          "name" : "col_vector",
+          "datatype" : "vector",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-4dbab52d-69ad-51fb-aac5-8eca3c18d351",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery] == 'apple' & 'banana'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-78fe829f-5cfc-5ca6-b9b3-3e854d84485f",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery] == 'grape' & 'orange'&& 'strawberry' | 'blueberry'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7335ab8f-bca1-5c42-bf64-7300166797cc",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery] == null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e197683a-b59d-531d-a7ad-c21fe954fca9",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery] == 'grape'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-29fd74f5-14e9-5701-a032-ff9d37191527",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[col_tsquery]\")",
+            "column" : "S.[col_tsquery]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b1a10649-d2b4-525b-a153-9a5036f51849",
+          "type" : "Completeness"
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[col_tsquery]\", length > 10)",
+            "column" : "S.[col_tsquery]",
+            "operator" : "greater than",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 10 ]
+          },
+          "id" : "chck-f2c372b9-7af3-519e-adb2-da950b3588b4",
+          "type" : "Length"
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[col_tsquery]\", length < 10)",
+            "column" : "S.[col_tsquery]",
+            "operator" : "less than",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 10 ]
+          },
+          "id" : "chck-bbb6ece9-3021-5067-a9a5-53b136cb0b9f",
+          "type" : "Length"
+        }, {
+          "name" : "Chk_0008",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[col_tsquery]\", pattern = 'grape' & 'orange')",
+            "column" : "S.[col_tsquery]",
+            "pattern" : "Custom",
+            "regex" : "'grape' & 'orange'",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-a1abd26d-74f0-5de3-97ad-245acd160f51",
+          "type" : "Pattern"
+        }, {
+          "name" : "Chk_0009",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[col_tsquery]\", pattern = Country Code)",
+            "column" : "S.[col_tsquery]",
+            "pattern" : "Country Code",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-0c5bdfd8-b1e9-5343-bf4d-350c8089deb6",
+          "type" : "Pattern"
+        }, {
+          "name" : "Chk_0010",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[col_tsquery]\", array['apple' & 'banana','pear' | 'plum','strawberry'])",
+            "column" : "S.[col_tsquery]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "'apple' & 'banana'", "'pear' | 'plum'", "'strawberry'" ]
+          },
+          "id" : "chck-a5bcbad9-6597-5b1c-abde-82de2109aab9",
+          "type" : "Contains"
+        }, {
+          "name" : "Chk_0011",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[col_tsquery]\", dataType = Integer)",
+            "column" : "S.[col_tsquery]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d489e232-1cee-501a-9544-d73023bd43b3",
+          "type" : "Datatype"
+        }, {
+          "name" : "Chk_0012",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[col_tsquery]\", dataType = Double)",
+            "column" : "S.[col_tsquery]",
+            "datatype" : "Double",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b6e0ae2f-bd5a-5133-b78e-917af8bf73a5",
+          "type" : "Datatype"
+        }, {
+          "name" : "Fyi_s_col_tsquery",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cb6b32b8-a8d9-50eb-842c-96d357be2dc6",
+          "type" : "Column"
+        }, {
+          "name" : "Col_0014",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery].concat(S.[col_tsvector])",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c7d5e88e-824b-530e-88ec-6e85062d6624",
+          "type" : "Calculated"
+        }, {
+          "name" : "Col_0015",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery].replace('apple' & 'banana', 'Pankaj')",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-25598199-f1ac-52f7-9a26-03e164719639",
+          "type" : "Calculated"
+        }, {
+          "name" : "Chk_0016",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery].size()",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5e7dffd4-5a1f-5d52-905f-bbd91644d518",
+          "type" : "Custom"
+        }, {
+          "name" : "Chk_0017",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[col_tsquery].toUpperCase()",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cc293066-542b-5002-8e7d-8dbc21c55f8c",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-48b77f14-120e-5cf5-87a8-09454f6ee0a7"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-bf98791d-8461-58d3-abe0-66d0574baf3a",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-bf98791d-8461-58d3-abe0-66d0574baf3a |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:18.306960800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
