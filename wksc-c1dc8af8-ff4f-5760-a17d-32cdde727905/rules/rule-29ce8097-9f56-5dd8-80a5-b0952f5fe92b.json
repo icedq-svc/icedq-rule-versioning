@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-1feade51-0370-55f9-a4be-c9091f2ca2eb",
+  "versionId" : "ver-fc798930-278d-5c6a-a127-8339436baa85",
   "objectId" : "rule-29ce8097-9f56-5dd8-80a5-b0952f5fe92b",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "DAT-13947-FF_SQL_PreviewDATA",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "Recon",
     "properties" : {
@@ -27,6 +27,7 @@
       "connectionId" : "conn-540e126c-1e29-5339-9d4a-4d4a877dc703",
       "input" : "Sql",
       "configuration" : {
+        "databaseName" : "",
         "schemaRemarks" : "",
         "tableName" : "tblname_1755861724172",
         "tableRemarks" : "",
@@ -40,10 +41,14 @@
         "skipRowTop" : "0",
         "trimData" : "true",
         "emptyString" : "true",
+        "whiteSpace" : "false",
+        "fixedString" : "true",
         "fixedStringValue" : "NaN",
+        "filterCondition" : "",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -151,6 +156,7 @@
       "connectionId" : "conn-a291832b-5cbd-5452-9d34-fd07112f6667",
       "input" : "Sql",
       "configuration" : {
+        "databaseName" : "",
         "schemaRemarks" : "",
         "tableName" : "tblname_1755862035671",
         "tableRemarks" : "",
@@ -164,10 +170,14 @@
         "skipRowTop" : "0",
         "trimData" : "true",
         "emptyString" : "true",
+        "whiteSpace" : "false",
+        "fixedString" : "true",
         "fixedStringValue" : "NaN",
+        "filterCondition" : "",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -259,6 +269,9 @@
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
         "baseUrl" : "",
         "requestMethod" : "GET",
         "endPoint" : "",
@@ -273,6 +286,10 @@
           "index" : 1,
           "sourceKey" : "SEX",
           "targetKey" : "SEX"
+        }, {
+          "index" : 2,
+          "sourceKey" : "SALARY",
+          "targetKey" : "SALARY"
         } ]
       }
     }, {
@@ -309,6 +326,17 @@
           },
           "id" : "chck-e81cfc5d-73d0-56f0-acd9-72039b4b33dc",
           "type" : "SimpleCompare"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEX] == 'M'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-af8e82b7-4a12-54d5-bb58-06b53a411e6c",
+          "type" : "Custom"
         } ]
       }
     }, {
@@ -318,7 +346,7 @@
       "configuration" : {
         "exportFileRowLimit" : "20000",
         "createExportDownloadLink" : true,
-        "storeOnlyException" : true,
+        "storeOnlyException" : false,
         "storeOnlyExportedFile" : false,
         "format" : [ "XLSX" ]
       }
@@ -342,7 +370,8 @@
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
@@ -350,10 +379,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-29ce8097-9f56-5dd8-80a5-b0952f5fe92b",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-29ce8097-9f56-5dd8-80a5-b0952f5fe92b |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-29ce8097-9f56-5dd8-80a5-b0952f5fe92b |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:39.542398800Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:42.774395600Z[UTC]",
   "updatedBy" : "roshan.n"
 }
