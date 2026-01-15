@@ -1,0 +1,198 @@
+{
+  "versionId" : "ver-0873f10c-1a7b-5701-9a65-a909ccc91fb1",
+  "objectId" : "rule-1f181f35-9397-5b8f-a088-7ee799035f99",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "CS-021-JSON",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "CS-021",
+    "description" : "Testing for all fields visible in version diff-Update",
+    "purpose" : "Testing rule versioning",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-e25b2e48-53d3-52c5-a708-a820644c7647",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-1936d400-85c4-5dd6-af9d-918923f9e205",
+      "input" : "Sql",
+      "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
+        "tableName" : "tblname_1756199595058",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-63e52563-0869-54e3-b47c-d1d6e7cf8ef9",
+        "sql" : "#Query#",
+        "filePath" : "Customer.json",
+        "skipRowTop" : "0",
+        "trimData" : "false",
+        "emptyString" : "false",
+        "whiteSpace" : "false",
+        "fixedString" : "false",
+        "fixedStringValue" : "NaN",
+        "filterCondition" : "",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "overrideLayout" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "detectDatatype" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "source_count",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-1936d400-85c4-5dd6-af9d-918923f9e205",
+      "input" : "Sql",
+      "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
+        "tableName" : "tblname_1756199666907",
+        "tableRemarks" : "",
+        "fileSchemaId" : "schm-a1ed2c63-47b4-5abc-96dc-1b4051af4ac3",
+        "sql" : "select count(*) as target_count from tblname_1756199666907",
+        "filePath" : "Customer.json",
+        "skipRowTop" : "0",
+        "trimData" : "false",
+        "emptyString" : "false",
+        "whiteSpace" : "false",
+        "fixedString" : "false",
+        "fixedStringValue" : "NaN",
+        "filterCondition" : "",
+        "appendOrderBy" : true,
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "overrideLayout" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "detectDatatype" : true,
+        "includeRowHeaders" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "target_count",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[source_count] - T.[target_count] #Equal# 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d5e5cb35-d067-57c5-98e3-93eb6e25a59a",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-78c73d1b-aaa2-5d49-80ea-fd2777b9ffb9"
+        }, {
+          "name" : "Var_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " sourcecount > 0",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-03146aaf-9d92-5cb9-a54a-508db97e8239"
+        }, {
+          "name" : "Var_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " rulename ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-193203cf-2523-55cb-9eaf-82df50a1373f"
+        }, {
+          "name" : "Var_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : " criticality ",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-9cc85ad4-e89d-5922-be86-fc95ad728acf"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-1f181f35-9397-5b8f-a088-7ee799035f99",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-1f181f35-9397-5b8f-a088-7ee799035f99 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:38:50.204396800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
