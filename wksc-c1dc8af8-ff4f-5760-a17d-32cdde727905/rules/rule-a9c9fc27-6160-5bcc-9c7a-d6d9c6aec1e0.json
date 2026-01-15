@@ -1,0 +1,171 @@
+{
+  "versionId" : "ver-ce50a1aa-aa1b-5087-8696-da53410767c6",
+  "objectId" : "rule-a9c9fc27-6160-5bcc-9c7a-d6d9c6aec1e0",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Datatype_check123",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-4f1f0f43-7d5b-5969-8d7a-088b52f8ff8e",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "Select customerid, AccountNumber, Salary, Gender, Appname, Booleanc, birthd from\r\n       (\r\n       select '123456' CustomerId, 'Acc001' AccountNumber, 10000 Salary, 'M' Gender,'iCEDQ' Appname, 'True' Booleanc,  '2023-01-01' birthd  \r\n       UNION ALL\r\n       select  '123456' CustomerId, 'Acc002         ' AccountNumber, 12000 Salary, 'F' Gender, ' iCEDQ' Appname,  '    iCEDQ' Booleanc, '2023-01-01        ' birthd\r\n       UNION ALL\r\n       select '123456.123456' CustomerId, '         Acc003' AccountNumber, 12000 Salary, 'F' Gender, 'iCEDQ' Appname, 'iCEDQ' Booleanc, '2023-01-01        ' birthd\r\n       UNION ALL\r\n       select  '123456.123456' CustomerId, null AccountNumber, 20000 Salary, 'M' Gender , '   iCEDQ' Appname, '    FALSE'  Booleanc,  '2023-01-01        ' birthd\r\n       UNION ALL\r\n       select '123456.123456' CustomerId, NULL AccountNumber, 25000 Salary, 'F' Gender, 'iCEDQ' Appname, '0          ' Booleanc, '2023-01-01 6:30:29 PM' birthd\r\n       UNION ALL\r\n       select '      123456' CustomerId, Null AccountNumber, 25000 Salary, 'F' Gender, '  iCEDQ' Appname, '    TRUE' Booleanc, '2023-NOV-01 6:30:29 PM' birthd\r\n       UNION ALL\r\n       select '     - 123456' CustomerId, '' AccountNumber, 15000 Salary, 'M' Gender, 'ICEdq' Appname, '    FAlse' Booleanc, '2023-03-01' birthd\r\n       UNION ALL\r\n       select '    -123456.123456' CustomerId, '     ' AccountNumber, 35000 Salary, 'M' Gender, 'iceDq ' Appname,  '1'   Booleanc, '2023-10-02' birthd\r\n       UNION ALL\r\n       select '    -123456.123456' CustomerId, 'null' AccountNumber, 12000 Salary, 'F' Gender,  '   iCEDQ' Appname,  '0' Booleanc, '2023-03-03' birthd\r\n       ) Customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "customerid",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "AccountNumber",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Salary",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "Gender",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Appname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "Booleanc",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "birthd",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-8a19f030-594e-5790-b915-e395d2d129cc",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[customerid]\", dataType = Integer)",
+            "column" : "S.[customerid]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-81d85011-a7c0-5d14-988f-a0f92050c710",
+          "type" : "Datatype",
+          "customFields" : [ {
+            "field" : "Label_type_Custom_Fields",
+            "values" : [ "check2" ]
+          }, {
+            "field" : "Tag-Type-Custom-Field",
+            "values" : [ "T2", "T3", "T4", "T5" ]
+          }, {
+            "field" : "Criticality",
+            "values" : [ "mvbm", "major" ]
+          }, {
+            "field" : "Data Quality Dimension",
+            "values" : [ "Uniqueness", "Accuracy" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[customerid] != 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-88cf6dd7-9195-51b4-92b6-a8d874b31471",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-0d7dccba-cd3f-5f81-826f-5e97fc259fe1"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-a9c9fc27-6160-5bcc-9c7a-d6d9c6aec1e0",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-a9c9fc27-6160-5bcc-9c7a-d6d9c6aec1e0 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:43:20.196244300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
