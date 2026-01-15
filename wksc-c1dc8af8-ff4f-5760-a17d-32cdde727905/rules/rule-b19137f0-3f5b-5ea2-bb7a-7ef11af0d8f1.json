@@ -1,0 +1,387 @@
+{
+  "versionId" : "ver-41ed8194-c615-59cb-b488-5339f18a0246",
+  "objectId" : "rule-b19137f0-3f5b-5ea2-bb7a-7ef11af0d8f1",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "MD-P011-Direct option selected with table",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "PushDown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-739eddcb-d937-5efb-aeb9-c6c8aa0f98c8",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "System",
+        "tableName" : "processstages",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Etag",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "processstageid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "_ownerid_value",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "_parentprocessstageid_value",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "_processid_value",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "clientdata",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "connector",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "istrigger",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 9,
+          "name" : "operationid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "operationkind",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 11,
+          "name" : "operationtype",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "owningbusinessunit",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "parametername",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "parametervalue",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "primaryentitytypecode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "stagecategory",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 17,
+          "name" : "stagename",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "versionnumber",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-db8ea3bf-566a-5592-a6ba-6e026a5c1eaf",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s_etag",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Etag]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4399a44b-cf19-522d-b73a-3efd2b6eebe0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_processstageid",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[processstageid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a97f9c05-8be5-5156-9cad-5e5b8cab877c",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s__ownerid_value",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[_ownerid_value]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d743eb7c-a43c-5dba-b1c4-72e55bc03e27",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s__parentprocessstageid_value",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[_parentprocessstageid_value]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4a587f73-bd46-5ba0-b5a7-77738f5b32f3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s__processid_value",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[_processid_value]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-32317a9c-e503-59bb-b921-9ba246731b70",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_clientdata",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[clientdata]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0e44628e-a94f-5e4c-8fce-21f916bb72ad",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_connector",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[connector]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d3d8270d-c679-59d0-ae13-6075a5de0ad5",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_istrigger",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[istrigger]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7ecbdc30-f842-5f49-9f5e-82825494c3a4",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_operationid",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[operationid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e9049355-92b2-5aa4-8afd-4df3ba03ff7d",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_operationkind",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[operationkind]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3da6d3b3-a0fb-59cb-9c0b-486139489e89",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_operationtype",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[operationtype]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9ad8ae87-25ca-5e22-b6c0-2aff6a60c6ec",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_owningbusinessunit",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[owningbusinessunit]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8f5ac5b5-a826-5792-a200-1359159d22be",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_parametername",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[parametername]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-eb4c8eac-5650-5428-82a9-237278b6e631",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_parametervalue",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[parametervalue]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dfdac2fc-7cec-55e6-9774-e8f558b5a316",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_primaryentitytypecode",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[primaryentitytypecode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-11aa1138-bfe1-5c0a-b3ef-a1fcb7a694f0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_stagecategory",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[stagecategory]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7220a49e-1962-5e13-8a65-ef7e01eb7121",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_stagename",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[stagename]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d24ebdc5-7a1f-555d-955e-c8181b135909",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_versionnumber",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[versionnumber]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-668155e1-69f3-52ef-87bc-86ab9f7bf534",
+          "type" : "Column"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-258450ff-f11e-5149-a318-adfc1a8f751c"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-b19137f0-3f5b-5ea2-bb7a-7ef11af0d8f1",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-b19137f0-3f5b-5ea2-bb7a-7ef11af0d8f1 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:37.359674400Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
