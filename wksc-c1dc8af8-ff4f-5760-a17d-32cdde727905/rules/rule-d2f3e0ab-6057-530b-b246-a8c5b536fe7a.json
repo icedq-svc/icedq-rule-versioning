@@ -1,0 +1,341 @@
+{
+  "versionId" : "ver-a6505192-e8eb-5138-b084-6b885d8e1ee6",
+  "objectId" : "rule-d2f3e0ab-6057-530b-b246-a8c5b536fe7a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "R-05-Dummy-Query",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 100,
+      "stopAtRowCount" : 100,
+      "stopAtTime" : 100,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-8d9fa520-7ada-5b41-a66f-82b4cff3318c",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT EmpID, DeptID, Team, Location \r\n                 FROM (VALUES \r\n                     (1,  101, '  Presales',    'New York'), \r\n                     (2,  102, '  Sales',       'Chicago'), \r\n                     (3,  103, 'QA',          'Austin'), \r\n                     (4,  104, 'Development', 'Seattle'), \r\n                     (5,  105, 'Admin',       'Boston'), \r\n                     (6,  106, 'CSM',         'San Francisco'), \r\n                     (7,  107, 'Marketing',   'Los Angeles'), \r\n                     (8,  103, 'QA',          'Austin'), \r\n                     (9,  102, 'Sales',       'New York'),    -- Emp 9 shares hiredate with Emp 2 but location differs \r\n                     (10, 104, 'Development', 'Seattle'), \r\n                     (11, 101, 'Presales',    'Miami'),       -- Emp 11 shares hiredate with Emp 5 but location differs \r\n                     (12, 107, 'Marketing',   'Los Angeles') \r\n                 ) AS d(EmpID, DeptID, Team, Location)",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "empid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 2,
+          "name" : "deptid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 3,
+          "name" : "team",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "location",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-8d9fa520-7ada-5b41-a66f-82b4cff3318c",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT EmpID, EmpName, Salary, Commission, Bonus, HireDate \r\n                 FROM (VALUES \r\n                     (1,  'Alice Johnson',   65000,   3000,   0,    '2021-04-15'), \r\n                     (2,  'Bob Smith',       72000  ,   0,      0,    '2019-11-20'), \r\n                     (3,  'Charlie Lee',     80000,   0,      5000, '2018-02-10'), \r\n                     (4,  'Dana White',      90000,   0,      6000, '2017-07-01'), \r\n                     (5,  'Ethan Brown',     58000  ,   0,      0,    '2022-03-05'), \r\n                     (6,  'Fatima Khan',     61000,   2500,   0,    '2020-09-30'), \r\n                     (7,  'George Martin',   54000,   0,      4000, '2023-01-12'), \r\n                     (8,  'Hiro Tanaka',     77000,   0,      0,    '2021-12-03'), \r\n                     (9,  'Ivy Chen',        83000,   4000,   0,    '2019-11-20'), -- same hiredate as Emp 2, different location \r\n                     (10, 'Juan Perez',      69000,   0,      0,    '2020-08-18'), \r\n                     (11, 'Kim Park',        73000,   2000,   0,    '2022-03-05'), -- same hiredate as Emp 5, different location \r\n                     (12, 'Leo Rossi',       62000,   0,      3500, '2023-06-07') \r\n                 ) AS e(EmpID, EmpName, Salary, Commission, Bonus, HireDate)",
+        "appendOrderBy" : false,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "empid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 2,
+          "name" : "empname",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "salary",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 4,
+          "name" : "commission",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 5,
+          "name" : "bonus",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 6,
+          "name" : "hiredate",
+          "datatype" : "text",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "empid",
+          "targetKey" : "empid"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-23225cc1-96cc-5bef-9482-579e81986d92",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[team], T.[salary])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[team]",
+            "targetColumn" : "T.[salary]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull"
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "Development",
+              "target" : [ "80000", "90000" ]
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "Sales",
+              "target" : [ "72000", "90000" ]
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "Presales",
+              "target" : [ "65000", "73000" ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource"
+            } ]
+          },
+          "id" : "chck-67508d73-8289-5bea-b741-b1bb3d4511e2",
+          "type" : "ConditionalCompare",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[deptid], T.[empname])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[deptid]",
+            "targetColumn" : "T.[empname]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull",
+              "source" : "null",
+              "target" : [ "null" ]
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "103",
+              "target" : [ "bob smith", "charlie lee", "dana white" ]
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "101",
+              "target" : [ "alice johnson", "bob smith" ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource",
+              "source" : " ",
+              "target" : [ "S.[deptid]" ]
+            } ]
+          },
+          "id" : "chck-4a270895-5e4f-5e37-80ed-e39204628176",
+          "type" : "ConditionalCompare",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[team], T.[bonus])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : false,
+            "sourceColumn" : "S.[team]",
+            "targetColumn" : "T.[bonus]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull"
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "qa",
+              "target" : [ "3000", "4000", "5000" ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource"
+            } ]
+          },
+          "id" : "chck-d83d6c0f-f71a-5e69-9bb9-ca0f4dbc791b",
+          "type" : "ConditionalCompare",
+          "description" : "Unselected Ignore Case",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "ConditionalCompareCheck(S.[location], T.[hiredate])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[location]",
+            "targetColumn" : "T.[hiredate]",
+            "conditionalMap" : [ {
+              "condition" : "if",
+              "sourceType" : "isNull",
+              "targetType" : "isNull"
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "new york",
+              "target" : [ "2021-04-15", "2019-11-20" ]
+            }, {
+              "condition" : "elseif",
+              "sourceType" : "isValue",
+              "targetType" : "isOneOf",
+              "source" : "Seattle",
+              "target" : [ "2017-07-01", "2020-08-18" ]
+            }, {
+              "condition" : "else",
+              "targetType" : "isSource"
+            } ]
+          },
+          "id" : "chck-2a60fa64-ee8b-587e-88cd-9eaae5cbc3bd",
+          "type" : "ConditionalCompare",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-b18986bc-3cfd-51cd-b699-533d431ecbc0"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-d2f3e0ab-6057-530b-b246-a8c5b536fe7a",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-d2f3e0ab-6057-530b-b246-a8c5b536fe7a |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:32.676841500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
