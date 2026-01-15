@@ -1,0 +1,68 @@
+{
+  "versionId" : "ver-1281279c-7e97-516c-bb7b-5f3f55853ab9",
+  "objectId" : "rule-0d76f2fb-dc63-5208-b376-5f9e2d33a47c",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1755770180_1755781798073",
+  "state" : "Staged",
+  "info" : {
+    "ruleType" : "Script",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput"
+    },
+    "objects" : [ {
+      "id" : "Variable",
+      "type" : "variable",
+      "name" : "set Variables",
+      "configuration" : {
+        "variables" : [ {
+          "name" : "connVar1",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-ebc986a0-8bbb-52e8-9f95-b69756e914d8"
+          }
+        } ]
+      }
+    }, {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "Return 1"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-5b95ff29-af98-5e7b-b5d4-97534c318246"
+        } ]
+      }
+    } ]
+  },
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-0d76f2fb-dc63-5208-b376-5f9e2d33a47c",
+      "commitMessage" : "Message: null | RuleId: rule-0d76f2fb-dc63-5208-b376-5f9e2d33a47c |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:43:32.984586100Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
