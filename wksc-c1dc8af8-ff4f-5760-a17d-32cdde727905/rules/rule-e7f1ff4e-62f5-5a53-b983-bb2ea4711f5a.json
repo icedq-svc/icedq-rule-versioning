@@ -1,0 +1,277 @@
+{
+  "versionId" : "ver-ec5d97d5-6cc4-5a4d-8677-95abd03eb1f1",
+  "objectId" : "rule-e7f1ff4e-62f5-5a53-b983-bb2ea4711f5a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "rule execution check",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 100,
+      "stopAtRowCount" : 100,
+      "stopAtTime" : 100,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "File",
+      "connectionId" : "conn-e50501e6-032a-5f0d-a64d-7a967d0d2e56",
+      "input" : "FileStatic",
+      "configuration" : {
+        "schemaRemarks" : "",
+        "tableRemarks" : "",
+        "fileType" : "Delimited",
+        "filePath" : "/CUSTOMER.csv",
+        "columnDelimiter" : "|",
+        "rowDelimiter" : "\\n",
+        "textQualifier" : "\"",
+        "skipRowTop" : "0",
+        "skipRowBottom" : "0",
+        "headerRow" : "1",
+        "trimData" : "true",
+        "emptyString" : "true",
+        "whiteSpace" : "true",
+        "fixedString" : "true",
+        "fixedStringValue" : "NaN",
+        "filterCondition" : "",
+        "isSingleFile" : true,
+        "isDynamicPath" : false,
+        "isSorted" : true,
+        "isDeferredSort" : false,
+        "isSortCaseSensitive" : true,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CUSTOMERID",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 2,
+          "name" : "ACCTNUMBER",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 3,
+          "name" : "FIRSTNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 4,
+          "name" : "LASTNAME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 5,
+          "name" : "GENDER",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 6,
+          "name" : "BIRTHDATE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 7,
+          "name" : "DATEFIRSTPURCHASE",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 8,
+          "name" : "PHONENO",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 9,
+          "name" : "EMAIL",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 10,
+          "name" : "YEARLYINCOME",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        }, {
+          "index" : 11,
+          "name" : "ADDRESSID",
+          "datatype" : "Text",
+          "icedqDatatype" : "Text"
+        } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document",
+        "outputDelimiter" : ","
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-4ee0f7b3-8105-5742-82c6-618af7aac758",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CUSTOMERID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "ACCTNUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FIRSTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "LASTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "GENDER",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "BIRTHDATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "DATEFIRSTPURCHASE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONENO",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "YEARLYINCOME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ADDRESSID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "CUSTOMERID",
+          "targetKey" : "CUSTOMERID"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-b802e667-1b08-5c2d-ba0c-fd3174ebb59a",
+          "type" : "ResultType",
+          "isDeferredSort" : false
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[YEARLYINCOME], T.[YEARLYINCOME])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[YEARLYINCOME]",
+            "targetColumn" : "T.[YEARLYINCOME]"
+          },
+          "id" : "chck-779b524c-1d71-5c0b-8764-46148798cf43",
+          "type" : "SimpleCompare"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "100",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-82495966-8a5f-53fc-b37a-a6ca6b690d2b"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-e7f1ff4e-62f5-5a53-b983-bb2ea4711f5a",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-e7f1ff4e-62f5-5a53-b983-bb2ea4711f5a |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:32.906838800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
