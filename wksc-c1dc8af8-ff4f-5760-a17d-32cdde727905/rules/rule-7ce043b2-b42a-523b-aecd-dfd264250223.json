@@ -1,0 +1,753 @@
+{
+  "versionId" : "ver-c460b79a-3982-596e-b06d-528678f2454e",
+  "objectId" : "rule-7ce043b2-b42a-523b-aecd-dfd264250223",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "New Rule DAT-13597 - Rule_CST-143 - SQL Server VS My Sql Server-100 MILLION_Append order by for both side WITH PROPERTY",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "description" : "Rule_CST-143 - SQL Server VS My Sql Server\nQuery change - select * from icedq.col100_100million",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-f5d97c5b-3a29-550e-8aff-c2ca7fb7f063",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from regression_database.dbo.hundred_million_records",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EMPNO",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 2,
+          "name" : "EMPCODE",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "EMPNAME",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "DEPARTMENT",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "HIREDATE",
+          "datatype" : "datetime",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "EMAIL",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "EMPADDR",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONE",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "SALARY",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 10,
+          "name" : "COMM",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "CALCULATED_SALARY",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 12,
+          "name" : "DEPTNO",
+          "datatype" : "int",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 13,
+          "name" : "GENDER",
+          "datatype" : "char",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "BIRTHDATE",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 15,
+          "name" : "CITY",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "COUNTRY",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "YEARLYINCOME",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 18,
+          "name" : "COUNTRYCODE",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "TEMPERATURE",
+          "datatype" : "float",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 20,
+          "name" : "MOBILE",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 21,
+          "name" : "NEGATIVE_DECIMAL",
+          "datatype" : "decimal",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 22,
+          "name" : "BIG_NUMBER",
+          "datatype" : "bigint",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 23,
+          "name" : "TIME_VALUE",
+          "datatype" : "time",
+          "icedqDatatype" : "TIME"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-4a445fc4-6df7-5649-bcaf-f20b08abe1a3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedq.col100_100million",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EEBUC_20191125TABLECOL1001",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 2,
+          "name" : "EEBUC_20191125TABLECOL1002",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "EEBUC_20191125TABLECOL1003",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "EEBUC_20191125TABLECOL1004",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "EEBUC_20191125TABLECOL1005",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "EEBUC_20191125TABLECOL1006",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "EEBUC_20191125TABLECOL1007",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "EEBUC_20191125TABLECOL1008",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "EEBUC_20191125TABLECOL1009",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "EEBUC_20191125TABLECOL1010",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "EEBUC_20191125TABLECOL1011",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "EEBUC_20191125TABLECOL1012",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "EEBUC_20191125TABLECOL1013",
+          "datatype" : "DATETIME",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 14,
+          "name" : "EEBUC_20191125TABLECOL1014",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "EEBUC_20191125TABLECOL1015",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "EEBUC_20191125TABLECOL1016",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "EEBUC_20191125TABLECOL1017",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "EEBUC_20191125TABLECOL1018",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "EEBUC_20191125TABLECOL1019",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "EEBUC_20191125TABLECOL1020",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "EEBUC_20191125TABLECOL1021",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "EEBUC_20191125TABLECOL1022",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "EEBUC_20191125TABLECOL1023",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "EEBUC_20191125TABLECOL1024",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "EEBUC_20191125TABLECOL1025",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "EEBUC_20191125TABLECOL1026",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "EEBUC_20191125TABLECOL1027",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "EEBUC_20191125TABLECOL1028",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "EEBUC_20191125TABLECOL1029",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "EEBUC_20191125TABLECOL1030",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "EEBUC_20191125TABLECOL1031",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "EEBUC_20191125TABLECOL1032",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "EEBUC_20191125TABLECOL1033",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "EEBUC_20191125TABLECOL1034",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "EEBUC_20191125TABLECOL1035",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "EEBUC_20191125TABLECOL1036",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 37,
+          "name" : "EEBUC_20191125TABLECOL1037",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "EEBUC_20191125TABLECOL1038",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "EEBUC_20191125TABLECOL1039",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 40,
+          "name" : "EEBUC_20191125TABLECOL1040",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 41,
+          "name" : "EEBUC_20191125TABLECOL1041",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 42,
+          "name" : "EEBUC_20191125TABLECOL1042",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 43,
+          "name" : "EEBUC_20191125TABLECOL1043",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 44,
+          "name" : "EEBUC_20191125TABLECOL1044",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 45,
+          "name" : "EEBUC_20191125TABLECOL1045",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 46,
+          "name" : "EEBUC_20191125TABLECOL1046",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 47,
+          "name" : "EEBUC_20191125TABLECOL1047",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 48,
+          "name" : "EEBUC_20191125TABLECOL1048",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 49,
+          "name" : "EEBUC_20191125TABLECOL1049",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 50,
+          "name" : "EEBUC_20191125TABLECOL1050",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 51,
+          "name" : "EEBUC_20191125TABLECOL1051",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 52,
+          "name" : "EEBUC_20191125TABLECOL1052",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 53,
+          "name" : "EEBUC_20191125TABLECOL1053",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 54,
+          "name" : "EEBUC_20191125TABLECOL1054",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 55,
+          "name" : "EEBUC_20191125TABLECOL1055",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 56,
+          "name" : "EEBUC_20191125TABLECOL1056",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 57,
+          "name" : "EEBUC_20191125TABLECOL1057",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 58,
+          "name" : "EEBUC_20191125TABLECOL1058",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 59,
+          "name" : "EEBUC_20191125TABLECOL1059",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 60,
+          "name" : "EEBUC_20191125TABLECOL1060",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 61,
+          "name" : "EEBUC_20191125TABLECOL1061",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 62,
+          "name" : "EEBUC_20191125TABLECOL1062",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 63,
+          "name" : "EEBUC_20191125TABLECOL1063",
+          "datatype" : "TIME",
+          "icedqDatatype" : "TIME"
+        }, {
+          "index" : 64,
+          "name" : "EEBUC_20191125TABLECOL1064",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 65,
+          "name" : "EEBUC_20191125TABLECOL1065",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 66,
+          "name" : "EEBUC_20191125TABLECOL1066",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 67,
+          "name" : "EEBUC_20191125TABLECOL1067",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 68,
+          "name" : "EEBUC_20191125TABLECOL1068",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 69,
+          "name" : "EEBUC_20191125TABLECOL1069",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 70,
+          "name" : "EEBUC_20191125TABLECOL1070",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 71,
+          "name" : "EEBUC_20191125TABLECOL1071",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 72,
+          "name" : "EEBUC_20191125TABLECOL1072",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 73,
+          "name" : "EEBUC_20191125TABLECOL1073",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 74,
+          "name" : "EEBUC_20191125TABLECOL1074",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 75,
+          "name" : "EEBUC_20191125TABLECOL1075",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 76,
+          "name" : "EEBUC_20191125TABLECOL1076",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 77,
+          "name" : "EEBUC_20191125TABLECOL1077",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 78,
+          "name" : "EEBUC_20191125TABLECOL1078",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 79,
+          "name" : "EEBUC_20191125TABLECOL1079",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 80,
+          "name" : "EEBUC_20191125TABLECOL1080",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 81,
+          "name" : "EEBUC_20191125TABLECOL1081",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 82,
+          "name" : "EEBUC_20191125TABLECOL1082",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 83,
+          "name" : "EEBUC_20191125TABLECOL1083",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 84,
+          "name" : "EEBUC_20191125TABLECOL1084",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 85,
+          "name" : "EEBUC_20191125TABLECOL1085",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 86,
+          "name" : "EEBUC_20191125TABLECOL1086",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 87,
+          "name" : "EEBUC_20191125TABLECOL1087",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 88,
+          "name" : "EEBUC_20191125TABLECOL1088",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 89,
+          "name" : "EEBUC_20191125TABLECOL1089",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 90,
+          "name" : "EEBUC_20191125TABLECOL1090",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 91,
+          "name" : "EEBUC_20191125TABLECOL1091",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 92,
+          "name" : "EEBUC_20191125TABLECOL1092",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 93,
+          "name" : "EEBUC_20191125TABLECOL1093",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 94,
+          "name" : "EEBUC_20191125TABLECOL1094",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 95,
+          "name" : "EEBUC_20191125TABLECOL1095",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 96,
+          "name" : "EEBUC_20191125TABLECOL1096",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 97,
+          "name" : "EEBUC_20191125TABLECOL1097",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 98,
+          "name" : "EEBUC_20191125TABLECOL1098",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 99,
+          "name" : "EEBUC_20191125TABLECOL1099",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 100,
+          "name" : "EEBUC_20191125TABLECOL1100",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "EMPNO",
+          "targetKey" : "EEBUC_20191125TABLECOL1001"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-9c81835d-59dc-50c9-9846-06c245ecf64f",
+          "type" : "ResultType"
+        }, {
+          "name" : "Empno",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPNO] == T.[EEBUC_20191125TABLECOL1001]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-39591e5b-73e2-576c-879c-a4e89a731d3c",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-1738725e-4d7d-5558-89f9-487ede7227d9"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-7ce043b2-b42a-523b-aecd-dfd264250223",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-7ce043b2-b42a-523b-aecd-dfd264250223 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:33:58.544409500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
