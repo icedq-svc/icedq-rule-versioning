@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-55fc8132-6a36-5daf-a768-8041c1edff30",
+  "versionId" : "ver-0da3de9c-e6d7-54e0-a622-550eeb8ab367",
   "objectId" : "rule-b586e20d-d196-5889-a879-14b3cfaa1366",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Recon Rule-Default-Option",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "Recon",
     "properties" : {
@@ -193,6 +193,24 @@
           },
           "id" : "chck-0527a4ed-0cef-5c68-836b-7e0b4aaa713d",
           "type" : "Custom"
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[CUSTOMERID], T.[CUST_ID])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[CUSTOMERID]",
+            "targetColumn" : "T.[CUST_ID]"
+          },
+          "id" : "chck-17653b92-0bc9-5613-84bb-493bcb7b7ba6",
+          "type" : "SimpleCompare"
         } ]
       }
     }, {
@@ -221,12 +239,13 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-99a76c39-38a1-5cbe-9f4a-88e8c75e1135"
+          "id" : "chck-0921cbe9-8677-5053-a56c-39181f5150cb"
         } ]
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
   "gitInfo" : {
@@ -234,10 +253,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-b586e20d-d196-5889-a879-14b3cfaa1366",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-b586e20d-d196-5889-a879-14b3cfaa1366 |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-b586e20d-d196-5889-a879-14b3cfaa1366 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:35:57.464903200Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:39:59.007942500Z[UTC]",
   "updatedBy" : "roshan.n"
 }
