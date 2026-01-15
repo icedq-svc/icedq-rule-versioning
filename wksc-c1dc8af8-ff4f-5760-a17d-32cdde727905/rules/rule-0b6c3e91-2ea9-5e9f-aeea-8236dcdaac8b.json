@@ -1,0 +1,105 @@
+{
+  "versionId" : "ver-9b4f991e-8747-5079-9623-f406f3135031",
+  "objectId" : "rule-0b6c3e91-2ea9-5e9f-aeea-8236dcdaac8b",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "DAT-13947-CosmoDB_ChecksumRule",
+  "state" : "Staged",
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "0012",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-63c7c901-b941-5e96-918a-b3576d67707c",
+      "input" : "Sql",
+      "configuration" : {
+        "fileSchemaId" : "schm-5f35219f-aed5-5b1b-8731-da9a5d183762",
+        "sql" : "select count(*) as cnt from customer",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "cnt",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-58a1e8a7-d070-58ae-a07a-0aa600f25236",
+      "input" : "Sql",
+      "configuration" : {
+        "fileSchemaId" : "schm-e76ca524-ba43-515b-bc1d-055eacf6c635",
+        "sql" : "select count(*) as cnt from customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "cnt",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cnt] - T.[cnt] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5ffa36bf-18f4-50e5-bc42-9af41b59dee9",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-9fe85390-c2e1-5fd3-ba56-c2b0527c08d7"
+        } ]
+      }
+    } ]
+  },
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-0b6c3e91-2ea9-5e9f-aeea-8236dcdaac8b",
+      "commitMessage" : "Message: null | RuleId: rule-0b6c3e91-2ea9-5e9f-aeea-8236dcdaac8b |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:39:07.389490800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
