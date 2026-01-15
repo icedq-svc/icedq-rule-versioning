@@ -1,0 +1,536 @@
+{
+  "versionId" : "ver-af811b60-18d9-591f-ad79-aeb03d06cccc",
+  "objectId" : "rule-1237a428-8764-51c3-a4db-b58c507351c0",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "API Validation-View Diff",
+  "state" : "Staged",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "api-validation",
+    "code" : "123",
+    "description" : "check view diff",
+    "purpose" : "check view difference page",
+    "properties" : {
+      "criticality" : "Critical",
+      "parameterId" : "parm-be2454f3-64fe-5d01-bf06-baf1e2b8cd99",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 500,
+      "stopAtRowCount" : 500,
+      "stopAtTime" : 500,
+      "degreeOfParallelism" : 2,
+      "engineInfo" : { },
+      "languageType" : "groovy",
+      "parameterName" : "Parameter one"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "test",
+        "fileSchemaId" : "schm-8a269a92-1519-5d39-b02b-8ae1b10bcd6a",
+        "sql" : "select * from test",
+        "fixedString" : "false",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-6f20ef4e-cb7b-5c4a-b0f9-6cf150a9ecc4",
+          "type" : "ResultType"
+        }, {
+          "name" : "Custom",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[active] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c7144d5f-96de-58e8-b711-442f78cb2714",
+          "type" : "Custom",
+          "description" : "Description check"
+        }, {
+          "name" : "Completeness",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[created_at]\")",
+            "column" : "S.[created_at]",
+            "fixedStringAsNull" : "DDD",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2fffff7d-9174-5db7-875f-9b8bd188e951",
+          "type" : "Completeness",
+          "description" : "Description check - completeness"
+        }, {
+          "name" : "Length",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "LengthCheck(\"S.[email]\", length != 6)",
+            "column" : "S.[email]",
+            "operator" : "not equal to",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ 6 ]
+          },
+          "id" : "chck-b8e47c87-e320-5d63-a8b5-d52ce750c385",
+          "type" : "Length",
+          "description" : "Description check Length"
+        }, {
+          "name" : "Pattern",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "PatternMatch(\"S.[email]\", pattern = ^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[A-Z0-9-]+\\.)+[A-Z]{2,6}$)",
+            "column" : "S.[email]",
+            "pattern" : "Custom",
+            "regex" : "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[A-Z0-9-]+\\.)+[A-Z]{2,6}$",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : true
+          },
+          "id" : "chck-89b960a2-1689-57db-9f6a-147a2b01775d",
+          "type" : "Pattern",
+          "description" : "Description check pattern"
+        }, {
+          "name" : "Contains",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[company_id]\", array[444])",
+            "column" : "S.[company_id]",
+            "datatype" : "LONG",
+            "caseInsensitive" : false,
+            "inputValue" : [ "444" ]
+          },
+          "id" : "chck-fccc68a7-a16d-57fa-9ff0-c6cb94704684",
+          "type" : "Contains",
+          "description" : "Description check contains"
+        }, {
+          "name" : "Datatype",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DatatypeCheck(\"S.[job_title]\", dataType = Integer)",
+            "column" : "S.[job_title]",
+            "datatype" : "Integer",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c7d708bc-f80f-5347-b14a-2d0cf9dc9fd6",
+          "type" : "Datatype",
+          "description" : "Description check datatype"
+        }, {
+          "name" : "Range",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "RangeCheck(\"S.[updated_at]\", range  >= Date.parse('dd-mm-yy',12-05-20'))",
+            "column" : "S.[updated_at]",
+            "operator" : "greater than equal to",
+            "datatype" : "TIMESTAMP",
+            "ignoreNull" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "Date.parse('dd-mm-yy',12-05-20')" ]
+          },
+          "id" : "chck-867e44c3-c6d8-5784-988d-2b0edfc1dbaf",
+          "type" : "Range",
+          "description" : "Description check range"
+        }, {
+          "name" : "Date",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "DateCheck(\"S.[csat_rating]\", date = dd-mm-yy)",
+            "column" : "S.[csat_rating]",
+            "regex" : "dd-mm-yy",
+            "format" : "Custom",
+            "ignoreNull" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-584919bc-5f82-5b70-a63e-c170c6793488",
+          "type" : "Date",
+          "description" : "Description check date"
+        }, {
+          "name" : "Fyi_s_active",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[active]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c4e0ab3e-7e85-5e51-b10b-28d5733fd91e",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_address",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[address]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bba486eb-1251-577e-a32c-2a7ceca1452d",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_company_id",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[company_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a25af007-d245-591f-ae93-aa7ef01c264a",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_created_at",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[created_at]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ee4c77e9-f300-5f3c-ad27-587432c684e8",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_csat_rating",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[csat_rating]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2c26e7f3-02eb-5439-b74c-1d028fe41b80",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_description",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[description]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7dd3bbd3-fde7-5da8-b0e9-74b81f402759",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_email",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[email]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-016395cd-f964-576b-b2e6-729ddb887d34",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_facebook_id",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[facebook_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-99c224dd-f054-5fed-9361-95deb03cbe5f",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_id",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dc45cb0b-1eec-5a19-ba7d-25db217a3ae0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_job_title",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[job_title]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-273b463f-6ea4-5269-9796-84b38bcf4245",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_language",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[language]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a365cc2f-5589-54e9-8b1e-2709b3768798",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_mobile",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[mobile]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b30cb608-5328-561f-8daa-bf82e5e656aa",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_name",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[name]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b33d5ddf-8ca1-5a82-b28b-2f082da5faa3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_other_companies",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[other_companies]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-391ec1b5-62ec-5f1f-b82f-b78f7029a570",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_phone",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[phone]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6ab89d5a-634c-5bcd-adab-0519c864424c",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_preferred_source",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[preferred_source]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-95eb130a-57b2-54b6-ab42-3aff1e2ef610",
+          "type" : "Column"
+        }, {
+          "name" : "Calculated",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[active] * 10",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-364b9b89-ae55-5f23-bc32-ef95ea9fc00c",
+          "type" : "Calculated",
+          "description" : "Description check calculated"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-22d4fe50-6326-55dc-9641-018c50bfc471"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-1237a428-8764-51c3-a4db-b58c507351c0",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-1237a428-8764-51c3-a4db-b58c507351c0 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:48.468634600Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
