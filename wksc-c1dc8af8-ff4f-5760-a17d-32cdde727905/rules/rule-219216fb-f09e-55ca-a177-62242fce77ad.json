@@ -1,0 +1,86 @@
+{
+  "versionId" : "ver-5adcc557-de7e-5020-877e-9b3519fda935",
+  "objectId" : "rule-219216fb-f09e-55ca-a177-62242fce77ad",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Script-Cloud_1758890950436",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Script",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "Variable",
+      "type" : "variable",
+      "name" : "set Variables",
+      "configuration" : {
+        "variables" : [ {
+          "name" : "connVar3",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-a5af383d-5a00-5426-863d-aadd477b56d5"
+          }
+        }, {
+          "name" : "connVar2",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-7d32c990-1990-59df-a1e4-b5bb1e6bfaaa"
+          }
+        }, {
+          "name" : "connVar1",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-e0d6e2a3-62e8-512e-98c9-323ff76f7b1f"
+          }
+        } ]
+      }
+    }, {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "return 0;"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-23a3407d-ca1b-5cb7-82f9-166453383b9a"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-219216fb-f09e-55ca-a177-62242fce77ad",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-219216fb-f09e-55ca-a177-62242fce77ad |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:28.238779800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
