@@ -1,0 +1,274 @@
+{
+  "versionId" : "ver-99692e3e-73b5-584f-84f6-53f78cc75a47",
+  "objectId" : "rule-f0c7f2f4-1368-5b04-9686-9ba9aa63a036",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_SAPECC_11464",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Application",
+      "connectionId" : "conn-a0955c75-bcfa-53d7-95b0-904286b4fb26",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "LO-MD-MM",
+        "schemaRemarks" : "Material Master",
+        "tableName" : "MARA",
+        "tableRemarks" : "General Material Data",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "MANDT",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT",
+          "remarks" : "Client"
+        }, {
+          "index" : 2,
+          "name" : "MATNR",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT",
+          "remarks" : "Material Number"
+        } ]
+      },
+      "useCached" : true
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Application",
+      "connectionId" : "conn-a0955c75-bcfa-53d7-95b0-904286b4fb26",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "LO-MD-MM",
+        "schemaRemarks" : "Material Master",
+        "tableName" : "MARA",
+        "tableRemarks" : "General Material Data",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "MANDT",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT",
+          "remarks" : "Client"
+        }, {
+          "index" : 2,
+          "name" : "MATNR",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT",
+          "remarks" : "Material Number"
+        } ]
+      },
+      "useCached" : true
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "MANDT",
+          "targetKey" : "MANDT"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a", "Xp" ]
+          },
+          "id" : "chck-3e30f24b-90fa-5a63-9ab4-94d1abd73bdc",
+          "type" : "ResultType"
+        }, {
+          "name" : "Jobcode_17520569938623",
+          "index" : 2,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[jobcode] == T.[jobcode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c723c5f0-d450-53ba-bc40-03a382606921",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Customerid_17520574168951",
+          "index" : 3,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[customerid] == T.[customerid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8bbb681c-e1da-5258-bf6f-4f20ad4b12f0",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Mandt_17520580247261",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MANDT] == T.[MANDT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2b42b245-c57b-5f43-a945-feed3f09e410",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[MANDT] - T.[MANDT] == '800'",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6fb65249-747c-50f5-a5be-83c4a69262f2",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0006",
+          "index" : 6,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[MANDT] =T.[MATNR]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9fd40ba0-abd3-5f01-bbc5-907bc2d485b9",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0007",
+          "index" : 7,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[MAXIMAL_RESOURCES] == 4",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-137593fd-fa72-50ec-815d-4625698cad60",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Maximal_resources_17521436235782",
+          "index" : 8,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[MAXIMAL_RESOURCES] == T.[MAXIMAL_RESOURCES]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2f77ba55-ca6e-55dd-9b77-842ac52dd020",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Current_resources",
+          "index" : 9,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[CURRENT_RESOURCES] == T.[CURRENT_RESOURCES]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d1a42db3-9941-5869-be69-0ec8932eb231",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-459dfe88-a9a5-5412-b4a3-be9c6f26110d"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-f0c7f2f4-1368-5b04-9686-9ba9aa63a036",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-f0c7f2f4-1368-5b04-9686-9ba9aa63a036 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:33:51.921242500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
