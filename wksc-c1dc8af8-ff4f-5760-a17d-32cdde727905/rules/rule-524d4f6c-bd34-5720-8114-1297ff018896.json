@@ -1,0 +1,341 @@
+{
+  "versionId" : "ver-cdb55ec7-c796-5a8c-a70f-36f363fe7f34",
+  "objectId" : "rule-524d4f6c-bd34-5720-8114-1297ff018896",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "R007",
+  "state" : "Draft",
+  "info" : {
+    "ruleType" : "Recon",
+    "description" : "Ability to parameterize custom and calculated column",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-0a45cd84-ea88-5412-871d-9dd4ea572a43",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-4d83824c-8cf3-5516-9627-570e5e860a4e",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "public",
+        "tableName" : "customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "customerid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "acctnumber",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "firstname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "lastname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "gender",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "birthdate",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "datefirstpurchase",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 8,
+          "name" : "phoneno",
+          "datatype" : "int8",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 9,
+          "name" : "email",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "yearlyincome",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 11,
+          "name" : "addressid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-4d83824c-8cf3-5516-9627-570e5e860a4e",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "regression_database",
+        "tableName" : "customer",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "customerid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "acctnumber",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "firstname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "lastname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "gender",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "birthdate",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "datefirstpurchase",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 8,
+          "name" : "phoneno",
+          "datatype" : "int8",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 9,
+          "name" : "email",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "yearlyincome",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 11,
+          "name" : "addressid",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "customerid",
+          "targetKey" : "customerid"
+        }, {
+          "index" : 2,
+          "sourceKey" : "acctnumber",
+          "targetKey" : "acctnumber"
+        }, {
+          "index" : 3,
+          "sourceKey" : "firstname",
+          "targetKey" : "firstname"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "xp" ]
+          },
+          "id" : "chck-f4bc0312-24c9-5d27-8674-52f28ae45fdd",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_t_customerid",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[customerId]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-18e558b6-3434-5c56-a930-87794808bdc4",
+          "type" : "Column"
+        }, {
+          "name" : "Chk_0003",
+          "index" : 3,
+          "isActive" : false,
+          "isVisible" : false,
+          "expression" : {
+            "value" : "S.[customerid] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-07b122c8-27aa-5adb-bacf-cecc97fabc42",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "FR-NFR-sheet",
+            "values" : [ "N1" ]
+          }, {
+            "field" : "FR-NFR",
+            "values" : [ ]
+          }, {
+            "field" : "Label-Type-Custom-Field",
+            "values" : [ "checksum" ]
+          }, {
+            "field" : "Tag-Type-Custom-Field",
+            "values" : [ ]
+          }, {
+            "field" : "Data Quality Dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "CustomCheck",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "fn_add (S.[yearlyincome], S.[addressid] )",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9d75c341-7e99-5e09-97ec-07ab4c4ff10b",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "FR-NFR-sheet",
+            "values" : [ "N1" ]
+          }, {
+            "field" : "FR-NFR",
+            "values" : [ ]
+          }, {
+            "field" : "Label-Type-Custom-Field",
+            "values" : [ "checksum" ]
+          }, {
+            "field" : "Tag-Type-Custom-Field",
+            "values" : [ ]
+          }, {
+            "field" : "Data Quality Dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "CalculatedCheck",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "#calchk#",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b65d6ea5-199d-5d09-a1c7-1f2e64929d12",
+          "type" : "Calculated",
+          "customFields" : [ {
+            "field" : "FR-NFR-sheet",
+            "values" : [ "N1" ]
+          }, {
+            "field" : "FR-NFR",
+            "values" : [ ]
+          }, {
+            "field" : "Label-Type-Custom-Field",
+            "values" : [ "checksum" ]
+          }, {
+            "field" : "Tag-Type-Custom-Field",
+            "values" : [ ]
+          }, {
+            "field" : "Data Quality Dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "",
+        "createExportDownloadLink" : false,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-458a043b-f74b-56e9-80b3-9d63dbc52a22"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "sync_to_azure",
+      "values" : [ "false" ]
+    }, {
+      "field" : "product_ratings",
+      "values" : [ "High" ]
+    }, {
+      "field" : "environment",
+      "values" : [ ]
+    } ]
+  },
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-524d4f6c-bd34-5720-8114-1297ff018896",
+      "commitMessage" : "Message: null | RuleId: rule-524d4f6c-bd34-5720-8114-1297ff018896 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:31.105776500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
