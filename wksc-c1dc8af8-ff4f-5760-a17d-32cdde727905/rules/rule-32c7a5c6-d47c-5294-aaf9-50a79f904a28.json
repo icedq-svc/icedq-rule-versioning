@@ -1,0 +1,376 @@
+{
+  "versionId" : "ver-33413783-b24f-5319-b94c-6af70594788c",
+  "objectId" : "rule-32c7a5c6-d47c-5294-aaf9-50a79f904a28",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "ContainsCheck-TrimData",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "NoSQLDB",
+      "connectionId" : "conn-5c918ac5-1f6f-5851-aeec-1d9ba05f5567",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "ApacheHBase",
+        "tableName" : "all_datatypes",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "RowKey",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "cf:col_bigint",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 3,
+          "name" : "cf:col_binary",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "cf:col_bit",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "cf:col_char",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "cf:col_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "cf:col_datetime",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 8,
+          "name" : "cf:col_decimal",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 9,
+          "name" : "cf:col_double",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 10,
+          "name" : "cf:col_float",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "cf:col_int",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "cf:col_numeric",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 13,
+          "name" : "cf:col_smallint",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 14,
+          "name" : "cf:col_time",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 15,
+          "name" : "cf:col_tinyint",
+          "datatype" : "INT",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 16,
+          "name" : "cf:col_varchar",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-0af879ad-4ec4-5c62-a315-781b6355d026",
+          "type" : "ResultType"
+        }, {
+          "name" : "Chk_0001",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_bigint]\", array[1739258159,8743563657,3675273008])",
+            "column" : "S.[cf:col_bigint]",
+            "datatype" : "LONG",
+            "caseInsensitive" : false,
+            "inputValue" : [ "1739258159", "8743563657", "3675273008" ]
+          },
+          "id" : "chck-29f9a779-a9c5-56bb-b3a9-57b815edfc90",
+          "type" : "Contains",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_bit]\", array[0])",
+            "column" : "S.[cf:col_bit]",
+            "datatype" : "NUMERIC",
+            "caseInsensitive" : false,
+            "inputValue" : [ "0" ]
+          },
+          "id" : "chck-37195f2e-628e-5dbe-ab2e-6ff3cb69afec",
+          "type" : "Contains",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0003",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_char]\", array[z])",
+            "column" : "S.[cf:col_char]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : false,
+            "caseInsensitive" : false,
+            "inputValue" : [ "z" ]
+          },
+          "id" : "chck-36a68d61-3507-5142-82ef-bfd58328290c",
+          "type" : "Contains",
+          "description" : "Trim Data - No",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_char]\", array[z, t])",
+            "column" : "S.[cf:col_char]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "z", " t" ]
+          },
+          "id" : "chck-d71e051d-a28f-5c4a-8103-d0f8ce7b9115",
+          "type" : "Contains",
+          "description" : "Trim Data - Yes",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0005",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_date]\", array[Date.parse('yyyy-MM-dd','2025-04-12')])",
+            "column" : "S.[cf:col_date]",
+            "datatype" : "DATE",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "Date.parse('yyyy-MM-dd','2025-04-12')" ]
+          },
+          "id" : "chck-5ae46c63-53b5-58c9-89fa-dcef427f5ae5",
+          "type" : "Contains",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0006",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_datetime]\", array[Date.parse('yyyy-MM-dd hh:mm:ss','2025-03-10 11:59:22.0')])",
+            "column" : "S.[cf:col_datetime]",
+            "datatype" : "TIMESTAMP",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "Date.parse('yyyy-MM-dd hh:mm:ss','2025-03-10 11:59:22.0')" ]
+          },
+          "id" : "chck-1190e635-206b-5da5-9680-c1483e549a55",
+          "type" : "Contains",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0007",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_float]\", array[494.78])",
+            "column" : "S.[cf:col_float]",
+            "datatype" : "DOUBLE",
+            "caseInsensitive" : false,
+            "inputValue" : [ "494.78" ]
+          },
+          "id" : "chck-3f9c2cbb-90db-5c6d-b495-86a05900faa9",
+          "type" : "Contains",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0008",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_int]\", array[44133,1887])",
+            "column" : "S.[cf:col_int]",
+            "datatype" : "NUMERIC",
+            "caseInsensitive" : false,
+            "inputValue" : [ "44133", "1887" ]
+          },
+          "id" : "chck-b03db9f0-c107-5649-a107-317dbf29a1f5",
+          "type" : "Contains",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0009",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_varchar]\", array[Sample text 93, Sample text 11])",
+            "column" : "S.[cf:col_varchar]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : false,
+            "caseInsensitive" : false,
+            "inputValue" : [ "Sample text 93", " Sample text 11" ]
+          },
+          "id" : "chck-071ed757-cae3-596f-9ca5-da65f2dbbdd7",
+          "type" : "Contains",
+          "description" : "Trim Data - No",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        }, {
+          "name" : "Chk_0010",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "Contains(\"S.[cf:col_varchar]\", array[Sample text 93, Sample text 69])",
+            "column" : "S.[cf:col_varchar]",
+            "datatype" : "TEXT",
+            "ignoreNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "inputValue" : [ "Sample text 93", " Sample text 69" ]
+          },
+          "id" : "chck-5bd50634-4b91-5ae8-82df-57489acb919c",
+          "type" : "Contains",
+          "description" : "Trim Data - Yes",
+          "customFields" : [ {
+            "field" : "data_quality_dimension",
+            "values" : [ "Timeliness", "Validity", "Uniqueness", "Accuracy", "CheckStatus" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-797bd443-4b4c-57f0-8bf1-0a2c03f3dfa5"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-32c7a5c6-d47c-5294-aaf9-50a79f904a28",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-32c7a5c6-d47c-5294-aaf9-50a79f904a28 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:34:07.071510300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
