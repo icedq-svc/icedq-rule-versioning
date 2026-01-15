@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-aec92105-512a-5710-a58f-15e360190a66",
+  "versionId" : "ver-1f1bb547-7dcb-5a98-bfc5-e0d3d77e2f4f",
   "objectId" : "rule-674aa569-3b77-5b20-916d-e93449467e2c",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "DAT-13983-MDX_ValidationRule_1756115040060",
-  "state" : "Published",
-  "version" : 1,
+  "name" : "DAT-13983-SQL_ValidationRule",
+  "state" : "Staged",
+  "version" : 2,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -25,34 +25,128 @@
       "name" : "sourceDataset",
       "connectionType" : "OLAP",
       "connectionId" : "conn-a86b6863-2b9b-5d2e-9ddb-1e30ffd3da53",
-      "input" : "mdx",
+      "input" : "Sql",
       "configuration" : {
-        "mdx" : "SELECT\r\n   Measures.[Reseller Order Count] ON COLUMNS,\r\n   Order(\r\n   [Date].[Calendar].[Calendar Quarter].MEMBERS\r\n   ,Measures.[Reseller Order Count]\r\n   ,DESC\r\n   ) ON ROWS\r\n   FROM [Adventure Works]",
+        "sql" : "SELECT * FROM AdventureWorksDW2014.\"Adventure Works\".Employee",
         "appendOrderBy" : false,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
-          "name" : "[Date].[Calendar].[Calendar Year].[MEMBER_CAPTION]",
+          "name" : "Base Rate",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 2,
-          "name" : "[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]",
+          "name" : "Department",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 3,
-          "name" : "[Date].[Calendar].[Calendar Quarter].[MEMBER_CAPTION]",
+          "name" : "Employee",
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 4,
-          "name" : "[Measures].[Reseller Order Count]",
-          "datatype" : "INT",
-          "icedqDatatype" : "NUMERIC"
+          "name" : "Employee Level 02",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Employee Level 03",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "Employee Level 04",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Employee Level 05",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "Employee Level 06",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "End Date",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Hire Date",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Hire Year",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Marital Status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Pay Frequency",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "Salaried Flag",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "Sales Person Flag",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "Sick Leave Hours",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "Start Date",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "Status",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "Title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "Vacation Hours",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "MeasuresId",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
         } ]
-      },
-      "useCached" : false
+      }
     }, {
       "id" : "RecordCheck",
       "type" : "recordCheck",
@@ -75,59 +169,15 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "comment" : "CompletenessCheck(\"S.[[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]]\")",
-            "column" : "S.[[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]]",
+            "comment" : "CompletenessCheck(\"S.[Employee]\")",
+            "column" : "S.[Employee]",
             "emptyStringAsNull" : true,
             "whiteSpaceAsNull" : true,
             "trimmingEnable" : true,
             "caseInsensitive" : false
           },
-          "id" : "chck-6798076c-5b13-59ea-84a8-f8c69904344e",
+          "id" : "chck-8951d637-5776-52e8-b499-c8929ec6deeb",
           "type" : "Completeness"
-        }, {
-          "name" : "Fyi_s_[date].[calendar].[calendar year].[member_caption]",
-          "index" : 3,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[[Date].[Calendar].[Calendar Year].[MEMBER_CAPTION]]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-7dc4c67e-0624-524d-be7c-601f39fd4caf",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_[date].[calendar].[calendar semester].[member_caption]",
-          "index" : 4,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[[Date].[Calendar].[Calendar Semester].[MEMBER_CAPTION]]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-4ce52b11-564e-5159-a465-7a162f6eda0e",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_[date].[calendar].[calendar quarter].[member_caption]",
-          "index" : 5,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[[Date].[Calendar].[Calendar Quarter].[MEMBER_CAPTION]]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-880904ff-3ae1-53ab-8081-c030c64d807a",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_[measures].[reseller order count]",
-          "index" : 6,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[[Measures].[Reseller Order Count]]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-e2557175-38b1-5a07-89aa-0b62dc1c0954",
-          "type" : "Column"
         } ]
       }
     }, {
@@ -161,18 +211,19 @@
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
-  "commitStatus" : "Merged",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Pending",
   "gitSHA" : "sha",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-674aa569-3b77-5b20-916d-e93449467e2c",
-      "commitMessage" : "Message: Initial setup | RuleId: rule-674aa569-3b77-5b20-916d-e93449467e2c |Status: Approved"
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-674aa569-3b77-5b20-916d-e93449467e2c |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:39:04.236495600Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:40:35.796777600Z[UTC]",
   "updatedBy" : "roshan.n"
 }
