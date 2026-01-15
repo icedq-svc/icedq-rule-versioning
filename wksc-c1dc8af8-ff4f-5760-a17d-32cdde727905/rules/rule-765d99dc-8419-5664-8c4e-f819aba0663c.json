@@ -1,0 +1,88 @@
+{
+  "versionId" : "ver-cd98f92c-24b4-5d47-996e-c0dc54b0fe65",
+  "objectId" : "rule-765d99dc-8419-5664-8c4e-f819aba0663c",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1767006870",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Script",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "Variable",
+      "type" : "variable",
+      "name" : "set Variables",
+      "configuration" : {
+        "variables" : [ {
+          "name" : "connVar1",
+          "type" : "connection",
+          "properties" : {
+            "connectionType" : "Database",
+            "connectionId" : "conn-c1893ae2-8f97-55e4-be2b-dc1014e35a9f"
+          }
+        } ]
+      }
+    }, {
+      "id" : "Script",
+      "type" : "script",
+      "name" : "script Task",
+      "configuration" : {
+        "script" : "def result = 1\r\ndef createTable = '''Create table comp1(CustomerId varchar(100), Address varchar(100))'''\r\ndef updatedCount = connVar1.execute createTable\r\ninstanceLog.info(\"Update Count -->\"+ connVar1.updateCount)\r\nresult = connVar1.updateCount\r\nreturn result;"
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode < 100",
+            "caseInsensitive" : false
+          },
+          "isOverride" : true,
+          "id" : "chck-da869df9-f70a-5972-8773-841b2aa27a17"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "release_testing_fields",
+      "values" : [ ]
+    }, {
+      "field" : "togglefield",
+      "values" : [ "false" ]
+    }, {
+      "field" : "labelfield",
+      "values" : [ ]
+    }, {
+      "field" : "singleselectdropdown",
+      "values" : [ "test1" ]
+    }, {
+      "field" : "singleselectmap",
+      "values" : [ "Password" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-765d99dc-8419-5664-8c4e-f819aba0663c",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-765d99dc-8419-5664-8c4e-f819aba0663c |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:45:20.221569800Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
