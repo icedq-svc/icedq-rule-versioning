@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-1e40135b-6d6a-540e-ae46-ca4b4b529638",
+  "versionId" : "ver-37044dab-c0d5-521e-b376-a8cd92ddfcc0",
   "objectId" : "rule-9247d8bc-1466-5291-84cc-6adaf3ba9627",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "DAT-13984-ValidationRule-Move",
   "state" : "Published",
-  "version" : 4,
+  "version" : 3,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -36,7 +36,6 @@
         "dax" : "",
         "mdx" : "",
         "fileType" : "Delimited",
-        "container" : "/",
         "filePath" : "/STAFF.csv",
         "columnDelimiter" : "|",
         "rowDelimiter" : "",
@@ -44,8 +43,10 @@
         "skipRowTop" : "0",
         "trimData" : "true",
         "emptyString" : "true",
+        "whiteSpace" : "false",
+        "fixedString" : "true",
         "fixedStringValue" : "NaN",
-        "appendOrderBy" : true,
+        "filterCondition" : "",
         "isSingleFile" : true,
         "isDynamicPath" : false,
         "overrideLayout" : false,
@@ -228,7 +229,7 @@
         "exportFileRowLimit" : "20000",
         "createExportDownloadLink" : true,
         "storeOnlyException" : false,
-        "storeOnlyExportedFile" : true,
+        "storeOnlyExportedFile" : false,
         "format" : [ "CSV" ]
       }
     }, {
@@ -247,17 +248,6 @@
           },
           "isOverride" : false,
           "id" : "chck-12f18d91-2495-5aca-93ce-d565a8ec920a"
-        }, {
-          "name" : "Var_0001",
-          "index" : 2,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : " sourcecount +  exitcode ",
-            "caseInsensitive" : false
-          },
-          "isOverride" : false,
-          "id" : "chck-3a6659f4-c4ff-5fc3-bc58-dde99642fb4e"
         } ]
       }
     } ]
@@ -275,6 +265,6 @@
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:48.861399400Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:49.529398100Z[UTC]",
   "updatedBy" : "roshan.n"
 }
