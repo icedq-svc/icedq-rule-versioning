@@ -1,0 +1,140 @@
+{
+  "versionId" : "ver-4a572f54-0910-58c1-9354-f95ab36193e6",
+  "objectId" : "rule-54c33bd0-493d-58be-a15d-9ac16a211966",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1757419024",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-df8c41af-d205-58ac-92c9-f1dcdac6ef88",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "ADMIN",
+        "tableName" : "STAFF",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "SOURCE_COUNT",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-1eeb6ebb-decd-521f-8504-4339f1d1e5ca",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select count(*) as source_count from icedq.STAFF",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "source_count",
+          "datatype" : "Integer",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE_COUNT] - T.[target_count] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8ecb034c-9228-5a2b-a5ed-be8f269bf6f9",
+          "type" : "Custom",
+          "customFields" : [ {
+            "field" : "exportlabel",
+            "values" : [ "ATest" ]
+          }, {
+            "field" : "exportmultiselectdropdown",
+            "values" : [ "CTest" ]
+          }, {
+            "field" : "exportsingleselectdropdown",
+            "values" : [ "GTest" ]
+          }, {
+            "field" : "exportsingleselectmap",
+            "values" : [ "ETset" ]
+          }, {
+            "field" : "exporttoggle",
+            "values" : [ "true" ]
+          } ]
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-52d32f88-c4d8-5cc9-b256-ce9e612718ce"
+        } ]
+      }
+    } ],
+    "customFields" : [ {
+      "field" : "exportlabel",
+      "values" : [ "ATest" ]
+    }, {
+      "field" : "exportmultiselectdropdown",
+      "values" : [ "CTest" ]
+    }, {
+      "field" : "exportsingleselectdropdown",
+      "values" : [ "GTest" ]
+    }, {
+      "field" : "exportsingleselectmap",
+      "values" : [ "ETset" ]
+    }, {
+      "field" : "exporttoggle",
+      "values" : [ "true" ]
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-54c33bd0-493d-58be-a15d-9ac16a211966",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-54c33bd0-493d-58be-a15d-9ac16a211966 |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:40:31.524781300Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
