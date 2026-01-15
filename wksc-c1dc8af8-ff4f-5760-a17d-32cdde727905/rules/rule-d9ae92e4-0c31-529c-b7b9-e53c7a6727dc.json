@@ -1,0 +1,126 @@
+{
+  "versionId" : "ver-c0504f72-a5b2-5376-b70a-040e276a3605",
+  "objectId" : "rule-d9ae92e4-0c31-529c-b7b9-e53c7a6727dc",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_approve",
+  "state" : "Published",
+  "version" : 2,
+  "info" : {
+    "ruleType" : "Duplicate",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-a930452a-b40d-5a95-a83e-1400368931c6",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "BI_TESTING",
+        "tableName" : "COMPETITIVE_MARKETING_ANALYSIS_KPI",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "KPI",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "Category",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_0001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "duplicateCheck(\"S.[Category]\")",
+            "comment" : "duplicateCheck(\"S.[Category]\")",
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "columns" : [ {
+              "index" : 1,
+              "name" : "S.[Category]",
+              "datatype" : "NUMBER"
+            } ]
+          },
+          "id" : "chck-65282856-247b-54d7-beb9-f31853a1a51a",
+          "type" : "Duplicate"
+        }, {
+          "name" : "noOfDuplicates",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUPLICATE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e8301af4-373c-5bb8-a001-6fa5d4f1eaa7",
+          "type" : "Column",
+          "description" : "Duplicate records count"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-aad16e13-82f1-5fb2-8c82-f324f7d6111b"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-d9ae92e4-0c31-529c-b7b9-e53c7a6727dc",
+      "commitMessage" : "Message: Updated rule configuration | RuleId: rule-d9ae92e4-0c31-529c-b7b9-e53c7a6727dc |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:41:30.078838700Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
