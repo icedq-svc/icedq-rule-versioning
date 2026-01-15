@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-7ae78e92-5c36-5ceb-a56e-4c743d57f348",
+  "versionId" : "ver-d4bfb83f-1c02-54c0-a9cd-c0f877180917",
   "objectId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Validation-with-Default",
   "state" : "Published",
-  "version" : 13,
+  "version" : 15,
   "info" : {
     "ruleType" : "Validation",
     "properties" : {
@@ -113,7 +113,7 @@
           "expression" : {
             "comment" : "CompletenessCheck(\"S.[LASTNAME]\")",
             "column" : "S.[LASTNAME]",
-            "fixedStringAsNull" : "null",
+            "fixedStringAsNull" : "NULL",
             "emptyStringAsNull" : true,
             "whiteSpaceAsNull" : true,
             "trimmingEnable" : true,
@@ -273,11 +273,11 @@
       "type" : "report",
       "name" : "exceptionReport",
       "configuration" : {
-        "exportFileRowLimit" : "20000",
+        "exportFileRowLimit" : "200000",
         "createExportDownloadLink" : true,
-        "storeOnlyException" : false,
-        "storeOnlyExportedFile" : false,
-        "format" : [ "XLSX" ]
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "CSV" ]
       }
     }, {
       "id" : "Summary",
@@ -332,7 +332,7 @@
       }
     } ]
   },
-  "commitMessage" : "Updated rule configuration and unchecked all the Ignore Null flags from Length, Pattern, Contain, Datatype, and Range checks",
+  "commitMessage" : "Updated rule exception report",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitSHA" : "sha",
@@ -341,10 +341,10 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-761d17bb-717c-5f15-9d41-7f9e278445a9",
-      "commitMessage" : "Message: Updated rule configuration and unchecked all the Ignore Null flags from Length, Pattern, Contain, Datatype, and Range checks | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
+      "commitMessage" : "Message: Updated rule exception report | RuleId: rule-761d17bb-717c-5f15-9d41-7f9e278445a9 |Status: Approved"
     }
   },
   "gitStatus" : "Committed",
-  "updatedTimestamp" : "2026-01-15T11:38:44.161396400Z[UTC]",
+  "updatedTimestamp" : "2026-01-15T11:38:44.921397Z[UTC]",
   "updatedBy" : "roshan.n"
 }
