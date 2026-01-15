@@ -1,0 +1,353 @@
+{
+  "versionId" : "ver-e2249971-0977-5f49-8641-300dbf4abe94",
+  "objectId" : "rule-2f53423a-b82a-5ad9-b465-63455260ef8a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1756719709",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "api-recon",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "contacts",
+        "fileSchemaId" : "schm-78c93ec3-bb6d-5bad-8c58-2c3a7ba1dafb",
+        "sql" : "select * from contacts",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "APIDB",
+      "connectionId" : "conn-4db9b0d1-26e8-50aa-b82e-20429c5f73e9",
+      "input" : "Sql",
+      "configuration" : {
+        "tableName" : "contacts",
+        "fileSchemaId" : "schm-b5a762c3-91ff-577b-9dea-213e087a0062",
+        "sql" : "select * from contacts",
+        "fixedString" : "false",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "active",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 2,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "company_id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "created_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "csat_rating",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "description",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "facebook_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "job_title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "language",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "mobile",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "name",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "other_companies",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "preferred_source",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "time_zone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "twitter_followers_count",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "twitter_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "twitter_profile_status",
+          "datatype" : "BIT",
+          "icedqDatatype" : "BOOLEAN"
+        }, {
+          "index" : 21,
+          "name" : "unique_external_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "updated_at",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ],
+        "baseUrl" : "https://icedq.freshdesk.com/api/v2/",
+        "requestMethod" : "GET",
+        "endPoint" : "contacts",
+        "dataModel" : "Document"
+      }
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "active",
+          "targetKey" : "active"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "a-b", "b-a" ]
+          },
+          "id" : "chck-0f68bec4-cab2-5838-9743-06bf167828b6",
+          "type" : "ResultType"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-932447c6-bc1c-56aa-8710-0cee4327083e"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitSHA" : "sha",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-2f53423a-b82a-5ad9-b465-63455260ef8a",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-2f53423a-b82a-5ad9-b465-63455260ef8a |Status: Approved"
+    }
+  },
+  "gitStatus" : "Committed",
+  "updatedTimestamp" : "2026-01-15T11:44:53.465988500Z[UTC]",
+  "updatedBy" : "roshan.n"
+}
