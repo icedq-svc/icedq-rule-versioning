@@ -1,0 +1,1105 @@
+{
+  "versionId" : "ver-02dba026-bc0d-5edb-b2cc-20241bd99bfa",
+  "objectId" : "rule-5b85abde-71cd-50e5-a1b4-f47d5aef7789",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Validation_Neww0987brg ACCOUNT",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_ACCOUNT",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.ACCOUNT",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "ISDELETED",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "MASTERRECORDID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "PARENTID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "BILLINGSTREET",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "BILLINGCITY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "BILLINGSTATE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "BILLINGPOSTALCODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "BILLINGCOUNTRY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "BILLINGLATITUDE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 13,
+          "name" : "BILLINGLONGITUDE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 14,
+          "name" : "BILLINGGEOCODEACCURACY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "SHIPPINGSTREET",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "SHIPPINGCITY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "SHIPPINGSTATE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "SHIPPINGPOSTALCODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "SHIPPINGCOUNTRY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "SHIPPINGLATITUDE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 21,
+          "name" : "SHIPPINGLONGITUDE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 22,
+          "name" : "SHIPPINGGEOCODEACCURACY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "PHONE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "FAX",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "ACCOUNTNUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "WEBSITE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "PHOTOURL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "SIC",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "INDUSTRY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "ANNUALREVENUE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 31,
+          "name" : "NUMBEROFEMPLOYEES",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 32,
+          "name" : "OWNERSHIP",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "TICKERSYMBOL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "DESCRIPTION",
+          "datatype" : "CLOB",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "RATING",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "SITE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 37,
+          "name" : "OWNERID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "CREATEDDATE",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "CREATEDBYID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 40,
+          "name" : "LASTMODIFIEDDATE",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 41,
+          "name" : "LASTMODIFIEDBYID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 42,
+          "name" : "SYSTEMMODSTAMP",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 43,
+          "name" : "LASTACTIVITYDATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 44,
+          "name" : "LASTVIEWEDDATE",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 45,
+          "name" : "LASTREFERENCEDDATE",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 46,
+          "name" : "JIGSAW",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 47,
+          "name" : "JIGSAWCOMPANYID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 48,
+          "name" : "CLEANSTATUS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 49,
+          "name" : "ACCOUNTSOURCE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 50,
+          "name" : "DUNSNUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 51,
+          "name" : "TRADESTYLE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 52,
+          "name" : "NAICSCODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 53,
+          "name" : "NAICSDESC",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 54,
+          "name" : "YEARSTARTED",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 55,
+          "name" : "SICDESC",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 56,
+          "name" : "DANDBCOMPANYID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 57,
+          "name" : "CUSTOMERPRIORITY__C",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 58,
+          "name" : "SLA__C",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 59,
+          "name" : "ACTIVE__C",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 60,
+          "name" : "NUMBEROFLOCATIONS__C",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 61,
+          "name" : "UPSELLOPPORTUNITY__C",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 62,
+          "name" : "SLASERIALNUMBER__C",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 63,
+          "name" : "SLAEXPIRATIONDATE__C",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-725f0c96-dac9-522c-a1aa-d23506cfbbe3",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_SHIPPINGGEOCODEACCURACY",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGGEOCODEACCURACY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1118646f-0c49-5dbb-9ddd-845671dc27ee",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CLEANSTATUS",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CLEANSTATUS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-53f49cfb-876a-57b2-9cfa-2eb3309a74a4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SHIPPINGSTREET",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGSTREET] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-df15aec6-da7d-5b94-915a-63be9d75b9b5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ACCOUNTSOURCE",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNTSOURCE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4ee3fbc-ba05-56c6-971b-b31135f1b6bf",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SLA__C",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SLA__C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ae16197f-d8f0-558e-bb9f-456b2d940a82",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NUMBEROFLOCATIONS__C",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NUMBEROFLOCATIONS__C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cfb5cf02-8cb3-5047-bcdf-66f455c06ca6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RATING",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RATING] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a9a8a365-d625-5124-8541-4074b0005b58",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SHIPPINGLONGITUDE",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGLONGITUDE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9293bc6c-7864-5100-92f7-76d7a540fda3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TYPE",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-19a43349-59f7-5c07-9235-305c280c65ed",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SHIPPINGPOSTALCODE",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGPOSTALCODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d0e4a78b-1cfd-5f15-8d0d-bb860b757b38",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NAICSDESC",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NAICSDESC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a4f818bb-cfa7-53d2-9e8b-4f2a537ab163",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ISDELETED",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ISDELETED] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d3c33f16-42b8-5b40-becf-b89a2d7cef57",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ACTIVE__C",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACTIVE__C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-00e92890-fbd7-5faf-a2c7-0d2c708472f4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_YEARSTARTED",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[YEARSTARTED] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-efa28fad-3c70-57d3-90ba-58809592ab98",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ANNUALREVENUE",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ANNUALREVENUE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-84bd6923-87ae-5ba5-a079-71e94e7e47ba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LASTACTIVITYDATE",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LASTACTIVITYDATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ce2dfb70-73ad-5050-87d2-a8fb6bd08653",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ID",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-abc754e1-d888-531f-9363-92e0f4ceada8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FAX",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FAX] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-14e5ceb9-7f6b-5a2d-af38-c44db40b842a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGLONGITUDE",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGLONGITUDE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3fa10571-4845-57fe-83c3-ce48b840e143",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DUNSNUMBER",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUNSNUMBER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a1137f88-0b4c-51dd-868f-74915c55c0f1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_UPSELLOPPORTUNITY__C",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[UPSELLOPPORTUNITY__C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-21aed602-7ead-58db-aaf2-aed50dc2173d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SHIPPINGLATITUDE",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGLATITUDE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-49adc119-0379-5248-95ee-4d9bbdb368d9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TRADESTYLE",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TRADESTYLE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b7163368-d307-5733-8634-deed0c7aae04",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OWNERID",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OWNERID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-75273d5e-00b9-5362-b472-76f90838a96b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DANDBCOMPANYID",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DANDBCOMPANYID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c19015a9-9b58-52f0-b2a9-1346530b3f1c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PHONE",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PHONE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b2905398-5b23-50ce-9b63-954d3760f955",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NAME",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cd96d93e-4fb5-55c6-8944-f799fe5ff25d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_JIGSAW",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JIGSAW] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-91ac4c23-58fd-5f13-b8bc-30e7be1cf648",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LASTVIEWEDDATE",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LASTVIEWEDDATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fc7776c2-aa6c-54c4-9431-f7179041ddfd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CREATEDDATE",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CREATEDDATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-81d8a5ea-7d00-5054-8b7e-197795eff133",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SLASERIALNUMBER__C",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SLASERIALNUMBER__C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-071a5361-e312-57f1-b64d-21fd115aea55",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGSTATE",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGSTATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0801497e-9348-5a59-9304-eae1b1d99daa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DESCRIPTION",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DESCRIPTION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3eabd421-6934-59da-bee0-a18d9abb1687",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CREATEDBYID",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CREATEDBYID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9422d346-6f9c-5530-b973-98fbb59b5410",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_INDUSTRY",
+          "index" : 36,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[INDUSTRY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4fa8f8d5-d7ce-5b54-9d2f-b1653d2e5d76",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NUMBEROFEMPLOYEES",
+          "index" : 37,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NUMBEROFEMPLOYEES] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-614a8bf8-63d2-5945-8954-ffc20e94610c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SIC",
+          "index" : 38,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SIC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-50d14e89-e0db-5142-a275-bdac4a297f76",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SLAEXPIRATIONDATE__C",
+          "index" : 39,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SLAEXPIRATIONDATE__C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b0b5779a-9859-57c8-a449-a03fb347dfbd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PARENTID",
+          "index" : 40,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PARENTID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8dcf33d6-70af-5a9a-8fed-2e4120b1aac0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SHIPPINGCOUNTRY",
+          "index" : 41,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGCOUNTRY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6cb09b36-42b8-58e3-bdb7-cab5390115d0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SYSTEMMODSTAMP",
+          "index" : 42,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SYSTEMMODSTAMP] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b8b54283-d4de-525b-b0b3-c90028ffa389",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGLATITUDE",
+          "index" : 43,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGLATITUDE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4e3a9459-3399-5a89-8fb2-80103dc20fc1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CUSTOMERPRIORITY__C",
+          "index" : 44,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CUSTOMERPRIORITY__C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a6715f1a-677e-59d1-bb79-6700d12d7113",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MASTERRECORDID",
+          "index" : 45,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MASTERRECORDID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b7bf99e9-3cba-55dc-913d-ef64d7c6e132",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SHIPPINGSTATE",
+          "index" : 46,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGSTATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-16305622-2c40-5025-8ec6-3e805ba7f643",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SHIPPINGCITY",
+          "index" : 47,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SHIPPINGCITY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-95bffc89-4453-5142-830b-d06bb4db0c72",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGCITY",
+          "index" : 48,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGCITY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3b0da1f4-3fb2-5816-8215-107e6b6bb1a6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TICKERSYMBOL",
+          "index" : 49,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TICKERSYMBOL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-35c70ad7-eb9d-590b-af13-889e3d0d8ad7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_WEBSITE",
+          "index" : 50,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[WEBSITE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ca05c01a-8344-58c0-a4de-5856baec47f0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ACCOUNTNUMBER",
+          "index" : 51,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNTNUMBER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d919b987-25b1-5f3d-9eff-40f1ba664cbf",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SICDESC",
+          "index" : 52,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SICDESC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-470a58e5-a10d-5d60-9059-bc8669435f50",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LASTMODIFIEDDATE",
+          "index" : 53,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LASTMODIFIEDDATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1070b4db-41e0-5a61-821a-54acaeedcd47",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LASTREFERENCEDDATE",
+          "index" : 54,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LASTREFERENCEDDATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-01cb0ce2-88f7-5f79-94db-372d04cdb00b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NAICSCODE",
+          "index" : 55,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NAICSCODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2441db14-4074-5de6-9534-bb9b95b029c1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PHOTOURL",
+          "index" : 56,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PHOTOURL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d333b767-a430-505e-9346-c7e04ef54521",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGPOSTALCODE",
+          "index" : 57,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGPOSTALCODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ef37d8dc-bbd5-5f1e-acad-38fa541d60de",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGCOUNTRY",
+          "index" : 58,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGCOUNTRY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-02387dda-aa0d-525b-a025-6fbf48c73dcc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGGEOCODEACCURACY",
+          "index" : 59,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGGEOCODEACCURACY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1601bb00-e360-5b5f-9042-e388c00b9bcd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SITE",
+          "index" : 60,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SITE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d96c5332-f038-53c1-bb0a-4b13dc12b08b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OWNERSHIP",
+          "index" : 61,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OWNERSHIP] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2d4fc952-6937-5da3-9a1a-2f5785e65c13",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BILLINGSTREET",
+          "index" : 62,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BILLINGSTREET] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-01289af3-9dbf-56f2-8157-1183400d6d23",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LASTMODIFIEDBYID",
+          "index" : 63,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LASTMODIFIEDBYID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bcbce38b-8a4e-5933-b893-50aba1cc8719",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_JIGSAWCOMPANYID",
+          "index" : 64,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JIGSAWCOMPANYID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-523fc78d-5e9c-5648-a7a8-de9c080747b1",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-9f39840d-84f9-5bde-89a2-36f3589c378b"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-5b85abde-71cd-50e5-a1b4-f47d5aef7789",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-5b85abde-71cd-50e5-a1b4-f47d5aef7789 | Status: "
+    }
+  },
+  "updatedTimestamp" : "1767089217.558718000",
+  "updatedBy" : "service-account-icedq.executor"
+}
