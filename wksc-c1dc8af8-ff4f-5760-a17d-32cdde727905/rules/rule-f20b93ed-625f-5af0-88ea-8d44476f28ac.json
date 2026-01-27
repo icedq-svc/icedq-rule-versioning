@@ -1,0 +1,147 @@
+{
+  "versionId" : "ver-5f242534-9376-5585-82a0-0357f9687117",
+  "objectId" : "rule-f20b93ed-625f-5af0-88ea-8d44476f28ac",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg human_resource_sample_gsssender",
+  "state" : "Published",
+  "version" : 5,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_human_resource_sample_gender3",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from bi_testing.human_resource_sample_gender",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "ID",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Gender",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Sort",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-93af734f-c3c0-5780-ab8d-ceaf426a33d7",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_Gender",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Gender] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-aebfd12e-bf84-505d-8d0c-e375007c9cc0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ID",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-28712d00-4db4-5a7a-a154-da9f1d87ce91",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Sort",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Sort] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-baf4c63f-55bf-56f9-a39e-a767e2991301",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-6f228cde-fa95-5d44-9860-92652c24c099"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "version 5 ",
+  "commitTag" : "sample",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "roshan.n",
+    "message" : {
+      "ruleId" : "rule-f20b93ed-625f-5af0-88ea-8d44476f28ac",
+      "commitMessage" : "Message: version 5  | RuleId: rule-f20b93ed-625f-5af0-88ea-8d44476f28ac | Status: AP"
+    }
+  },
+  "updatedTimestamp" : "1769516493.237033000",
+  "updatedBy" : "roshan.n"
+}
