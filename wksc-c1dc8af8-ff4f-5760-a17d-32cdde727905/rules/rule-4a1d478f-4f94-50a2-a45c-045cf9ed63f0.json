@@ -1,0 +1,321 @@
+{
+  "versionId" : "ver-8c60d7c0-7621-5f9e-98a4-2ecfbce27d02",
+  "objectId" : "rule-4a1d478f-4f94-50a2-a45c-045cf9ed63f0",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg empdata1232",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_empdata",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from hr.empdata",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "empid",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "lastname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "firstname",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "titleofcourtesy",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "birthdate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "hiredate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 8,
+          "name" : "address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "city",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "region",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "postalcode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "country",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "mgrid",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-fe1be53e-7496-5639-86c2-8ce1276c171f",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_empid",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[empid] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4e7c2364-a82b-5bb5-8437-8e75f012dd57",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_country",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[country] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4bac2620-0354-507c-b943-68a0a0c02d8b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_firstname",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[firstname] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f780103e-b382-5794-b836-3fc2784f84fa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_birthdate",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[birthdate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c8d39819-c3a1-545c-a2f0-a36d71a8b4c6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_address",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[address] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6b62227e-30de-514b-a9ce-3b4aa472019b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_mgrid",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[mgrid] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-05782dbb-c3db-5a64-920d-a6331e5f231e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_city",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[city] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d3d76f4b-db6c-5c30-8c86-54708691fc6d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_title",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[title] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b7ca22a6-f557-592d-b0b0-677d53ab62f7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_hiredate",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[hiredate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1bd37cb7-9fa2-5e3f-b157-6b6192ec5791",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_lastname",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[lastname] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5fbeed8e-6174-5258-b190-43e5beee6287",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_phone",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[phone] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6f97e8d9-8075-5ee5-b7d5-1fa4aeb2f747",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_postalcode",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[postalcode] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-581c5a42-5828-5de1-ae7c-f8cbb4388f9f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_titleofcourtesy",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[titleofcourtesy] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6b86ae75-5d71-5f45-a378-7a48cf45ceb8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_region",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[region] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-273961e1-b8be-5395-8e00-d4830c364b64",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-22f2dc4a-6211-5987-9651-21fd430138d3"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-4a1d478f-4f94-50a2-a45c-045cf9ed63f0",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-4a1d478f-4f94-50a2-a45c-045cf9ed63f0 | Status: "
+    }
+  },
+  "updatedTimestamp" : "1769154980.783104000",
+  "updatedBy" : "service-account-icedq.executor"
+}
