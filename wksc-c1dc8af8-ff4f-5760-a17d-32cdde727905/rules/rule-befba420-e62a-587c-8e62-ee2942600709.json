@@ -1,0 +1,108 @@
+{
+  "versionId" : "ver-ef9c905a-f942-5592-9c71-22573a05d6b3",
+  "objectId" : "rule-befba420-e62a-587c-8e62-ee2942600709",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "CHECKSUM_brg competitive_marketing_analysis_geo",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "CODE00_competitive_marketing_analysis_geo",
+    "description" : "This template creates checksum rules to make sure the row counts between source and target table is the same.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT COUNT(*) AS SOURCE_COUNT FROM bi_testing.competitive_marketing_analysis_geo",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "SOURCE_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT COUNT(*) AS TARGET_COUNT FROM bi_testing.competitive_marketing_analysis_geo",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "TARGET_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE_COUNT] - T.[TARGET_COUNT] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-12efda44-38c5-57e2-89f4-b7c7cfcd5956",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-eff06f71-5f70-5990-86a9-4b6022d47238"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-befba420-e62a-587c-8e62-ee2942600709",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-befba420-e62a-587c-8e62-ee2942600709 | Status: "
+    }
+  },
+  "updatedTimestamp" : "1769082852.897447000",
+  "updatedBy" : "service-account-icedq.executor"
+}
