@@ -1,0 +1,108 @@
+{
+  "versionId" : "ver-aa7e1d16-d98f-536e-b3bc-f65f945e4cab",
+  "objectId" : "rule-c3327ab7-0d37-5847-a0b9-d6683ee5fa62",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "CHECKSUM_icedqrs brg all_datatype",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "CODE00_all_datatype",
+    "description" : "This template creates checksum rules to make sure the row counts between source and target table is the same.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT COUNT(*) AS SOURCE_COUNT FROM icedqrs.public.all_datatype",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "SOURCE_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT COUNT(*) AS TARGET_COUNT FROM icedqrs.public.all_datatype",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "TARGET_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE_COUNT] - T.[TARGET_COUNT] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d22ca73d-c08d-56d3-8696-90707a21fda3",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-15ab0a00-70d2-52dd-acd5-d312baf2a141"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-c3327ab7-0d37-5847-a0b9-d6683ee5fa62",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-c3327ab7-0d37-5847-a0b9-d6683ee5fa62 | Status: "
+    }
+  },
+  "updatedTimestamp" : "1768995541.341336000",
+  "updatedBy" : "service-account-icedq.executor"
+}
