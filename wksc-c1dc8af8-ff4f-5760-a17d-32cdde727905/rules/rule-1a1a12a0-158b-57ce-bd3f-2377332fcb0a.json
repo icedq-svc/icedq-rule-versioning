@@ -1,0 +1,249 @@
+{
+  "versionId" : "ver-f89f3aab-2647-519e-ac1d-3b375104d830",
+  "objectId" : "rule-1a1a12a0-158b-57ce-bd3f-2377332fcb0a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RECON_icedqrs brg orders",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00_orders",
+    "description" : "This template create recon rules to compare all the data. The diff join is created using specified column name(s) and equal to expressions are created for rest of the columns with matching names.",
+    "purpose" : "Join on based on specified column and expression are based on macthing names",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedqrs.dataops_staging.orders",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "product_key",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "order_key",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 3,
+          "name" : "quantity",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "price",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "amount",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "customer_key",
+          "datatype" : "int8",
+          "icedqDatatype" : "LONG"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedqrs.dataops_oltp.orders",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "product_key",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "order_key",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "quantity",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 4,
+          "name" : "price",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 5,
+          "name" : "amount",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 6,
+          "name" : "customer_key",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "product_key",
+          "targetKey" : "product_key"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-e3fdd213-b102-55f6-bd84-9f02b4ec9aa3",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_customer_key",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[customer_key] == T.[customer_key]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c4bf922a-4438-5c53-be73-b8e6388a0a29",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_amount",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[amount] == T.[amount]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c0e1b838-866d-506f-9315-9f76e5a08b83",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_product_key",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[product_key] == T.[product_key]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-09c2f02e-5586-557d-b2d2-e49ff25c1e14",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_order_key",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[order_key] == T.[order_key]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0793f218-1470-55e0-9e5a-fa0ec92c326b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_quantity",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[quantity] == T.[quantity]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e11cd981-9000-5098-8225-91fa39b49b4d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_price",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[price] == T.[price]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6dd33671-916f-5ddf-9569-2a78f2ae5f7f",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e2cd3b44-78bc-5a52-903e-6836ef446dff"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-1a1a12a0-158b-57ce-bd3f-2377332fcb0a",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-1a1a12a0-158b-57ce-bd3f-2377332fcb0a | Status: "
+    }
+  },
+  "updatedTimestamp" : "1768981157.847775000",
+  "updatedBy" : "service-account-icedq.executor"
+}
