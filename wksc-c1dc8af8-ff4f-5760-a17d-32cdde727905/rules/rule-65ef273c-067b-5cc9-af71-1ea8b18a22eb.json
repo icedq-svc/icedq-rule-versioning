@@ -1,0 +1,228 @@
+{
+  "versionId" : "ver-182a4a1e-32da-5a14-a2c9-4887d559506d",
+  "objectId" : "rule-65ef273c-067b-5cc9-af71-1ea8b18a22eb",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RECONSasaLatest_brg ANTHEM_7991_TARGET",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00_ANTHEM_7991_TARGET",
+    "description" : "This template create recon rules to compare all the data. The diff join is created using specified column name(s) and equal to expressions are created for rest of the columns with matching names.",
+    "purpose" : "Join on based on specified column and expression are based on macthing names",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.ANTHEM_7991_TARGET",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CLAIM_NUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "HCPC_CODE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "SERVICE_UNITS",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 4,
+          "name" : "Timestamp",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 5,
+          "name" : "LINE_NUMBER",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.ANTHEM_7991_TARGET",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CLAIM_NUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "HCPC_CODE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "SERVICE_UNITS",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 4,
+          "name" : "Timestamp",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 5,
+          "name" : "LINE_NUMBER",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "CLAIM_NUMBER",
+          "targetKey" : "CLAIM_NUMBER"
+        } ]
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-b5922da2-6ed2-5dd0-991b-63b57fb84f55",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_CLAIM_NUMBER",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CLAIM_NUMBER] == T.[CLAIM_NUMBER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-adb88b61-c4e7-5680-ad0b-1cde8a2f92a5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LINE_NUMBER",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LINE_NUMBER] == T.[LINE_NUMBER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-54018f23-3aaf-5f5a-8222-eba1bc56c9de",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_HCPC_CODE",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HCPC_CODE] == T.[HCPC_CODE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ec8dc63e-6c12-52e4-a245-18674aa1b15d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SERVICE_UNITS",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SERVICE_UNITS] == T.[SERVICE_UNITS]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0a71f02c-940e-596b-873a-2a416ed24e64",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Timestamp",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Timestamp] == T.[Timestamp]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-03fb9bb2-4555-50de-8372-2e37e631a7fd",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-7ac383cf-399a-5489-a76a-297b901c0388"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-65ef273c-067b-5cc9-af71-1ea8b18a22eb",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-65ef273c-067b-5cc9-af71-1ea8b18a22eb | Status: "
+    }
+  },
+  "updatedTimestamp" : "1768990969.070800000",
+  "updatedBy" : "service-account-icedq.executor"
+}
