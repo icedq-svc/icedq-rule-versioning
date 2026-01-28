@@ -1,0 +1,193 @@
+{
+  "versionId" : "ver-cf6cab40-b790-5a24-a9db-93815cb07990",
+  "objectId" : "rule-1f24c950-d05d-50dd-b131-2350f18395e0",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg accounts",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_accounts",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from test_db.accounts",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "user_id",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "username",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "password1",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "created_on",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "last_login",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-98700355-e97d-5ff0-9e83-ae8bd0b817ef",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_user_id",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[user_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3ccb4077-67e9-5c06-bbee-b78949fd0c3d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_created_on",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[created_on] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f36416ed-27ad-513b-a0df-d0bc22256fbb",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_last_login",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[last_login] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bca8d323-8a57-5c93-8bd5-d392c097b547",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_password1",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[password1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-228c7077-49f9-5a1f-aec1-db2366723beb",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_email",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[email] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dc009775-0806-54f6-aa82-00b6b8f0443e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_username",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[username] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4766cdb3-e21e-59c8-8d62-abf729c52184",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-c089f951-a015-510c-a77b-ae309716fe7a"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "mohit",
+    "message" : {
+      "ruleId" : "rule-1f24c950-d05d-50dd-b131-2350f18395e0",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-1f24c950-d05d-50dd-b131-2350f18395e0 | Status: "
+    }
+  },
+  "updatedTimestamp" : "1769600372.312577000",
+  "updatedBy" : "mohit"
+}
