@@ -1,0 +1,465 @@
+{
+  "versionId" : "ver-cc18bbd0-9003-5de9-b97f-c1b61496eda7",
+  "objectId" : "rule-f3e519a9-3cd4-5915-98d4-065ef3d3d303",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg ga_adwords_22121",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_ga_adwords_2",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from bhushan.ga_adwords_2",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "eai_session_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "eai_event_in_visitor_tz",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "eai_event_in_visitor_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 4,
+          "name" : "eai_event_in_utc_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "eai_vid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "eai_hit_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 7,
+          "name" : "eai_pageview_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 8,
+          "name" : "eai_hit_type",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "eai_ga_property_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "eai_ga_view_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ga_visits",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "ga_adDistributionNetwork",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ga_adMatchType",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "ga_adKeywordMatchType",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "ga_adMatchedQuery",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "ga_adPlacementDomain",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "etl_org",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "etl_project",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "etl_create_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "etl_update_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 21,
+          "name" : "etl_start_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 22,
+          "name" : "etl_flow_nm",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "etl_flow_instance_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-7df52224-bc91-50a0-b14b-4a1121030fb5",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_ga_adMatchedQuery",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adMatchedQuery] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-86af75c1-f8ef-516d-8469-45548202acfe",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_visitor_dt",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_visitor_dt] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-11998b88-6e32-51a1-b105-e3b92a9d6ef7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_org",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_org] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3ce240d8-e141-5e19-bd9c-234e9fe922c3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_start_utc_dttm",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_start_utc_dttm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5024cf6a-770d-57fd-b93d-69c0391e42e2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_flow_nm",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_flow_nm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-79395093-7272-5b4d-9bc9-09fcbc2661b3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_hit_order",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_hit_order] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7562511a-006e-59b1-a22b-2a87b2b81e93",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_visits",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_visits] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1b41a85b-8294-5e22-ac6a-e6640d7a9ed8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_adKeywordMatchType",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adKeywordMatchType] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5ca97d94-7c57-57f0-97a0-df33a7234bb1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_vid",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_vid] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f8f9dcc4-d3c1-5075-a9bb-e37dae528d95",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_flow_instance_id",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_flow_instance_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b5ad18ef-4858-50e5-ac5e-ab1ef44276af",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_utc_dt",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_utc_dt] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e875225f-78a1-5b7f-ad6b-00cd0c835100",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_pageview_order",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_pageview_order] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cb857eff-db27-5d21-8149-6394329e1b2c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_hit_type",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_hit_type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-278f9b3a-88b4-5d2a-8327-4a7f42c407b2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_ga_property_id",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_ga_property_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-721a91ff-6a95-59b5-b6b8-e2f74051331d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_create_utc_dttm",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_create_utc_dttm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3c91be1f-f15d-5200-856f-c18e508f06c4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_adPlacementDomain",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adPlacementDomain] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dbac8acb-f150-5f01-98bd-4ca3e7b09f6a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_project",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_project] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e0c9d0da-50f2-5bef-93fb-ed41f2d19fff",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_session_id",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_session_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bb60f0b8-eeb0-5261-8985-a9117072c631",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_update_utc_dttm",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_update_utc_dttm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a26a03fe-68af-594a-b4f0-9d5bb891b651",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_visitor_tz",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_visitor_tz] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c3da3b53-e2f2-5d39-8d07-12e083d8f0dd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_adMatchType",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adMatchType] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-80adb338-fe86-5b08-8fd2-bd91acf72498",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_adDistributionNetwork",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adDistributionNetwork] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c18d9f9b-265b-5f4c-89ab-098c871f2b9c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_ga_view_id",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_ga_view_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6ab3fd9f-5548-55e8-88bd-23f708e1bc4c",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-b99f0001-85ab-53b0-acd6-dfea14291e69"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "mohit",
+    "message" : {
+      "ruleId" : "rule-f3e519a9-3cd4-5915-98d4-065ef3d3d303",
+      "commitMessage" : "Message: Initial setup | RuleId: rule-f3e519a9-3cd4-5915-98d4-065ef3d3d303 | Status: "
+    }
+  },
+  "updatedTimestamp" : "1769593314.709174000",
+  "updatedBy" : "mohit"
+}
