@@ -1,25 +1,27 @@
 {
-  "versionId" : "ver-645e7d9e-a904-5ddb-a8d3-f0a8d20e8cfd",
+  "versionId" : "ver-e041e39e-324b-59cc-9ebc-7ebd3b3fba6f",
   "objectId" : "rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "RECON_brg competitive_marketing_analysis_category_Test",
+  "name" : "RECON_brg competitive_marketing_analysis_category_Test1",
   "state" : "Published",
-  "version" : 20,
+  "version" : 21,
   "info" : {
     "ruleType" : "Recon",
-    "code" : "CODE00_competitive_marketing_analysis_category_Test",
+    "code" : "CODE00_competitive_marketing_analysis_category_Test1",
     "description" : "This templates creates recon rules to compare the aggregated sum of each numeric column in the source and target table. The source and target column names should be same for the equal to expressions to be created. Diff is created using a dummy UK.",
-    "purpose" : "Aggregate values_GIT Integration Demo",
+    "purpose" : "Aggregate values_GIT Integration Demo1",
     "properties" : {
-      "criticality" : "Warning",
+      "criticality" : "Critical",
+      "parameterId" : "parm-bc2eb1b3-1c27-5721-8c5f-214042117d25",
       "engineType" : "HighThroughput",
       "stopAtFailAndErrorCount" : 22000,
       "stopAtRowCount" : 1000,
       "stopAtTime" : 40,
       "degreeOfParallelism" : 1,
-      "engineInfo" : { }
+      "engineInfo" : { },
+      "parameterName" : "Parameter_1"
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -86,6 +88,10 @@
           "index" : 1,
           "sourceKey" : "Category",
           "targetKey" : "Category"
+        }, {
+          "index" : 2,
+          "sourceKey" : "Channel",
+          "targetKey" : "Channel"
         } ]
       }
     }, {
@@ -110,7 +116,7 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[Channel] == T.[Channel]",
+            "value" : "S.[Channel] != T.[Channel]",
             "caseInsensitive" : false
           },
           "id" : "chck-3cf0b51b-7347-5576-8572-7a1faadf9a91",
@@ -166,6 +172,17 @@
           },
           "id" : "chck-29beba18-cf01-5202-af4d-51c11e5237c4",
           "type" : "Column"
+        }, {
+          "name" : "Fyi_t_category",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "T.[Category]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ef195056-1918-5f82-91e3-2469cb8a1703",
+          "type" : "Column"
         } ]
       }
     }, {
@@ -175,7 +192,7 @@
       "configuration" : {
         "exportFileRowLimit" : "20000",
         "createExportDownloadLink" : true,
-        "storeOnlyException" : false,
+        "storeOnlyException" : true,
         "storeOnlyExportedFile" : false,
         "format" : [ "XLSX" ],
         "loadExceptions" : false
@@ -200,17 +217,17 @@
       }
     } ]
   },
-  "commitMessage" : "GIT Integration Demo",
+  "commitMessage" : "Version21_Demotrial",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
-    "author" : "roshan.n",
+    "author" : "mayurp",
     "message" : {
       "ruleId" : "rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6",
-      "commitMessage" : "Commit Message: GIT Integration Demo | ID: rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6 | Approval Message: Approved_GitDemo"
+      "commitMessage" : "Commit Message: Version21_Demotrial | ID: rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6 | Approval Message: Approved"
     }
   },
-  "updatedTimestamp" : "1770123903.561823000",
-  "updatedBy" : "roshan.n"
+  "updatedTimestamp" : "1770124757.566080000",
+  "updatedBy" : "mayurp"
 }
