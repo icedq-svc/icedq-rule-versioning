@@ -1,17 +1,17 @@
 {
-  "versionId" : "ver-cdc5ced3-4633-510f-bd27-acc8c6f7c2dd",
+  "versionId" : "ver-645e7d9e-a904-5ddb-a8d3-f0a8d20e8cfd",
   "objectId" : "rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "RECON_brg competitive_marketing_analysis_category",
+  "name" : "RECON_brg competitive_marketing_analysis_category_Test",
   "state" : "Published",
-  "version" : 18,
+  "version" : 20,
   "info" : {
     "ruleType" : "Recon",
-    "code" : "CODE00_competitive_marketing_analysis_category",
+    "code" : "CODE00_competitive_marketing_analysis_category_Test",
     "description" : "This templates creates recon rules to compare the aggregated sum of each numeric column in the source and target table. The source and target column names should be same for the equal to expressions to be created. Diff is created using a dummy UK.",
-    "purpose" : "Aggregate values",
+    "purpose" : "Aggregate values_GIT Integration Demo",
     "properties" : {
       "criticality" : "Warning",
       "engineType" : "HighThroughput",
@@ -94,7 +94,7 @@
       "name" : "checks",
       "configuration" : {
         "checks" : [ {
-          "name" : "ResultType",
+          "name" : "resulttype",
           "index" : 1,
           "isActive" : true,
           "isVisible" : true,
@@ -137,6 +137,35 @@
           },
           "id" : "chck-63e6912c-da0f-5d0e-b769-97865b642990",
           "type" : "Custom"
+        }, {
+          "name" : "Chk_0004",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "SimpleCompareCheck(S.[Category], T.[Category])",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "ignoreDataType" : true,
+            "ignoreSpecialCharacter" : false,
+            "caseInsensitive" : true,
+            "sourceColumn" : "S.[Category]",
+            "targetColumn" : "T.[Category]"
+          },
+          "id" : "chck-ceb83d3d-684f-521f-a282-ca430aab5583",
+          "type" : "SimpleCompare"
+        }, {
+          "name" : "Fyi_s_category",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Category]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-29beba18-cf01-5202-af4d-51c11e5237c4",
+          "type" : "Column"
         } ]
       }
     }, {
@@ -146,8 +175,8 @@
       "configuration" : {
         "exportFileRowLimit" : "20000",
         "createExportDownloadLink" : true,
-        "storeOnlyException" : true,
-        "storeOnlyExportedFile" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
         "format" : [ "XLSX" ],
         "loadExceptions" : false
       }
@@ -171,7 +200,7 @@
       }
     } ]
   },
-  "commitMessage" : "Ua1",
+  "commitMessage" : "GIT Integration Demo",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitInfo" : {
@@ -179,9 +208,9 @@
     "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6",
-      "commitMessage" : "Commit Message: Ua1 | ID: rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6 | Approval Message: Ap1"
+      "commitMessage" : "Commit Message: GIT Integration Demo | ID: rule-0cfe7a1f-2bde-5ed4-9a71-708e096c47e6 | Approval Message: Approved_GitDemo"
     }
   },
-  "updatedTimestamp" : "1770116706.044109000",
+  "updatedTimestamp" : "1770123903.561823000",
   "updatedBy" : "roshan.n"
 }
