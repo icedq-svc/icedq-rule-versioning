@@ -1,0 +1,225 @@
+{
+  "versionId" : "ver-1e47e1e9-4bf5-57bd-8584-fa9f57baf129",
+  "objectId" : "rule-5c1583af-0c06-5311-9792-8de0940e49fb",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_zzdrrx",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.ICE_TEST_LAB_CONN_V",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "PROJECT_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "PROJECT_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FOLDER_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 4,
+          "name" : "FOLDER_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "CONN_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "CONN_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "CONN_TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "CONN_SERVER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-6fc49a11-4961-57ae-86cc-d6edf6d32974",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_CONN_TYPE",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CONN_TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-96d916b6-4e91-5ac8-b6f5-e84263c0056f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CONN_SERVER",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CONN_SERVER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2307cd85-a8e2-51bb-933e-ea5b65b2915b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CONN_NAME",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CONN_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b86547bc-bce4-5657-96e7-0229e8046b3b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PROJECT_ID",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PROJECT_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-38cee97a-a15a-59f4-b83e-f237c7a378e0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CONN_ID",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CONN_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4bfda56d-ca21-50fe-997c-83e1740fc0fe",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FOLDER_NAME",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FOLDER_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-15262899-9d87-5047-bbc3-dcbabe464845",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PROJECT_NAME",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PROJECT_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1f9102a0-ee8c-5313-81e1-4f5610348cac",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FOLDER_ID",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FOLDER_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fdcbe529-80e5-576f-bf0c-05294042673a",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-85250eef-7b3f-5213-aee4-3bb360cdf09a"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-5c1583af-0c06-5311-9792-8de0940e49fb",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-5c1583af-0c06-5311-9792-8de0940e49fb | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770281008.317288000",
+  "updatedBy" : "service-account-icedq.executor"
+}
