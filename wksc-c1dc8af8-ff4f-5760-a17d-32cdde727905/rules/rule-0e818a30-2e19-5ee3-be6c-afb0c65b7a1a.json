@@ -1,0 +1,193 @@
+{
+  "versionId" : "ver-76e5afc2-8e5d-5de5-8c47-e9a9a3bc0f72",
+  "objectId" : "rule-0e818a30-2e19-5ee3-be6c-afb0c65b7a1a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_rqojys",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.ICE_ALL_OBJECT",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "ICE_OBJECT_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "ICE_OBJECT_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "ICE_OBJECT_TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "ICE_APP",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "LEGAL_ENTITY_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "ICE_OBJECT_CODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-6c74f03e-6db9-54c1-8ad9-cc557d519163",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_ICE_OBJECT_CODE",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ICE_OBJECT_CODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fe7dbf1c-abb9-5330-b708-4300b3c0c186",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LEGAL_ENTITY_ID",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LEGAL_ENTITY_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2b32d6ce-3f49-5c8b-b9fb-0cd2f9ff7ee9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ICE_OBJECT_ID",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ICE_OBJECT_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-374acb5d-5744-5c51-8240-ccb129c30a03",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ICE_OBJECT_TYPE",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ICE_OBJECT_TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d27b41b9-bf99-58a8-8b44-1f685740f73d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ICE_APP",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ICE_APP] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-26f0ee06-4531-598c-b265-e37767c1b5bb",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ICE_OBJECT_NAME",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ICE_OBJECT_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-543a6200-1581-52fa-b824-9e9e504343b3",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-97bddfef-fe91-592c-9be9-3920f94cf937"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-0e818a30-2e19-5ee3-be6c-afb0c65b7a1a",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-0e818a30-2e19-5ee3-be6c-afb0c65b7a1a | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770281015.508935000",
+  "updatedBy" : "service-account-icedq.executor"
+}
