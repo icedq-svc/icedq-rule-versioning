@@ -1,0 +1,129 @@
+{
+  "versionId" : "ver-2c6cc64c-c5dd-571c-9de3-1612172ac239",
+  "objectId" : "rule-c74e93e8-9a69-51f3-ba04-f14d9e1ca19a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_xklbxb",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.TEMP",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "COL_CLOB",
+          "datatype" : "CLOB",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "COL_BLOB",
+          "datatype" : "BLOB",
+          "icedqDatatype" : "BLOB"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-3374dc4d-26d7-5ad8-960f-f8bf2b6c2f99",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_COL_BLOB",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BLOB] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3e946d23-1a34-5cad-bcf5-e0934ce0e1c0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_CLOB",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_CLOB] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c767dcd8-938b-5ac1-8a0d-8e6a2c596b5f",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-eef8fb7a-a43e-5ccd-8c4c-bb12256b0340"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-c74e93e8-9a69-51f3-ba04-f14d9e1ca19a",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-c74e93e8-9a69-51f3-ba04-f14d9e1ca19a | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770281000.330086000",
+  "updatedBy" : "service-account-icedq.executor"
+}
