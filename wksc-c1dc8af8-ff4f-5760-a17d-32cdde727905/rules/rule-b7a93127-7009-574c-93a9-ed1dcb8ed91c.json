@@ -1,0 +1,2033 @@
+{
+  "versionId" : "ver-c43152d9-2173-5133-b7bf-63b3e2ee4b6a",
+  "objectId" : "rule-b7a93127-7009-574c-93a9-ed1dcb8ed91c",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_lsquvn",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.TR29042020BC",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Record ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "Extract Date",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Firm",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Date Basis",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "Ticket Sequence",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "Trade Sequence",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Trade Agent",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "Ext Ref ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "Trade Date",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "Entry Date",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Settlement Date",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Interest Date",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Trade Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Account Alias 1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Account Alias 2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "Account Alias 3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "Product Code",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "Product Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "Asset Code",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "Asset Alias 1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "Asset Alias 2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "Trade Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "Ticket State",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "Trade Transaction",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "Quantity",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "Factor",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "Value Amount",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "Principal",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "Accrued Interest",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "Capitalization Interest",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "Proceed Affecting Commission",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "Trade Proceeds",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "Final Price",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "Ticket Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "Option Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "Option Style",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 37,
+          "name" : "Option Put/Call",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "Option Strike Price",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "Option Expiration",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 40,
+          "name" : "Non-Proceed Affecting Commission",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 41,
+          "name" : "Non-Proceed Affecting Commission Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 42,
+          "name" : "Original Ticket Sequence",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 43,
+          "name" : "Asset Alias 3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 44,
+          "name" : "Asset Alias 4",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 45,
+          "name" : "Layer",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 46,
+          "name" : "Book",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 47,
+          "name" : "Sub Book (Strategy)",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 48,
+          "name" : "Capacity",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 49,
+          "name" : "Counterparty",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 50,
+          "name" : "Audit Child",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 51,
+          "name" : "Cpty Alias 1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 52,
+          "name" : "Cpty Alias 2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 53,
+          "name" : "Cpty Alias 3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 54,
+          "name" : "Registered Representative",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 55,
+          "name" : "Commission Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 56,
+          "name" : "Trade Status",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 57,
+          "name" : "Location 1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 58,
+          "name" : "Location 2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 59,
+          "name" : "Country Code",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 60,
+          "name" : "Market Value",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 61,
+          "name" : "Trade Final Price",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 62,
+          "name" : "FICC Partial Compare Quantity",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 63,
+          "name" : "Master Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 64,
+          "name" : "Cycle",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 65,
+          "name" : "Commission 1 Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 66,
+          "name" : "Commission 1 Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 67,
+          "name" : "Commission 1 Amount/Rate",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 68,
+          "name" : "Commission 1 Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 69,
+          "name" : "Commission 2 Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 70,
+          "name" : "Commission 2 Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 71,
+          "name" : "Commission 2 Amount/Rate",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 72,
+          "name" : "Commission 2 Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 73,
+          "name" : "Commission 3 Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 74,
+          "name" : "Commission 3 Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 75,
+          "name" : "Commission 3 Amount/Rate",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 76,
+          "name" : "Commission 3 Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 77,
+          "name" : "Commission 4 Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 78,
+          "name" : "Commission 4 Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 79,
+          "name" : "Commission 4 Amount/Rate",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 80,
+          "name" : "Commission 4 Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 81,
+          "name" : "Commission 5 Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 82,
+          "name" : "Commission 5 Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 83,
+          "name" : "Commission 5 Amount/Rate",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 84,
+          "name" : "Commission 5 Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 85,
+          "name" : "Commission 6 Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 86,
+          "name" : "Commission 6 Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 87,
+          "name" : "Commission 6 Amount/Rate",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 88,
+          "name" : "Commission 6 Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 89,
+          "name" : "Commission 7 Account",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 90,
+          "name" : "Commission 7 Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 91,
+          "name" : "Commission 7 Amount/Rate",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 92,
+          "name" : "Commission 7 Currency",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 93,
+          "name" : "Trade's Open Close Indicator",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 94,
+          "name" : "Trade's Customer Open Close Indicator",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 95,
+          "name" : "Exchange Code",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 96,
+          "name" : "Execution Broker",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 97,
+          "name" : "Clearing Broker",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 98,
+          "name" : "Contra Clearing Broker",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 99,
+          "name" : "Contra Broker",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 100,
+          "name" : "Trade Report Method of Contra Broker",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 101,
+          "name" : "Execution Time",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 102,
+          "name" : "Yield to Worst",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 103,
+          "name" : "Yield to Worst Date",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 104,
+          "name" : "Yield to Worst Indicator",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 105,
+          "name" : "Confirm Capacity",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 106,
+          "name" : "Date Stamp",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 107,
+          "name" : "FX Information",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 108,
+          "name" : "FX Information Prior Day",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 109,
+          "name" : "No Remuneration Flag",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 110,
+          "name" : "Execution Type",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 111,
+          "name" : "Waiver Indicator",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 112,
+          "name" : "Short Sell Indicator",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 113,
+          "name" : "Trader ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 114,
+          "name" : "OTC Indicator",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 115,
+          "name" : "UTC Time Stamp",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 116,
+          "name" : "User Defined Field Value",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 117,
+          "name" : "OTC Flag",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 118,
+          "name" : "Buy/Sell Code",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 119,
+          "name" : "OTC Option Buy/Sell Code",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 120,
+          "name" : "Yield Basis",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 121,
+          "name" : "When issued indicator for the trade",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-9e827986-752a-52b0-907d-dd6de62fb3ba",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_TraderID",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trader ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e8b0df79-e30b-50eb-bb83-59c871af3595",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ClearingBroker",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Clearing Broker] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-260040bd-b51b-5208-bc1f-e6df08c2cf65",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission5Account",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 5 Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d6fd8451-b2f3-5cd6-94e4-c60e8a54e039",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_UserDefinedFieldValue",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[User Defined Field Value] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7375ca0b-27df-5a98-b79f-cd988c5995b2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FinalPrice",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Final Price] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-62f226a4-5322-55c5-855a-3b5d764bb8d9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ExchangeCode",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Exchange Code] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-92579854-75c9-5a91-9d92-2efdf8932501",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Firm",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Firm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f50807f5-77ca-53ae-ab4e-066ec0d2ee17",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeTransaction",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Transaction] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-603e4979-8e50-505b-acfa-afc82a9e443d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_YieldtoWorstDate",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Yield to Worst Date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c9412b6a-aeec-57d5-9145-9bb258854eaa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeCurrency",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d7375b87-0b0b-5cba-b7ed-c44adc0468a5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AccountAlias3",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Account Alias 3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ad5281b3-80d2-5bf5-acfd-3a01846b7924",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OptionType",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Option Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f0ce8a58-6479-5724-9352-8a1c6a626fe0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission1Currency",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 1 Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e0a28a2c-1f34-5b17-82fb-e0a54faef337",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission2Currency",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 2 Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bd37a3f2-d229-538e-93be-a642b435fe11",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission2Account",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 2 Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6f9154b7-9935-5df5-b851-8debe23e11cc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NoRemunerationFlag",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[No Remuneration Flag] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2251e4ca-3862-5b3d-a175-85bd7d8b8f9f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ShortSellIndicator",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Short Sell Indicator] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0670716b-a66c-5a8a-b7fc-43a48b767d59",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FICCPartialCompareQuantity",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FICC Partial Compare Quantity] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1e91560b-d768-5c24-b13f-801843ae7390",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ExecutionTime",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Execution Time] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dafeaae8-c21f-5cf2-8283-1073fe2820ba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AccountAlias2",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Account Alias 2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0d784b42-1b07-56fc-a3e6-32b3696fabb5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission6Type",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 6 Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-26cc5ac7-9e5d-5cf5-b53b-7cee357bb971",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission7Currency",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 7 Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-10c4d97f-4a25-5d8f-9c5a-ad46cdc8fc62",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AccountAlias1",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Account Alias 1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-aff450cc-ca1b-54ba-9c5f-6094d888c143",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradesOpenCloseIndicator",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade's Open Close Indicator] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f76ecf0a-0194-5a5a-acfd-c5ca45daf68d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ProceedAffectingCommission",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Proceed Affecting Commission] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4ef68682-35f6-5471-91d2-08528c210dba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission4Account",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 4 Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bc90c1a1-1b2e-54d3-8670-908f9d78096e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission6AmountRate",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 6 Amount/Rate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-aa4306f4-6361-5383-9691-752dc93bd58d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission7AmountRate",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 7 Amount/Rate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2c2d64ff-6583-590e-b2c3-411d823eeaf6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Cycle",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Cycle] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-89fa0ed9-9544-5e16-bc10-c8d6364b7f22",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Layer",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Layer] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-41b7bf4d-432f-5ff3-9327-220788261209",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Capacity",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Capacity] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-43f65f09-5706-5936-ab51-28cdd4bf3b49",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_YieldtoWorst",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Yield to Worst] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b03ee9ba-1fb6-552c-a8d7-f30d0a023467",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission1AmountRate",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 1 Amount/Rate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c1b89530-e303-5ad0-9124-07c5d29b5ac7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission2AmountRate",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 2 Amount/Rate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1a7c5b31-87be-5553-9963-f0802d671084",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OptionStrikePrice",
+          "index" : 36,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Option Strike Price] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d0c736bc-1666-522f-b795-9099bf1f945a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission5AmountRate",
+          "index" : 37,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 5 Amount/Rate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-58ac9005-f74a-53a9-a7be-84b1d2dce05b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission3AmountRate",
+          "index" : 38,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 3 Amount/Rate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5fbaccc0-59d0-54a6-82df-94111aef2760",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission4AmountRate",
+          "index" : 39,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 4 Amount/Rate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7fa46de3-1857-5952-be1b-b47238836bd3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission3Currency",
+          "index" : 40,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 3 Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a68558ef-2bf9-5e99-969a-a43b438b9563",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Location1",
+          "index" : 41,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Location 1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bb130019-c628-58ab-8f01-d575e90099a4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Location2",
+          "index" : 42,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Location 2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5a5cdf86-6b70-5ab9-8d87-fff7f9915c1e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AccruedInterest",
+          "index" : 43,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Accrued Interest] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e15382c1-df9a-574e-b69c-e51b8d9fee19",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission7Type",
+          "index" : 44,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 7 Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fd019759-dd8c-585e-9dee-373afa5f97b1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission1Type",
+          "index" : 45,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 1 Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1dd3af4b-a8ec-55e1-8fbe-959c3a3e3ec1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OptionStyle",
+          "index" : 46,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Option Style] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e5757dc2-ccce-55cd-8567-3f16fab20cd3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission4Type",
+          "index" : 47,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 4 Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c777715a-a126-584f-9e6e-cefe874139bf",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SettlementDate",
+          "index" : 48,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Settlement Date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6f1d3d2b-0730-5a19-b583-41afad386a21",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NonProceedAffectingCommission",
+          "index" : 49,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Non-Proceed Affecting Commission] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2103ace8-2f9a-5b08-9404-7e611eb2bb2a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BuySellCode",
+          "index" : 50,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Buy/Sell Code] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b0027a39-e886-55dd-b19c-6990158551b6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RegisteredRepresentative",
+          "index" : 51,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Registered Representative] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a8020efe-1687-5dca-97dc-520a405f7bac",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AssetCode",
+          "index" : 52,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Asset Code] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a40fba34-da28-5f12-8f5c-a95d38250bb7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DateStamp",
+          "index" : 53,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Date Stamp] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e9efd45c-df4d-5803-8e7b-b2fa8a7b8607",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission5Currency",
+          "index" : 54,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 5 Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3184b505-4da6-5dae-b6f7-2531851deae4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeReportMethodofContraBroker",
+          "index" : 55,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Report Method of Contra Broker] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ea91e297-30f6-5df5-bd27-826b407cb654",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AuditChild",
+          "index" : 56,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Audit Child] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b740480d-dd7b-5846-9946-6db19e8976d0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeAgent",
+          "index" : 57,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Agent] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-86b8d227-3bf7-59e1-90fa-17ff9ce967d2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RecordID",
+          "index" : 58,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Record ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-748d1ae4-333b-545e-8c6e-b1a4ae942f64",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission1Account",
+          "index" : 59,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 1 Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b742115e-ef9f-53fc-abac-a7b05014a898",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ContraBroker",
+          "index" : 60,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Contra Broker] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2662a52d-7f9a-5466-b4a9-7b00dc4788cc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeStatus",
+          "index" : 61,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Status] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b451ce5c-cadd-5c79-8737-25abfbe53184",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradesCustomerOpenCloseIndicator",
+          "index" : 62,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade's Customer Open Close Indicator] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6449c78c-7a0b-5723-9947-cbb019c0047e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MasterAccount",
+          "index" : 63,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Master Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cb745057-e476-59f2-a674-c12957cb58fe",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ExtRefID",
+          "index" : 64,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Ext Ref ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f0f2787b-c0d7-5b80-af82-c047fd8660c4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SubBookStrategy",
+          "index" : 65,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Sub Book (Strategy)] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-338a88f1-d957-5c99-bc3c-7edc89ae5374",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FXInformationPriorDay",
+          "index" : 66,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FX Information Prior Day] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ed088e09-addd-5b21-8495-d4595071e557",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MarketValue",
+          "index" : 67,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Market Value] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-06908601-f731-55eb-828a-836b4b5a865d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ProductCode",
+          "index" : 68,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Product Code] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-890c188a-34b7-500a-ab04-fe4c7ae85294",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeSequence",
+          "index" : 69,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Sequence] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-29dc7f64-a1b3-5d1a-9582-dca5c60fbabe",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OptionPutCall",
+          "index" : 70,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Option Put/Call] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-38606ef7-dbc1-5cd3-b506-9e8c6c30d5fa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FXInformation",
+          "index" : 71,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FX Information] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a03bba05-6eed-586d-a0bc-14fb27462e78",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NonProceedAffectingCommissionCurrency",
+          "index" : 72,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Non-Proceed Affecting Commission Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5a46d7be-8f16-53d4-a6de-ce8649d261b0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ExecutionBroker",
+          "index" : 73,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Execution Broker] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-641fd1b7-f90e-5955-b442-6596d9577df3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission2Type",
+          "index" : 74,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 2 Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1e61b02e-7da8-56a7-b8e9-d38a9c93a06d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OTCOptionBuySellCode",
+          "index" : 75,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OTC Option Buy/Sell Code] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a74390b4-8593-5e4a-ad47-721369faae16",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ConfirmCapacity",
+          "index" : 76,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Confirm Capacity] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-970a5543-b4f7-5d33-92df-f0e9818253e4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_UTCTimeStamp",
+          "index" : 77,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[UTC Time Stamp] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3f542be0-a031-5c1e-9d10-f1b7b3926442",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OptionExpiration",
+          "index" : 78,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Option Expiration] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-da9cc820-aecc-5679-954a-c853a45a9bb3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TicketSequence",
+          "index" : 79,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Ticket Sequence] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5f9496cf-b3c9-593c-bc06-92c451162413",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ContraClearingBroker",
+          "index" : 80,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Contra Clearing Broker] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6b8fc4aa-aaf6-5d4e-bdb6-4759fed5aa72",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission7Account",
+          "index" : 81,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 7 Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b6bdd0e3-19f5-5c3e-98a3-2ba5dfda9532",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ExecutionType",
+          "index" : 82,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Execution Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-75e0035e-1069-59b4-930a-242b77609c36",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ExtractDate",
+          "index" : 83,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Extract Date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a819f356-9134-57ae-bd10-8f263db9896a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeDate",
+          "index" : 84,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-43bf6a40-e25a-5b46-818c-7189e668b108",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Whenissuedindicatorforthetrade",
+          "index" : 85,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[When issued indicator for the trade] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-16434f86-0690-5fbf-9589-3b42517036e3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_InterestDate",
+          "index" : 86,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Interest Date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b49e8d15-97f1-5d0a-9318-6a74360927d6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_WaiverIndicator",
+          "index" : 87,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Waiver Indicator] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5e59c84d-1344-5f6b-933d-885650b12be6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CommissionAccount",
+          "index" : 88,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a8994dfa-2d86-5ae2-a54c-fd10400cb07b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_YieldBasis",
+          "index" : 89,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Yield Basis] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6909b7fa-bc4a-5629-acc6-57a728f8c59b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeAccount",
+          "index" : 90,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-991d8cfd-997f-5a38-89ad-bef838622f52",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission3Type",
+          "index" : 91,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 3 Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ce23ffcf-2516-569a-80a6-76ea5cd1baf6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OriginalTicketSequence",
+          "index" : 92,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Original Ticket Sequence] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5f0c0032-c170-5035-a404-63b06d6101ba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EntryDate",
+          "index" : 93,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Entry Date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8bd7d61e-55f5-5fe1-8eda-d5eb0f67b5c6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ValueAmount",
+          "index" : 94,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Value Amount] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c54960d0-614a-5900-a16a-cbd5ccf3a1ee",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission6Account",
+          "index" : 95,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 6 Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cad7d82e-7eb3-5370-872f-4deaa46f14c1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Book",
+          "index" : 96,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Book] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b39d7f56-f324-5270-ada4-c5d831e3020a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ProductType",
+          "index" : 97,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Product Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-93587610-b2e4-5142-adb9-94b53e229f70",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission5Type",
+          "index" : 98,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 5 Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d705a9bb-02ee-5775-b60d-9c0fe760e3ad",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeFinalPrice",
+          "index" : 99,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Final Price] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-91615525-c99a-53da-95ae-d135de626fd3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Principal",
+          "index" : 100,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Principal] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a939b227-866e-55db-b3cf-6276a1e603c9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TicketType",
+          "index" : 101,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Ticket Type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-551c50ef-b69e-5da6-b743-e42a841f3043",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission6Currency",
+          "index" : 102,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 6 Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-44cf4cdc-0cdc-574e-80a9-327b237f4b70",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TradeProceeds",
+          "index" : 103,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Trade Proceeds] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-356ead75-cdf0-53ed-a07f-1262b4838e87",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Factor",
+          "index" : 104,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Factor] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-60d8ee27-763a-5f5d-ad82-407b2e39b0c8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TicketState",
+          "index" : 105,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Ticket State] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7f83d39b-e5e7-53b2-bb02-73a9bf671c18",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Quantity",
+          "index" : 106,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Quantity] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1923bcd9-dab1-58c8-a22c-9e0e837d2871",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission4Currency",
+          "index" : 107,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 4 Currency] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-17215394-1df2-52e5-be3c-1e9b4f643d78",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DateBasis",
+          "index" : 108,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Date Basis] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-88279feb-9834-592c-ae04-8a14a306364a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CptyAlias1",
+          "index" : 109,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Cpty Alias 1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-34820aa6-fb04-5250-b795-2ccfbd601e02",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OTCIndicator",
+          "index" : 110,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OTC Indicator] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cbaed09f-5935-5641-b953-7de381c01e0b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CapitalizationInterest",
+          "index" : 111,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Capitalization Interest] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-61b5247c-8f79-56c1-b80e-87c76f1e454a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Commission3Account",
+          "index" : 112,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Commission 3 Account] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b494c9d6-5962-565d-ae4a-5b0c59606c2b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_YieldtoWorstIndicator",
+          "index" : 113,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Yield to Worst Indicator] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9294167c-d95f-509f-84e8-ba80557c454f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CptyAlias3",
+          "index" : 114,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Cpty Alias 3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ed8faa18-5095-5b00-aae7-dfe41bfaa6da",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OTCFlag",
+          "index" : 115,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OTC Flag] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-148e2bed-0a42-5b12-96dc-b54decc839ff",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CptyAlias2",
+          "index" : 116,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Cpty Alias 2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b21d8cd3-40e6-5ff7-9f0d-ae8dd10f60d7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CountryCode",
+          "index" : 117,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Country Code] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-11162ef3-25b0-5177-a75c-c2f2e04283d7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AssetAlias4",
+          "index" : 118,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Asset Alias 4] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cf803b3c-b41d-5829-b5f2-4695351c9e71",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Counterparty",
+          "index" : 119,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Counterparty] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3a9996d1-2506-527e-9e34-37661339c78f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AssetAlias1",
+          "index" : 120,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Asset Alias 1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d14c4598-176e-5cfb-a2d3-34fe74a08de7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AssetAlias3",
+          "index" : 121,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Asset Alias 3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0081616c-112c-5509-9a76-fa51cb01016f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AssetAlias2",
+          "index" : 122,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Asset Alias 2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e9713b12-c8c4-5b90-928a-bbea6a2d49f8",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e75cc952-3d0f-569c-b2ae-4b6fe7523e60"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-b7a93127-7009-574c-93a9-ed1dcb8ed91c",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-b7a93127-7009-574c-93a9-ed1dcb8ed91c | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770280972.569979000",
+  "updatedBy" : "service-account-icedq.executor"
+}
