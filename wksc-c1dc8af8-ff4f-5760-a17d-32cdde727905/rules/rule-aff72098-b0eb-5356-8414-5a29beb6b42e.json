@@ -1,0 +1,385 @@
+{
+  "versionId" : "ver-c4be8993-f81c-5551-9cca-da396f7bb588",
+  "objectId" : "rule-aff72098-b0eb-5356-8414-5a29beb6b42e",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_d2ztbm",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.TEMP_G",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "RULE_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "FOLDER_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "RULE_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "RULE_CODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "RULE_DESC",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "RULE_CREATED_BY_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "RULE_LAST_MODIFY_BY_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "RULE_CREATE_DTTM",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 9,
+          "name" : "RULE_LAST_MODIFY_DTTM",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 10,
+          "name" : "RULE_TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "PARAMETER_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "RULE_STATUS",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 13,
+          "name" : "EXEC_NODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "LEGAL_ENTITY_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 15,
+          "name" : "ENTERPRISE_ERROR_CODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "RULE_PURPOSE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "TEMPLATE_ID_FAIL",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 18,
+          "name" : "TEMPLATE_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-ce6d6a61-742f-5f72-849a-b3b9479007fc",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_LEGAL_ENTITY_ID",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LEGAL_ENTITY_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-954dbe42-a7e5-59e4-9b00-481b18fe3762",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_LAST_MODIFY_BY_ID",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_LAST_MODIFY_BY_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8ea052c6-a5f6-58f0-bee7-ceff6228e017",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_NAME",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ec8cc3cb-a86b-5601-96ad-02aa9f506988",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TEMPLATE_ID_FAIL",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TEMPLATE_ID_FAIL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f1a208ca-3eb6-52c8-9e59-699bece56a9a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_STATUS",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_STATUS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-260488e6-3cf1-5b3b-9ad8-242610982314",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_ID",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-daa1edd4-eb5d-56a6-afc9-455ba81893e7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_CREATED_BY_ID",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_CREATED_BY_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-972ab65b-e30a-5b40-b63a-536706a854bb",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EXEC_NODE",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EXEC_NODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-57297db9-e574-5fd4-9896-1793f3603028",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_CREATE_DTTM",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_CREATE_DTTM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cc171a76-eeac-54a1-8ef0-2e668259c3e5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_DESC",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_DESC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-977db9ab-351a-5827-8a41-da03795e508c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_TYPE",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bdb78ad8-b11e-5f69-b477-efc489f68ac4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_PURPOSE",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_PURPOSE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3b605815-a477-50b2-b54a-0be5b2b77e8e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ENTERPRISE_ERROR_CODE",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ENTERPRISE_ERROR_CODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-042b70a9-9596-553a-8c3a-5871a921fc3e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_CODE",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_CODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4e52c5f2-9e9e-5dd0-ae34-c82ebf0b191a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TEMPLATE_ID",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TEMPLATE_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a9f72715-e7a9-5803-8e61-e4d6f5666791",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FOLDER_ID",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FOLDER_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-92fcd469-d511-5ebf-946b-0e8444669497",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RULE_LAST_MODIFY_DTTM",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[RULE_LAST_MODIFY_DTTM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ab992099-0eea-59cf-9097-7abc36d902be",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PARAMETER_ID",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PARAMETER_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-263319ea-b643-5a6a-8238-b6c373381168",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-bc95b0e1-a174-5e75-a6b5-7227bdb602af"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-aff72098-b0eb-5356-8414-5a29beb6b42e",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-aff72098-b0eb-5356-8414-5a29beb6b42e | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770281067.310805000",
+  "updatedBy" : "service-account-icedq.executor"
+}
