@@ -1,0 +1,673 @@
+{
+  "versionId" : "ver-69df206a-4fad-5474-978b-fd6a634d66b8",
+  "objectId" : "rule-e3ad164d-6978-506f-a526-06197933fe25",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_3xmvps",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.TARGET_SPECIAL_OATRAVEL",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "COL1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "COL2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "COL3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "COL4",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "COL5",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "COL6",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "COL7",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "COL8",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "COL9",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "COL10",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "COL11",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "COL12",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "COL13",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "COL14",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "COL15",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "COL16",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "COL17",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "COL18",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "COL19",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "COL20",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "COL21",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "COL22",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "COL23",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "COL24",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "COL25",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "COL26",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "COL27",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "COL28",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "COL29",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "COL30",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "COL31",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "COL32",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "COL33",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "COL34",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "COL35",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-c0f573f9-9dfd-5c00-9f18-dab7c203349d",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_COL18",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL18] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-927f9585-6152-5999-9cad-0b99d1915a29",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL17",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL17] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e706e30d-d14a-5a97-a650-2d5190e71549",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL16",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL16] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8e23e86d-7cce-5f3c-b51b-b6fc0bdf4023",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL15",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL15] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7391d5c5-b977-57f4-b550-045c1be957e9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL14",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL14] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e1335032-7786-5cc6-bf89-b087dc1f7afc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL13",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL13] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e6ca8608-513d-54f7-b04d-05215c08a7ac",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL35",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL35] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c4a3a1ef-ae57-5356-933d-9b3a463c4c64",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL12",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL12] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a21262cd-382a-56e4-bb0c-d98d70a6bb85",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL34",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL34] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0c447454-13b9-5163-bf19-6d476a5b234a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL11",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL11] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b0515dd9-5abb-5e2b-9bdd-4ed9a7a3199a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL33",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL33] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d7e61128-bba8-5398-8fdb-0dfe271a1a6a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL19",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL19] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-538ce8d2-fcae-597d-baae-e925c5fca8d8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL8",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL8] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-668f858e-4a18-502c-a857-ebb2f83939b9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL9",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL9] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-854bd52e-6bf4-54bb-8260-3e422d2fcb81",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL6",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL6] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7e718c9b-4f1e-52de-b239-37b7484ae48e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL21",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL21] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-25de8c53-2242-57ee-a4f9-ef0c29240ea1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL7",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL7] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-19b8f22c-e248-5d39-8842-ef4414d06bb8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL20",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL20] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f6fad706-2e59-5761-9112-fee85c73d1bc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL4",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL4] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fddf9617-b9f2-5bc8-a048-759d4ec2201c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ID",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-59882848-bac4-53e8-a22c-b4c14db3df54",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL5",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL5] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cb8d4be3-1955-544c-af93-32f1ac9a9d9c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL2",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-705574f0-156b-5f89-804d-46082a61c37d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL3",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bd678cc1-3421-5f5c-ac45-643c0397d1a5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL1",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c5c8a45f-7875-5a6b-b034-adbd57aee28e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL29",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL29] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-17e5a222-1347-50d8-bee2-5f07d4b69df9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL28",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL28] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-172b7db2-16da-5ae4-b140-23d71af68cd4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL27",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL27] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-624291c0-f56c-53ae-bf16-f3cdc7c90fb4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL26",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL26] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d4716a81-fcec-5d37-8870-65c4db39f9b4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL25",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL25] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-47f5f09f-308b-5442-a795-803bfd153274",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL24",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL24] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e0324c4b-bb46-53b8-bb48-320d16953837",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL23",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL23] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6e56ef78-adfc-5c84-9307-57fff7209abd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL22",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL22] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-78a2b190-c9f7-508d-9bd8-7666052a8075",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL10",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL10] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-421d6e8e-8faa-5314-aab4-9d9a6efbceca",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL32",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL32] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8e82cc29-8427-577e-b6cf-1159833f5214",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL31",
+          "index" : 36,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL31] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e6854f88-d355-5b3a-b649-95be17193a85",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL30",
+          "index" : 37,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL30] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-33397e29-f69b-5e3a-be5e-2ebc0ca33c52",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-11312106-c707-5d42-ad4d-ed442262abb8"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-e3ad164d-6978-506f-a526-06197933fe25",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-e3ad164d-6978-506f-a526-06197933fe25 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770280991.220451000",
+  "updatedBy" : "service-account-icedq.executor"
+}
