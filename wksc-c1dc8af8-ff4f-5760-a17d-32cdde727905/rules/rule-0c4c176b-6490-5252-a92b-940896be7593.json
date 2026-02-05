@@ -1,0 +1,481 @@
+{
+  "versionId" : "ver-c7e63929-91a3-5261-aeaf-deab27dfa36a",
+  "objectId" : "rule-0c4c176b-6490-5252-a92b-940896be7593",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_70r49g",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.SPECIAL_CHARACTERS_TABLE",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "Email@Address",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "Tag#Name",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Amount$Value",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "Discount%Off",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "Company&Name",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "Rating*Stars",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "Group(List)",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "Items[List]",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "Set{Elements}",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Path/Directory",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Folder\\Location",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Addition+Sum",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 14,
+          "name" : "Result=Total",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Alert!Message",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "Query?Search",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "Time:Stamp",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "Separator;Break",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "Approximate~Value",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "Connector|Pipe",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "Exponent^Power",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 22,
+          "name" : "Identifier_Unique",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "Hyphen-Word",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "Customer[Command Run]",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-824c8a9b-682c-523a-ace1-f3047d0eff9c",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_ExponentPower",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Exponent^Power] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-70b06c6c-4076-5658-a097-9c21c6553993",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_RatingStars",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Rating*Stars] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e531d86c-10b5-50e2-87c5-022778d05fd4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CompanyName",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Company&Name] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6d39c4a1-0dc1-5b07-a0ab-50fcd388a7e0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_HyphenWord",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Hyphen-Word] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-05ee50e8-01ca-5562-9104-40e86a3cf635",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TimeStamp",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Time:Stamp] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d6b94042-6db6-54a0-8476-a63ea751d327",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DiscountOff",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Discount%Off] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b402d37d-fd03-5acd-8e1a-a2d20b632ed8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ItemsList",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Items[List]] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9fd1a357-c27b-50fb-9213-d77510cb8357",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CustomerCommandRun",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Customer[Command Run]] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-92571165-aa3b-580b-9f4b-58839307398f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_QuerySearch",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Query?Search] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e45f798c-e17b-5ea0-9c2a-b9aa9b99de84",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EmailAddress",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Email@Address] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b7c47bac-6bf7-50a2-adf7-35e80db3a0d8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_GroupList",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Group(List)] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2487b46a-0e33-53c1-a981-621e4995c004",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PathDirectory",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Path/Directory] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-56c559ea-15e3-5d4c-a1e8-6d54606c6f3f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ApproximateValue",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Approximate~Value] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e577a279-15b9-5825-b66d-0cf432339bf0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ConnectorPipe",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Connector|Pipe] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-35bcb48f-4f52-5548-8b64-a2de83d7f5aa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AdditionSum",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Addition+Sum] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a6aa02e0-4004-5dc1-ac78-d24d0069b159",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AmountValue",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Amount$Value] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3bf8f7b9-5282-533a-baca-a555e2753df5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AlertMessage",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Alert!Message] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f8e47cba-49b4-5c34-a57b-5e56ca57b349",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ID",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-da2b8dc6-b2c7-575c-85b9-d47a86d977af",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FolderLocation",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Folder\\Location] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4458d0f4-e021-5f3f-9097-0563556af75d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SeparatorBreak",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Separator;Break] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-55d6c9f6-7b71-5d7d-b613-f6b4100271e4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TagName",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Tag#Name] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-665652f3-5f64-5baf-bbcb-f8c20e1a0fba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Identifier_Unique",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Identifier_Unique] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2f355679-d321-51c8-8de7-61c823f2d5f1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SetElements",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Set{Elements}] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1cf30584-fec8-5f16-87b3-77b36a74e578",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ResultTotal",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Result=Total] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-30ae8370-b167-5a5b-9eb5-f36fab127ea7",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-10014814-f65d-5f53-b031-97a2f34d3fa2"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-0c4c176b-6490-5252-a92b-940896be7593",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-0c4c176b-6490-5252-a92b-940896be7593 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770280969.101887000",
+  "updatedBy" : "service-account-icedq.executor"
+}
