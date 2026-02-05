@@ -1,0 +1,113 @@
+{
+  "versionId" : "ver-b2bdd30a-950e-5d56-9a11-31afa4728db7",
+  "objectId" : "rule-ed9fcf7c-74fd-5754-83be-e33cb0be664f",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg TMP",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_TMP",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.TMP",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "A",
+          "datatype" : "CLOB",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-842b3e6b-30ec-5fa1-ac02-5ffa8fdbf28a",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_A",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[A] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-07942c27-ece9-5dea-b525-143df03f4514",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-d39ee901-74c0-5507-86ce-686789450553"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-ed9fcf7c-74fd-5754-83be-e33cb0be664f",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-ed9fcf7c-74fd-5754-83be-e33cb0be664f | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770268881.621669000",
+  "updatedBy" : "service-account-icedq.executor"
+}
