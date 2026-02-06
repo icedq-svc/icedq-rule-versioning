@@ -1,0 +1,177 @@
+{
+  "versionId" : "ver-04323483-b816-52ca-8fa7-550b9c5649a8",
+  "objectId" : "rule-7bb23850-2e05-5a86-a4c2-57b2b46f688a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-24cbe360-bc3a-59c6-a16a-a4b92005d2ef",
+  "workspaceId" : "wksc-d5f01cbf-2d83-5bbf-ac6b-83d06942df16",
+  "name" : "VALIDATION_brg COMPETITIVE_MARKETING_ANALYSIS_GEO",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_COMPETITIVE_MARKETING_ANALYSIS_GEO",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-a5455c55-e938-50f8-81f4-8a0b914e955a",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from BI_TESTING.COMPETITIVE_MARKETING_ANALYSIS_GEO",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Zip",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "City",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "State",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Region",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "District",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-0e68e84b-3f45-5429-b88a-053b249d7cc8",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_Zip",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Zip] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a453960b-e4e2-5726-818b-8ea9c32f9500",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_City",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[City] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a8593a09-ee54-5739-8725-6baf95448195",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_District",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[District] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-687b0e10-5fb0-56b3-b6c6-32eb9158c9c2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_State",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[State] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d974c98d-e4c8-53ae-bd85-c6aa08997dd8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Region",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Region] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9f14f8ce-cb73-5a72-abad-ccc986467a54",
+          "type" : "Custom"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ]
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-ed93b1ea-c468-51a2-9a32-5a1f73bf7028"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-7bb23850-2e05-5a86-a4c2-57b2b46f688a",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-7bb23850-2e05-5a86-a4c2-57b2b46f688a | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770097912.878138000",
+  "updatedBy" : "service-account-icedq.executor"
+}
