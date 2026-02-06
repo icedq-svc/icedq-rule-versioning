@@ -1,0 +1,148 @@
+{
+  "versionId" : "ver-7bdf5a1c-5456-56ae-b23e-cc360c255d31",
+  "objectId" : "rule-df8937ee-b13d-5814-807e-c28a7137fa91",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-24cbe360-bc3a-59c6-a16a-a4b92005d2ef",
+  "workspaceId" : "wksc-d5f01cbf-2d83-5bbf-ac6b-83d06942df16",
+  "name" : "Rule_1770186010",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Duplicate",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-a5455c55-e938-50f8-81f4-8a0b914e955a",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "DEV",
+        "tableName" : "DEV_CUSTOMERS",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CUSTOMER_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "PHONE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "ADDRESS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "DOB",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ]
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_0001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "duplicateCheck(\"S.[CUSTOMER_ID],S.[NAME]\")",
+            "comment" : "duplicateCheck(\"S.[CUSTOMER_ID],S.[NAME]\")",
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "columns" : [ {
+              "index" : 1,
+              "name" : "S.[CUSTOMER_ID]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 2,
+              "name" : "S.[NAME]",
+              "datatype" : "VARCHAR2"
+            } ]
+          },
+          "id" : "chck-c707046c-7c2a-5fc8-ac9d-e52eb0eabcce",
+          "type" : "Duplicate"
+        }, {
+          "name" : "noOfDuplicates",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUPLICATE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b318a9c2-58d8-5957-9d62-08cb1501fed5",
+          "type" : "Column",
+          "description" : "Duplicate records count"
+        } ]
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-9761ab58-5460-542c-bbdb-d60f5f87626e"
+        } ]
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "mohit",
+    "message" : {
+      "ruleId" : "rule-df8937ee-b13d-5814-807e-c28a7137fa91",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-df8937ee-b13d-5814-807e-c28a7137fa91 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1770186041.783823000",
+  "updatedBy" : "mohit"
+}
