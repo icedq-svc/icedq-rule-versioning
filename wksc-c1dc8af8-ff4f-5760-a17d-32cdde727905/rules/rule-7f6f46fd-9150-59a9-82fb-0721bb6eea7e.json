@@ -1,0 +1,213 @@
+{
+  "versionId" : "ver-da4918f4-6489-5cdd-b4de-e8bcb367fe19",
+  "objectId" : "rule-7f6f46fd-9150-59a9-82fb-0721bb6eea7e",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RECON_brg EMP_M3333",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00_EMP_M",
+    "description" : "This template create recon rules to compare all the data. The diff join is created using specified column name(s) and equal to expressions are created for rest of the columns with matching names.",
+    "purpose" : "Join on based on specified column and expression are based on macthing names",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from SALE_ITEM.EMP_M",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EMP_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "EMP_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "DOB",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 4,
+          "name" : "HIRE_DATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from SALE_ITEM.EMP_M",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EMP_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "EMP_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "DOB",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 4,
+          "name" : "HIRE_DATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "EMP_ID",
+          "targetKey" : "EMP_ID"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-fe8a7a00-a424-5dda-b7db-80e8c2880b32",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_DOB",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DOB] == T.[DOB]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a41e0679-7972-5aa8-9c6d-c35c01ce13a5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EMP_NAME",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMP_NAME] == T.[EMP_NAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-51ed0afc-e8c4-576a-91a6-29cdbf71ce10",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_HIRE_DATE",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HIRE_DATE] == T.[HIRE_DATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-02828d61-e9e8-568a-9f55-796acdf0f134",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EMP_ID",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMP_ID] == T.[EMP_ID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0445ebad-26dc-59e7-829c-4c1317450aaa",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-7ee38fcf-7fc5-5394-b681-343d183a9fb5"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-7f6f46fd-9150-59a9-82fb-0721bb6eea7e",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-7f6f46fd-9150-59a9-82fb-0721bb6eea7e | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771179805.243328000",
+  "updatedBy" : "service-account-icedq.executor"
+}
