@@ -1,0 +1,341 @@
+{
+  "versionId" : "ver-2adc7758-fd6e-552a-bb5e-58992722ce05",
+  "objectId" : "rule-be5b64b3-4a63-58a1-ae3d-98fbc3a6a653",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg checking_tran",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_checking_tran",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-67a98458-3723-5079-9635-79006399fcdd",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from financial.checking_tran",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "Tran_Id",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "Cust_Id",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 3,
+          "name" : "Acct_Nbr",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Channel_Nbr",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 5,
+          "name" : "Session_Id",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 6,
+          "name" : "Check_Nbr",
+          "datatype" : "SMALLINT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 7,
+          "name" : "Tran_Duration",
+          "datatype" : "SMALLINT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 8,
+          "name" : "Tran_Amt",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "Principal_Amt",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 10,
+          "name" : "Interest_Amt",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 11,
+          "name" : "New_Balance",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "Tran_Date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 13,
+          "name" : "Tran_Time",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Channel",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Tran_Code",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-fd62e7c5-9e9d-56ae-8e6f-5fb207b12d17",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_Check_Nbr",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Check_Nbr] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b31b1557-4914-5985-b1b0-81d232c546d7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Tran_Date",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Tran_Date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7e7f07eb-4822-5f9a-9f0e-a2e6edbf4e1a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Tran_Code",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Tran_Code] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ba0f6b81-847a-52c4-8056-9b31193b9468",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Interest_Amt",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Interest_Amt] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6ffacde1-a16d-5354-9246-1a348da9f363",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Acct_Nbr",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Acct_Nbr] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3361e992-662b-5b01-a9e8-abec17a6f711",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Channel",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Channel] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ec64a1cf-3585-5b75-8d36-24dd17cf51ff",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Session_Id",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Session_Id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e673a986-8d4f-5d1e-b969-8316606f7991",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Tran_Id",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Tran_Id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-74fb5957-5eee-53be-ab77-8366ce006ee1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Tran_Time",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Tran_Time] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c68c3312-c427-5a99-844b-6ca8a324ac77",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Principal_Amt",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Principal_Amt] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a3d4dca9-0822-5992-bc42-6b2bd92003ad",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Tran_Duration",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Tran_Duration] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3c603373-5f6b-5456-95a9-75bf8abb4668",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Tran_Amt",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Tran_Amt] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6703e1bf-1b3a-57cf-b522-9883005ac9c8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_New_Balance",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[New_Balance] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-214dfe9c-888a-5012-b1a5-bbe16ec3d1c5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Cust_Id",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Cust_Id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e56b22ed-55c0-5055-89b7-479e102a7d07",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Channel_Nbr",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Channel_Nbr] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9da0f085-05c0-5c7d-b0e5-d03af007777b",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-21290db0-77c3-5c66-b6eb-7abd569a83d4"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-be5b64b3-4a63-58a1-ae3d-98fbc3a6a653",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-be5b64b3-4a63-58a1-ae3d-98fbc3a6a653 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771482694.221247000",
+  "updatedBy" : "service-account-icedq.executor"
+}
