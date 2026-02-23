@@ -1,0 +1,277 @@
+{
+  "versionId" : "ver-8220b8d5-6e15-5e8f-9def-71986bfa1752",
+  "objectId" : "rule-7346654f-acbe-54e1-991b-dc8c73c5c0ee",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg geography",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_geography",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-3f905459-da48-5330-bc10-56d1c5d52222",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from DATAOPS_STAGING.geography",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "geographykey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 2,
+          "name" : "city",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "stateprovincecode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "stateprovincename",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "countryregioncode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "englishcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "spanishcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "frenchcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "postalcode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "salesterritorykey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INTEGER"
+        }, {
+          "index" : 11,
+          "name" : "ipaddresslocator",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-9ef7908c-3ceb-5ea2-8a44-f0e945d1ef78",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_frenchcountryregionname",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[frenchcountryregionname] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f95154c7-02de-5b7b-a205-cbec6a2156aa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_city",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[city] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-51b9221f-f53a-5d34-85bb-d382a68268e4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_stateprovincename",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[stateprovincename] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e0c8e00c-5012-5a12-a833-efb2252898e9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_postalcode",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[postalcode] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-de3829bb-0f4d-5ff4-b9ec-aa8375836d24",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ipaddresslocator",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ipaddresslocator] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7b9d2664-9bf1-5969-be7e-6054b4101769",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_spanishcountryregionname",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[spanishcountryregionname] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c86dac33-2a3a-5829-abf4-0a43f418252f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_englishcountryregionname",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[englishcountryregionname] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2a04d739-4b26-53e3-a90f-24454553a71e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_geographykey",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[geographykey] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-59dc68c4-eb13-5797-8d6f-c69bc0c11929",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_stateprovincecode",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[stateprovincecode] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f1b6431d-58d2-5fa6-ac22-10b07f3d8e9f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_countryregioncode",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[countryregioncode] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a74dbbb1-44fe-52f5-8883-4348850299d2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_salesterritorykey",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[salesterritorykey] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cf4de771-10e9-5ec4-940f-3af69cc85ac8",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-eb94c9fc-2698-58c9-ae2b-6798b835398d"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-7346654f-acbe-54e1-991b-dc8c73c5c0ee",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-7346654f-acbe-54e1-991b-dc8c73c5c0ee | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771482688.511778000",
+  "updatedBy" : "service-account-icedq.executor"
+}
