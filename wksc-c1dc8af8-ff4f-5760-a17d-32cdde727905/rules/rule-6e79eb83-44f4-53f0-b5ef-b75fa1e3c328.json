@@ -1,12 +1,12 @@
 {
-  "versionId" : "ver-59cb9b57-93c1-5f8b-ae27-1b6f9f3c15b5",
+  "versionId" : "ver-121059e9-630c-5e8d-9b20-6358a5e0414e",
   "objectId" : "rule-6e79eb83-44f4-53f0-b5ef-b75fa1e3c328",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "Rule_1770888886",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "Duplicate",
     "properties" : {
@@ -26,7 +26,6 @@
       "configuration" : {
         "schemaName" : "REGRESSION_DATABASE",
         "tableName" : "ACCOUNT",
-        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -88,26 +87,14 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "duplicateCheck(\"S.[ACCOUNT_ID],S.[ACCOUNT_NAME],S.[ACCOUNT_TYPE],S.[INDUSTRY]\")",
-            "comment" : "duplicateCheck(\"S.[ACCOUNT_ID],S.[ACCOUNT_NAME],S.[ACCOUNT_TYPE],S.[INDUSTRY]\")",
+            "value" : "duplicateCheck(\"S.[REVENUE_PER_EMP]\")",
+            "comment" : "duplicateCheck(\"S.[REVENUE_PER_EMP]\")",
             "trimmingEnable" : true,
             "caseInsensitive" : false,
             "columns" : [ {
               "index" : 1,
-              "name" : "S.[ACCOUNT_ID]",
-              "datatype" : "VARCHAR2"
-            }, {
-              "index" : 2,
-              "name" : "S.[ACCOUNT_NAME]",
-              "datatype" : "VARCHAR2"
-            }, {
-              "index" : 3,
-              "name" : "S.[ACCOUNT_TYPE]",
-              "datatype" : "VARCHAR2"
-            }, {
-              "index" : 4,
-              "name" : "S.[INDUSTRY]",
-              "datatype" : "VARCHAR2"
+              "name" : "S.[REVENUE_PER_EMP]",
+              "datatype" : "NUMBER"
             } ]
           },
           "id" : "chck-d9d5372f-31c6-5873-a56e-2c7e793adf35",
@@ -160,16 +147,17 @@
       }
     } ]
   },
-  "commitMessage" : "Initial setup",
+  "commitMessage" : "Updated rule configuration",
+  "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
     "author" : "mohit",
     "message" : {
       "ruleId" : "rule-6e79eb83-44f4-53f0-b5ef-b75fa1e3c328",
-      "commitMessage" : "Commit Message: Initial setup | ID: rule-6e79eb83-44f4-53f0-b5ef-b75fa1e3c328 | Approval Message: "
+      "commitMessage" : "Commit Message: Updated rule configuration | ID: rule-6e79eb83-44f4-53f0-b5ef-b75fa1e3c328 | Approval Message: Approved"
     }
   },
-  "updatedTimestamp" : "1770889028.993129000",
+  "updatedTimestamp" : "1770890110.174787000",
   "updatedBy" : "mohit"
 }
