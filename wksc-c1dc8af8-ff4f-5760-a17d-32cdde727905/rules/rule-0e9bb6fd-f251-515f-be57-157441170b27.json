@@ -1,0 +1,245 @@
+{
+  "versionId" : "ver-299194b5-5bab-5228-b60f-e30e355f53c1",
+  "objectId" : "rule-0e9bb6fd-f251-515f-be57-157441170b27",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg checking_acct121211",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_checking_acct",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-67a98458-3723-5079-9635-79006399fcdd",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from financial.checking_acct",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "cust_id",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "acct_nbr",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "minimum_balance",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "per_check_fee",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "account_active",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "acct_start_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "acct_end_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 8,
+          "name" : "starting_balance",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "ending_balance",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-57f59a4f-8112-5755-b23f-327ea4e5f24b",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_minimum_balance",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[minimum_balance] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-78fd9f14-a139-5962-84e8-8992822ffe99",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_start_date",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_start_date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4e01c95-eb63-5c57-ad1c-a730360b9618",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_per_check_fee",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[per_check_fee] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a1b86403-eb57-543f-91b7-fd70dfaf4325",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_end_date",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_end_date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-245d3ed0-92eb-56ab-aeb3-05adf18ae83f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_nbr",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_nbr] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1340de45-051a-5656-8e53-7ba63db9596b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_account_active",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[account_active] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c52d9810-4d96-5173-a53a-4880913c8093",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ending_balance",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ending_balance] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d97dbd2e-07c1-54e4-94eb-b9d031a88107",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_cust_id",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cust_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-79361f8f-8917-5322-b02c-d74d0ab6d543",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_starting_balance",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[starting_balance] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2ac10ec1-3c1a-5e75-a470-b2a51347941f",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-dcc7c201-7431-5971-9a2b-8832ee3241f6"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-0e9bb6fd-f251-515f-be57-157441170b27",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-0e9bb6fd-f251-515f-be57-157441170b27 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771570381.439655000",
+  "updatedBy" : "service-account-icedq.executor"
+}
