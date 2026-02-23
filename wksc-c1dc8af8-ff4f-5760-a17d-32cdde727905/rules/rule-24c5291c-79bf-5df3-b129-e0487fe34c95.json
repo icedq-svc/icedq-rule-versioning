@@ -1,0 +1,612 @@
+{
+  "versionId" : "ver-2daae3ab-abcc-5b7a-97f8-70a6bb4cc2f2",
+  "objectId" : "rule-24c5291c-79bf-5df3-b129-e0487fe34c95",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RECON_brg ga_trafficsss_source_2",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00_ga_traffic_source_2",
+    "description" : "This template create recon rules to compare all the data. The diff join is created using specified column name(s) and equal to expressions are created for rest of the columns with matching names.",
+    "purpose" : "Join on based on specified column and expression are based on macthing names",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from bhushan.ga_traffic_source_2",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "eai_session_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "eai_event_in_visitor_tz",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "eai_event_in_visitor_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 4,
+          "name" : "eai_event_in_utc_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "eai_vid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "eai_hit_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 7,
+          "name" : "eai_pageview_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 8,
+          "name" : "eai_hit_type",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "eai_ga_property_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "eai_ga_view_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ga_hits",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "ga_fullReferrer",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ga_hasSocialSourceReferral",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "ga_socialNetwork",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "ga_keyword",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "ga_adContent",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "etl_org",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "etl_project",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "etl_create_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "etl_update_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 21,
+          "name" : "etl_start_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 22,
+          "name" : "etl_flow_nm",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "etl_flow_instance_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from bhushan.ga_traffic_source_2",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "eai_session_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "eai_event_in_visitor_tz",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "eai_event_in_visitor_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 4,
+          "name" : "eai_event_in_utc_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "eai_vid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "eai_hit_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 7,
+          "name" : "eai_pageview_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 8,
+          "name" : "eai_hit_type",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "eai_ga_property_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "eai_ga_view_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ga_hits",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "ga_fullReferrer",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ga_hasSocialSourceReferral",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "ga_socialNetwork",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "ga_keyword",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "ga_adContent",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "etl_org",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "etl_project",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "etl_create_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "etl_update_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 21,
+          "name" : "etl_start_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 22,
+          "name" : "etl_flow_nm",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "etl_flow_instance_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "eai_session_id",
+          "targetKey" : "eai_session_id"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-2d938c8e-1b44-573e-8e24-116ec1a0b590",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_eai_event_in_visitor_dt",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_visitor_dt] == T.[eai_event_in_visitor_dt]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8e83ee76-801f-53fe-a0d8-2bdee5a5b8b2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_org",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_org] == T.[etl_org]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-870db068-793d-522b-86da-0744807860f2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_start_utc_dttm",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_start_utc_dttm] == T.[etl_start_utc_dttm]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a93cf00a-2a8f-54db-8550-362b015067e1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_flow_nm",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_flow_nm] == T.[etl_flow_nm]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fbfd44fa-21f4-50e0-a505-c1d92452b0fc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_hit_order",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_hit_order] == T.[eai_hit_order]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-68b2eb81-8827-5b7c-8c0d-446e676abb41",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_adContent",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adContent] == T.[ga_adContent]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-98d665ef-a7db-5699-b450-e8ba4bd9cd21",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_vid",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_vid] == T.[eai_vid]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5ac9f5f5-a752-5458-bd65-dc1a66ab780b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_flow_instance_id",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_flow_instance_id] == T.[etl_flow_instance_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f53de1cd-f250-5b0a-ae20-f71f559986f5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_hasSocialSourceReferral",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_hasSocialSourceReferral] == T.[ga_hasSocialSourceReferral]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-402ef05e-7a6d-53dc-9a4f-63cfd11b803a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_fullReferrer",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_fullReferrer] == T.[ga_fullReferrer]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9222d00d-ffa4-5ea9-b7cf-29797709e29c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_utc_dt",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_utc_dt] == T.[eai_event_in_utc_dt]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4e519445-bd91-5d6f-ba57-a78737ba25b4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_pageview_order",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_pageview_order] == T.[eai_pageview_order]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d6e83330-f966-5572-8357-879afa7175d8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_hit_type",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_hit_type] == T.[eai_hit_type]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0d44791c-37ac-5b46-9f65-97a439f0749e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_ga_property_id",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_ga_property_id] == T.[eai_ga_property_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4bd711f-6442-54ff-8c90-5b40d4d93355",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_hits",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_hits] == T.[ga_hits]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-79094465-8305-50ab-96e0-2db656a600c3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_create_utc_dttm",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_create_utc_dttm] == T.[etl_create_utc_dttm]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-20a786d1-03d8-5832-80c7-b9ee4faf3997",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_project",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_project] == T.[etl_project]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ce397096-f016-5eb5-83ba-d49ba218ccb3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_session_id",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_session_id] == T.[eai_session_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4d0e4487-0fcd-5bc3-93cf-5fd51f775092",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_update_utc_dttm",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_update_utc_dttm] == T.[etl_update_utc_dttm]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ec7b028e-d3e5-5617-988c-3613ad1c0c8b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_visitor_tz",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_visitor_tz] == T.[eai_event_in_visitor_tz]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-23a3c1c2-b432-57b8-a8f0-a812b688d0cb",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_keyword",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_keyword] == T.[ga_keyword]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fa3e024b-36dc-5313-a3cd-27ac92bd946e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_ga_view_id",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_ga_view_id] == T.[eai_ga_view_id]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-88d18fb1-315f-5ab9-9299-1ebdd2c13af1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_socialNetwork",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_socialNetwork] == T.[ga_socialNetwork]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d07829aa-670d-5a87-a91a-8285c7ea3213",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-7787319e-a01f-5e35-a940-fbfe2c3ffafc"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "mohit",
+    "message" : {
+      "ruleId" : "rule-24c5291c-79bf-5df3-b129-e0487fe34c95",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-24c5291c-79bf-5df3-b129-e0487fe34c95 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771586562.054749000",
+  "updatedBy" : "mohit"
+}
