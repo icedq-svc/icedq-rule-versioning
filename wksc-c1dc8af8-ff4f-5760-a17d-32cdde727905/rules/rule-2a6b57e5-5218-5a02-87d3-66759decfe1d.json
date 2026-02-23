@@ -1,0 +1,181 @@
+{
+  "versionId" : "ver-51290a17-eceb-5d0e-ac47-2b5f35cb36f3",
+  "objectId" : "rule-2a6b57e5-5218-5a02-87d3-66759decfe1d",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg accts",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_accts",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-67a98458-3723-5079-9635-79006399fcdd",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from financial.accts",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "cust_id",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "acct_type",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "acct_nbr",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "acct_start_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 5,
+          "name" : "acct_end_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-075f46e9-fc09-5ece-8fef-7611f2cdcbd3",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_acct_start_date",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_start_date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2617873f-6c1e-5f2f-8231-185bec86cf15",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_end_date",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_end_date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-09a67e27-222c-574e-9f64-5d361ed9fd35",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_type",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0954dc8e-a676-5291-983d-b7a8366ff5a5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_nbr",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_nbr] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b2ed96c2-c758-54ed-be91-6e8594212d44",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_cust_id",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cust_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-89feec47-acdd-5155-b393-d27e7a132b22",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-ddacdf14-18ca-5d71-83ae-e00845e7f668"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "service-account-icedq.executor",
+    "message" : {
+      "ruleId" : "rule-2a6b57e5-5218-5a02-87d3-66759decfe1d",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-2a6b57e5-5218-5a02-87d3-66759decfe1d | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771482686.873710000",
+  "updatedBy" : "service-account-icedq.executor"
+}
