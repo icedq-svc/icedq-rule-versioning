@@ -1,19 +1,19 @@
 {
-  "versionId" : "ver-201d404e-bbd2-5424-a7b1-8a8e1cd707a8",
+  "versionId" : "ver-32b33c0d-537b-5b78-83bd-be2e8ea0d88b",
   "objectId" : "rule-b50f222d-7bc7-5596-bfdb-54fc682663c1",
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "V001 - GitIntegration_Version 2",
+  "name" : "V001 - GitIntegration_Version 3",
   "state" : "Published",
-  "version" : 2,
+  "version" : 3,
   "info" : {
     "ruleType" : "Validation",
-    "code" : "Version 2",
-    "description" : "Version 2",
-    "purpose" : "Version 2",
+    "code" : "Version 3",
+    "description" : "Version 3",
+    "purpose" : "Version 3",
     "properties" : {
-      "criticality" : "Critical",
+      "criticality" : "Blocker",
       "engineType" : "HighThroughput",
       "stopAtFailAndErrorCount" : 0,
       "stopAtRowCount" : 0,
@@ -108,23 +108,8 @@
           "id" : "chck-6e85e84b-b4fc-59c4-be4e-77c202664a70",
           "type" : "ResultType"
         }, {
-          "name" : "Chk_0001",
-          "index" : 2,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "comment" : "CompletenessCheck(\"S.[YEARLYINCOME]\")",
-            "column" : "S.[YEARLYINCOME]",
-            "emptyStringAsNull" : true,
-            "whiteSpaceAsNull" : true,
-            "trimmingEnable" : true,
-            "caseInsensitive" : false
-          },
-          "id" : "chck-c14a88bf-ea1c-501c-adf9-ef3793d99dcd",
-          "type" : "Completeness"
-        }, {
           "name" : "Chk_0002",
-          "index" : 3,
+          "index" : 2,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
@@ -141,7 +126,7 @@
           "type" : "Length"
         }, {
           "name" : "Fyi_s_customerid",
-          "index" : 4,
+          "index" : 3,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
@@ -149,6 +134,17 @@
             "caseInsensitive" : false
           },
           "id" : "chck-b205ccd5-1a3f-506d-bc0e-942bbc75449c",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_acctnumber",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCTNUMBER]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-06f027d1-3123-5ca8-b934-895427a195f0",
           "type" : "Column"
         } ],
         "generateRollUps" : false
@@ -187,17 +183,17 @@
       }
     } ]
   },
-  "commitMessage" : "Version 2 check",
+  "commitMessage" : "Removed completeness check",
   "commitTag" : "sample",
   "commitStatus" : "Merged",
   "gitInfo" : {
     "committer" : "icedq-svc@toranainc.com",
-    "author" : "mayurp",
+    "author" : "roshan.n",
     "message" : {
       "ruleId" : "rule-b50f222d-7bc7-5596-bfdb-54fc682663c1",
-      "commitMessage" : "Commit Message: Version 2 check | ID: rule-b50f222d-7bc7-5596-bfdb-54fc682663c1 | Approval Message: ApprovedForVersion2Check"
+      "commitMessage" : "Commit Message: Removed completeness check | ID: rule-b50f222d-7bc7-5596-bfdb-54fc682663c1 | Approval Message: Changes Approved"
     }
   },
-  "updatedTimestamp" : "1772016302.771723000",
-  "updatedBy" : "mayurp"
+  "updatedTimestamp" : "1772017233.277525000",
+  "updatedBy" : "roshan.n"
 }
