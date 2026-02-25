@@ -1,0 +1,1125 @@
+{
+  "versionId" : "ver-8af20ed7-bb57-53e4-abfa-16bd53fcc540",
+  "objectId" : "rule-cf9be669-521c-5f09-9300-35ed481a4b53",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg CACHEALLVmkioioIDEO",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_CACHEALLVIDEO",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.CACHEALLVIDEO",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CAMPAIGNID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "CAMPAIGNINFO.ADDITIONALDESCRIPTION1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "CAMPAIGNINFO.ADDITIONALDESCRIPTION2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "CAMPAIGNINFO.ADDITIONALDESCRIPTION3",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "CAMPAIGNINFO.CONTENTAVAILABLE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "CAMPAIGNINFO.DAVIDCCONTENT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "CAMPAIGNINFO.EMAILHEADING",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "CAMPAIGNINFO.PREHEADER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "CAMPAIGNINFO.RELATEDLOCATION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "CAMPAIGNINFO.SUBJECTLINE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "CAMPAIGNINFO.TRIPHIGHLIGHTS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "CAMPAIGNINFO.VIDEOIMAGEEMAIL1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "CAMPAIGNINFO.VIDEOIMAGEEMAIL2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "CAMPAIGNINFO.VIDEOIMAGEEMAIL3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.ADDITIONALDESCRIPTION1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.ADDITIONALDESCRIPTION2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.ADDITIONALDESCRIPTION3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.CONTENTAVAILABLE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 19,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.DAVIDCCONTENT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.EMAILHEADING",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.PREHEADER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.RELATEDLOCATION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.SUBJECTLINE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.TRIPHIGHLIGHTS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.VIDEOIMAGEEMAIL1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.VIDEOIMAGEEMAIL2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "CAMPAIGNITEM.CAMPAIGNINFO.VIDEOIMAGEEMAIL3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "CAMPAIGNITEM.ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "CAMPAIGNITEM.TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "CODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "COUNTRY:_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "EMAILVIDEO:_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "OLDVIDEOID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "TRIP:_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 37,
+          "name" : "TRIPS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "VIDEOID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "VIDEOINFO.DESCRIPTION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 40,
+          "name" : "VIDEOINFO.HEADING",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 41,
+          "name" : "VIDEOINFO.IMAGEURL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 42,
+          "name" : "VIDEOINFO.MIMETYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 43,
+          "name" : "VIDEOINFO.PRODUCTIONCREDITS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 44,
+          "name" : "VIDEOINFO.TAGS.TAG",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 45,
+          "name" : "VIDEOINFO.THUMBNAILURL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 46,
+          "name" : "VIDEOINFO.TYPEDESCRIPTION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 47,
+          "name" : "VIDEOITEM.ANALYTICS.NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 48,
+          "name" : "VIDEOITEM.ANALYTICS.TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 49,
+          "name" : "VIDEOITEM.ATTRIBUTES.COUNTRIES",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 50,
+          "name" : "VIDEOITEM.ATTRIBUTES.REGIONS.REGION.NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 51,
+          "name" : "VIDEOITEM.BRIGHTCOVEINFO.CREATEDATE",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 52,
+          "name" : "VIDEOITEM.BRIGHTCOVEINFO.DURATION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 53,
+          "name" : "VIDEOITEM.BRIGHTCOVEINFO.URL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 54,
+          "name" : "VIDEOITEM.ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 55,
+          "name" : "VIDEOITEM.VIDEOINFO.DESCRIPTION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 56,
+          "name" : "VIDEOITEM.VIDEOINFO.HEADING",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 57,
+          "name" : "VIDEOITEM.VIDEOINFO.IMAGEURL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 58,
+          "name" : "VIDEOITEM.VIDEOINFO.MIMETYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 59,
+          "name" : "VIDEOITEM.VIDEOINFO.PRODUCTIONCREDITS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 60,
+          "name" : "VIDEOITEM.VIDEOINFO.TAGS.TAG",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 61,
+          "name" : "VIDEOITEM.VIDEOINFO.THUMBNAILURL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 62,
+          "name" : "VIDEOITEM.VIDEOINFO.TYPEDESCRIPTION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 63,
+          "name" : "VIDEOURL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 64,
+          "name" : "YEAR",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-72222e86-4e42-526d-946d-2db514118121",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_CAMPAIGNINFOSUBJECTLINE",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.SUBJECTLINE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d9a6826c-032d-53b4-a146-65c6e21e2870",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFORELATEDLOCATION",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.RELATEDLOCATION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6713c93d-d8ea-5922-bf98-a5d8b4ada642",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFOTAGSTAG",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.TAGS.TAG] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6ff2321e-a523-5d07-8b8d-59d98367f59b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_YEAR",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[YEAR] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ec5ebaac-e580-5760-88f8-4d7c88080537",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMTYPE",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-07e77381-75ab-568c-a724-3da6eadfa367",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMATTRIBUTESCOUNTRIES",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.ATTRIBUTES.COUNTRIES] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9823f698-3cc3-5301-b6ab-e0b9c801b19f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOEMAILHEADING",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.EMAILHEADING] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1f929488-dd1d-57e1-82d7-4a059a223c40",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFOHEADING",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.HEADING] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a4dbf718-4f50-514b-9d65-d80b88adf611",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOVIDEOIMAGEEMAIL1",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.VIDEOIMAGEEMAIL1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4d291418-7ce9-5981-9fe3-b9cbff9d2c8a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOVIDEOIMAGEEMAIL3",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.VIDEOIMAGEEMAIL3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-23658b89-8dc8-5940-b42e-d6cc2553f889",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOVIDEOIMAGEEMAIL2",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.VIDEOIMAGEEMAIL2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-90c2a03f-8413-56b8-a896-42c58c57c17e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFODAVIDCCONTENT",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.DAVIDCCONTENT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-60d790f4-04f0-58c7-91c5-4c2747b27ea1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFODAVIDCCONTENT",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.DAVIDCCONTENT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f01d273e-ddaf-5bfe-80ab-d6cc47af19e9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMANALYTICSTYPE",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.ANALYTICS.TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-216e7bab-96a4-5a69-ae0d-db2c4fccf0c3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOADDITIONALDESCRIPTION3",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.ADDITIONALDESCRIPTION3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-335005ff-86b7-5fac-be4b-4a361c3e9946",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOADDITIONALDESCRIPTION2",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.ADDITIONALDESCRIPTION2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-661c4b40-32da-5dd7-bd0a-0ff53330c267",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFOMIMETYPE",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.MIMETYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-492b23cb-52a1-5fd0-bfc4-93c825cc0be4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOADDITIONALDESCRIPTION1",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.ADDITIONALDESCRIPTION1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ccc5eee0-57e7-5871-bcd7-11275626b9d1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ID",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b720ddc1-33f2-5c01-92af-1ceb7e6f8649",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFODESCRIPTION",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.DESCRIPTION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4a6b13da-94db-5401-962a-25a64e1ae7de",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFOPRODUCTIONCREDITS",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.PRODUCTIONCREDITS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-77e64ec1-af70-554c-af3e-2c2ce32c45e3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMBRIGHTCOVEINFOCREATEDATE",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.BRIGHTCOVEINFO.CREATEDATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4d2805ca-2ab0-54cc-85e4-1f35192e005e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMBRIGHTCOVEINFODURATION",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.BRIGHTCOVEINFO.DURATION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f8491e0d-83ca-579c-a8a8-04f73383d72f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOEMAILHEADING",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.EMAILHEADING] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a2c2167b-86be-5628-8532-55baf919306a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COUNTRY_ID",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COUNTRY:_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-28101140-564a-5a03-9ab9-4326ebf05d5f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFODESCRIPTION",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.DESCRIPTION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-eed83fca-6ad6-5ce8-a4e4-80f1df788403",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFOHEADING",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.HEADING] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-33eb0d0d-adf7-5382-afee-d15bdfae031e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOID",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-665fbf50-e983-517c-9f9c-fe4f518afa57",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOURL",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOURL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-29efeb10-830f-5bc0-abbe-20611a41ce06",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOPREHEADER",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.PREHEADER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-53b95e41-6ec3-580c-b259-d339f939ad19",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NAME",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6480163c-47d1-55d9-9f8c-71af12e0bda7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOCONTENTAVAILABLE",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.CONTENTAVAILABLE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9ab46a18-5f56-5e01-adc2-a9f7c7ee8f8b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFOTAGSTAG",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.TAGS.TAG] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8f764f37-bd1b-5a03-904e-e18c9df53838",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMANALYTICSNAME",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.ANALYTICS.NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d0794a37-803f-5de2-8099-0a94984294f6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CODE",
+          "index" : 36,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7ff40ffb-e2ec-5356-a2e0-aa3189527ea9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNID",
+          "index" : 37,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b8cc55e7-ef3d-50f9-a348-b160fcdf4faa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOVIDEOIMAGEEMAIL3",
+          "index" : 38,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.VIDEOIMAGEEMAIL3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a8e1b3a5-3eb1-50e1-a1d3-aff70fa7e7a3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOVIDEOIMAGEEMAIL1",
+          "index" : 39,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.VIDEOIMAGEEMAIL1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1eb3b6c6-5a1c-51bf-8eae-eab481b0ad24",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOVIDEOIMAGEEMAIL2",
+          "index" : 40,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.VIDEOIMAGEEMAIL2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-43c469d7-a930-59bd-a3c5-a7dd8e665833",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EMAILVIDEO_ID",
+          "index" : 41,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMAILVIDEO:_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-df4a42b1-cb77-5667-abdc-90b3f81e984f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOCONTENTAVAILABLE",
+          "index" : 42,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.CONTENTAVAILABLE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d7e8c3e0-315d-5691-8681-24e1cc066a0b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFOTYPEDESCRIPTION",
+          "index" : 43,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.TYPEDESCRIPTION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-89ae1695-a4dc-5cb8-b62f-4f301428e101",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOSUBJECTLINE",
+          "index" : 44,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.SUBJECTLINE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d1b568ee-ad07-5805-87a6-4a64cd16c7d8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMID",
+          "index" : 45,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-84a3448c-ca39-50b4-b9ff-4926aa2a8295",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMID",
+          "index" : 46,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-33f8e285-56a2-590c-b416-07924daa8540",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFORELATEDLOCATION",
+          "index" : 47,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.RELATEDLOCATION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-08f0ea38-34e1-5087-a6ed-e07e8e2e9a90",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFOMIMETYPE",
+          "index" : 48,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.MIMETYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-58c59cd9-e8fc-5b27-90b6-cb216eef6b4d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFOTHUMBNAILURL",
+          "index" : 49,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.THUMBNAILURL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b415d1c9-6221-55ec-bde2-f9cea535c2c1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFOIMAGEURL",
+          "index" : 50,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.IMAGEURL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e76f1e45-3892-558b-b2e0-c7afbbd8686e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TRIP_ID",
+          "index" : 51,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TRIP:_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c94fb49c-bf93-54c5-a3e3-3dfa10301f7b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OLDVIDEOID",
+          "index" : 52,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OLDVIDEOID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-08e5838f-6484-58d9-ac13-dd9782763607",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMATTRIBUTESREGIONSREGIONNAME",
+          "index" : 53,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.ATTRIBUTES.REGIONS.REGION.NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c2aa77b1-0b4b-50a5-b66b-3c973d792d3f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOADDITIONALDESCRIPTION3",
+          "index" : 54,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.ADDITIONALDESCRIPTION3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f579f667-9b54-5c0f-a417-a05b8255d21e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOADDITIONALDESCRIPTION2",
+          "index" : 55,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.ADDITIONALDESCRIPTION2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-81c50101-7e84-5209-9949-862ea927930e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOADDITIONALDESCRIPTION1",
+          "index" : 56,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.ADDITIONALDESCRIPTION1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-922c9895-0824-5794-95b5-d2bc5b7fb681",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOPREHEADER",
+          "index" : 57,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.PREHEADER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2511b808-6d9b-53ef-97f1-c1818df05a16",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNINFOTRIPHIGHLIGHTS",
+          "index" : 58,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNINFO.TRIPHIGHLIGHTS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b3025b55-3832-5dcb-91da-8b28697f65fc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFOTYPEDESCRIPTION",
+          "index" : 59,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.TYPEDESCRIPTION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0e49d9e4-22bc-5628-bc52-b2ff4bcdb02b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAMPAIGNITEMCAMPAIGNINFOTRIPHIGHLIGHTS",
+          "index" : 60,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAMPAIGNITEM.CAMPAIGNINFO.TRIPHIGHLIGHTS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-50dec07f-8dea-5623-936c-95efa3167e15",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TRIPS",
+          "index" : 61,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TRIPS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d3a2cb93-eead-54f9-9600-9894971d8b46",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFOIMAGEURL",
+          "index" : 62,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.IMAGEURL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-14ae5412-f017-5ddc-b46a-d4207354d37c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOINFOPRODUCTIONCREDITS",
+          "index" : 63,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOINFO.PRODUCTIONCREDITS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-008a730f-110c-5f22-aa10-7f20843c1580",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMBRIGHTCOVEINFOURL",
+          "index" : 64,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.BRIGHTCOVEINFO.URL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3b9e03af-4020-5cd1-886d-4722355e484d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VIDEOITEMVIDEOINFOTHUMBNAILURL",
+          "index" : 65,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VIDEOITEM.VIDEOINFO.THUMBNAILURL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0dc95e10-1d93-5f33-9b9b-605a20399da8",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-3b976ed2-7b89-5a10-92ca-6938352a5e98"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "mohit",
+    "message" : {
+      "ruleId" : "rule-cf9be669-521c-5f09-9300-35ed481a4b53",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-cf9be669-521c-5f09-9300-35ed481a4b53 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771921052.387548000",
+  "updatedBy" : "mohit"
+}
