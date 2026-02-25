@@ -1,0 +1,325 @@
+{
+  "versionId" : "ver-b1c8b4a1-b400-5b95-a42e-3458f9754ae6",
+  "objectId" : "rule-e1696ed0-37ee-5c60-9d89-82e7818cd416",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg CACHE",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_CACHE",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.CACHE",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "DATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 2,
+          "name" : "DESC",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "INSURANCE.COMPANY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "INSURANCE.POLICY_NUM",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "MAINTENANCE:_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "MODEL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "PEOPLE:_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PERSONAL.AGE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "PERSONAL.GENDER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "PERSONAL.NAME.FIRST",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "PERSONAL.NAME.LAST",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "SOURCE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "VEHICLES:_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-89bd8b7a-277b-5ec6-8201-e51cac40730b",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_DATE",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-aceb93e2-c684-506b-94b3-e3b2cc00d675",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PERSONALGENDER",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PERSONAL.GENDER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-df0538ab-e3a7-5067-9d85-6136eeabab34",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VEHICLES_ID",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VEHICLES:_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-accc65c8-b7c5-50fe-8fe7-48a88e4ab976",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SOURCE",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fc13f82b-ed04-58b7-9a1a-5625ceba240c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_INSURANCEPOLICY_NUM",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[INSURANCE.POLICY_NUM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2ee88b68-17cd-5fb3-887d-c222124278d5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TYPE",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-710582e0-60a7-5994-a71b-61bd5e7fb694",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PERSONALNAMELAST",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PERSONAL.NAME.LAST] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ebfdb31d-61ac-5770-8e80-ff050acdd8cf",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_INSURANCECOMPANY",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[INSURANCE.COMPANY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8a96551b-a18f-58b0-9ca4-f4ebde869bb9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PERSONALAGE",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PERSONAL.AGE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f6173810-a8c2-571c-b719-250ce90d2762",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MAINTENANCE_ID",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MAINTENANCE:_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ea49f459-71cc-5e5e-bc98-fe694697ac86",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PERSONALNAMEFIRST",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PERSONAL.NAME.FIRST] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5bcaa5d3-83be-5a9a-accb-52de791d19a7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MODEL",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MODEL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-343ea6f5-f26b-541e-9f8d-db742c4f1541",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PEOPLE_ID",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PEOPLE:_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-16b83b5f-2358-5eb2-b423-6e7f21dac7ac",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DESC",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DESC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bbad02e9-ba2a-5b7a-8c8c-9ff50416f323",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e70e3083-4011-5597-a861-ff9ef2508da2"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "mohit",
+    "message" : {
+      "ruleId" : "rule-e1696ed0-37ee-5c60-9d89-82e7818cd416",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-e1696ed0-37ee-5c60-9d89-82e7818cd416 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771921209.630886000",
+  "updatedBy" : "mohit"
+}
