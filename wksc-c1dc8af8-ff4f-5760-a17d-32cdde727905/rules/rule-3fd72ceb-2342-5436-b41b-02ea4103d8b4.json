@@ -1,0 +1,533 @@
+{
+  "versionId" : "ver-d4f0ae0a-8a3f-501d-84ae-fdedd68c107d",
+  "objectId" : "rule-3fd72ceb-2342-5436-b41b-02ea4103d8b4",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg ALL_DATATYPE_DUPLICAT12123wE",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_ALL_DATATYPE_DUPLICATE",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.ALL_DATATYPE_DUPLICATE",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "COL_SMALLINT_Key",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "COL_VARCHAR_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "COL_CHAR_PK",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "COL_NCHAR_PrimaryKey",
+          "datatype" : "NVARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "COL_TEXT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "COL_INTEGER",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "COL_INTEGER_NEGATIVE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "COL_DECIMAL",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "COL_DECIMAL_NEGATIVE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 10,
+          "name" : "COL_FLOAT",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 11,
+          "name" : "COL_FLOAT_NEGATIVE",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 12,
+          "name" : "COL_BIGINT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 13,
+          "name" : "COL_BIGINT_NEGATIVE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 14,
+          "name" : "COL_REAL",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 15,
+          "name" : "COL_REAL_NEGATIVE",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 16,
+          "name" : "COL_DATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 17,
+          "name" : "COL_TIMESTAMP",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 18,
+          "name" : "COL_BOOLEAN",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "COL_TIMESTAMP_WITH_TIMEZONE",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "COL_BFILE",
+          "datatype" : "BFILE",
+          "icedqDatatype" : "BFILE"
+        }, {
+          "index" : 21,
+          "name" : "COL_CLOB",
+          "datatype" : "CLOB",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "COL_BLOB",
+          "datatype" : "BLOB",
+          "icedqDatatype" : "BLOB"
+        }, {
+          "index" : 23,
+          "name" : "COL_RAW",
+          "datatype" : "RAW",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "COL_BINARY_FLOAT",
+          "datatype" : "BINARY_FLOAT",
+          "icedqDatatype" : "FLOAT"
+        }, {
+          "index" : 25,
+          "name" : "COL_BINARY_DOUBLE",
+          "datatype" : "BINARY_DOUBLE",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 26,
+          "name" : "COL_LONG",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 27,
+          "name" : "COL_NCLOB",
+          "datatype" : "NCLOB",
+          "icedqDatatype" : "NCLOB"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-c7c5239b-c8d5-5228-ac8d-81fc8bf40a3a",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_COL_CHAR_PK",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_CHAR_PK] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c8c8bc6a-8585-5c5f-b14e-a3b084b22df6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_CLOB",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_CLOB] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-33276d2a-ae83-5a7a-bc3f-344deb777477",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_SMALLINT_Key",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_SMALLINT_Key] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-056159a0-51b1-53fc-b938-c313300bbaac",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_DATE",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_DATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3eae5add-ec0d-5c9e-bbcd-222f5beadd65",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_INTEGER",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_INTEGER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-246f12b6-c743-5597-9958-b2535b9f147b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_BIGINT_NEGATIVE",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BIGINT_NEGATIVE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ab239d63-6676-5194-b7a5-566ebf48dc65",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_NCHAR_PrimaryKey",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_NCHAR_PrimaryKey] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-825dc3ec-00f8-55e9-8d44-7b3e1598da56",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_REAL_NEGATIVE",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_REAL_NEGATIVE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-684b8f31-e890-5ab2-8554-d4a5206573bd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_REAL",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_REAL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-414722b5-fd3d-5436-ad45-a4d4a5117ea2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_TIMESTAMP",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_TIMESTAMP] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fd1b8ac8-40cd-5335-9a14-7ad139ac80c8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_BLOB",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BLOB] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-77c46eb3-270c-5089-80bd-6637c0f58eff",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_TEXT",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_TEXT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-67b29b3d-6781-5ca6-a515-80ed74269f6f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_BINARY_DOUBLE",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BINARY_DOUBLE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cffd55eb-e0af-5c39-86f9-9b8d91886a77",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_DECIMAL_NEGATIVE",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_DECIMAL_NEGATIVE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c51a2fa4-bdf8-5bb5-9528-b21818d78548",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_BINARY_FLOAT",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BINARY_FLOAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-906e47de-9411-505c-b831-bcc62d03ae7a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_BFILE",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BFILE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d76445ef-edf2-550c-8cfc-712633a8e79a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_TIMESTAMP_WITH_TIMEZONE",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_TIMESTAMP_WITH_TIMEZONE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a5220eb0-f851-581c-a2c8-0f2781113f63",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_DECIMAL",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_DECIMAL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c60355b9-0d38-532a-a874-ecc97ed1f7e3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_RAW",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_RAW] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-83d4b528-a41b-5304-bde1-5e1d63088c5d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_NCLOB",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_NCLOB] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3edb3f04-cd8a-5a73-a422-28d50bc25d05",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_INTEGER_NEGATIVE",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_INTEGER_NEGATIVE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4ac11b52-788e-5400-b8ed-79c467b2ca13",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_FLOAT_NEGATIVE",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_FLOAT_NEGATIVE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8ec2a9f1-7b40-55a2-9fa2-ef6ee50a1175",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_BIGINT",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BIGINT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6144eb4c-e65a-54a2-9a32-5a56cdd0604f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_BOOLEAN",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_BOOLEAN] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-042eff3a-812b-500d-bc5b-6829416bbc63",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_FLOAT",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_FLOAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-aa30fbbc-3686-5346-ab7e-fc8a8224f15a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_LONG",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_LONG] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ba43533a-ee77-537b-b617-428b79645570",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COL_VARCHAR_ID",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COL_VARCHAR_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-855f0fe2-7f1a-5a02-9ec0-cd8391b58148",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-f30f7515-aaf4-55b9-a5ae-1c787c651309"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "commitMessage" : "Initial setup",
+  "commitStatus" : "Merged",
+  "gitInfo" : {
+    "committer" : "icedq-svc@toranainc.com",
+    "author" : "mohit",
+    "message" : {
+      "ruleId" : "rule-3fd72ceb-2342-5436-b41b-02ea4103d8b4",
+      "commitMessage" : "Commit Message: Initial setup | ID: rule-3fd72ceb-2342-5436-b41b-02ea4103d8b4 | Approval Message: "
+    }
+  },
+  "updatedTimestamp" : "1771917163.357591000",
+  "updatedBy" : "mohit"
+}
