@@ -5,10 +5,11 @@
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "V0002 - Git Demo",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "Validation",
     "code" : "V002",
+    "description" : "Changes",
     "properties" : {
       "criticality" : "Warning",
       "engineType" : "HighThroughput",
@@ -29,7 +30,6 @@
       "configuration" : {
         "schemaName" : "REGRESSION_DATABASE",
         "tableName" : "STAFF",
-        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -155,6 +155,36 @@
             "field" : "rulgen",
             "values" : [ ]
           } ]
+        }, {
+          "name" : "Chk_0002",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "comment" : "CompletenessCheck(\"S.[STATE]\")",
+            "column" : "S.[STATE]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
+            "trimmingEnable" : true,
+            "caseInsensitive" : false
+          },
+          "id" : "chck-16287e80-7776-569c-b6f3-bd4ed03d4cee",
+          "type" : "Completeness",
+          "customFields" : [ {
+            "field" : "rulgen",
+            "values" : [ ]
+          } ]
+        }, {
+          "name" : "Fyi_s_staffid",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[STAFFID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-743d5297-3030-54d1-96a6-7d3cf2d7c3cf",
+          "type" : "Column"
         } ],
         "generateRollUps" : false
       }
@@ -165,7 +195,7 @@
       "configuration" : {
         "exportFileRowLimit" : "20000",
         "createExportDownloadLink" : true,
-        "storeOnlyException" : true,
+        "storeOnlyException" : false,
         "storeOnlyExportedFile" : false,
         "format" : [ "XLSX" ],
         "loadExceptions" : false,
@@ -186,12 +216,12 @@
             "caseInsensitive" : false
           },
           "isOverride" : false,
-          "id" : "chck-41a449be-b7e7-526a-b506-1562b68c8bae"
+          "id" : "chck-43b3c0b7-0f58-5f93-9e2f-f474f39d64c9"
         } ],
         "generateRollUps" : false
       }
     } ]
   },
-  "updatedTimestamp" : "1773408135.688119000",
+  "updatedTimestamp" : "1773408403.168321000",
   "updatedBy" : "mayurp"
 }
