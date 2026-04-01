@@ -1,0 +1,236 @@
+{
+  "objectId" : "rule-0065decc-0e66-5613-8551-c664cbcea4b7",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1773141877",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Pushdown",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 0,
+      "stopAtRowCount" : 0,
+      "stopAtTime" : 0,
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "ACCOUNT",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "ACCOUNT_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "ACCOUNT_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "ACCOUNT_TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "INDUSTRY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "ANNUAL_REVENUE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "EMPLOYEE_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "REVENUE_PER_EMP",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "CREATED_DATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 9,
+          "name" : "SOURCE_SYSTEM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "resulttype",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-9f6cc32f-b7d6-595e-b2e7-afeb2d37a2db",
+          "type" : "ResultType"
+        }, {
+          "name" : "Fyi_s_account_id",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNT_ID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-13dd53bd-9069-5976-ab0c-dab7486eb635",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_account_name",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNT_NAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c327dbb2-1b1c-5c20-adcc-7c6ccb3b0df0",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_account_type",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNT_TYPE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-af60363e-758f-52f3-bfe1-900c02f74cb9",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_industry",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[INDUSTRY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5bbd204c-2ae2-5ca3-abfc-cc1a51f2d2f3",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_annual_revenue",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ANNUAL_REVENUE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-00eb35ac-9764-57ae-b363-d7fac3f8f9b2",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_employee_count",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPLOYEE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d8d5f481-ad2b-56f5-b82b-b3a1d0d32746",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_revenue_per_emp",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_PER_EMP]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0ac3fc27-4a36-5bf2-9a2f-9e150c64e7b1",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_created_date",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CREATED_DATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d697210f-45d3-5453-8a30-ccc86a608257",
+          "type" : "Column"
+        }, {
+          "name" : "Fyi_s_source_system",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE_SYSTEM]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-70ca72ba-3a6a-5dfc-90ce-7355b5d54e8f",
+          "type" : "Column"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false,
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-717ebe49-c2ab-59a9-86d2-532e9c7221c2"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1773141928.232732000",
+  "updatedBy" : "mohit"
+}
