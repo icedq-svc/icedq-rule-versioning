@@ -5,7 +5,7 @@
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "VALIDATION_b333rg 4442M",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "Validation",
     "code" : "CODE00_2M",
@@ -17,7 +17,8 @@
       "stopAtFailAndErrorCount" : 22000,
       "stopAtRowCount" : 1000,
       "stopAtTime" : 40,
-      "degreeOfParallelism" : 1
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -28,6 +29,7 @@
       "input" : "Sql",
       "configuration" : {
         "sql" : "select * from REGRESSION_DATABASE.2M",
+        "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
@@ -121,8 +123,7 @@
           "icedqDatatype" : "TEXT"
         } ],
         "generateRollUps" : false
-      },
-      "useCached" : false
+      }
     }, {
       "id" : "RecordCheck",
       "type" : "recordCheck",
@@ -350,6 +351,7 @@
         "storeOnlyException" : true,
         "storeOnlyExportedFile" : true,
         "format" : [ "XLSX" ],
+        "loadExceptions" : false,
         "generateRollUps" : false
       }
     }, {
@@ -373,6 +375,6 @@
       }
     } ]
   },
-  "updatedTimestamp" : "1771848787.419963000",
-  "updatedBy" : "mohit"
+  "updatedTimestamp" : "1771854510.679416000",
+  "updatedBy" : "roshan.n"
 }
