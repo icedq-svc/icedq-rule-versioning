@@ -1,0 +1,234 @@
+{
+  "objectId" : "rule-0c55c47d-4f23-5fd5-81eb-6a3d395169cb",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg credit_acct",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_credit_acct",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-67a98458-3723-5079-9635-79006399fcdd",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from financial.credit_acct",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "cust_id",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "acct_nbr",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "credit_limit",
+          "datatype" : "INTEGER",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "credit_rating",
+          "datatype" : "SMALLINT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 5,
+          "name" : "account_active",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "acct_start_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "acct_end_date",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 8,
+          "name" : "starting_balance",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "ending_balance",
+          "datatype" : "DECIMAL",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-899a9ffb-c042-58de-81bb-cd40bb691155",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_credit_rating",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[credit_rating] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-020361a7-bae4-5155-8675-e624ea559c30",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_start_date",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_start_date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-026d7534-fe84-5b2b-bb29-9b0acafb21a4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_end_date",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_end_date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c74d4731-d02f-5979-90f5-04646689c60c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_acct_nbr",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[acct_nbr] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1d63f025-92b9-5310-af0f-7564347cb1d5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_credit_limit",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[credit_limit] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3705fd77-71b6-5571-8154-2b517a17ddb7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_account_active",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[account_active] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4b383d6-748f-54e4-b8bf-8f2116e98f57",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ending_balance",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ending_balance] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3afde558-4e78-54c5-9e4c-81abf84a9cd7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_cust_id",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[cust_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9a88c952-5540-5d41-b64c-729e46e7edd9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_starting_balance",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[starting_balance] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9a448928-062f-51fc-a9a8-8d622ac38fd6",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-00ee3ecf-3a54-5ed0-9bd7-cb477d7c8906"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1771482691.383646000",
+  "updatedBy" : "service-account-icedq.executor"
+}
