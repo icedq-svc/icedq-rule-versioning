@@ -1,0 +1,354 @@
+{
+  "objectId" : "rule-d5550077-b808-501f-a997-52e798a38852",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RECON_icedqrs brg geography",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00_geography",
+    "description" : "This template create recon rules to compare all the data. The diff join is created using specified column name(s) and equal to expressions are created for rest of the columns with matching names.",
+    "purpose" : "Join on based on specified column and expression are based on macthing names",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedqrs.dataops_staging.geography",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "geographykey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "city",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "stateprovincecode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "stateprovincename",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "countryregioncode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "englishcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "spanishcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "frenchcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "postalcode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "salesterritorykey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 11,
+          "name" : "ipaddresslocator",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "geographykey\",\"city\",\"stateprovincecode\",\"stateprovincename\",\"countryregioncode\",\"englishcountryregionname\",\"spanishcountryregi",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedqrs.dataops_oltp.geography",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "geographykey",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "city",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "stateprovincecode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "stateprovincename",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "countryregioncode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "englishcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "spanishcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "frenchcountryregionname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "postalcode",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "salesterritorykey",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 11,
+          "name" : "ipaddresslocator",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "geographykey",
+          "targetKey" : "geographykey"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-17054284-c0b2-5d1e-9da3-1fb5b509f31b",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_frenchcountryregionname",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[frenchcountryregionname] == T.[frenchcountryregionname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-dd7e3184-ebcf-5702-ab81-be5ff4ab293f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_city",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[city] == T.[city]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4197108-ed64-5b35-b593-aae32ebacbc4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_stateprovincename",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[stateprovincename] == T.[stateprovincename]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d25c42f9-b0b5-5ebd-bfa7-e46db4e459fe",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_postalcode",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[postalcode] == T.[postalcode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c66ddb09-0ad9-565a-91e5-f9154814c22a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ipaddresslocator",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ipaddresslocator] == T.[ipaddresslocator]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0dd338d5-e86b-5d11-a6b4-115ba4c24c16",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_spanishcountryregionname",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[spanishcountryregionname] == T.[spanishcountryregionname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-657d7348-d16b-522e-a5d5-5f2c303fd145",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_englishcountryregionname",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[englishcountryregionname] == T.[englishcountryregionname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9026c945-32ab-51dd-a78a-0758c2537ba6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_geographykey",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[geographykey] == T.[geographykey]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-74ab30d5-c757-5763-ba59-0dda210f6b89",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_stateprovincecode",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[stateprovincecode] == T.[stateprovincecode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ecb67ca1-11ae-5a7f-a4f3-6b3cad233782",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_countryregioncode",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[countryregioncode] == T.[countryregioncode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-75005023-9be1-537e-9bb2-b2c6934bb41c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_salesterritorykey",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[salesterritorykey] == T.[salesterritorykey]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a759cd0b-ed9f-57a4-80dd-a1904d452bf6",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-bc83f92b-08a7-5d11-86ca-6733ba995c9f"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1768981234.822968000",
+  "updatedBy" : "service-account-icedq.executor"
+}
