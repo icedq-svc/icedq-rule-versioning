@@ -1,0 +1,874 @@
+{
+  "objectId" : "rule-b7882312-0d2b-52f6-98b0-ec7c41f6bc1a",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RECON_icedqrs brg product",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00_product",
+    "description" : "This template create recon rules to compare all the data. The diff join is created using specified column name(s) and equal to expressions are created for rest of the columns with matching names.",
+    "purpose" : "Join on based on specified column and expression are based on macthing names",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedqrs.dataops_staging.product",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "productkey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "productalternatekey",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "productsubcategorykey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "weightunitmeasurecode",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "sizeunitmeasurecode",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "englishproductname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "spanishproductname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "frenchproductname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "standardcost",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 10,
+          "name" : "finishedgoodsflag",
+          "datatype" : "bool",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "color",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "safetystocklevel",
+          "datatype" : "int2",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 13,
+          "name" : "reorderpoint",
+          "datatype" : "int2",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 14,
+          "name" : "listprice",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 15,
+          "name" : "size",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "sizerange",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "weight",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 18,
+          "name" : "daystomanufacture",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 19,
+          "name" : "productline",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "dealerprice",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 21,
+          "name" : "class",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "style",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "modelname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "largephoto",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "englishdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "frenchdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "chinesedescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "arabicdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "hebrewdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "thaidescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "germandescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "japanesedescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "turkishdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "startdate",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 35,
+          "name" : "enddate",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 36,
+          "name" : "status",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from icedqrs.dataops_oltp.product",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "productkey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "productalternatekey",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "productsubcategorykey",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 4,
+          "name" : "weightunitmeasurecode",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "sizeunitmeasurecode",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "englishproductname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "spanishproductname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "frenchproductname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "standardcost",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 10,
+          "name" : "finishedgoodsflag",
+          "datatype" : "bool",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "color",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "safetystocklevel",
+          "datatype" : "int2",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 13,
+          "name" : "reorderpoint",
+          "datatype" : "int2",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 14,
+          "name" : "listprice",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 15,
+          "name" : "size",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "sizerange",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "weight",
+          "datatype" : "float8",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 18,
+          "name" : "daystomanufacture",
+          "datatype" : "int4",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 19,
+          "name" : "productline",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "dealerprice",
+          "datatype" : "numeric",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 21,
+          "name" : "class",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "style",
+          "datatype" : "bpchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "modelname",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "largephoto",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "englishdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "frenchdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "chinesedescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "arabicdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "hebrewdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "thaidescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "germandescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "japanesedescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "turkishdescription",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "startdate",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 35,
+          "name" : "enddate",
+          "datatype" : "date",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 36,
+          "name" : "status",
+          "datatype" : "varchar",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "productkey",
+          "targetKey" : "productkey"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-041dbfda-0a1a-56c1-80f3-129f79dee56d",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_productline",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[productline] == T.[productline]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2c655a1e-0f5d-5337-9ebc-25724025b8d7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_sizerange",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[sizerange] == T.[sizerange]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7f92cee9-574f-5314-883e-79262e907eb3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_color",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[color] == T.[color]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-216e4967-665f-5e14-ac27-0e732831174e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_modelname",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[modelname] == T.[modelname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ed42e170-ea87-5eac-942e-49eb8bf6c139",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_finishedgoodsflag",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[finishedgoodsflag] == T.[finishedgoodsflag]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-95a2238c-808e-5d08-b3d1-aa6da90af851",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_startdate",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[startdate] == T.[startdate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-60c8cc13-50e5-5b99-a321-0cd634f824f1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_englishdescription",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[englishdescription] == T.[englishdescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e0ec648c-7be9-5f6c-b858-926644589721",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_spanishproductname",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[spanishproductname] == T.[spanishproductname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0c960677-ae3a-50ba-9a94-64c1af18f33c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_germandescription",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[germandescription] == T.[germandescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4e0dc6e8-0f9b-52ec-acd4-71b7ace8dc78",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_largephoto",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[largephoto] == T.[largephoto]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-44249151-883e-50d5-b3ab-6115a2b1329d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_hebrewdescription",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[hebrewdescription] == T.[hebrewdescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6a9254f5-31f5-5139-b457-634aa3500856",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_arabicdescription",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[arabicdescription] == T.[arabicdescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-68e6e0bf-fbd1-5163-bd49-e3755d659e93",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_listprice",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[listprice] == T.[listprice]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c97dd6c9-f671-5599-85db-dda5848f671b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_frenchproductname",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[frenchproductname] == T.[frenchproductname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f84cef81-aa5d-54f8-ac4f-011de5a1dc94",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_class",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[class] == T.[class]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3d01a0cd-e252-5d8e-bddd-96d5f6742403",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_thaidescription",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[thaidescription] == T.[thaidescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7b194a93-2295-5deb-ba0f-4db71980ca49",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_standardcost",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[standardcost] == T.[standardcost]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ca3dd72d-e264-5591-87d0-f7d39d248804",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_chinesedescription",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[chinesedescription] == T.[chinesedescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-eca005be-5b98-5bc6-9aab-12008a7e20a4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_daystomanufacture",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[daystomanufacture] == T.[daystomanufacture]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-82b81859-91e6-547d-b203-24252645fcba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_turkishdescription",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[turkishdescription] == T.[turkishdescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-77529549-fdca-5ef6-a122-9f9e69b01b11",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_englishproductname",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[englishproductname] == T.[englishproductname]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-98c05069-3b60-5f00-b1a7-e699d2642b22",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_weight",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[weight] == T.[weight]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-34517f12-854e-5ed0-9857-a177022ad087",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_dealerprice",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[dealerprice] == T.[dealerprice]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bd19c650-4bf1-5738-b7f3-4c6463f3237e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_productkey",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[productkey] == T.[productkey]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5536b903-edf5-5d2a-b40f-6355e3859a1e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_reorderpoint",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[reorderpoint] == T.[reorderpoint]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-584db52b-f41b-545a-99b6-78207cd8b47b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_productsubcategorykey",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[productsubcategorykey] == T.[productsubcategorykey]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-48088ed0-4eff-5eb9-86a9-bd6bf018b594",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_weightunitmeasurecode",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[weightunitmeasurecode] == T.[weightunitmeasurecode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f17a56e6-d9ae-579e-acb6-10ae0c18e5bb",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_frenchdescription",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[frenchdescription] == T.[frenchdescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e84ea334-0413-55a6-bcae-2c0810bcc7f5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_japanesedescription",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[japanesedescription] == T.[japanesedescription]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d2e511af-be2c-514f-80a0-dde6fe17c220",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_enddate",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[enddate] == T.[enddate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-110809a2-7945-52f8-a90a-f52389cb35e1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_safetystocklevel",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[safetystocklevel] == T.[safetystocklevel]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-69a34e74-3718-57ff-92d1-74dee68f6c8a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_size",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[size] == T.[size]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7fcf0195-892a-574e-96ba-1580f260eb93",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_productalternatekey",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[productalternatekey] == T.[productalternatekey]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-57691403-f7ec-583d-bb5b-248ed53b48ec",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_sizeunitmeasurecode",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[sizeunitmeasurecode] == T.[sizeunitmeasurecode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8a705c03-1b28-50d2-b803-80bee678445c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_style",
+          "index" : 36,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[style] == T.[style]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7768a81c-d129-50d0-8a10-fb666880dd08",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_status",
+          "index" : 37,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[status] == T.[status]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-170329c8-78f0-5ce7-834d-8e9e09580a9a",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-5a7ef167-23e6-5acc-a0ae-1c6c6b530bd8"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1768981264.661013000",
+  "updatedBy" : "service-account-icedq.executor"
+}
