@@ -1,0 +1,565 @@
+{
+  "objectId" : "rule-ec27b54c-f5ad-5fd4-a564-b2d8077fd0ad",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg CUSTOMER",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_CUSTOMER",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from DATAOPS_OLTP.CUSTOMER",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CustomerKey",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "GeographyKey",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "CustomerAlternateKey",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Title",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "FirstName",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "MiddleName",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "LastName",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "NameStyle",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "BirthDate",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 10,
+          "name" : "MaritalStatus",
+          "datatype" : "NCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Suffix",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "Gender",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "EmailAddress",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "YearlyIncome",
+          "datatype" : "FLOAT",
+          "icedqDatatype" : "DOUBLE"
+        }, {
+          "index" : 15,
+          "name" : "TotalChildren",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 16,
+          "name" : "NumberChildrenAtHome",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 17,
+          "name" : "EnglishEducation",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "SpanishEducation",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "FrenchEducation",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "EnglishOccupation",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "SpanishOccupation",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "FrenchOccupation",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "HouseOwnerFlag",
+          "datatype" : "NCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "NumberCarsOwned",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 25,
+          "name" : "AddressLine1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "AddressLine2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "Phone",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "DateFirstPurchase",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 29,
+          "name" : "CommuteDistance",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-91a09986-b3d5-5d1e-8371-577010e94abc",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_SpanishEducation",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SpanishEducation] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5c07a2df-fb38-505a-9e1e-49c1c646aac0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FirstName",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FirstName] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5f6b5819-3e23-5f86-a989-18b39cbbb387",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NumberCarsOwned",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NumberCarsOwned] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0240cf09-932c-5ef0-bfbb-5304723ee82d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BirthDate",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BirthDate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bbeb54ab-2850-53f9-8142-17ac0a08ee3c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Gender",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Gender] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c557e24f-02f8-5d0f-9ba4-1c3c11ea684f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EnglishEducation",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EnglishEducation] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e35a5dd5-5afc-5ce3-90e6-5c846950ff73",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_YearlyIncome",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[YearlyIncome] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-800e309c-c0cb-5ff0-b7fa-ed42f66018a1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_GeographyKey",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[GeographyKey] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-daa4135d-0db2-53d9-b943-4af5eea03169",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Title",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Title] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9a024701-0edf-5099-ab34-e0edf8cb66e4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Suffix",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Suffix] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8599871c-535f-5e1e-88ed-9abe9fd1fcba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_HouseOwnerFlag",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HouseOwnerFlag] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-79c61195-0bef-55cc-b5eb-ccba536c3318",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CustomerAlternateKey",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CustomerAlternateKey] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0eed7a7d-86e2-5865-891e-0fe46050dee1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DateFirstPurchase",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DateFirstPurchase] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4500ba59-3758-5558-b75c-44149f86333c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TotalChildren",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TotalChildren] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4c7e8fe-ab07-5e91-a73c-80da55b627fc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FrenchOccupation",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FrenchOccupation] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-41bd41ba-ce2d-573e-b5e3-3e9e858326d3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CommuteDistance",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CommuteDistance] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a86f59d4-1327-5e66-8e36-c61fa5df8dce",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CustomerKey",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CustomerKey] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-58514661-94fc-576f-b24e-bfc50c5b4448",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NameStyle",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NameStyle] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-db0dd7e4-712d-5690-b60b-d1b905bdcbe4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FrenchEducation",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FrenchEducation] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-da748f53-ea61-53b1-8748-dffc0ee826bc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MiddleName",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MiddleName] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-070a2630-aa04-5b8e-9919-6010c2c83391",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EmailAddress",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EmailAddress] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2de9128d-774d-517a-95e6-c666e1600de0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LastName",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LastName] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3b6b513c-4360-5c57-8f3f-f17722da4909",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_NumberChildrenAtHome",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[NumberChildrenAtHome] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b96cf1bc-e00e-5a0c-b446-da334c88c090",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SpanishOccupation",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SpanishOccupation] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-12911da6-4a56-59b2-b536-8ea01a4fcc53",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MaritalStatus",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MaritalStatus] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4658a00c-8c78-56d9-b167-f93bf45900bf",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Phone",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Phone] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f7403882-1131-54e4-bcd3-54e1b660a4b0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AddressLine2",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[AddressLine2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5a5193ad-feaa-50af-9e58-37706fb96289",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AddressLine1",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[AddressLine1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4b31a1a-beb3-5b0c-b06b-415e2a13fe2c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EnglishOccupation",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EnglishOccupation] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-75fc884d-e23c-5c74-9dab-81adfe11c275",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-2a99e517-76cc-597d-bf90-390381cb7c6c"
+        }, {
+          "name" : "mohit",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "value==001",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-0703d411-8a3b-5e3d-825e-aaa9745c10c6"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1770384972.600021000",
+  "updatedBy" : "service-account-icedq.executor"
+}
