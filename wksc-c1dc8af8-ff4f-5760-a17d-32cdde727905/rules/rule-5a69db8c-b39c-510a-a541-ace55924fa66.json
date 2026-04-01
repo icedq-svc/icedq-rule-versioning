@@ -1,0 +1,426 @@
+{
+  "objectId" : "rule-5a69db8c-b39c-510a-a541-ace55924fa66",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg ga_adwords_1",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_ga_adwodddrds_1",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from bhushan.ga_adwords_1",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "eai_session_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "eai_event_in_visitor_tz",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "eai_event_in_visitor_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 4,
+          "name" : "eai_event_in_utc_dt",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 5,
+          "name" : "eai_vid",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "eai_hit_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 7,
+          "name" : "eai_pageview_order",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 8,
+          "name" : "eai_hit_type",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "eai_ga_property_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "eai_ga_view_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ga_visits",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "ga_adGroup",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ga_adSlot",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "ga_adTargetingType",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "etl_org",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "etl_project",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "etl_create_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 18,
+          "name" : "etl_update_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 19,
+          "name" : "etl_start_utc_dttm",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 20,
+          "name" : "etl_flow_nm",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "etl_flow_instance_id",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-076bb67c-a8ff-5866-a528-00d173023f14",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_ga_adSlot",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adSlot] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a6b397ae-f415-558b-820e-63ca072189f3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_visitor_dt",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_visitor_dt] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f12e276a-d7f7-5be3-bbc8-14adc9b8a6d9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_org",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_org] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-237b1f6d-6e47-59dd-84f7-078b21647fd4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_start_utc_dttm",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_start_utc_dttm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a18c6414-64d6-59ea-baa9-cddd86ae3b0b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_flow_nm",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_flow_nm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2282609c-95ee-5ad9-80c3-79139f7ce22f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_hit_order",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_hit_order] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fb46d6b7-3550-5147-af3d-8f05bb1a16b6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_visits",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_visits] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-68777087-194c-5259-9ed1-94d79387a9fe",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_vid",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_vid] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d419c2e8-d2e6-50a4-b56e-1758eece6f17",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_flow_instance_id",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_flow_instance_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e723f80b-2f3c-581c-9664-36be04de08b0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_utc_dt",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_utc_dt] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1c741799-a345-5d24-9db6-9023b19b8534",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_adTargetingType",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adTargetingType] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-66661335-26cb-5ad2-bec4-f7fa153152be",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_pageview_order",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_pageview_order] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4e78376-a73d-5521-9c5d-4f8270e4fc61",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_hit_type",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_hit_type] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8b73f18c-cb61-5547-aeff-8b711d2dd1e5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_ga_property_id",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_ga_property_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-69754dbc-f188-511f-8823-b706d2508d77",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_create_utc_dttm",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_create_utc_dttm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c29efe5d-e1ec-5d8b-be84-fa7ca82dbc5f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_project",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_project] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-49b03987-f6ab-5b7c-a637-bf86d485d879",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_session_id",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_session_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b2b14682-956d-5d4f-b6be-ee9f054f192f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_etl_update_utc_dttm",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[etl_update_utc_dttm] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-06e25b5f-1475-54f9-8888-6be324df8ea7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_event_in_visitor_tz",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_event_in_visitor_tz] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8e623cab-b0a4-5950-bb8d-ada85002e3ec",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ga_adGroup",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ga_adGroup] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-602b71cf-c8b5-56c7-9039-411e9af4f6a5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_eai_ga_view_id",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[eai_ga_view_id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-50899e4e-69b8-5480-97db-370085900286",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-2aed1922-552c-5c59-a245-cd8fd97ff7f4"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1769588116.352932000",
+  "updatedBy" : "mohit"
+}
