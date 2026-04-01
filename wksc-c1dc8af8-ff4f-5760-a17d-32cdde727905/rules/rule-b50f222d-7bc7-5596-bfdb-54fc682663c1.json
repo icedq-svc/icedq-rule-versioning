@@ -3,14 +3,14 @@
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "V001 - GitIntegration_Version 3",
+  "name" : "V001 - GitIntegration_Version 4",
   "state" : "Published",
-  "version" : 3,
+  "version" : 4,
   "info" : {
     "ruleType" : "Validation",
-    "code" : "Version 3",
-    "description" : "Version 3",
-    "purpose" : "Version 3",
+    "code" : "Version 4",
+    "description" : "Version 4",
+    "purpose" : "Version 4",
     "properties" : {
       "criticality" : "Blocker",
       "engineType" : "HighThroughput",
@@ -27,69 +27,101 @@
       "name" : "sourceDataset",
       "connectionType" : "Database",
       "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
-      "input" : "Sql",
+      "input" : "Table",
       "configuration" : {
-        "sql" : "select * from REGRESSION_DATABASE.CUSTOMER",
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "STAFF",
         "appendOrderBy" : true,
         "isDeferredSort" : false,
         "columns" : [ {
           "index" : 1,
-          "name" : "CUSTOMERID",
-          "datatype" : "NUMBER",
-          "icedqDatatype" : "NUMERIC"
-        }, {
-          "index" : 2,
-          "name" : "ACCTNUMBER",
+          "name" : "STAFFID",
           "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         }, {
+          "index" : 2,
+          "name" : "SEX",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
           "index" : 3,
-          "name" : "FIRSTNAME",
+          "name" : "JOBCODE",
           "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 4,
-          "name" : "LASTNAME",
+          "name" : "COMPANY",
           "datatype" : "VARCHAR2",
           "icedqDatatype" : "TEXT"
         }, {
           "index" : 5,
-          "name" : "GENDER",
-          "datatype" : "CHAR",
-          "icedqDatatype" : "TEXT"
+          "name" : "SALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
         }, {
           "index" : 6,
-          "name" : "BIRTHDATE",
+          "name" : "BONUS",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "COMM",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "TOTALSALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 9,
+          "name" : "BIRTHD",
           "datatype" : "DATE",
           "icedqDatatype" : "DATE"
         }, {
-          "index" : 7,
-          "name" : "DATEFIRSTPURCHASE",
-          "datatype" : "VARCHAR2",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 8,
-          "name" : "PHONENO",
-          "datatype" : "VARCHAR2",
-          "icedqDatatype" : "TEXT"
-        }, {
-          "index" : 9,
-          "name" : "EMAIL",
-          "datatype" : "VARCHAR2",
-          "icedqDatatype" : "TEXT"
-        }, {
           "index" : 10,
-          "name" : "YEARLYINCOME",
-          "datatype" : "VARCHAR2",
-          "icedqDatatype" : "TEXT"
+          "name" : "HIRED",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
         }, {
           "index" : 11,
-          "name" : "ADDRESSID",
+          "name" : "LNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "FNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "ADDRESS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "CITY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "STATE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "HPHONE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "SSN",
           "datatype" : "NUMBER",
           "icedqDatatype" : "NUMERIC"
         } ],
         "generateRollUps" : false
-      }
+      },
+      "useCached" : false
     }, {
       "id" : "RecordCheck",
       "type" : "recordCheck",
@@ -107,43 +139,30 @@
           "id" : "chck-6e85e84b-b4fc-59c4-be4e-77c202664a70",
           "type" : "ResultType"
         }, {
-          "name" : "Chk_0002",
+          "name" : "Chk_0001",
           "index" : 2,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "comment" : "LengthCheck(\"S.[YEARLYINCOME]\", length > 50000)",
-            "column" : "S.[YEARLYINCOME]",
-            "operator" : "greater than",
-            "datatype" : "TEXT",
-            "ignoreNull" : true,
+            "comment" : "CompletenessCheck(\"S.[HPHONE]\")",
+            "column" : "S.[HPHONE]",
+            "emptyStringAsNull" : true,
+            "whiteSpaceAsNull" : true,
             "trimmingEnable" : true,
-            "caseInsensitive" : false,
-            "inputValue" : [ 50000 ]
+            "caseInsensitive" : false
           },
-          "id" : "chck-d0e5da1d-dd2b-5bb1-9787-4236c4220db2",
-          "type" : "Length"
+          "id" : "chck-d47b0ee7-be2e-5a3e-aa78-b99ebc68c3a3",
+          "type" : "Completeness"
         }, {
-          "name" : "Fyi_s_customerid",
+          "name" : "Fyi_s_staffid",
           "index" : 3,
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[CUSTOMERID]",
+            "value" : "S.[STAFFID]",
             "caseInsensitive" : false
           },
-          "id" : "chck-b205ccd5-1a3f-506d-bc0e-942bbc75449c",
-          "type" : "Column"
-        }, {
-          "name" : "Fyi_s_acctnumber",
-          "index" : 4,
-          "isActive" : true,
-          "isVisible" : true,
-          "expression" : {
-            "value" : "S.[ACCTNUMBER]",
-            "caseInsensitive" : false
-          },
-          "id" : "chck-06f027d1-3123-5ca8-b934-895427a195f0",
+          "id" : "chck-2b86f092-6083-5ae8-ab59-03276be47743",
           "type" : "Column"
         } ],
         "generateRollUps" : false
@@ -182,6 +201,6 @@
       }
     } ]
   },
-  "updatedTimestamp" : "1772017233.277525000",
-  "updatedBy" : "roshan.n"
+  "updatedTimestamp" : "1772017861.382911000",
+  "updatedBy" : "mayurp"
 }
