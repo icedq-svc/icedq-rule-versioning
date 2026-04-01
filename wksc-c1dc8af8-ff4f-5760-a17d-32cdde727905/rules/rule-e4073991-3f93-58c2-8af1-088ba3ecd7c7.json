@@ -1,0 +1,183 @@
+{
+  "objectId" : "rule-e4073991-3f93-58c2-8af1-088ba3ecd7c7",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1770185172",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Duplicate",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "REGRESSION_EMP_TEST",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EMPNO",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "EMPCODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "EMPNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "JOB",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "HIREDATE",
+          "datatype" : "TIMESTAMP",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "EMPADDR1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "EMPADDR2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "SALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 10,
+          "name" : "COMM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "CALCULATED_SALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "DEPTNO",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_0001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "duplicateCheck(\"S.[EMPNO],S.[EMPCODE],S.[EMPNAME],S.[JOB],S.[HIREDATE]\")",
+            "comment" : "duplicateCheck(\"S.[EMPNO],S.[EMPCODE],S.[EMPNAME],S.[JOB],S.[HIREDATE]\")",
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "columns" : [ {
+              "index" : 1,
+              "name" : "S.[EMPNO]",
+              "datatype" : "NUMBER"
+            }, {
+              "index" : 2,
+              "name" : "S.[EMPCODE]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 3,
+              "name" : "S.[EMPNAME]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 4,
+              "name" : "S.[JOB]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 5,
+              "name" : "S.[HIREDATE]",
+              "datatype" : "TIMESTAMP"
+            } ]
+          },
+          "id" : "chck-f7dfbf79-f24b-5488-b256-aeeba984db43",
+          "type" : "Duplicate"
+        }, {
+          "name" : "noOfDuplicates",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUPLICATE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3c20630c-f7f4-5d21-9b51-467fe54b6c3a",
+          "type" : "Column",
+          "description" : "Duplicate records count"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false,
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-acba7ff3-0371-5182-8483-17c4cfae0ae9"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1770185380.901974000",
+  "updatedBy" : "mohit"
+}
