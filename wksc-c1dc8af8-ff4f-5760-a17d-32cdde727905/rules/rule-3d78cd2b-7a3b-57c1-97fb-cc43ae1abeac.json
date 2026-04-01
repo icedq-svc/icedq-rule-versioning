@@ -1,0 +1,282 @@
+{
+  "objectId" : "rule-3d78cd2b-7a3b-57c1-97fb-cc43ae1abeac",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_r7h87c",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.SORTED_ORACLE_URU",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EMPNO",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "EMPCODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "EMPNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "JOB",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "HIREDATE",
+          "datatype" : "TIMESTAMP(6)",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 6,
+          "name" : "EMPADDR1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "EMPADDR2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "SALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 10,
+          "name" : "COMM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "CALCULATED_SALARY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 12,
+          "name" : "DEPTNO",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-ec835b54-d31f-5c34-bd4d-c736418dcdb8",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_EMPNAME",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPNAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c846662c-acbf-590b-910b-57a43656547a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CALCULATED_SALARY",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CALCULATED_SALARY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-57f05f33-1f79-515f-bdc0-3c5153121153",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COMM",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COMM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b2b6b231-60f7-589b-89a1-775ed66fbf79",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PHONE",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PHONE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-87a24437-9cb7-5693-8d75-33bacda8375c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EMPADDR1",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPADDR1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-75eb92c7-f76b-5ab4-80e8-48389b75f7a4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EMPNO",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPNO] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9423849f-6c03-5283-83eb-03fb235a37c1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EMPCODE",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPCODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-752fabf8-47ca-555b-9e78-6c59a0fb1b87",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EMPADDR2",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPADDR2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7352d102-f3dd-5d64-a68e-519c26eeb89e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_JOB",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[JOB] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0898ec3c-fb81-5f50-ad8e-bbaadc27083c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SALARY",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SALARY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-20d881f2-52a3-53fb-893a-854226063140",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_HIREDATE",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HIREDATE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-513e3754-df04-52d6-bdb7-4689fb080f5f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DEPTNO",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DEPTNO] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-379f94f8-1fae-5705-a24e-e0f9244b47be",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-0b26a12d-04f2-5e43-820c-7df67b38927b"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1770286893.558541000",
+  "updatedBy" : "service-account-icedq.executor"
+}
