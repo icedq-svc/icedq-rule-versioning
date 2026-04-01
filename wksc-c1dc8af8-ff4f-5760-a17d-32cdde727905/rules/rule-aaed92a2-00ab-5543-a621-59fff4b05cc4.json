@@ -1,0 +1,634 @@
+{
+  "objectId" : "rule-aaed92a2-00ab-5543-a621-59fff4b05cc4",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "VALIDATION_brg tk_6036",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_tk_6036",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.tk_6036",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CAL_DT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "CHANL_TYPE_TR2_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "COUNTRY_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "COUNTRY_NM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "CUST_CLASSIF_TR1_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "CUST_CLASSIF_TR2_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "CUST_MBRSHP_TERM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "DOMESTIC_REGION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "FULL_DT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "MBRSHP_PROG_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "REPORT_END_DT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "REPORT_START_DT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "REVENUE_EURO_AMT_PYCD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "REVENUE_GBP_AMT_PYCD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "REVENUE_QTY_PYCD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "REVENUE_TRANS_CAT_TR2_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "REVENUE_TRANS_TYPE_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "REVENUE_USD_AMT_PYCD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "CAL_DATE_SK",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "CURRENCY_SK",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 21,
+          "name" : "PRE_TAX_AMT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "REVENUE_EURO_AMT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "REVENUE_EURO_AMT_PY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 24,
+          "name" : "REVENUE_GBP_AMT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "REVENUE_GBP_AMT_PY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 26,
+          "name" : "REVENUE_QTY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "REVENUE_QTY_PY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "REVENUE_USD_AMT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "REVENUE_USD_AMT_PY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "ST_PROVC_CD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "ST_PROVC_NM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "FUNCTIONAL_OFFICE_CODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "SUB_CONTNT_NM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "SERVICING_OFFICE_CODE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-5f2ad07c-38b4-5d94-8809-71c80e2485ca",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_CUST_CLASSIF_TR1_CD",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CUST_CLASSIF_TR1_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2f44259c-9f2d-5f6e-a8ad-91b906bbecc1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REPORT_END_DT",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REPORT_END_DT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c0bfd621-acc2-50de-9ce8-177f648a0fa8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_USD_AMT_PYCD",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_USD_AMT_PYCD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3a07d386-3462-514f-a50e-c98cf12402cd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FULL_DT",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FULL_DT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9b74ecbf-8226-57d8-86ac-050e8432ad28",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SERVICING_OFFICE_CODE",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SERVICING_OFFICE_CODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-29b7f457-2c4b-5c6d-886f-b9f040ca5bf7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ST_PROVC_CD",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ST_PROVC_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7294e9ef-13e2-53e0-8638-d445dbb122db",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_QTY",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_QTY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9714cef9-c292-5261-8cbe-740952c9857d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MBRSHP_PROG_CD",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MBRSHP_PROG_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-51d0ca8c-d788-5c8f-8e13-9c89d305c7a0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COUNTRY_NM",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COUNTRY_NM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-82ed65e5-dcaa-5908-b881-64073018136a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CUST_MBRSHP_TERM",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CUST_MBRSHP_TERM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d24acc09-257e-5cf7-948b-bc350839a2d7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_GBP_AMT",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_GBP_AMT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4b828e9-6006-5c34-94ca-a5414fc98e9e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_EURO_AMT_PY",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_EURO_AMT_PY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9bd45687-e634-5bcc-8b61-f9adcf4fcbb0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DOMESTIC_REGION",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DOMESTIC_REGION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-34df5db4-73c6-5dc2-86be-05d57b12fc68",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FUNCTIONAL_OFFICE_CODE",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FUNCTIONAL_OFFICE_CODE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-76dcce01-8d40-54e7-9539-7f964fc9f0be",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_USD_AMT",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_USD_AMT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-452e9834-d021-5b64-a459-4880c68d059e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAL_DT",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAL_DT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5d9efd53-5ec3-5ced-8077-f742e5a7ee96",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_QTY_PYCD",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_QTY_PYCD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-46434f34-fc7b-5157-b8ad-22b107b199b8",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_USD_AMT_PY",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_USD_AMT_PY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d599e2cc-f793-56ec-a962-466123b037d2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CUST_CLASSIF_TR2_CD",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CUST_CLASSIF_TR2_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b7afbfc6-8140-504e-80d4-ccd61f06ffcd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_TRANS_CAT_TR2_CD",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_TRANS_CAT_TR2_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a4f33d7f-c64b-5c77-b4e8-ebf4fa719435",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CAL_DATE_SK",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CAL_DATE_SK] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ec688e37-8043-54ca-a601-e66cf84d33ac",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_GBP_AMT_PYCD",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_GBP_AMT_PYCD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-34c94345-5a21-5958-8336-0c7bf801e4d9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REPORT_START_DT",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REPORT_START_DT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d71034a3-b242-55d2-bdae-b604e7b2e6a1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_QTY_PY",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_QTY_PY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ff2ef469-67ee-5c21-8fa2-a245e007c470",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PRE_TAX_AMT",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PRE_TAX_AMT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-60a9d641-58dc-562a-b40f-a5cb4fe4dab5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ST_PROVC_NM",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ST_PROVC_NM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4ff04890-07ab-54f6-853f-e0942ac965a7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COUNTRY_CD",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COUNTRY_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-685aa07a-9917-5a3b-90ab-b11fbd45afdc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SUB_CONTNT_NM",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SUB_CONTNT_NM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1e36becf-1dd7-5546-b435-4339c9d927a6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CURRENCY_SK",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CURRENCY_SK] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c90adbe2-1e97-5b7b-9db3-5c3309f0a292",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_EURO_AMT",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_EURO_AMT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bc11eb7a-0280-502b-84b3-3f1b3b1b1213",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_EURO_AMT_PYCD",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_EURO_AMT_PYCD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b29b6f25-f747-531c-b1e8-d97da1ab1180",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_TRANS_TYPE_CD",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_TRANS_TYPE_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4a558731-2763-5529-aed5-4616c1f73707",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_REVENUE_GBP_AMT_PY",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_GBP_AMT_PY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d34079c8-bc70-52f2-af16-50bea50b6f5d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CHANL_TYPE_TR2_CD",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CHANL_TYPE_TR2_CD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3fa68d7a-ca95-5794-a711-88753cb0da19",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-12bc5122-d180-5dd7-87b5-6447e8560be9"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1770268871.911640000",
+  "updatedBy" : "service-account-icedq.executor"
+}
