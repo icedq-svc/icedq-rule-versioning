@@ -5,7 +5,7 @@
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "R001_FlatFzzzzzzzile_SQzzzzzzzzzzzzzzL  Recon  01",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "recon",
     "code" : "CODE00",
@@ -17,7 +17,8 @@
       "stopAtFailAndErrorCount" : 22000,
       "stopAtRowCount" : 1000,
       "stopAtTime" : 40,
-      "degreeOfParallelism" : 1
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { }
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -27,13 +28,16 @@
       "connectionId" : "conn-e60216d5-8bd8-5f50-83ff-0850e53e51d4",
       "input" : "FileStatic",
       "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
         "tableName" : "tblname_1759995727195",
+        "tableRemarks" : "",
         "fileSchemaId" : "schm-ddfb19ad-cba0-5e35-8a62-678e3429f0a2",
         "sql" : "select * from tblname_1759995727195",
         "fileType" : "Delimited",
-        "filePath" : "Customer.txt",
+        "container" : "torana-files/QATestingFile/",
+        "filePath" : "11583.csv",
         "columnDelimiter" : "|",
-        "rowDelimiter" : "",
         "textQualifier" : "",
         "skipRowTop" : "0",
         "trimData" : "true",
@@ -42,6 +46,7 @@
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -103,6 +108,14 @@
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document",
+        "outputDelimiter" : ",",
         "generateRollUps" : false
       }
     }, {
@@ -113,7 +126,10 @@
       "connectionId" : "conn-e60216d5-8bd8-5f50-83ff-0850e53e51d4",
       "input" : "FileStatic",
       "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
         "tableName" : "tblname_1759995903983",
+        "tableRemarks" : "",
         "fileSchemaId" : "schm-224a630a-1e00-5759-b451-f4f8c6dff20b",
         "sql" : "select * from tblname_1759995903983",
         "fileType" : "Delimited",
@@ -124,10 +140,14 @@
         "skipRowTop" : "0",
         "trimData" : "true",
         "emptyString" : "true",
+        "whiteSpace" : "false",
+        "fixedString" : "false",
         "fixedStringValue" : "NaN",
+        "filterCondition" : "",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -189,6 +209,14 @@
           "datatype" : "VARCHAR",
           "icedqDatatype" : "TEXT"
         } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document",
+        "outputDelimiter" : ",",
         "generateRollUps" : false
       }
     }, {
@@ -353,6 +381,7 @@
         "storeOnlyException" : true,
         "storeOnlyExportedFile" : true,
         "format" : [ "XLSX" ],
+        "loadExceptions" : false,
         "generateRollUps" : false
       }
     }, {
@@ -376,6 +405,6 @@
       }
     } ]
   },
-  "updatedTimestamp" : "1771251941.835219000",
-  "updatedBy" : "service-account-icedq.executor"
+  "updatedTimestamp" : "1771312777.317669000",
+  "updatedBy" : "mohit"
 }
