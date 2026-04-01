@@ -1,0 +1,202 @@
+{
+  "objectId" : "rule-9cedf749-9f98-584f-a8c9-fe965b874d91",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "Rule_1770371267",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Duplicate",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "degreeOfParallelism" : 1,
+      "engineInfo" : { },
+      "languageType" : "groovy"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Table",
+      "configuration" : {
+        "schemaName" : "REGRESSION_DATABASE",
+        "tableName" : "CUSTOMER",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "CUSTOMERID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "ACCTNUMBER",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FIRSTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "LASTNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "GENDER",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "BIRTHDATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 7,
+          "name" : "DATEFIRSTPURCHASE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "PHONENO",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "EMAIL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "YEARLYINCOME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "ADDRESSID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_0001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "duplicateCheck(\"S.[CUSTOMERID],S.[GENDER],S.[BIRTHDATE],S.[DATEFIRSTPURCHASE],S.[ADDRESSID],S.[ACCTNUMBER],S.[FIRSTNAME],S.[LASTNAME],S.[PHONENO],S.[EMAIL],S.[YEARLYINCOME]\")",
+            "comment" : "duplicateCheck(\"S.[CUSTOMERID],S.[GENDER],S.[BIRTHDATE],S.[DATEFIRSTPURCHASE],S.[ADDRESSID],S.[ACCTNUMBER],S.[FIRSTNAME],S.[LASTNAME],S.[PHONENO],S.[EMAIL],S.[YEARLYINCOME]\")",
+            "trimmingEnable" : true,
+            "caseInsensitive" : false,
+            "columns" : [ {
+              "index" : 1,
+              "name" : "S.[CUSTOMERID]",
+              "datatype" : "NUMBER"
+            }, {
+              "index" : 2,
+              "name" : "S.[GENDER]",
+              "datatype" : "CHAR"
+            }, {
+              "index" : 3,
+              "name" : "S.[BIRTHDATE]",
+              "datatype" : "DATE"
+            }, {
+              "index" : 4,
+              "name" : "S.[DATEFIRSTPURCHASE]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 5,
+              "name" : "S.[ADDRESSID]",
+              "datatype" : "NUMBER"
+            }, {
+              "index" : 6,
+              "name" : "S.[ACCTNUMBER]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 7,
+              "name" : "S.[FIRSTNAME]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 8,
+              "name" : "S.[LASTNAME]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 9,
+              "name" : "S.[PHONENO]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 10,
+              "name" : "S.[EMAIL]",
+              "datatype" : "VARCHAR2"
+            }, {
+              "index" : 11,
+              "name" : "S.[YEARLYINCOME]",
+              "datatype" : "VARCHAR2"
+            } ]
+          },
+          "id" : "chck-e468f280-327c-5497-bcc8-43a72525f80d",
+          "type" : "Duplicate"
+        }, {
+          "name" : "noOfDuplicates",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DUPLICATE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e1510f38-589e-516c-ae42-c39c5dad6a39",
+          "type" : "Column",
+          "description" : "Duplicate records count"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "createExportDownloadLink" : false,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : false,
+        "format" : [ "XLSX" ],
+        "loadExceptions" : false,
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-5be68465-19c0-558e-b6cb-8ffe6793a9ce"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1770371459.984944000",
+  "updatedBy" : "roshan.n"
+}
