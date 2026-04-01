@@ -5,18 +5,15 @@
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
   "name" : "R002_FlatFile SQL_Checksum ssssssssssssssssssNEW",
   "state" : "Published",
-  "version" : 1,
+  "version" : 2,
   "info" : {
     "ruleType" : "checksum",
-    "code" : "CODE00",
+    "code" : "CODE001",
     "description" : "This template creates checksum rules to make sure the row counts between source and target table is the same.",
     "properties" : {
       "criticality" : "Warning",
       "engineType" : "HighThroughput",
-      "stopAtFailAndErrorCount" : 22000,
-      "stopAtRowCount" : 1000,
-      "stopAtTime" : 40,
-      "degreeOfParallelism" : 1
+      "engineInfo" : { }
     },
     "objects" : [ {
       "id" : "SourceDataset",
@@ -26,7 +23,10 @@
       "connectionId" : "conn-e60216d5-8bd8-5f50-83ff-0850e53e51d4",
       "input" : "FileStatic",
       "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
         "tableName" : "tblname_1751280108339",
+        "tableRemarks" : "",
         "fileSchemaId" : "schm-10b02cb6-d90e-54f2-a798-ab605439b163",
         "sql" : "select count(*) as source_count from tblname_1751280108339",
         "fileType" : "Delimited",
@@ -37,10 +37,14 @@
         "skipRowTop" : "0",
         "trimData" : "true",
         "emptyString" : "true",
+        "whiteSpace" : "false",
+        "fixedString" : "false",
         "fixedStringValue" : "NaN",
+        "filterCondition" : "",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -52,6 +56,14 @@
           "datatype" : "NUMBER",
           "icedqDatatype" : "NUMERIC"
         } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document",
+        "outputDelimiter" : ",",
         "generateRollUps" : false
       }
     }, {
@@ -62,7 +74,10 @@
       "connectionId" : "conn-e60216d5-8bd8-5f50-83ff-0850e53e51d4",
       "input" : "FileStatic",
       "configuration" : {
+        "databaseName" : "",
+        "schemaRemarks" : "",
         "tableName" : "tblname_1760533641576",
+        "tableRemarks" : "",
         "fileSchemaId" : "schm-5a4daf9e-f524-53a7-9867-950da6619f8e",
         "sql" : "select count(*) as target_count from tblname_1760533641576",
         "fileType" : "Delimited",
@@ -73,10 +88,14 @@
         "skipRowTop" : "0",
         "trimData" : "true",
         "emptyString" : "false",
+        "whiteSpace" : "false",
+        "fixedString" : "false",
         "fixedStringValue" : "NaN",
+        "filterCondition" : "",
         "appendOrderBy" : true,
         "isSingleFile" : true,
         "isDynamicPath" : false,
+        "overrideLayout" : false,
         "isSorted" : true,
         "isDeferredSort" : false,
         "isSortCaseSensitive" : true,
@@ -88,6 +107,14 @@
           "datatype" : "NUMBER",
           "icedqDatatype" : "NUMERIC"
         } ],
+        "snapshotId" : "",
+        "visualId" : "",
+        "granularity" : "Summary",
+        "baseUrl" : "",
+        "requestMethod" : "GET",
+        "endPoint" : "",
+        "dataModel" : "Document",
+        "outputDelimiter" : ",",
         "generateRollUps" : false
       }
     }, {
@@ -130,6 +157,6 @@
       }
     } ]
   },
-  "updatedTimestamp" : "1765369777.917108000",
-  "updatedBy" : "mohit"
+  "updatedTimestamp" : "1766049613.346839000",
+  "updatedBy" : "roshan.n"
 }
