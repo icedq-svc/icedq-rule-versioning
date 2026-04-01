@@ -1,0 +1,101 @@
+{
+  "objectId" : "rule-959dee68-4246-5b1c-905d-7b8964bcc144",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "CHECKSUM_icedqrs brg customer",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Checksum",
+    "code" : "CODE00_customer",
+    "description" : "This template creates checksum rules to make sure the row counts between source and target table is the same.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT COUNT(*) AS SOURCE_COUNT FROM icedqrs.dataops_dw.customer",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "SOURCE_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "CloudDB",
+      "connectionId" : "conn-3fe02654-2b56-50bd-9ead-45ef64967969",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "SELECT COUNT(*) AS TARGET_COUNT FROM icedqrs.dataops_dw.customer",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "TARGET_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "Chk_001",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE_COUNT] - T.[TARGET_COUNT] == 0",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1abf1bd8-b8be-5233-b20f-d5b4c13cdb5b",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-ba0b8c18-e108-5082-ae5c-7562cbbc1fcb"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1768991945.136018000",
+  "updatedBy" : "service-account-icedq.executor"
+}
