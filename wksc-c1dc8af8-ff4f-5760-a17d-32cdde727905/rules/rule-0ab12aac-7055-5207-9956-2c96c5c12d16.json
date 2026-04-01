@@ -1,0 +1,186 @@
+{
+  "objectId" : "rule-0ab12aac-7055-5207-9956-2c96c5c12d16",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_aanmv2",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.TK_7343_NEW",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "division code on fprs",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "division name on fprs",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "region name on fprs",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "UD_SEQ_N",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 5,
+          "name" : "ALPH_5_C",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 6,
+          "name" : "IND_TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-390bd67c-05c2-5d5c-bbb7-f785ea53e17e",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_IND_TYPE",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[IND_TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2f0fe6d1-4593-5f34-94fb-fe6bd2c8d97f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_UD_SEQ_N",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[UD_SEQ_N] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0bd08378-9a7e-52e5-8d15-9608d51a87e0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ALPH_5_C",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ALPH_5_C] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7a050ff5-ca21-577d-bc11-9ce932d9fa12",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_divisioncodeonfprs",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[division code on fprs] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5f6c7001-833c-5487-a766-639bcce50106",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_divisionnameonfprs",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[division name on fprs] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-63a486a5-b856-5f4b-9ea3-b3a6dc3ec896",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_regionnameonfprs",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[region name on fprs] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-440a49a6-cc1c-52bc-ab9e-18df41897853",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e583d16c-4390-598e-a8bf-6e36cdddbb8d"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1770281044.909381000",
+  "updatedBy" : "service-account-icedq.executor"
+}
