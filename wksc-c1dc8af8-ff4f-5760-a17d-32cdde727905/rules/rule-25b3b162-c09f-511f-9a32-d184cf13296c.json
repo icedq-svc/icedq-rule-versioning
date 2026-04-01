@@ -1,0 +1,433 @@
+{
+  "objectId" : "rule-25b3b162-c09f-511f-9a32-d184cf13296c",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "RECON_brg employee",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Recon",
+    "code" : "CODE00_employee",
+    "description" : "This templates creates recon rules to compare the aggregated sum of each numeric column in the source and target table. The source and target column names should be same for the equal to expressions to be created. Diff is created using a dummy UK.",
+    "purpose" : "Aggregate values",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select tran_id AS Transaction_id,sum(total_sale) AS Sale,sum(tax) AS Tax from ng_icedq_testdata.employee Group by tran_id",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EmployeeId",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "LastName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FirstName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "ReportsTo",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 6,
+          "name" : "BirthDate",
+          "datatype" : "DATETIME",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 7,
+          "name" : "HireDate",
+          "datatype" : "DATETIME",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 8,
+          "name" : "Address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "City",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "State",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Country",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "PostalCode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Fax",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "TargetDataset",
+      "type" : "target",
+      "name" : "targetDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select tran_id AS Transaction_id,sum(total_sale) AS Sale,sum(tax) AS Tax from ng_icedq_testdata.employee Group by tran_id",
+        "appendOrderBy" : true,
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "EmployeeId",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 2,
+          "name" : "LastName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "FirstName",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "Title",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "ReportsTo",
+          "datatype" : "INT",
+          "icedqDatatype" : "INT"
+        }, {
+          "index" : 6,
+          "name" : "BirthDate",
+          "datatype" : "DATETIME",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 7,
+          "name" : "HireDate",
+          "datatype" : "DATETIME",
+          "icedqDatatype" : "TIMESTAMP"
+        }, {
+          "index" : 8,
+          "name" : "Address",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "City",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "State",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 11,
+          "name" : "Country",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "PostalCode",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "Phone",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "Fax",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "Email",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "DiffJoin",
+      "type" : "diffJoin",
+      "name" : "diffJoin",
+      "configuration" : {
+        "joins" : [ {
+          "index" : 1,
+          "sourceKey" : "EmployeeId",
+          "targetKey" : "EmployeeId"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp", "a-b", "b-a" ]
+          },
+          "id" : "chck-75e4a763-67e0-543a-91eb-d78d60c7037f",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_Country",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Country] == T.[Country]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b20ba2ea-d24e-57ae-b85c-6bd83623ff84",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FirstName",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FirstName] == T.[FirstName]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2b01c4e3-8d91-5cef-9e84-088ceb4b50fd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_BirthDate",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[BirthDate] == T.[BirthDate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-69fb9c06-4f25-5296-966d-2a43c8f3ca9c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Address",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Address] == T.[Address]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-23dd4a65-a159-53df-bc48-bf28344c6c27",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_City",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[City] == T.[City]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0d62c311-d13e-5a4c-8088-c66d87185ab2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ReportsTo",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ReportsTo] == T.[ReportsTo]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c7376082-6443-5b54-b4f4-28a6ae559131",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Title",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Title] == T.[Title]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b427ef16-6b71-5098-8800-c1ccb4b3ea53",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EmployeeId",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EmployeeId] == T.[EmployeeId]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-998d5c1b-68c2-5f18-9f95-467102c738b4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_HireDate",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[HireDate] == T.[HireDate]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-aff2bcc6-6cd3-50c9-a5c3-651973baec27",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LastName",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LastName] == T.[LastName]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-57afdd07-ab61-53f6-899b-132c680957dc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Phone",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Phone] == T.[Phone]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-01742833-c85c-5d23-a855-721c981a0830",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PostalCode",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PostalCode] == T.[PostalCode]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-625f5a7c-c602-5421-963d-5fd0ea21570a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_State",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[State] == T.[State]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e75cffa0-f083-51fb-b98c-995ac1ebfa3e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Fax",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Fax] == T.[Fax]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9b22f778-77f1-5fec-812a-8bf89ae5930d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_Email",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Email] == T.[Email]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-57e89a0d-f16f-5e6d-8cd3-8528a815a10b",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-4ba03094-c1a7-533f-a0f7-81c825bbc6cb"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1768981210.305111000",
+  "updatedBy" : "service-account-icedq.executor"
+}
