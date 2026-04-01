@@ -1,0 +1,2026 @@
+{
+  "objectId" : "rule-8a045451-edaf-509d-aaf7-7756beb1f919",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "oracle_hpen9q",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "validation",
+    "code" : "CODE00",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype. Users need to bulk upload the SQLs",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.SEND_MI_VIEW",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "SEDMI_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 2,
+          "name" : "SEDTS_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 3,
+          "name" : "STUDYID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "DOMAIN",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "SEDDM_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "USUBJID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 7,
+          "name" : "MIGRPID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "MISPID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "MIREFID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 10,
+          "name" : "SEDTIS_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 11,
+          "name" : "TISSUE_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 12,
+          "name" : "ABBREVIATION",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 13,
+          "name" : "MITESTCD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 14,
+          "name" : "MITEST",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 15,
+          "name" : "MILAT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 16,
+          "name" : "MIDIR",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 17,
+          "name" : "MIDSTRBN",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 18,
+          "name" : "MIANTREG",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 19,
+          "name" : "MIBODSYS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 20,
+          "name" : "SEDOBS_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 21,
+          "name" : "OBS_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 22,
+          "name" : "LONG_FORM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 23,
+          "name" : "MIFINDINGTYPE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 24,
+          "name" : "MISTRESNAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 25,
+          "name" : "MISTRESN",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 26,
+          "name" : "MISTRESU",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 27,
+          "name" : "MIORRES",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 28,
+          "name" : "MIRESCAT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 29,
+          "name" : "MISTAT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 30,
+          "name" : "MIREASND",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 31,
+          "name" : "MISPCCND",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 32,
+          "name" : "MISPCUFL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 33,
+          "name" : "MINAM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 34,
+          "name" : "MIEVAL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 35,
+          "name" : "MIMETHOD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 36,
+          "name" : "MISEV",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 37,
+          "name" : "MIDTHREL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 38,
+          "name" : "MIDTC",
+          "datatype" : "TIMESTAMP(6) WITH TIME ZONE",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 39,
+          "name" : "MIDTC_2",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 40,
+          "name" : "MITIME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 41,
+          "name" : "MIDY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 42,
+          "name" : "TFDETECT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 43,
+          "name" : "MINEOTYPE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 44,
+          "name" : "MINEOTYPENAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 45,
+          "name" : "MISIZE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 46,
+          "name" : "MIMOD1",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 47,
+          "name" : "MIMOD2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 48,
+          "name" : "MIMOD3",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 49,
+          "name" : "MIMOD4",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 50,
+          "name" : "MIMOD5",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 51,
+          "name" : "MIMOD6",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 52,
+          "name" : "MISHORTTX",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 53,
+          "name" : "MISHORTTXVAL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 54,
+          "name" : "MIRELTREAT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 55,
+          "name" : "MIFINLOC",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 56,
+          "name" : "MIFINDSTRBN",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 57,
+          "name" : "SEDPHS_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 58,
+          "name" : "PHASE_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 59,
+          "name" : "DAYOFPHASE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 60,
+          "name" : "SESSION_NUMBER",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 61,
+          "name" : "SCHEDULE",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 62,
+          "name" : "DATE_TIME_ENTERED",
+          "datatype" : "TIMESTAMP(6) WITH TIME ZONE",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 63,
+          "name" : "DATE_TIME_ENTERED_2",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 64,
+          "name" : "USRREF_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 65,
+          "name" : "USER_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 66,
+          "name" : "COMMENTS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 67,
+          "name" : "PMFDAT_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 68,
+          "name" : "IMPORT_USER_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 69,
+          "name" : "IMPORT_DIR",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 70,
+          "name" : "MODIFIERS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 71,
+          "name" : "ORIGIN_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 72,
+          "name" : "SEDCORR_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 73,
+          "name" : "MODIFIERS2",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 74,
+          "name" : "MISEQ",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 75,
+          "name" : "FETUSID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 76,
+          "name" : "MICHRON",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 77,
+          "name" : "MIPHDY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 78,
+          "name" : "POSTNATAL_DAY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 79,
+          "name" : "SEDTG_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 80,
+          "name" : "SEX",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 81,
+          "name" : "GEN_MODS",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 82,
+          "name" : "INSTANCENUM",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 83,
+          "name" : "TISSTAT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 84,
+          "name" : "DASHED",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 85,
+          "name" : "STUDY_WEEK",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 86,
+          "name" : "AGE_WEEK",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 87,
+          "name" : "DSDTC",
+          "datatype" : "TIMESTAMP(6) WITH TIME ZONE",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 88,
+          "name" : "DSDTC_2",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 89,
+          "name" : "TRT_FG",
+          "datatype" : "CHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 90,
+          "name" : "TRT_MOD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 91,
+          "name" : "TRT_COMMENT",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 92,
+          "name" : "ORIGINATING_TISSUE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 93,
+          "name" : "ORIGINATING_FINDING",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 94,
+          "name" : "VISITDY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 95,
+          "name" : "MINOMDY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 96,
+          "name" : "MINOMLBL",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 97,
+          "name" : "FOCID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 98,
+          "name" : "MIDISTR",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 99,
+          "name" : "PHPLDY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 100,
+          "name" : "PMTFDT_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 101,
+          "name" : "TISSSTAT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 102,
+          "name" : "PERSON_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 103,
+          "name" : "PRIM_TISID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 104,
+          "name" : "PRIM_MIID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 105,
+          "name" : "MISEVCD",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 106,
+          "name" : "EARLIEST_MASS_DT",
+          "datatype" : "TIMESTAMP(6) WITH TIME ZONE",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 107,
+          "name" : "EARLIEST_MASS_DRUG_WEEK",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 108,
+          "name" : "EARLIEST_MASS_STUDY_WEEK",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 109,
+          "name" : "EARLIEST_MASS_STUDY_DAY",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 110,
+          "name" : "IMPORT_USER_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 111,
+          "name" : "MIPETODESC",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 112,
+          "name" : "SEDMA_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 113,
+          "name" : "SEDPM_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 114,
+          "name" : "SEDCL_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 115,
+          "name" : "CORR_TYPE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 116,
+          "name" : "CORR_TYPENAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 117,
+          "name" : "CORR_STATUS",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 118,
+          "name" : "DATE_TAKEN",
+          "datatype" : "TIMESTAMP(6) WITH TIME ZONE",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 119,
+          "name" : "PMCORRID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 120,
+          "name" : "SEDTF_ID",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 121,
+          "name" : "FOREIGN_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-bfdcd610-f970-5769-9770-ca64907e222d",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_MIDY",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIDY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3a4c6bca-1d2f-51d1-b58a-b22555277497",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TISSUE_NAME",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TISSUE_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ba9d0b56-ca21-5b66-b222-822cb008d43c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDOBS_ID",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDOBS_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0a5e1a59-7963-51ef-9162-bef004f354b5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MITESTCD",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MITESTCD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6fe1d9c2-971f-5348-aaa9-b796e6503f9c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MINEOTYPENAME",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MINEOTYPENAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b3cda7b1-12c4-5d84-a719-1567248586e2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISTAT",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISTAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ba179e69-0b13-50ec-b74e-8121d5afb63c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISEVCD",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISEVCD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-07c2d536-4398-5fca-94a8-51897ba206b7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_OBS_NAME",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[OBS_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1c5a6fd1-26b4-55e4-9307-d9b7205e9631",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDCORR_ID",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDCORR_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e7a615a8-0131-5a6c-b76e-e42609bad5b0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ORIGIN_NAME",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ORIGIN_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-424e8e7d-dad2-5b0c-b3a1-beecdc064cb7",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SESSION_NUMBER",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SESSION_NUMBER] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fd47fb97-fb08-5420-b12e-4f22ac13b2ea",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISTRESNAME",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISTRESNAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cd3e7e4f-7a0d-5f4d-8858-4b0953c8540f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIREASND",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIREASND] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fad64d04-003a-5536-93e7-d2314222fa80",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EARLIEST_MASS_DRUG_WEEK",
+          "index" : 15,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EARLIEST_MASS_DRUG_WEEK] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f4934957-8531-5b7e-9534-366c3c81907e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISPID",
+          "index" : 16,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISPID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-78a62d82-eca4-5dda-9a6f-65c1e439cd3b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDDM_ID",
+          "index" : 17,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDDM_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3d1399bd-cb22-54d9-b4df-9d24f45976cf",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_IMPORT_USER_NAME",
+          "index" : 18,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[IMPORT_USER_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0c85acd2-a529-58a1-a73d-4240504b1c5c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DATE_TIME_ENTERED_2",
+          "index" : 19,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DATE_TIME_ENTERED_2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7fba4468-08e6-549e-b504-58394b63c085",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MINOMDY",
+          "index" : 20,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MINOMDY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f5c4288d-1d5a-5f68-a112-04096a179e9f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIFINDSTRBN",
+          "index" : 21,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIFINDSTRBN] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-771f4a8a-1a2f-549f-9c99-5ee758c96535",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DOMAIN",
+          "index" : 22,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DOMAIN] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-cb4616a6-0603-59b7-8043-2f77cf54653c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EARLIEST_MASS_STUDY_DAY",
+          "index" : 23,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EARLIEST_MASS_STUDY_DAY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7774fb17-c9dd-588c-bf2b-8c0881b4471c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_LONG_FORM",
+          "index" : 24,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[LONG_FORM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6e872d0a-ccbb-5f33-99ac-19ac47e8327e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIDIR",
+          "index" : 25,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIDIR] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-60946671-229a-59b4-a989-a6e1f037879c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIDTC_2",
+          "index" : 26,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIDTC_2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fe3cf870-0d3b-52f7-8e47-82ea683ddcf1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_IMPORT_DIR",
+          "index" : 27,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[IMPORT_DIR] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7dc815e7-9057-53d5-8abd-0afaef810708",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIORRES",
+          "index" : 28,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIORRES] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-078a9534-3c90-5c41-b306-a16fabbb8261",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_USER_NAME",
+          "index" : 29,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[USER_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4feb9893-6baf-5b46-a87f-7a999cfde986",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_POSTNATAL_DAY",
+          "index" : 30,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[POSTNATAL_DAY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2d4cb03e-ddba-5443-8d23-53a644b4750f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIRESCAT",
+          "index" : 31,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIRESCAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-da36d9ec-daba-56dc-acaf-c8de7fc5fe3a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISHORTTXVAL",
+          "index" : 32,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISHORTTXVAL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2f6689a1-5e16-533b-8340-b7ebe020a638",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISHORTTX",
+          "index" : 33,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISHORTTX] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e68d52d6-00d4-5754-a82d-edae7f1dc059",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_IMPORT_USER_ID",
+          "index" : 34,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[IMPORT_USER_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8bc78f4f-5661-566b-b96b-eaf555c2d154",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DSDTC",
+          "index" : 35,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DSDTC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-51d3176f-3761-5598-ba64-2eea53e6802a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MINOMLBL",
+          "index" : 36,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MINOMLBL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-01438d3b-843a-569b-a6cb-7dc85f8c1983",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TISSSTAT",
+          "index" : 37,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TISSSTAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fb035b5d-894b-5159-baa0-d8c4c048d856",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_STUDYID",
+          "index" : 38,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[STUDYID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-948bcfdd-3132-58c4-88e5-d5bccc6c5f20",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDMA_ID",
+          "index" : 39,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDMA_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-08dda120-1cbf-5193-90af-894ed8b15337",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TRT_COMMENT",
+          "index" : 40,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TRT_COMMENT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-221ea9f1-7a46-5d4d-b512-bc6ea84b12ea",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDTIS_ID",
+          "index" : 41,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDTIS_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4a9ef896-6ebc-53c4-8f8c-ff22218af8a9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDMI_ID",
+          "index" : 42,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDMI_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a1586ba9-fec5-5aac-a9b4-1a2f762b993d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIFINDINGTYPE",
+          "index" : 43,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIFINDINGTYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f49ac459-f5d0-530d-833f-a343cbf86211",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISIZE",
+          "index" : 44,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISIZE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-669d39ab-0efa-5c1d-b6c4-f71028057e75",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDTG_ID",
+          "index" : 45,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDTG_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bf7c68fe-9e3f-57c2-98ff-caf636bf54a3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEX",
+          "index" : 46,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEX] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ba49c5b4-9faf-55a3-8f81-c0e5c7b98b90",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_INSTANCENUM",
+          "index" : 47,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[INSTANCENUM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-50777216-223d-5a9f-aafc-1aebb47eb8d1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISTRESN",
+          "index" : 48,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISTRESN] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-28f73c66-0967-50d8-bcb9-e2b75eb85cb2",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIMETHOD",
+          "index" : 49,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIMETHOD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-56684fb7-117d-59d0-bee7-1b6ab7d4c518",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISPCCND",
+          "index" : 50,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISPCCND] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ce8ffb83-8f58-5cf3-ae54-34d565f4e872",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ABBREVIATION",
+          "index" : 51,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ABBREVIATION] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0c086f8b-1058-5589-a606-f9bbfb71f5e9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MODIFIERS2",
+          "index" : 52,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MODIFIERS2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3e9cce50-36b9-5e42-ba46-98c0d9ea6afa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_USUBJID",
+          "index" : 53,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[USUBJID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a8148b02-45ad-527d-a508-849b8589d41f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_STUDY_WEEK",
+          "index" : 54,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[STUDY_WEEK] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1a39723d-8cba-55b8-81d3-dda7a8d63f9d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISTRESU",
+          "index" : 55,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISTRESU] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1fef0907-04ec-566d-bf93-10a54c0f5a60",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISEQ",
+          "index" : 56,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISEQ] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-86cc5f45-bcd0-523c-b21a-43a5dd33789c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DSDTC_2",
+          "index" : 57,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DSDTC_2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1139c5c6-c6a6-54f4-83e4-723c2deb8b7b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CORR_TYPE",
+          "index" : 58,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CORR_TYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b7902695-3886-5c28-9fff-d598980e2f7f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDPM_ID",
+          "index" : 59,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDPM_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a81862cd-2957-55d8-ba62-8826e4f28531",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIREFID",
+          "index" : 60,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIREFID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-808f0905-30e6-50b2-b2a2-420bed163fd5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISEV",
+          "index" : 61,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISEV] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d4be1f90-b98e-5e52-8630-61c5c37d2380",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DASHED",
+          "index" : 62,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DASHED] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0f82f31d-ab90-5e68-af4b-452a1c62aa77",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TRT_FG",
+          "index" : 63,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TRT_FG] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-75cf976b-d478-524d-ba08-f07befcd102d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FOCID",
+          "index" : 64,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FOCID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ffb2f7d8-9543-5c14-a489-1030709c15ca",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PHPLDY",
+          "index" : 65,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PHPLDY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e97a16e7-7033-5aba-a62b-b0b9f972c343",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIBODSYS",
+          "index" : 66,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIBODSYS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9d87e821-96d8-55f0-b4ea-816a09fda7a0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIDTC",
+          "index" : 67,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIDTC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c88b2be5-3aa0-598c-aadd-d818de73f20a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIDSTRBN",
+          "index" : 68,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIDSTRBN] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7118efa2-5524-5f54-88d9-5c73bc7f5747",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_AGE_WEEK",
+          "index" : 69,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[AGE_WEEK] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-13665911-f007-5d0b-b75b-14333e87604a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ORIGINATING_FINDING",
+          "index" : 70,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ORIGINATING_FINDING] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4f36a117-e9e4-5df1-b467-96b6490be40f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EARLIEST_MASS_STUDY_WEEK",
+          "index" : 71,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EARLIEST_MASS_STUDY_WEEK] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b959af2e-558b-5303-9d3f-3f5ecea37084",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TRT_MOD",
+          "index" : 72,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TRT_MOD] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6faa8ed1-d9b9-5b69-8b1f-bae80b1acaec",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIDISTR",
+          "index" : 73,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIDISTR] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2bc45b6f-30ed-5ff1-ab11-83772d8527b5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MITIME",
+          "index" : 74,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MITIME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-65900963-c1dc-5d4b-868c-cca3a7292b3c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DATE_TIME_ENTERED",
+          "index" : 75,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DATE_TIME_ENTERED] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bbb114c2-8f5a-5cbc-b28c-a479f34da527",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PERSON_ID",
+          "index" : 76,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PERSON_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a06775c9-223a-5eec-b739-9a894130517e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDPHS_ID",
+          "index" : 77,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDPHS_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1bbce3c6-b0c8-5ef0-b640-23811e944ad5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DAYOFPHASE",
+          "index" : 78,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DAYOFPHASE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c9294643-5e3a-569d-9aac-bbd24f7da7bc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PRIM_MIID",
+          "index" : 79,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PRIM_MIID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c5c15e43-8d49-5aa0-b3c9-4c9e50442257",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CORR_STATUS",
+          "index" : 80,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CORR_STATUS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-21160891-1525-52f9-b628-582f5b124040",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIFINLOC",
+          "index" : 81,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIFINLOC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d604612a-5af5-5129-8572-5672cd8f0445",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_CORR_TYPENAME",
+          "index" : 82,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CORR_TYPENAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-a86cd617-85f1-556c-b078-32d49c90d8d9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MINEOTYPE",
+          "index" : 83,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MINEOTYPE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bd10e236-1408-513a-b54a-addae9daa153",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIPETODESC",
+          "index" : 84,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIPETODESC] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4db252fa-a96d-500b-a1d6-b1604d1791bc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIGRPID",
+          "index" : 85,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIGRPID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7fecd1d1-9094-5139-bc7e-2cfd8c7e8791",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PMFDAT_ID",
+          "index" : 86,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PMFDAT_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-45325add-ffb3-5b94-b6f4-50f52ac23408",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MILAT",
+          "index" : 87,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MILAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f2b69d37-6305-599b-859f-2991b52e26ba",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PMTFDT_ID",
+          "index" : 88,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PMTFDT_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-26ecec02-cf88-5f02-954a-ad6199b57a49",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_EARLIEST_MASS_DT",
+          "index" : 89,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EARLIEST_MASS_DT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d4aa6e29-489e-5939-bbef-5e734684549e",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TFDETECT",
+          "index" : 90,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TFDETECT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c71d43f1-54e5-520b-9caf-4caa0f84d11a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PHASE_NAME",
+          "index" : 91,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PHASE_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-995d0e32-4f2b-5a2e-9e33-e208253152b1",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDTF_ID",
+          "index" : 92,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDTF_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4cb026e7-a5f9-5ec6-ba9e-2ff69eb6697c",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PMCORRID",
+          "index" : 93,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PMCORRID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-65bc10ca-d353-5dbd-84e4-2c7781420401",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MODIFIERS",
+          "index" : 94,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MODIFIERS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-2d214780-747f-55bd-9786-6ebf11b714f4",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_ORIGINATING_TISSUE",
+          "index" : 95,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ORIGINATING_TISSUE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3610ad3c-3135-51a2-b8ce-798c9015b41b",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_PRIM_TISID",
+          "index" : 96,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[PRIM_TISID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8b4982d3-6be9-5602-a3d0-e1bdfaa2624a",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MINAM",
+          "index" : 97,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MINAM] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ae303fd8-0703-5dc6-ae53-a48be1f04bbd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIEVAL",
+          "index" : 98,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIEVAL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-85472725-9438-541e-9061-197d34cb4e45",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MITEST",
+          "index" : 99,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MITEST] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ff3c3baf-793e-5ce3-8038-4b4d9c39384d",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FOREIGN_NAME",
+          "index" : 100,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FOREIGN_NAME] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-668f526e-827a-5f6a-87fe-db1b29cdd3f6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_GEN_MODS",
+          "index" : 101,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[GEN_MODS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-53616739-9f05-593c-9b8f-c53fbb9fe344",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MISPCUFL",
+          "index" : 102,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MISPCUFL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7f0ac2a1-953e-5ea4-8465-0e9ce99a1907",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIPHDY",
+          "index" : 103,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIPHDY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-8c253030-2602-5081-af4f-b0eb9eb55943",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDCL_ID",
+          "index" : 104,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDCL_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4ebf6e11-b311-59aa-ac30-cb369f644f97",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIDTHREL",
+          "index" : 105,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIDTHREL] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-44ff4ec1-8c07-5a5b-8159-338f73884bfd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_DATE_TAKEN",
+          "index" : 106,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[DATE_TAKEN] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-84b9c49a-9364-599c-9679-f90e770851aa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_USRREF_ID",
+          "index" : 107,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[USRREF_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6d7c1bbe-8055-56e7-88b4-5564b45ed295",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_FETUSID",
+          "index" : 108,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[FETUSID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-bc978a85-30de-57d5-8a14-b1f3b9eebf48",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_COMMENTS",
+          "index" : 109,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[COMMENTS] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c7825662-7604-5bde-919e-d4f765e2d6e0",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIRELTREAT",
+          "index" : 110,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIRELTREAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d2af5c71-0bb5-5efa-b578-839bf8553ddf",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MICHRON",
+          "index" : 111,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MICHRON] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-192bd788-9e8a-50e7-9b31-5dfc0c7684d6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIMOD6",
+          "index" : 112,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIMOD6] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9f715667-18a0-54af-9005-1c6e27414b75",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SEDTS_ID",
+          "index" : 113,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SEDTS_ID] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-5ad3af58-3866-5701-b58f-cea180ec2ce3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIANTREG",
+          "index" : 114,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIANTREG] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d0b91881-968c-563d-925a-587fc9508bdd",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIMOD1",
+          "index" : 115,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIMOD1] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f6e33359-1c9b-5062-a23c-510e7a33ee3f",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_SCHEDULE",
+          "index" : 116,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SCHEDULE] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-36298a33-e36c-5de8-9ed6-ab6243b62af5",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_VISITDY",
+          "index" : 117,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[VISITDY] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-0b416f78-fa53-513b-aef7-d7587fc68a39",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIMOD5",
+          "index" : 118,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIMOD5] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6c94f59e-341b-5ba7-910c-6b243c817eab",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIMOD4",
+          "index" : 119,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIMOD4] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e40462ff-8eb3-597d-9037-90a3d4b28874",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIMOD3",
+          "index" : 120,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIMOD3] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9ba354c6-2ceb-5ab5-89b1-5c20eccf01f6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_MIMOD2",
+          "index" : 121,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[MIMOD2] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b9b41d80-025d-5e22-8fd4-e22fcd5f33f6",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_TISSTAT",
+          "index" : 122,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[TISSTAT] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c7bc8394-3b6b-5326-8261-c1008546662b",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e2ec480a-3e51-5bae-9f85-9d7a72e3b962"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1770291247.864610000",
+  "updatedBy" : "service-account-icedq.executor"
+}
