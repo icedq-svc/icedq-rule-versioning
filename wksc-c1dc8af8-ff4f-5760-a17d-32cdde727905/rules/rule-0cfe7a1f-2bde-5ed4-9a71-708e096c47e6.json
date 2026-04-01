@@ -3,16 +3,16 @@
   "orgId" : "org-icedq",
   "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
   "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
-  "name" : "RECON_brg competitive_marketing_analysis_category_Test1",
+  "name" : "GIT Integration Demo",
   "state" : "Published",
-  "version" : 21,
+  "version" : 22,
   "info" : {
     "ruleType" : "Recon",
-    "code" : "CODE00_competitive_marketing_analysis_category_Test1",
+    "code" : "CODE00_competitive_marketing_analysis_category_Test2",
     "description" : "This templates creates recon rules to compare the aggregated sum of each numeric column in the source and target table. The source and target column names should be same for the equal to expressions to be created. Diff is created using a dummy UK.",
     "purpose" : "Aggregate values_GIT Integration Demo1",
     "properties" : {
-      "criticality" : "Critical",
+      "criticality" : "Blocker",
       "parameterId" : "parm-bc2eb1b3-1c27-5721-8c5f-214042117d25",
       "engineType" : "HighThroughput",
       "stopAtFailAndErrorCount" : 22000,
@@ -89,10 +89,6 @@
           "index" : 1,
           "sourceKey" : "Category",
           "targetKey" : "Category"
-        }, {
-          "index" : 2,
-          "sourceKey" : "Channel",
-          "targetKey" : "Channel"
         } ],
         "generateRollUps" : false
       }
@@ -129,7 +125,7 @@
           "isActive" : true,
           "isVisible" : true,
           "expression" : {
-            "value" : "S.[Sort] == T.[Sort]",
+            "value" : "S.[Sort] != T.[Sort]",
             "caseInsensitive" : false
           },
           "id" : "chck-0a70e2cd-bcc0-5272-9ee9-5af73b1832ee",
@@ -185,6 +181,17 @@
           },
           "id" : "chck-ef195056-1918-5f82-91e3-2469cb8a1703",
           "type" : "Column"
+        }, {
+          "name" : "Fyi_s_channel",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[Channel]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-f59affe7-f744-58ae-a4f3-08e9a22e470a",
+          "type" : "Column"
         } ],
         "generateRollUps" : false
       }
@@ -195,8 +202,8 @@
       "configuration" : {
         "exportFileRowLimit" : "20000",
         "createExportDownloadLink" : true,
-        "storeOnlyException" : true,
-        "storeOnlyExportedFile" : false,
+        "storeOnlyException" : false,
+        "storeOnlyExportedFile" : true,
         "format" : [ "XLSX" ],
         "loadExceptions" : false,
         "generateRollUps" : false
@@ -222,6 +229,6 @@
       }
     } ]
   },
-  "updatedTimestamp" : "1770124757.566080000",
+  "updatedTimestamp" : "1770126261.663364000",
   "updatedBy" : "mayurp"
 }
