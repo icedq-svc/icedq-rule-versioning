@@ -1,0 +1,298 @@
+{
+  "objectId" : "rule-37fd6296-0f3a-5b65-a115-ca40604a0c42",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "A1VALIDATIxxxxxxxxON_brg revenue_opportunities_fact_b",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Validation",
+    "code" : "CODE00_revenue_opportunities_fact_b",
+    "description" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "purpose" : "This template creates validation rule with pre-defined expressions based on datatype.",
+    "properties" : {
+      "criticality" : "Warning",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-19fc3f10-a1e8-5fae-8423-29bfd9478f9d",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from bi_testing.revenue_opportunities_fact_b",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "estimatedclosedate",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "opportunity id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 3,
+          "name" : "sales stage id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 4,
+          "name" : "account id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 5,
+          "name" : "partner id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 6,
+          "name" : "product id",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 7,
+          "name" : "productrevenue",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 8,
+          "name" : "factoredproductrevenue",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 9,
+          "name" : "create date",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 10,
+          "name" : "opportunity days",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 11,
+          "name" : "year",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 12,
+          "name" : "month_number",
+          "datatype" : "BIGINT",
+          "icedqDatatype" : "LONG"
+        }, {
+          "index" : 13,
+          "name" : "month",
+          "datatype" : "VARCHAR",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "Xp" ]
+          },
+          "id" : "chck-fb0bf57b-de5b-5799-b098-f9aac708f3a7",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_opportunitydays",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[opportunity days] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-829e2e3e-2fff-5f2d-8197-686d81fe4369",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_year",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[year] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-07d3ae46-f8bd-5e8b-ab9e-8b2e2ef13745",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_createdate",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[create date] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-96c20975-a44b-5a3f-ba0e-1354c319c696",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_month_number",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[month_number] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-91ccabb8-9fc2-5a78-aaf1-b4892e1ffd52",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_salesstageid",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[sales stage id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-1e31ff8d-0982-58d3-9063-7ec28e40c4bc",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_factoredproductrevenue",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[factoredproductrevenue] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b83564af-b596-59aa-a0dc-9470a9f60d74",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_partnerid",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[partner id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-06a52cb0-1ff5-584f-8a95-99fb04ad98f9",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_accountid",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[account id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-4cf0f3bf-1e6e-5a89-9786-aa625675c6f3",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_month",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[month] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6cb20371-9600-5dbc-b570-23621e5e7454",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_productrevenue",
+          "index" : 11,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[productrevenue] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-3e14e1a1-e510-50b6-9122-0be4aa48bb84",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_productid",
+          "index" : 12,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[product id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-fc9c4f10-0d8f-5a3d-b2eb-dcadaeee33aa",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_opportunityid",
+          "index" : 13,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[opportunity id] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6c95e610-6b60-5c43-8fd6-75aedbf82dab",
+          "type" : "Custom"
+        }, {
+          "name" : "ch_estimatedclosedate",
+          "index" : 14,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[estimatedclosedate] != null",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-e627adda-a8df-5cb6-9e65-2149620679b2",
+          "type" : "Custom"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-e5e70a23-75df-57b2-8207-65cb871d1e30"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1771245234.638332000",
+  "updatedBy" : "service-account-icedq.executor"
+}
