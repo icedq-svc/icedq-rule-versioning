@@ -1,0 +1,236 @@
+{
+  "objectId" : "rule-8ae96680-5497-5b60-bf3a-7a3e375329da",
+  "orgId" : "org-icedq",
+  "accountId" : "acct-35a37039-ddd7-5322-afe5-156499f89baa",
+  "workspaceId" : "wksc-c1dc8af8-ff4f-5760-a17d-32cdde727905",
+  "name" : "PUSHDOWN_brg ACCOUNT12321122",
+  "state" : "Published",
+  "version" : 1,
+  "info" : {
+    "ruleType" : "Pushdown",
+    "code" : "CODE00_ACCOUNT",
+    "description" : "This template creates pushdown validation rule with pre-defined expressions based on datatype. #password#",
+    "purpose" : "This template creates pushdown validation rule with pre-defined expressions based on datatype. #password#",
+    "properties" : {
+      "criticality" : "Warning",
+      "parameterId" : "parm-0d6309ce-5309-50a1-9283-12c5209cea4e",
+      "engineType" : "HighThroughput",
+      "stopAtFailAndErrorCount" : 22000,
+      "stopAtRowCount" : 1000,
+      "stopAtTime" : 40,
+      "degreeOfParallelism" : 1,
+      "parameterName" : "Parameter_mohit"
+    },
+    "objects" : [ {
+      "id" : "SourceDataset",
+      "type" : "source",
+      "name" : "sourceDataset",
+      "connectionType" : "Database",
+      "connectionId" : "conn-43e3c250-0bf4-5234-8113-7775917945c3",
+      "input" : "Sql",
+      "configuration" : {
+        "sql" : "select * from REGRESSION_DATABASE.ACCOUNT",
+        "isDeferredSort" : false,
+        "columns" : [ {
+          "index" : 1,
+          "name" : "ACCOUNT_ID",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 2,
+          "name" : "ACCOUNT_NAME",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 3,
+          "name" : "ACCOUNT_TYPE",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 4,
+          "name" : "INDUSTRY",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        }, {
+          "index" : 5,
+          "name" : "ANNUAL_REVENUE",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 6,
+          "name" : "EMPLOYEE_COUNT",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 7,
+          "name" : "REVENUE_PER_EMP",
+          "datatype" : "NUMBER",
+          "icedqDatatype" : "NUMERIC"
+        }, {
+          "index" : 8,
+          "name" : "CREATED_DATE",
+          "datatype" : "DATE",
+          "icedqDatatype" : "DATE"
+        }, {
+          "index" : 9,
+          "name" : "SOURCE_SYSTEM",
+          "datatype" : "VARCHAR2",
+          "icedqDatatype" : "TEXT"
+        } ],
+        "generateRollUps" : false
+      },
+      "useCached" : false
+    }, {
+      "id" : "RecordCheck",
+      "type" : "recordCheck",
+      "name" : "checks",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "ResultType",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "caseInsensitive" : false,
+            "values" : [ "RowCount" ]
+          },
+          "id" : "chck-3419c01d-1224-5cca-a84d-830e3306d04a",
+          "type" : "ResultType"
+        }, {
+          "name" : "ch_EMPLOYEE_COUNT",
+          "index" : 2,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[EMPLOYEE_COUNT]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-9917a3c9-0463-599d-b3b0-cb3b93095c16",
+          "type" : "Column"
+        }, {
+          "name" : "ch_ACCOUNT_TYPE",
+          "index" : 3,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNT_TYPE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-c21374c2-910b-5fb6-b12e-5261a79b7f89",
+          "type" : "Column"
+        }, {
+          "name" : "ch_ACCOUNT_ID",
+          "index" : 4,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNT_ID]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-ac618e43-1699-50d3-9fca-6c13e0d4ac0e",
+          "type" : "Column"
+        }, {
+          "name" : "ch_SOURCE_SYSTEM",
+          "index" : 5,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[SOURCE_SYSTEM]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-24506203-18a2-56b1-b257-c0b3a0a8ca9e",
+          "type" : "Column"
+        }, {
+          "name" : "ch_ACCOUNT_NAME",
+          "index" : 6,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ACCOUNT_NAME]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-53d35ea0-4419-5416-9eda-8532f60006d9",
+          "type" : "Column"
+        }, {
+          "name" : "ch_INDUSTRY",
+          "index" : 7,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[INDUSTRY]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-6e8bf912-a64f-5bb9-bd7c-54eac192a8e5",
+          "type" : "Column"
+        }, {
+          "name" : "ch_CREATED_DATE",
+          "index" : 8,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[CREATED_DATE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-7145b7c2-b680-539b-beb6-4271b33e5dfd",
+          "type" : "Column"
+        }, {
+          "name" : "ch_ANNUAL_REVENUE",
+          "index" : 9,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[ANNUAL_REVENUE]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-b5bf22bc-0154-5675-ad5f-37d6f089c7d9",
+          "type" : "Column"
+        }, {
+          "name" : "ch_REVENUE_PER_EMP",
+          "index" : 10,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "S.[REVENUE_PER_EMP]",
+            "caseInsensitive" : false
+          },
+          "id" : "chck-d8259670-d821-5d3b-acee-2c759772b496",
+          "type" : "Column"
+        } ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Report",
+      "type" : "report",
+      "name" : "exceptionReport",
+      "configuration" : {
+        "exportFileRowLimit" : "20000",
+        "createExportDownloadLink" : true,
+        "storeOnlyException" : true,
+        "storeOnlyExportedFile" : true,
+        "format" : [ "XLSX" ],
+        "generateRollUps" : false
+      }
+    }, {
+      "id" : "Summary",
+      "type" : "summary",
+      "name" : "summary",
+      "configuration" : {
+        "checks" : [ {
+          "name" : "exitcode",
+          "index" : 1,
+          "isActive" : true,
+          "isVisible" : true,
+          "expression" : {
+            "value" : "exitcode",
+            "caseInsensitive" : false
+          },
+          "isOverride" : false,
+          "id" : "chck-fe26e2cf-3144-54f4-b7db-de2b94ea4a70"
+        } ],
+        "generateRollUps" : false
+      }
+    } ]
+  },
+  "updatedTimestamp" : "1771942156.240545000",
+  "updatedBy" : "mohit"
+}
